@@ -1,0 +1,28 @@
+{
+  "appId": "com.simracertools.ams2-server-manager",
+  "productName": "AMS2 Server Manager",
+  "files": [
+    "dist-app/",
+    "dist-ui/"
+  ],
+  "extraResources": ["dist-app/preload.cjs"],
+  "icon": "./appIcon.png",
+  "mac": {
+    "category": "public.app-category.utilities",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "target": [
+      "AppImage"
+    ],
+    "category": "Utility"
+  },
+  "win": {
+    "target": [
+      "portable",
+      "msi"
+    ]
+  }
+}
