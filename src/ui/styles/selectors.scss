@@ -1,0 +1,135 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// Track Selector (and other entity selectors)
+.track-selector,
+.vehicle-selector,
+.vehicle-class-selector {
+  width: 100%;
+  min-width: 300px;
+}
+
+// Dropdown panel styling
+.track-selector-panel,
+.vehicle-selector-panel,
+.vehicle-class-selector-panel {
+  max-height: 400px;
+
+  .p-dropdown-items {
+    padding: v.$spacing-1 0;
+  }
+
+  .p-dropdown-item {
+    padding: v.$spacing-2 v.$spacing-3;
+    margin-left: v.$spacing-2;
+  }
+
+  // Group header styling
+  .p-dropdown-item-group {
+    padding: v.$spacing-2 v.$spacing-3;
+    background: var(--surface-ground);
+    border-bottom: 1px solid var(--surface-border);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+// Group header template
+.track-group-header,
+.vehicle-group-header {
+  @include m.flex-start;
+  gap: v.$spacing-2;
+  font-weight: v.$font-weight-semibold;
+  color: var(--text-color);
+
+  i {
+    color: var(--primary-color);
+    font-size: v.$font-size-sm;
+  }
+
+  &-count,
+  .track-group-count,
+  .vehicle-group-count {
+    margin-left: auto;
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-normal;
+    color: var(--text-color-secondary);
+    background: var(--surface-card);
+    padding: v.$spacing-1 v.$spacing-2;
+    border-radius: v.$border-radius-base;
+  }
+}
+
+// Option template styling
+.track-option,
+.vehicle-option,
+.vehicle-class-option {
+  @include m.flex-column;
+  gap: v.$spacing-1;
+
+  &-name {
+    font-weight: v.$font-weight-medium;
+    color: var(--text-color);
+  }
+
+  &-details {
+    font-size: v.$font-size-xs;
+    color: var(--text-color-secondary);
+  }
+}
+
+// Selected value template
+.track-selected,
+.vehicle-selected,
+.vehicle-class-selected {
+  @include m.flex-between;
+  width: 100%;
+  gap: v.$spacing-2;
+
+  &-details {
+    font-size: v.$font-size-xs;
+    color: var(--text-color-secondary);
+  }
+}
+
+// Error state
+.selector-error {
+  @include m.flex-start;
+  gap: v.$spacing-2;
+  padding: v.$spacing-2;
+  background: var(--surface-card);
+  border: 1px solid var(--red-400);
+  border-radius: v.$border-radius-base;
+
+  .p-error {
+    font-size: v.$font-size-sm;
+  }
+}
+
+// Form field wrapper for selectors
+.selector-field {
+  margin-bottom: v.$spacing-4;
+
+  label {
+    display: block;
+    margin-bottom: v.$spacing-2;
+    font-weight: v.$font-weight-medium;
+    color: var(--text-color);
+  }
+
+  .selector-help {
+    margin-top: v.$spacing-1;
+    font-size: v.$font-size-xs;
+    color: var(--text-color-secondary);
+  }
+}
+
+// Responsive
+@include m.respond-to-sm {
+  .track-selector,
+  .vehicle-selector,
+  .vehicle-class-selector {
+    min-width: 100%;
+  }
+}

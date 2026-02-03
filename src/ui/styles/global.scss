@@ -1,0 +1,31 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: v.$font-family-base;
+  font-size: v.$font-size-base;
+  line-height: v.$line-height-base;
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  @include m.flex-column;
+}

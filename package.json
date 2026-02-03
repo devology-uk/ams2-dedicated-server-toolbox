@@ -18,7 +18,10 @@
   },
   "dependencies": {
     "cross-env": "^10.1.0",
+    "electron-store": "^11.0.2",
     "os-utils": "^0.0.14",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -36,6 +39,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "npm-run-all": "^4.1.5",
+    "sass": "^1.97.3",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"

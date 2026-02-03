@@ -1,0 +1,66 @@
+// ============================================
+// AMS2 Server Manager - Design Tokens
+// ============================================
+
+// Colors
+$color-primary: #3b82f6;
+$color-primary-hover: #2563eb;
+$color-primary-active: #1d4ed8;
+$color-success: #22c55e;
+$color-warning: #f59e0b;
+$color-error: #ef4444;
+$color-info: #3b82f6;
+$color-close-button: #e81123;
+
+// Typography
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-family-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.8125rem;
+$font-size-base: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.125rem;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$line-height-base: 1.5;
+
+// Spacing
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.25rem;
+$spacing-6: 1.5rem;
+$spacing-8: 2rem;
+
+// Layout
+$titlebar-height: 40px;
+$titlebar-button-width: 46px;
+$titlebar-button-width-small: 40px;
+$titlebar-padding-x: 12px;
+$dialog-width: 450px;
+$content-padding: 1.5rem;
+
+// Borders
+$border-radius-base: 4px;
+$border-radius-lg: 8px;
+$border-width-base: 1px;
+
+// Shadows
+$shadow-dialog: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+// Transitions
+$transition-fast: all 0.1s ease;
+$transition-base: all 0.15s ease;
+
+// Breakpoints
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+// Z-Index
+$z-index-titlebar: 1000;
+$z-index-modal: 2000;
