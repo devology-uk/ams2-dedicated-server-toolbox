@@ -15,6 +15,14 @@ export interface ApiResponse<T> {
   error?: string;
 }
 
+export interface FileOperationResult {
+  success: boolean;
+  cancelled?: boolean;
+  data?: string;
+  filename?: string;
+  error?: string;
+}
+
 export interface Track {
   id: number;
   name: string;
@@ -51,6 +59,8 @@ export interface ElectronAPI {
   deleteConnection: (id: string) => Promise<boolean>;
   setActiveConnection: (id: string | null) => Promise<boolean>;
   api: AMS2Api;
+  importConfig: () => Promise<FileOperationResult>;
+  exportConfig: (data: string) => Promise<FileOperationResult>;
 }
 
 declare global {

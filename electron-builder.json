@@ -1,6 +1,6 @@
 {
-  "appId": "com.simracertools.ams2-server-manager",
-  "productName": "AMS2 Server Manager",
+  "appId": "com.simracertools.ams2-server-toolbox",
+  "productName": "AMS2 Dedicated Server Toolbox",
   "files": [
     "dist-app/",
     "dist-ui/"

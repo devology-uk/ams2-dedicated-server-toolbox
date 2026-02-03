@@ -8,16 +8,21 @@ import type { ServerConnection } from '../types/electron';
 
 interface TitlebarProps {
   title?: string;
+  showBackButton?: boolean;
+  onBack?: () => void;
 }
 
-const Titlebar: React.FC<TitlebarProps> = ({ title = 'AMS2 Server Manager' }) => {
+const Titlebar: React.FC<TitlebarProps> = ({ 
+  title = 'AMS2 Dedicated Server Toolbox',
+  showBackButton = false,
+  onBack,
+}) => {
   const [isConnectionDialogVisible, setIsConnectionDialogVisible] = useState(false);
   const [editingConnection, setEditingConnection] = useState<ServerConnection | null>(null);
   const [connections, setConnections] = useState<ServerConnection[]>([]);
   const [activeConnection, setActiveConnection] = useState<ServerConnection | null>(null);
   const menuRef = useRef<Menu>(null);
 
-  // Load connections on mount
   useEffect(() => {
     loadConnections();
   }, []);
@@ -39,11 +44,6 @@ const Titlebar: React.FC<TitlebarProps> = ({ title = 'AMS2 Server Manager' }) =>
     setIsConnectionDialogVisible(true);
   };
 
-  const handleSelect = async (connection: ServerConnection) => {
-    await window.electron.setActiveConnection(connection.id);
-    setActiveConnection(connection);
-  };
-
   const handleDelete = async (connection: ServerConnection) => {
     await window.electron.deleteConnection(connection.id);
     loadConnections();
@@ -58,43 +58,27 @@ const Titlebar: React.FC<TitlebarProps> = ({ title = 'AMS2 Server Manager' }) =>
   const buildMenuItems = (): MenuItem[] => {
     const items: MenuItem[] = [];
 
-    if (connections.length > 0) {
-      // Connection list
+    if (connections.length > 0 && activeConnection) {
       items.push({
-        label: 'Servers',
-        items: connections.map((conn) => ({
-          label: conn.name,
-          icon: activeConnection?.id === conn.id ? 'pi pi-check' : 'pi pi-server',
-          className: activeConnection?.id === conn.id ? 'active-connection' : '',
-          items: [
-            {
-              label: 'Connect',
-              icon: 'pi pi-play',
-              command: () => handleSelect(conn),
-              disabled: activeConnection?.id === conn.id,
-            },
-            {
-              label: 'Edit',
-              icon: 'pi pi-pencil',
-              command: () => handleEdit(conn),
-            },
-            {
-              separator: true,
-            },
-            {
-              label: 'Delete',
-              icon: 'pi pi-trash',
-              className: 'p-error',
-              command: () => handleDelete(conn),
-            },
-          ],
-        })),
+        label: 'Current Server',
+        items: [
+          {
+            label: 'Edit',
+            icon: 'pi pi-pencil',
+            command: () => handleEdit(activeConnection),
+          },
+          {
+            label: 'Delete',
+            icon: 'pi pi-trash',
+            className: 'p-error',
+            command: () => handleDelete(activeConnection),
+          },
+        ],
       });
 
       items.push({ separator: true });
     }
 
-    // Add new connection option
     items.push({
       label: 'Add Server',
       icon: 'pi pi-plus',
@@ -108,6 +92,15 @@ const Titlebar: React.FC<TitlebarProps> = ({ title = 'AMS2 Server Manager' }) =>
     <>
       <div className="titlebar">
         <div className="titlebar-drag-region">
+          {showBackButton && (
+            <Button
+              icon="pi pi-arrow-left"
+              className="p-button-text p-button-plain titlebar-back-button"
+              onClick={onBack}
+              tooltip="Back"
+              tooltipOptions={{ position: 'bottom' }}
+            />
+          )}
           <div className="titlebar-title">
             <i className="pi pi-car" style={{ marginRight: '8px' }}></i>
             {title}
@@ -129,10 +122,10 @@ const Titlebar: React.FC<TitlebarProps> = ({ title = 'AMS2 Server Manager' }) =>
           )}
 
           <Button
-            icon="pi pi-server"
+            icon="pi pi-cog"
             className="p-button-text p-button-plain titlebar-button"
             onClick={(e) => menuRef.current?.toggle(e)}
-            tooltip="Server Connections"
+            tooltip="Settings"
             tooltipOptions={{ position: 'bottom' }}
           />
           <Menu model={buildMenuItems()} popup ref={menuRef} />

@@ -21,6 +21,21 @@
     -webkit-app-region: drag;
   }
 
+  &-back-button {
+    -webkit-app-region: no-drag;
+    width: 32px !important;
+    height: 32px !important;
+    margin-right: v.$spacing-2;
+    border-radius: v.$border-radius-base !important;
+    color: var(--text-color-secondary) !important;
+    transition: v.$transition-fast;
+
+    &:hover {
+      background-color: var(--surface-hover) !important;
+      color: var(--text-color) !important;
+    }
+  }
+
   &-title {
     font-size: v.$font-size-base;
     font-weight: v.$font-weight-semibold;

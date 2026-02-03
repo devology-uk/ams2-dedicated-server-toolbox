@@ -1,0 +1,376 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// ============================================
+// Common View Styles
+// ============================================
+
+.view-header {
+  @include m.flex-between;
+  margin-bottom: v.$spacing-6;
+  gap: v.$spacing-4;
+
+  &-title {
+    h1 {
+      margin: 0 0 v.$spacing-1 0;
+      font-size: v.$font-size-2xl;
+      font-weight: v.$font-weight-bold;
+      color: var(--text-color);
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-color-secondary);
+    }
+  }
+
+  &-actions {
+    @include m.flex-end;
+    gap: v.$spacing-2;
+  }
+}
+
+// ============================================
+// Welcome View
+// ============================================
+
+.welcome-view {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: v.$spacing-8 v.$spacing-4;
+}
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: v.$spacing-8;
+
+  .welcome-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: v.$spacing-4;
+  }
+
+  h1 {
+    margin: 0 0 v.$spacing-3 0;
+    font-size: v.$font-size-2xl;
+    font-weight: v.$font-weight-bold;
+    color: var(--text-color);
+  }
+
+  .welcome-description {
+    margin: 0;
+    color: var(--text-color-secondary);
+    line-height: 1.6;
+  }
+}
+
+.welcome-servers {
+  h2 {
+    @include m.flex-start;
+    gap: v.$spacing-2;
+    margin: 0 0 v.$spacing-4 0;
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-semibold;
+    color: var(--text-color);
+
+    i {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.server-list {
+  @include m.flex-column;
+  gap: v.$spacing-3;
+  margin-bottom: v.$spacing-4;
+}
+
+.server-card {
+  cursor: pointer;
+  transition: v.$transition-fast;
+
+  &:hover {
+    transform: translateX(4px);
+    border-color: var(--primary-color);
+  }
+
+  .p-card-body {
+    padding: v.$spacing-4;
+  }
+
+  .server-card-content {
+    @include m.flex-between;
+    gap: v.$spacing-3;
+  }
+
+  .server-card-info {
+    h3 {
+      margin: 0 0 v.$spacing-1 0;
+      font-size: v.$font-size-base;
+      font-weight: v.$font-weight-semibold;
+      color: var(--text-color);
+    }
+  }
+
+  .server-card-address {
+    @include m.flex-start;
+    gap: v.$spacing-2;
+    margin: 0;
+    font-size: v.$font-size-sm;
+    font-family: v.$font-family-mono;
+    color: var(--text-color-secondary);
+
+    i {
+      font-size: v.$font-size-xs;
+    }
+  }
+
+  .server-card-arrow {
+    color: var(--text-color-secondary);
+    transition: v.$transition-fast;
+  }
+
+  &:hover .server-card-arrow {
+    color: var(--primary-color);
+    transform: translateX(4px);
+  }
+}
+
+.no-servers {
+  @include m.flex-column;
+  @include m.flex-center;
+  padding: v.$spacing-8;
+  background: var(--surface-card);
+  border: 1px dashed var(--surface-border);
+  border-radius: v.$border-radius-lg;
+  text-align: center;
+  gap: v.$spacing-2;
+
+  i {
+    font-size: 2rem;
+    color: var(--text-color-secondary);
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-color-secondary);
+  }
+}
+
+.add-server-button {
+  width: 100%;
+  margin-top: v.$spacing-2;
+}
+
+// ============================================
+// Server Home View
+// ============================================
+
+.server-home-view {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.server-banner {
+  margin-bottom: v.$spacing-6;
+
+  .server-banner-content {
+    @include m.flex-between;
+    gap: v.$spacing-4;
+  }
+
+  .server-banner-info {
+    h1 {
+      margin: 0 0 v.$spacing-1 0;
+      font-size: v.$font-size-xl;
+      font-weight: v.$font-weight-bold;
+      color: var(--text-color);
+    }
+  }
+
+  .server-banner-address {
+    @include m.flex-start;
+    gap: v.$spacing-2;
+    margin: 0;
+    font-family: v.$font-family-mono;
+    color: var(--text-color-secondary);
+
+    i {
+      font-size: v.$font-size-sm;
+    }
+  }
+
+  .server-banner-actions {
+    @include m.flex-end;
+    gap: v.$spacing-2;
+  }
+
+  .server-banner-message {
+    margin-top: v.$spacing-4;
+    width: 100%;
+  }
+}
+
+.server-home-tiles {
+  @include m.flex-column;
+  gap: v.$spacing-4;
+}
+
+.home-tile {
+  cursor: pointer;
+  transition: v.$transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .p-card-body {
+    padding: v.$spacing-5;
+  }
+
+  .home-tile-content {
+    @include m.flex-start;
+    gap: v.$spacing-4;
+  }
+
+  .home-tile-icon {
+    @include m.flex-center;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: v.$border-radius-lg;
+    flex-shrink: 0;
+
+    i {
+      font-size: 1.5rem;
+      color: white;
+    }
+  }
+
+  .home-tile-info {
+    flex: 1;
+
+    h2 {
+      margin: 0 0 v.$spacing-1 0;
+      font-size: v.$font-size-lg;
+      font-weight: v.$font-weight-semibold;
+      color: var(--text-color);
+    }
+
+    p {
+      margin: 0;
+      font-size: v.$font-size-sm;
+      color: var(--text-color-secondary);
+      line-height: 1.5;
+    }
+  }
+
+  .home-tile-arrow {
+    color: var(--text-color-secondary);
+    font-size: v.$font-size-lg;
+    transition: v.$transition-fast;
+  }
+
+  &:hover .home-tile-arrow {
+    color: var(--primary-color);
+    transform: translateX(4px);
+  }
+
+  &.home-tile-config .home-tile-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-600, #2563eb));
+  }
+
+  &.home-tile-data .home-tile-icon {
+    background: linear-gradient(135deg, var(--green-500), var(--green-600));
+  }
+}
+
+// ============================================
+// Data Viewer View
+// ============================================
+
+.data-viewer-view {
+  // Uses existing .data-tabs styles from app.scss
+}
+
+// ============================================
+// Config Builder View
+// ============================================
+
+.config-builder-view {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.config-section {
+  margin-bottom: v.$spacing-4;
+
+  h2 {
+    @include m.flex-start;
+    gap: v.$spacing-2;
+    margin: 0;
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-semibold;
+    color: var(--text-color);
+
+    i {
+      color: var(--primary-color);
+    }
+  }
+
+  .p-divider {
+    margin: v.$spacing-4 0;
+  }
+
+  &.config-section-placeholder {
+    opacity: 0.6;
+
+    .placeholder-text {
+      color: var(--text-color-secondary);
+      font-style: italic;
+    }
+  }
+}
+
+// ============================================
+// Responsive
+// ============================================
+
+@include m.respond-to-sm {
+  .view-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &-actions {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  .server-banner {
+    .server-banner-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .server-banner-actions {
+      width: 100%;
+      flex-direction: column;
+
+      .p-button {
+        width: 100%;
+      }
+    }
+  }
+
+  .home-tile {
+    .home-tile-content {
+      flex-wrap: wrap;
+    }
+
+    .home-tile-arrow {
+      display: none;
+    }
+  }
+}

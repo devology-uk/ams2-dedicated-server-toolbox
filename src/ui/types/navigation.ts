@@ -1,0 +1,1 @@
+export type AppView = 'welcome' | 'server-home' | 'data-viewer' | 'config-builder';

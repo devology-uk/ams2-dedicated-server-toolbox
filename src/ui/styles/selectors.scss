@@ -125,6 +125,17 @@
   }
 }
 
+// Paginator dropdown fix
+.p-paginator .p-dropdown {
+  .p-dropdown-label {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    padding-left: .5rem
+  }
+}
+
+
 // Responsive
 @include m.respond-to-sm {
   .track-selector,

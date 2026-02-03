@@ -1,5 +1,6 @@
 import path from 'path';
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+import * as fs from 'fs/promises';
 
 import isDev from './isDev.js';
 import { getPreloadPath } from './pathResolver.js';
@@ -109,6 +110,61 @@ function registerIpcHandlers() {
       return { success: false, error: 'Connection not found' };
     }
     return ams2Api.getVehicleClasses(connection);
+  });
+
+  // ============================================
+  // File Operations
+  // ============================================
+
+  ipcMain.handle('import-config', async () => {
+    const result = await dialog.showOpenDialog({
+      title: 'Import Server Configuration',
+      filters: [
+        { name: 'Config Files', extensions: ['cfg'] },
+        { name: 'All Files', extensions: ['*'] },
+      ],
+      properties: ['openFile'],
+    });
+
+    if (result.canceled || result.filePaths.length === 0) {
+      return { success: false, cancelled: true };
+    }
+
+    try {
+      const filePath = result.filePaths[0];
+      const data = await fs.readFile(filePath, 'utf-8');
+      const filename = path.basename(filePath);
+      
+      return { success: true, data, filename };
+    } catch (error) {
+      console.error('Failed to read config file:', error);
+      return { success: false, error: 'Failed to read configuration file' };
+    }
+  });
+
+  ipcMain.handle('export-config', async (_event, data: string) => {
+    const result = await dialog.showSaveDialog({
+      title: 'Export Server Configuration',
+      defaultPath: 'server.cfg',
+      filters: [
+        { name: 'Config Files', extensions: ['cfg'] },
+        { name: 'All Files', extensions: ['*'] },
+      ],
+    });
+
+    if (result.canceled || !result.filePath) {
+      return { success: false, cancelled: true };
+    }
+
+    try {
+      await fs.writeFile(result.filePath, data, 'utf-8');
+      const filename = path.basename(result.filePath);
+      
+      return { success: true, filename };
+    } catch (error) {
+      console.error('Failed to write config file:', error);
+      return { success: false, error: 'Failed to write configuration file' };
+    }
   });
 }
 
