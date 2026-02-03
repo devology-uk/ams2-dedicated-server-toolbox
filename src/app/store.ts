@@ -17,7 +17,7 @@ interface StoreSchema {
 }
 
 const store = new Store<StoreSchema>({
-  name: 'ams2-server-manager',
+  name: 'ams2-dedicated-server-toolbox',
   defaults: {
     connections: [],
     activeConnectionId: null,

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import './styles/index.scss';
+
 import { PrimeReactProvider } from 'primereact/api';
+
+import type { AppView } from './types/navigation';
+import type { ServerConnection } from './types/electron';
+
+import ConfigBuilderView from './views/ConfigBuilderView';
+import DataViewerView from './views/DataViewerView';
+import ServerHomeView from './views/ServerHomeView';
 import Titlebar from './components/Titlebar';
 import WelcomeView from './views/WelcomeView';
-import ServerHomeView from './views/ServerHomeView';
-import DataViewerView from './views/DataViewerView';
-import ConfigBuilderView from './views/ConfigBuilderView';
-import type { ServerConnection } from './types/electron';
-import type { AppView } from './types/navigation';
-import './styles/index.scss';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<AppView>('welcome');

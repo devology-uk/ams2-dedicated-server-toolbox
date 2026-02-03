@@ -36,6 +36,11 @@ export interface VehicleClass {
   translated_name: string;
 }
 
+export interface Flag {
+  value: number;
+  name: string;
+}
+
 class AMS2ApiService {
   private buildBaseUrl(connection: ServerConnection): string {
     return `http://${connection.ipAddress}:${connection.port}`;
@@ -132,6 +137,14 @@ class AMS2ApiService {
 
   async getVehicleClasses(connection: ServerConnection): Promise<ApiResponse<VehicleClass[]>> {
     return this.request<VehicleClass>(connection, '/api/list/vehicle_classes');
+  }
+
+  async getSessionFlags(connection: ServerConnection): Promise<ApiResponse<Flag[]>> {
+    return this.request<Flag>(connection, '/api/list/flags/session');
+  }
+
+  async getPlayerFlags(connection: ServerConnection): Promise<ApiResponse<Flag[]>> {
+    return this.request<Flag>(connection, '/api/list/flags/player');
   }
 }
 

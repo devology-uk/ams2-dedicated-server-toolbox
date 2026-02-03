@@ -44,11 +44,18 @@ export interface VehicleClass {
   translated_name: string;
 }
 
+export interface Flag {
+  value: number;
+  name: string;
+}
+
 export interface AMS2Api {
   testConnection: (connectionId: string) => Promise<ApiResponse<boolean>>;
   getTracks: (connectionId: string) => Promise<ApiResponse<Track[]>>;
   getVehicles: (connectionId: string) => Promise<ApiResponse<Vehicle[]>>;
   getVehicleClasses: (connectionId: string) => Promise<ApiResponse<VehicleClass[]>>;
+  getSessionFlags: (connectionId: string) => Promise<ApiResponse<Flag[]>>;
+  getPlayerFlags: (connectionId: string) => Promise<ApiResponse<Flag[]>>;
 }
 
 export interface ElectronAPI {

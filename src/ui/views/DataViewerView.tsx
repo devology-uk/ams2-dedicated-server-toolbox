@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Card } from 'primereact/card';
+
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Message } from 'primereact/message';
-import type { ServerConnection, Track, Vehicle, VehicleClass } from '../types/electron';
+
+import type { ServerConnection, Track, Vehicle, VehicleClass, Flag } from '../types/electron';
 
 interface DataViewerViewProps {
   connection: ServerConnection;
@@ -20,6 +21,8 @@ const DataViewerView: React.FC<DataViewerViewProps> = ({ connection, onBack }) =
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [sessionFlags, setSessionFlags] = useState<Flag[]>([]);
+  const [playerFlags, setPlayerFlags] = useState<Flag[]>([]);
 
   const showSuccess = (message: string) => {
     setSuccessMessage(message);
@@ -69,6 +72,38 @@ const DataViewerView: React.FC<DataViewerViewProps> = ({ connection, onBack }) =
       showSuccess(`Loaded ${result.data.length} vehicle classes`);
     } else {
       setError(result.error || 'Failed to load vehicle classes');
+    }
+
+    setLoading(null);
+  };
+
+  const handleLoadSessionFlags = async () => {
+    setLoading('sessionFlags');
+    setError(null);
+
+    const result = await window.electron.api.getSessionFlags(connection.id);
+
+    if (result.success && result.data) {
+      setSessionFlags(result.data);
+      showSuccess(`Loaded ${result.data.length} session flags`);
+    } else {
+      setError(result.error || 'Failed to load session flags');
+    }
+
+    setLoading(null);
+  };
+
+  const handleLoadPlayerFlags = async () => {
+    setLoading('playerFlags');
+    setError(null);
+
+    const result = await window.electron.api.getPlayerFlags(connection.id);
+
+    if (result.success && result.data) {
+      setPlayerFlags(result.data);
+      showSuccess(`Loaded ${result.data.length} player flags`);
+    } else {
+      setError(result.error || 'Failed to load player flags');
     }
 
     setLoading(null);
@@ -186,6 +221,66 @@ const DataViewerView: React.FC<DataViewerViewProps> = ({ connection, onBack }) =
               <Column field="value" header="ID" sortable style={{ width: '120px' }} />
               <Column field="name" header="Name" sortable filter filterPlaceholder="Search..." />
               <Column field="translated_name" header="Display Name" sortable filter filterPlaceholder="Search..." />
+            </DataTable>
+          )}
+        </TabPanel>
+
+        <TabPanel header={`Session Flags ${sessionFlags.length > 0 ? `(${sessionFlags.length})` : ''}`}>
+          <div className="tab-actions">
+            <Button
+              label="Load Session Flags"
+              icon={loading === 'sessionFlags' ? 'pi pi-spin pi-spinner' : 'pi pi-refresh'}
+              onClick={handleLoadSessionFlags}
+              disabled={!!loading}
+            />
+          </div>
+          {loading === 'sessionFlags' ? (
+            <div className="loading-container">
+              <ProgressSpinner />
+            </div>
+          ) : (
+            <DataTable
+              value={sessionFlags}
+              paginator
+              rows={15}
+              rowsPerPageOptions={[10, 15, 25, 50]}
+              emptyMessage="No session flags loaded. Click 'Load Session Flags' to fetch data."
+              sortField="name"
+              sortOrder={1}
+              filterDisplay="row"
+            >
+              <Column field="name" header="Name" sortable filter filterPlaceholder="Search..." />
+              <Column field="value" header="Value" sortable style={{ width: '120px' }} />
+            </DataTable>
+          )}
+        </TabPanel>
+
+        <TabPanel header={`Player Flags ${playerFlags.length > 0 ? `(${playerFlags.length})` : ''}`}>
+          <div className="tab-actions">
+            <Button
+              label="Load Player Flags"
+              icon={loading === 'playerFlags' ? 'pi pi-spin pi-spinner' : 'pi pi-refresh'}
+              onClick={handleLoadPlayerFlags}
+              disabled={!!loading}
+            />
+          </div>
+          {loading === 'playerFlags' ? (
+            <div className="loading-container">
+              <ProgressSpinner />
+            </div>
+          ) : (
+            <DataTable
+              value={playerFlags}
+              paginator
+              rows={15}
+              rowsPerPageOptions={[10, 15, 25, 50]}
+              emptyMessage="No player flags loaded. Click 'Load Player Flags' to fetch data."
+              sortField="name"
+              sortOrder={1}
+              filterDisplay="row"
+            >
+              <Column field="name" header="Name" sortable filter filterPlaceholder="Search..." />
+              <Column field="value" header="Value" sortable style={{ width: '120px' }} />
             </DataTable>
           )}
         </TabPanel>

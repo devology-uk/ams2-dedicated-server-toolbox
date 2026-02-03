@@ -112,6 +112,25 @@ function registerIpcHandlers() {
     return ams2Api.getVehicleClasses(connection);
   });
 
+  ipcMain.handle('api-get-player-flags', async (_event, connectionId: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getPlayerFlags(connection);
+  });
+
+
+  ipcMain.handle('api-get-session-flags', async (_event, connectionId: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getSessionFlags(connection);
+  });
+
+
+
   // ============================================
   // File Operations
   // ============================================
