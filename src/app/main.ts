@@ -7,12 +7,11 @@ import { getPreloadPath } from './pathResolver.js';
 import store from './store.js';
 import type { ServerConnection, ServerVersion, ServerCache } from './store.js';
 import { ams2Api } from './ams2Api.js';
-import { autoUpdater } from 'electron-updater';
+// import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 
-
-log.transports.file.level = 'info';
-autoUpdater.logger = log;
+// log.transports.file.level = 'info';
+// autoUpdater.logger = log;
 
 function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -290,10 +289,11 @@ app.whenReady().then(() => {
   } else {
     mainWindow.loadFile(path.join(app.getAppPath(), 'dist-ui/index.html'));
 
-    autoUpdater.checkForUpdatesAndNotify();
+    // autoUpdater.checkForUpdatesAndNotify();
   }
-
-  autoUpdater.checkForUpdatesAndNotify();
+  if (process.env.NODE_ENV === 'development' || !app.isPackaged) {
+    mainWindow.webContents.openDevTools();
+  }
 });
 
 app.on('window-all-closed', () => {

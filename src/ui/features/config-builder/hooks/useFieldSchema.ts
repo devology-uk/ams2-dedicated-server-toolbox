@@ -5,7 +5,7 @@ import type {
   FieldMetadata,
   ResolvedField,
   FieldGroup,
-} from '../types';
+} from '../types/config-builder.types';
 import {
   processAttributeSchema,
   groupFieldsByCategory,

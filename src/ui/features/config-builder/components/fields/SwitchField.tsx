@@ -1,8 +1,6 @@
-// src/ui/features/config-builder/components/fields/SwitchField.tsx
-
 import React from 'react';
 import { InputSwitch } from 'primereact/inputswitch';
-import { FieldMetadata } from '../types';
+import type { FieldMetadata } from '../../types/config-builder.types';
 
 interface SwitchFieldProps {
   field: FieldMetadata;

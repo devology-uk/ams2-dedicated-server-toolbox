@@ -3,7 +3,7 @@
 import React from 'react';
 import { Slider } from 'primereact/slider';
 import { InputNumber } from 'primereact/inputnumber';
-import { FieldMetadata } from '../types';
+import type { FieldMetadata } from '../../types/config-builder.types';
 
 interface SliderFieldProps {
   field: FieldMetadata;

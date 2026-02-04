@@ -1,8 +1,5 @@
-// src/ui/features/config-builder/utils/flags-helper.ts
+import type { FlagItem } from '../types/config-builder.types';
 
-import { FlagItem } from '../types';
-
-// ... rest of the file stays the same
 /**
  * Parse a combined flag value into individual selected flags
  */

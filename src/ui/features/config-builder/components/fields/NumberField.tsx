@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { InputNumber } from 'primereact/inputnumber';
-import { FieldMetadata } from '../types';
+import type { FieldMetadata } from '../../types/config-builder.types';
 
 interface NumberFieldProps {
   field: FieldMetadata;

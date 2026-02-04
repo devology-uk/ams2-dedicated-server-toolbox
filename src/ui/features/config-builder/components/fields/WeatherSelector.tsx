@@ -1,9 +1,9 @@
 // src/ui/features/config-builder/components/fields/WeatherSelector.tsx
 
 import React, { useMemo } from 'react';
-import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
+import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
 import { useServerCache } from '../../hooks/useServerCache';
-import { FieldMetadata, EnumItem } from '../../types';
+import type { FieldMetadata } from '../../types/config-builder.types';
 import { formatLabel } from '../../utils/schema-processor';
 
 interface WeatherSelectorProps {

@@ -7,10 +7,12 @@ import type {
   VehicleClass,
   ServerCache,
   ApiListData,
+} from '../../../types/electron';
+import type {
   AttributeDefinition,
   EnumItem,
   FlagItem,
-} from '../types';
+} from '../types/config-builder.types';
 
 export interface UseServerCacheResult {
   cache: ServerCache | null;

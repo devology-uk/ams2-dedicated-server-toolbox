@@ -7,7 +7,7 @@ import type { AppView } from './types/navigation';
 import type { ServerConnection } from './types/electron';
 
 import ApiExplorerView from './views/ApiExplorerView';
-import ConfigBuilderView from './views/ConfigBuilderView';
+import { ConfigBuilderView } from './features/config-builder/components';
 import ServerHomeView from './views/ServerHomeView';
 import Titlebar from './components/Titlebar';
 import WelcomeView from './views/WelcomeView';
@@ -66,8 +66,7 @@ const App: React.FC = () => {
       case 'config-builder':
         return activeConnection ? (
           <ConfigBuilderView
-            connection={activeConnection}
-            onBack={() => handleNavigate('server-home')}
+            connectionId={activeConnection.id}
           />
         ) : (
           <WelcomeView onServerSelect={handleServerSelect} />

@@ -1,8 +1,4 @@
-// src/ui/features/config-builder/utils/hocon-parser.ts
-
-import { ServerConfig } from '../types';
-
-// ... rest of the file stays the same
+import type { ServerConfig } from '../types/config-builder.types';
 
 /**
  * Tokenizer for HOCON-like config format

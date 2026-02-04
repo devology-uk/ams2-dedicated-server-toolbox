@@ -1,9 +1,9 @@
 // src/ui/features/config-builder/components/fields/VehicleSelector.tsx
 
 import React, { useMemo } from 'react';
-import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
+import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
 import { useServerCache } from '../../hooks/useServerCache';
-import { FieldMetadata } from '../../types';
+import type { FieldMetadata } from '../../types/config-builder.types';
 
 interface VehicleSelectorProps {
   field: FieldMetadata;

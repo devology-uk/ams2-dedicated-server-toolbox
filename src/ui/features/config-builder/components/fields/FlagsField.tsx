@@ -5,7 +5,7 @@ import { Checkbox } from 'primereact/checkbox';
 import { Panel } from 'primereact/panel';
 import { formatLabel } from '../../utils/schema-processor';
 import { isFlagSet, toggleFlag } from '../../utils/flags-helper';
-import { ResolvedField } from '../../types';
+import type { ResolvedField } from '../../types/config-builder.types';
 
 interface FlagsFieldProps {
   field: ResolvedField;

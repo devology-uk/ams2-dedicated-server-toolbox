@@ -1,8 +1,6 @@
-// src/ui/features/config-builder/components/fields/TextField.tsx
-
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
-import { FieldMetadata } from '../types';
+import type { FieldMetadata } from '../../types/config-builder.types';
 
 interface TextFieldProps {
   field: FieldMetadata;

@@ -1,13 +1,13 @@
 // src/ui/features/config-builder/utils/schema-processor.ts
 
-import {
+import type {
   AttributeDefinition,
   ApiDataType,
   FieldMetadata,
   FieldType,
   EnumEndpointName,
   FlagEndpointName,
-} from '../types';
+} from '../types/config-builder.types';
 
 // ... rest of the file stays the same
 

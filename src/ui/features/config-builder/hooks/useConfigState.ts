@@ -3,7 +3,7 @@
 // src/ui/features/config-builder/hooks/useConfigState.ts
 
 import { useState, useCallback } from 'react';
-import type { ServerConfig, SessionAttributes } from '../types';
+import type { ServerConfig, SessionAttributes } from '../types/config-builder.types';
 import { parseServerConfig, serializeServerConfig } from '../utils/hocon-parser';
 
 // ... rest of the file stays the same
