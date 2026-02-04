@@ -1,0 +1,267 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.api-explorer-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.api-explorer-content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: v.$spacing-4;
+  flex: 1;
+  min-height: 0;
+}
+
+.api-explorer-tree-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .p-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    padding: v.$spacing-3;
+  }
+
+  .tree-filter {
+    @include m.flex-start;
+    gap: v.$spacing-2;
+    margin-bottom: v.$spacing-3;
+    padding-bottom: v.$spacing-3;
+    border-bottom: 1px solid var(--surface-border);
+
+    .p-input-icon-left {
+      flex: 1;
+
+      .pi-search {
+        color: var(--text-color-secondary);
+      }
+    }
+
+    .tree-filter-input {
+      width: 100%;
+    }
+  }
+
+  .api-tree {
+    flex: 1;
+    overflow: auto;
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    .p-tree-container {
+      padding: 0;
+    }
+
+    .p-treenode {
+      padding: v.$spacing-1 0;
+    }
+
+    .p-treenode-content {
+      padding: v.$spacing-2;
+      border-radius: v.$border-radius-base;
+      transition: v.$transition-fast;
+
+      &:hover {
+        background: var(--surface-hover);
+      }
+
+      &.p-highlight {
+        background: var(--primary-color);
+        color: var(--primary-color-text);
+
+        .p-treenode-icon {
+          color: var(--primary-color-text);
+        }
+      }
+    }
+
+    .p-treenode-icon {
+      margin-right: v.$spacing-2;
+      color: var(--text-color-secondary);
+    }
+
+    .p-treenode-label {
+      font-size: v.$font-size-sm;
+    }
+  }
+}
+
+.api-explorer-detail-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .p-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    padding: v.$spacing-4;
+  }
+
+  .detail-header {
+    margin-bottom: v.$spacing-4;
+    padding-bottom: v.$spacing-3;
+    border-bottom: 1px solid var(--surface-border);
+
+    h3 {
+      margin: 0 0 v.$spacing-1 0;
+      font-size: v.$font-size-lg;
+      font-weight: v.$font-weight-semibold;
+      color: var(--text-color);
+    }
+
+    .detail-description {
+      margin: 0 0 v.$spacing-3 0;
+      font-size: v.$font-size-sm;
+      color: var(--text-color-secondary);
+    }
+
+    .detail-meta {
+      @include m.flex-start;
+      gap: v.$spacing-4;
+      flex-wrap: wrap;
+    }
+
+    .detail-count {
+      display: inline-flex;
+      align-items: center;
+      padding: v.$spacing-1 v.$spacing-2;
+      background: var(--primary-color);
+      color: var(--primary-color-text);
+      border-radius: v.$border-radius-base;
+      font-size: v.$font-size-xs;
+      font-weight: v.$font-weight-medium;
+    }
+
+    .detail-path {
+      display: inline-flex;
+      align-items: center;
+      gap: v.$spacing-1;
+      padding: v.$spacing-1 v.$spacing-2;
+      background: var(--surface-ground);
+      border-radius: v.$border-radius-base;
+      font-size: v.$font-size-xs;
+      font-family: v.$font-family-mono;
+      color: var(--text-color-secondary);
+
+      i {
+        font-size: v.$font-size-xs;
+      }
+    }
+  }
+
+  .detail-table {
+    flex: 1;
+    overflow: hidden;
+
+    .p-datatable-wrapper {
+      flex: 1;
+      overflow: auto;
+    }
+  }
+
+  .detail-placeholder,
+  .detail-loading {
+    @include m.flex-column;
+    @include m.flex-center;
+    flex: 1;
+    gap: v.$spacing-3;
+    color: var(--text-color-secondary);
+
+    i {
+      font-size: 3rem;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+// Responsive
+@include m.respond-to-md {
+  .api-explorer-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: 280px 1fr;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1rem;
+  
+  p {
+    color: var(--text-color-secondary);
+  }
+}
+
+.sync-prompt-card {
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.sync-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  gap: 1rem;
+
+  .sync-prompt-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--text-color);
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-color-secondary);
+    max-width: 400px;
+  }
+
+  .sync-prompt-note {
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+}
+
+.sync-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sync-time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-color-secondary);
+  
+  i {
+    font-size: 0.875rem;
+  }
+}
+
+.view-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,12 +1,12 @@
 import path from 'path';
-import { app, BrowserWindow, ipcMain, dialog } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog, Menu } from 'electron';
 import * as fs from 'fs/promises';
 
 import isDev from './isDev.js';
 import { getPreloadPath } from './pathResolver.js';
 import store from './store.js';
+import type { ServerConnection, ServerVersion, ServerCache } from './store.js';
 import { ams2Api } from './ams2Api.js';
-import type { ServerConnection } from './store.js';
 
 function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -29,35 +29,38 @@ function registerIpcHandlers() {
     return connections.find((c: ServerConnection) => c.id === activeId) || null;
   });
 
-  ipcMain.handle('save-connection', (_event, connection: Omit<ServerConnection, 'id' | 'createdAt'> & { id?: string }) => {
-    const connections = store.get('connections');
+  ipcMain.handle(
+    'save-connection',
+    (_event, connection: Omit<ServerConnection, 'id' | 'createdAt'> & { id?: string }) => {
+      const connections = store.get('connections');
 
-    if (connection.id) {
-      const index = connections.findIndex((c: ServerConnection) => c.id === connection.id);
-      if (index !== -1) {
-        connections[index] = {
-          ...connections[index],
-          ...connection,
-        };
-        store.set('connections', connections);
-        return connections[index];
+      if (connection.id) {
+        const index = connections.findIndex((c: ServerConnection) => c.id === connection.id);
+        if (index !== -1) {
+          connections[index] = {
+            ...connections[index],
+            ...connection,
+          };
+          store.set('connections', connections);
+          return connections[index];
+        }
       }
-    }
 
-    const newConnection: ServerConnection = {
-      ...connection,
-      id: generateId(),
-      createdAt: Date.now(),
-    };
-    connections.push(newConnection);
-    store.set('connections', connections);
+      const newConnection: ServerConnection = {
+        ...connection,
+        id: generateId(),
+        createdAt: Date.now(),
+      };
+      connections.push(newConnection);
+      store.set('connections', connections);
 
-    if (connections.length === 1) {
-      store.set('activeConnectionId', newConnection.id);
-    }
+      if (connections.length === 1) {
+        store.set('activeConnectionId', newConnection.id);
+      }
 
-    return newConnection;
-  });
+      return newConnection;
+    },
+  );
 
   ipcMain.handle('delete-connection', (_event, id: string) => {
     const connections = store.get('connections');
@@ -112,24 +115,21 @@ function registerIpcHandlers() {
     return ams2Api.getVehicleClasses(connection);
   });
 
-  ipcMain.handle('api-get-player-flags', async (_event, connectionId: string) => {
-    const connection = getConnectionById(connectionId);
-    if (!connection) {
-      return { success: false, error: 'Connection not found' };
-    }
-    return ams2Api.getPlayerFlags(connection);
-  });
+  // ipcMain.handle('api-get-player-flags', async (_event, connectionId: string) => {
+  //   const connection = getConnectionById(connectionId);
+  //   if (!connection) {
+  //     return { success: false, error: 'Connection not found' };
+  //   }
+  //   return ams2Api.getPlayerFlags(connection);
+  // });
 
-
-  ipcMain.handle('api-get-session-flags', async (_event, connectionId: string) => {
-    const connection = getConnectionById(connectionId);
-    if (!connection) {
-      return { success: false, error: 'Connection not found' };
-    }
-    return ams2Api.getSessionFlags(connection);
-  });
-
-
+  // ipcMain.handle('api-get-session-flags', async (_event, connectionId: string) => {
+  //   const connection = getConnectionById(connectionId);
+  //   if (!connection) {
+  //     return { success: false, error: 'Connection not found' };
+  //   }
+  //   return ams2Api.getSessionFlags(connection);
+  // });
 
   // ============================================
   // File Operations
@@ -153,7 +153,7 @@ function registerIpcHandlers() {
       const filePath = result.filePaths[0];
       const data = await fs.readFile(filePath, 'utf-8');
       const filename = path.basename(filePath);
-      
+
       return { success: true, data, filename };
     } catch (error) {
       console.error('Failed to read config file:', error);
@@ -178,12 +178,84 @@ function registerIpcHandlers() {
     try {
       await fs.writeFile(result.filePath, data, 'utf-8');
       const filename = path.basename(result.filePath);
-      
+
       return { success: true, filename };
     } catch (error) {
       console.error('Failed to write config file:', error);
       return { success: false, error: 'Failed to write configuration file' };
     }
+  });
+
+  ipcMain.handle('api-get-list-by-path', async (_event, connectionId: string, path: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getListByPath(connection, path);
+  });
+
+  ipcMain.handle('api-get-version', async (_event, connectionId: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getVersion(connection);
+  });
+
+  ipcMain.handle('api-get-help', async (_event, connectionId: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getHelp(connection);
+  });
+
+  ipcMain.handle('api-get-status', async (_event, connectionId: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getStatus(connection);
+  });
+
+  ipcMain.handle('api-get-session-status', async (_event, connectionId: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getSessionStatus(connection);
+  });
+
+
+  ipcMain.handle('cache-get', (_event, connectionId: string) => {
+    const cache = store.get('apiCache');
+    return cache[connectionId] || null;
+  });
+
+ ipcMain.handle('cache-set', (_event, connectionId: string, data: { version: ServerVersion; lists: ServerCache['lists'] }) => {
+  const cache = store.get('apiCache');
+  cache[connectionId] = {
+    version: data.version,
+    syncedAt: Date.now(),
+    lists: data.lists,
+  };
+  store.set('apiCache', cache);
+  return true;
+});
+
+  ipcMain.handle('cache-clear', (_event, connectionId: string) => {
+    const cache = store.get('apiCache');
+    delete cache[connectionId];
+    store.set('apiCache', cache);
+    return true;
+  });
+
+  ipcMain.handle('api-get-all-lists', async (_event, connectionId: string) => {
+    const connection = getConnectionById(connectionId);
+    if (!connection) {
+      return { success: false, error: 'Connection not found' };
+    }
+    return ams2Api.getAllLists(connection);
   });
 }
 
@@ -193,6 +265,22 @@ function getConnectionById(id: string): ServerConnection | null {
 }
 
 app.whenReady().then(() => {
+   if (process.platform === 'darwin') {
+    const minimalMenu = Menu.buildFromTemplate([
+      {
+        label: app.name,
+        submenu: [
+          { role: 'about' },
+          { type: 'separator' },
+          { role: 'quit' }
+        ]
+      }
+    ]);
+    Menu.setApplicationMenu(minimalMenu);
+  } else {
+    Menu.setApplicationMenu(null);
+  }
+
   registerIpcHandlers();
 
   const mainWindow = new BrowserWindow({

@@ -8,19 +8,40 @@ export interface ServerConnection {
   username: string;
   password: string;
   createdAt: number;
-  lastUsed?: number;
 }
 
-interface StoreSchema {
+export interface ServerVersion {
+  build_version: number;
+  protocol_version: number;
+  lua_version: number;
+}
+
+export interface CachedListData {
+  description: string;
+  list: Record<string, unknown>[];
+}
+
+export interface ServerCache {
+  version: ServerVersion;
+  syncedAt: number;
+  lists: {
+    [path: string]: CachedListData;
+  };
+}
+
+export interface StoreSchema {
   connections: ServerConnection[];
   activeConnectionId: string | null;
+  apiCache: {
+    [connectionId: string]: ServerCache;
+  };
 }
 
 const store = new Store<StoreSchema>({
-  name: 'ams2-dedicated-server-toolbox',
   defaults: {
     connections: [],
     activeConnectionId: null,
+    apiCache: {},
   },
 });
 

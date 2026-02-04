@@ -93,16 +93,16 @@ const ServerHomeView: React.FC<ServerHomeViewProps> = ({
         </Card>
 
         <Card 
-          className="home-tile home-tile-data"
-          onClick={() => onNavigate('data-viewer')}
+          className="home-tile home-tile-explorer"
+          onClick={() => onNavigate('api-explorer')}
         >
           <div className="home-tile-content">
             <div className="home-tile-icon">
-              <i className="pi pi-database"></i>
+              <i className="pi pi-sitemap"></i>
             </div>
             <div className="home-tile-info">
-              <h2>Data Viewer</h2>
-              <p>Browse data lists via the HTTP Api on the server.</p>
+              <h2>API Explorer</h2>
+              <p>Browse and explore all available server API endpoints. View tracks, vehicles, settings, and more.</p>
             </div>
             <i className="pi pi-chevron-right home-tile-arrow"></i>
           </div>

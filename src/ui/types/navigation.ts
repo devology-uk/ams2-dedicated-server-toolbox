@@ -1,1 +1,1 @@
-export type AppView = 'welcome' | 'server-home' | 'data-viewer' | 'config-builder';
+export type AppView = 'welcome' | 'server-home' | 'config-builder' | 'api-explorer';

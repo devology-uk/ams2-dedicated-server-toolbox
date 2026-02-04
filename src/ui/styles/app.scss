@@ -132,3 +132,25 @@
     }
   }
 }
+
+// PrimeReact button fixes
+.p-button {
+  padding: 0.5rem 1rem;
+  
+  .p-button-icon {
+    margin-right: 0.5rem;
+  }
+  
+  &.p-button-icon-only {
+    padding: 0.5rem;
+    
+    .p-button-icon {
+      margin-right: 0;
+    }
+  }
+}
+
+.p-button-outlined,
+.p-button-text {
+  padding: 0.5rem 1rem;
+}

@@ -6,8 +6,8 @@ import { PrimeReactProvider } from 'primereact/api';
 import type { AppView } from './types/navigation';
 import type { ServerConnection } from './types/electron';
 
+import ApiExplorerView from './views/ApiExplorerView';
 import ConfigBuilderView from './views/ConfigBuilderView';
-import DataViewerView from './views/DataViewerView';
 import ServerHomeView from './views/ServerHomeView';
 import Titlebar from './components/Titlebar';
 import WelcomeView from './views/WelcomeView';
@@ -24,7 +24,6 @@ const App: React.FC = () => {
     const connection = await window.electron.getActiveConnection();
     setActiveConnection(connection);
     
-    // If we have an active connection, go to server home
     if (connection) {
       setCurrentView('server-home');
     }
@@ -64,18 +63,18 @@ const App: React.FC = () => {
         ) : (
           <WelcomeView onServerSelect={handleServerSelect} />
         );
-      case 'data-viewer':
+      case 'config-builder':
         return activeConnection ? (
-          <DataViewerView
+          <ConfigBuilderView
             connection={activeConnection}
             onBack={() => handleNavigate('server-home')}
           />
         ) : (
           <WelcomeView onServerSelect={handleServerSelect} />
         );
-      case 'config-builder':
+      case 'api-explorer':
         return activeConnection ? (
-          <ConfigBuilderView
+          <ApiExplorerView
             connection={activeConnection}
             onBack={() => handleNavigate('server-home')}
           />

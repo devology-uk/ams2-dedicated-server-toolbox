@@ -1,5 +1,5 @@
 {
-  "name": "ams2-server-manager",
+  "name": "ams2-dedicated-server-toolbox",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "npm-run-all -p dev:react dev:app",
     "dev:react": "vite",
-    "dev:app": "npm run transpile:app; cross-env NODE_ENV=development electron .",
+    "dev:app": "npm run transpile:app && cross-env NODE_ENV=development electron .",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

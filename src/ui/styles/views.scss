@@ -281,17 +281,9 @@
     background: linear-gradient(135deg, var(--primary-color), var(--primary-600, #2563eb));
   }
 
-  &.home-tile-data .home-tile-icon {
-    background: linear-gradient(135deg, var(--green-500), var(--green-600));
+    &.home-tile-explorer .home-tile-icon {
+    background: linear-gradient(135deg, var(--purple-500, #8b5cf6), var(--purple-600, #6d28d9));
   }
-}
-
-// ============================================
-// Data Viewer View
-// ============================================
-
-.data-viewer-view {
-  // Uses existing .data-tabs styles from app.scss
 }
 
 // ============================================
