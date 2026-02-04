@@ -7,6 +7,12 @@ import { getPreloadPath } from './pathResolver.js';
 import store from './store.js';
 import type { ServerConnection, ServerVersion, ServerCache } from './store.js';
 import { ams2Api } from './ams2Api.js';
+import { autoUpdater } from 'electron-updater';
+import log from 'electron-log';
+
+
+log.transports.file.level = 'info';
+autoUpdater.logger = log;
 
 function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -115,22 +121,6 @@ function registerIpcHandlers() {
     return ams2Api.getVehicleClasses(connection);
   });
 
-  // ipcMain.handle('api-get-player-flags', async (_event, connectionId: string) => {
-  //   const connection = getConnectionById(connectionId);
-  //   if (!connection) {
-  //     return { success: false, error: 'Connection not found' };
-  //   }
-  //   return ams2Api.getPlayerFlags(connection);
-  // });
-
-  // ipcMain.handle('api-get-session-flags', async (_event, connectionId: string) => {
-  //   const connection = getConnectionById(connectionId);
-  //   if (!connection) {
-  //     return { success: false, error: 'Connection not found' };
-  //   }
-  //   return ams2Api.getSessionFlags(connection);
-  // });
-
   // ============================================
   // File Operations
   // ============================================
@@ -226,22 +216,28 @@ function registerIpcHandlers() {
     return ams2Api.getSessionStatus(connection);
   });
 
-
   ipcMain.handle('cache-get', (_event, connectionId: string) => {
     const cache = store.get('apiCache');
     return cache[connectionId] || null;
   });
 
- ipcMain.handle('cache-set', (_event, connectionId: string, data: { version: ServerVersion; lists: ServerCache['lists'] }) => {
-  const cache = store.get('apiCache');
-  cache[connectionId] = {
-    version: data.version,
-    syncedAt: Date.now(),
-    lists: data.lists,
-  };
-  store.set('apiCache', cache);
-  return true;
-});
+  ipcMain.handle(
+    'cache-set',
+    (
+      _event,
+      connectionId: string,
+      data: { version: ServerVersion; lists: ServerCache['lists'] },
+    ) => {
+      const cache = store.get('apiCache');
+      cache[connectionId] = {
+        version: data.version,
+        syncedAt: Date.now(),
+        lists: data.lists,
+      };
+      store.set('apiCache', cache);
+      return true;
+    },
+  );
 
   ipcMain.handle('cache-clear', (_event, connectionId: string) => {
     const cache = store.get('apiCache');
@@ -265,16 +261,12 @@ function getConnectionById(id: string): ServerConnection | null {
 }
 
 app.whenReady().then(() => {
-   if (process.platform === 'darwin') {
+  if (process.platform === 'darwin') {
     const minimalMenu = Menu.buildFromTemplate([
       {
         label: app.name,
-        submenu: [
-          { role: 'about' },
-          { type: 'separator' },
-          { role: 'quit' }
-        ]
-      }
+        submenu: [{ role: 'about' }, { type: 'separator' }, { role: 'quit' }],
+      },
     ]);
     Menu.setApplicationMenu(minimalMenu);
   } else {
@@ -295,9 +287,13 @@ app.whenReady().then(() => {
 
   if (isDev()) {
     mainWindow.loadURL('http://localhost:5173');
-    return;
+  } else {
+    mainWindow.loadFile(path.join(app.getAppPath(), 'dist-ui/index.html'));
+
+    autoUpdater.checkForUpdatesAndNotify();
   }
-  mainWindow.loadFile(path.join(app.getAppPath(), 'dist-ui/index.html'));
+
+  autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on('window-all-closed', () => {

@@ -1,5 +1,5 @@
 {
-  "appId": "com.simracertools.ams2-server-toolbox",
+  "appId": "com.simracertools.ams2-dedicated-server-toolbox",
   "productName": "AMS2 Dedicated Server Toolbox",
   "files": [
     "dist-app/",
@@ -7,6 +7,13 @@
   ],
   "extraResources": ["dist-app/preload.cjs"],
   "icon": "./appIcon.png",
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "devology-uk",
+      "repo": "ams2-dedicated-server-toolbox"
+    }
+  ],
   "mac": {
     "category": "public.app-category.utilities",
     "target": [
@@ -21,7 +28,7 @@
   },
   "win": {
     "target": [
-      "portable",
+      "nsis",
       "msi"
     ]
   }
