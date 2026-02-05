@@ -37,7 +37,6 @@ export const FlagsField: React.FC<FlagsFieldProps> = ({
   }, [flags]);
 
   return (
-    <div className="field">
       <Panel header={field.label} toggleable>
         <small className="text-color-secondary block mb-3">
           {field.description}
@@ -73,6 +72,5 @@ export const FlagsField: React.FC<FlagsFieldProps> = ({
           </small>
         </div>
       </Panel>
-    </div>
   );
 };

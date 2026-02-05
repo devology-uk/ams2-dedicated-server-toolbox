@@ -22,10 +22,6 @@ export const SliderField: React.FC<SliderFieldProps> = ({
   const max = field.max ?? 100;
 
   return (
-    <div className="field">
-      <label htmlFor={field.name} className="block font-medium mb-2">
-        {field.label}
-      </label>
       <div className="flex align-items-center gap-3">
         <div className="flex-grow-1">
           <Slider
@@ -47,9 +43,5 @@ export const SliderField: React.FC<SliderFieldProps> = ({
           className="w-5rem"
         />
       </div>
-      <small className="text-color-secondary block mt-1">
-        {field.description}
-      </small>
-    </div>
   );
 };

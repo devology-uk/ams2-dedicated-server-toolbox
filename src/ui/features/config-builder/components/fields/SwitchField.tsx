@@ -26,10 +26,6 @@ export const SwitchField: React.FC<SwitchFieldProps> = ({
   const onLabel = field.booleanLabels?.on ?? 'Enabled';
 
   return (
-    <div className="field">
-      <label htmlFor={field.name} className="block font-medium mb-2">
-        {field.label}
-      </label>
       <div className="flex align-items-center gap-3">
         <span className={`text-sm ${!boolValue ? 'font-semibold' : 'text-color-secondary'}`}>
           {offLabel}
@@ -44,9 +40,5 @@ export const SwitchField: React.FC<SwitchFieldProps> = ({
           {onLabel}
         </span>
       </div>
-      <small className="text-color-secondary block mt-1">
-        {field.description}
-      </small>
-    </div>
   );
 };

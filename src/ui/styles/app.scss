@@ -50,59 +50,57 @@
   width: 100%;
 }
 
-// Data tabs
-.data-tabs {
-  // Tab header styling
-  .p-tabview-nav {
-    padding: 0 v.$spacing-2;
-    gap: v.$spacing-1;
 
-    li {
-      .p-tabview-nav-link {
-        padding: v.$spacing-3 v.$spacing-5;
-        margin: 0 v.$spacing-1;
-        border-radius: v.$border-radius-base v.$border-radius-base 0 0;
-        font-weight: v.$font-weight-medium;
-        transition: v.$transition-fast;
+// Tab header styling
+.p-tabview-nav {
+  padding: 0 v.$spacing-2;
+  gap: v.$spacing-1;
 
-        &:not(.p-disabled):focus {
-          box-shadow: none;
-        }
-      }
+  li {
+    .p-tabview-nav-link {
+      padding: v.$spacing-3 v.$spacing-5;
+      margin: 0 v.$spacing-1;
+      border-radius: v.$border-radius-base v.$border-radius-base 0 0;
+      font-weight: v.$font-weight-medium;
+      transition: v.$transition-fast;
 
-      &.p-highlight .p-tabview-nav-link {
-        border-bottom: 2px solid var(--primary-color);
+      &:not(.p-disabled):focus {
+        box-shadow: none;
       }
     }
-  }
 
-  // Tab content panel
-  .p-tabview-panels {
-    padding: v.$spacing-5;
-    background: var(--surface-card);
-    border-radius: 0 0 v.$border-radius-base v.$border-radius-base;
-  }
-
-  .tab-actions {
-    @include m.flex-start;
-    gap: v.$spacing-4;
-    margin-bottom: v.$spacing-4;
-  }
-
-  .loading-container {
-    @include m.flex-center;
-    padding: v.$spacing-8;
-  }
-
-  // DataTable adjustments
-  .p-datatable {
-    .p-datatable-header {
-      padding: v.$spacing-3;
+    &.p-highlight .p-tabview-nav-link {
+      border-bottom: 2px solid var(--primary-color);
     }
+  }
+}
 
-    .p-column-filter-element {
-      width: 100%;
-    }
+// Tab content panel
+.p-tabview-panels {
+  padding: v.$spacing-5;
+  background: var(--surface-card);
+  border-radius: 0 0 v.$border-radius-base v.$border-radius-base;
+}
+
+.tab-actions {
+  @include m.flex-start;
+  gap: v.$spacing-4;
+  margin-bottom: v.$spacing-4;
+}
+
+.loading-container {
+  @include m.flex-center;
+  padding: v.$spacing-8;
+}
+
+// DataTable adjustments
+.p-datatable {
+  .p-datatable-header {
+    padding: v.$spacing-3;
+  }
+
+  .p-column-filter-element {
+    width: 100%;
   }
 }
 
@@ -136,14 +134,15 @@
 // PrimeReact button fixes
 .p-button {
   padding: 0.5rem 1rem;
-  
+  margin: 0.5rem;
+
   .p-button-icon {
     margin-right: 0.5rem;
   }
-  
+
   &.p-button-icon-only {
     padding: 0.5rem;
-    
+
     .p-button-icon {
       margin-right: 0;
     }

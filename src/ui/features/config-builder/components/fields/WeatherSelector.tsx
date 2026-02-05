@@ -32,10 +32,7 @@ export const WeatherSelector: React.FC<WeatherSelectorProps> = ({
   }, [weatherOptions]);
 
   return (
-    <div className="field">
-      <label htmlFor={field.name} className="block font-medium mb-2">
-        {field.label}
-      </label>
+    <>
       <Dropdown
         id={field.name}
         value={value}
@@ -48,6 +45,6 @@ export const WeatherSelector: React.FC<WeatherSelectorProps> = ({
         className="w-full"
         showClear
       />
-    </div>
+    </>
   );
 };

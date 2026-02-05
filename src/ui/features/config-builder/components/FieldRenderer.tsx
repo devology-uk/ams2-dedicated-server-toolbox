@@ -14,6 +14,7 @@ import {
   VehicleClassSelector,
   WeatherSelector,
 } from './fields';
+import { InputNumber } from 'primereact/inputnumber';
 
 interface FieldRendererProps {
   field: ResolvedField;
@@ -31,21 +32,20 @@ export const FieldRenderer: React.FC<FieldRendererProps> = ({
   disabled = false,
 }) => {
   switch (field.fieldType) {
+    case 'number':
+  return (
+    <NumberField
+      field={field}
+      value={(value as number) ?? 0}
+      onChange={onChange}
+      disabled={disabled}
+    />
+  );
     case 'text':
       return (
         <TextField
           field={field}
           value={(value as string) ?? ''}
-          onChange={onChange}
-          disabled={disabled}
-        />
-      );
-
-    case 'number':
-      return (
-        <NumberField
-          field={field}
-          value={(value as number) ?? 0}
           onChange={onChange}
           disabled={disabled}
         />
@@ -137,25 +137,16 @@ export const FieldRenderer: React.FC<FieldRendererProps> = ({
 
     case 'readonly':
       return (
-        <div className="field">
-          <label className="block font-medium mb-2">{field.label}</label>
           <div className="p-inputtext p-disabled surface-200 p-2 border-round">
             {String(value ?? 'N/A')}
           </div>
-          <small className="text-color-secondary block mt-1">
-            {field.description}
-          </small>
-        </div>
       );
 
     default:
       return (
-        <div className="field">
-          <label className="block font-medium mb-2">{field.label}</label>
           <div className="text-color-secondary">
             Unsupported field type: {field.fieldType}
           </div>
-        </div>
       );
   }
 };

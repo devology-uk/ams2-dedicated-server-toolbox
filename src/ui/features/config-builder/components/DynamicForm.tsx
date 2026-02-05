@@ -3,6 +3,7 @@
 import React from 'react';
 import { Panel } from 'primereact/panel';
 import { FieldRenderer } from './FieldRenderer';
+import { FormField } from './FormField';
 import type { FieldGroup, SessionAttributes } from '../types/config-builder.types';
 
 interface DynamicFormProps {
@@ -35,18 +36,35 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
           collapsed={false}
           className="mb-3"
         >
-          <div className="grid">
-            {group.fields.map(field => (
-              <div key={field.name} className="col-12 md:col-6 lg:col-4">
-                <FieldRenderer
-                  field={field}
-                  value={values[field.name]}
-                  onChange={(value) => onChange(field.name, value)}
-                  connectionId={connectionId}
-                  disabled={disabled}
-                />
-              </div>
-            ))}
+          <div className="formgrid grid">
+            {group.fields.map(field => {
+              // Flags get full width, no FormField wrapper
+              if (field.fieldType === 'flags') {
+                return (
+                  <div key={field.name} className="col-12 mb-3">
+                    <FieldRenderer
+                      field={field}
+                      value={values[field.name]}
+                      onChange={(value) => onChange(field.name, value)}
+                      connectionId={connectionId}
+                      disabled={disabled}
+                    />
+                  </div>
+                );
+              }
+
+              return (
+                <FormField key={field.name} field={field}>
+                  <FieldRenderer
+                    field={field}
+                    value={values[field.name]}
+                    onChange={(value) => onChange(field.name, value)}
+                    connectionId={connectionId}
+                    disabled={disabled}
+                  />
+                </FormField>
+              );
+            })}
           </div>
         </Panel>
       ))}

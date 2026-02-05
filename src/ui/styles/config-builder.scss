@@ -1,0 +1,107 @@
+.config-builder-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .p-panel-title {
+    i {
+      margin: 0.5rem 1rem
+    }
+  }
+
+  .flex-grow-1 {
+    min-height: 0;
+
+    &.overflow-auto {
+      min-height: 0;
+      /* This is the key fix */
+      flex: 1 1 0;
+      /* Explicit flex basis of 0 */
+    }
+  }
+
+  // .field {
+  //   margin-bottom: .5rem;
+
+  //   label {
+  //     margin-left: 0.5rem;
+  //     margin-right: 1rem
+  //   }
+
+  //   input {
+  //     max-height: 40px;
+  //   }
+
+  //   .p-inputnumber-button {
+  //     max-height: 9px;
+  //     margin: 0;
+  //   }
+  // }
+
+
+  .dynamic-form .p-panel-content .grid {
+    align-items: flex-start !important;
+  }
+
+
+  .dynamic-form .formgrid {
+    padding: 1rem;
+  }
+
+
+  /* Fix InputNumber button spacing */
+  .p-inputnumber {
+    display: flex;
+    height: auto;
+  }
+
+  .p-inputnumber .p-inputnumber-input {
+    flex: 1;
+    min-width: 0;
+    padding-left: 0.75rem;
+    /* Add left padding to input */
+  }
+
+  .p-inputnumber.p-inputnumber-buttons-stacked {
+    height: auto;
+  }
+
+  .p-inputnumber.p-inputnumber-buttons-stacked .p-inputnumber-button-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .p-inputnumber.p-inputnumber-buttons-stacked .p-inputnumber-button {
+    flex: 1 1 auto;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Remove extra spacing but keep corner radius */
+  .p-inputnumber .p-button {
+    margin: 0;
+  }
+
+  /* Restore rounded corners on the buttons */
+  .p-inputnumber.p-inputnumber-buttons-stacked .p-inputnumber-button-up {
+    border-top-right-radius: var(--border-radius, 6px);
+  }
+
+  .p-inputnumber.p-inputnumber-buttons-stacked .p-inputnumber-button-down {
+    border-bottom-right-radius: var(--border-radius, 6px);
+  }
+
+ /* Fix dropdown clear icon alignment - PrimeReact 10.x */
+.p-dropdown.p-dropdown-clearable .p-dropdown-clear-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2.75rem; /* Position to the left of the dropdown arrow */
+}
+
+/* Ensure the dropdown label area doesn't push the clear icon down */
+.p-dropdown .p-dropdown-label {
+  display: flex;
+  align-items: center;
+}
+}

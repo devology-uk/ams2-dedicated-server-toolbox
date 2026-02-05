@@ -26,6 +26,7 @@
     "electron-store": "^11.0.2",
     "electron-updater": "^6.7.3",
     "os-utils": "^0.0.14",
+    "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.7",
     "react": "^19.2.0",

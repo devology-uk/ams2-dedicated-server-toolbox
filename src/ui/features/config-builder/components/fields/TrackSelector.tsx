@@ -69,10 +69,7 @@ export const TrackSelector: React.FC<TrackSelectorProps> = ({
   };
 
   return (
-    <div className="field">
-      <label htmlFor={field.name} className="block font-medium mb-2">
-        {field.label}
-      </label>
+    <>
       <Dropdown
         id={field.name}
         value={value}
@@ -93,9 +90,10 @@ export const TrackSelector: React.FC<TrackSelectorProps> = ({
           Default date: {selectedTrack.default_month}/{selectedTrack.default_day}/{selectedTrack.default_year} 
           | Max grid: {selectedTrack.gridsize}
         </small>
-      )}
-    </div>
-  );
+      )
+    }    
+    </>
+  )
 };
 
 /**

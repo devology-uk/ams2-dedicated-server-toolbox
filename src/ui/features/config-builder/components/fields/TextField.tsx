@@ -16,10 +16,6 @@ export const TextField: React.FC<TextFieldProps> = ({
   disabled = false,
 }) => {
   return (
-    <div className="field">
-      <label htmlFor={field.name} className="block font-medium mb-2">
-        {field.label}
-      </label>
       <InputText
         id={field.name}
         value={value ?? ''}
@@ -29,9 +25,5 @@ export const TextField: React.FC<TextFieldProps> = ({
         tooltip={field.description}
         tooltipOptions={{ position: 'top' }}
       />
-      <small className="text-color-secondary block mt-1">
-        {field.description}
-      </small>
-    </div>
   );
 };

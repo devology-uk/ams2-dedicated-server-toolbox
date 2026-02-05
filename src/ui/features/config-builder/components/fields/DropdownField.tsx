@@ -26,10 +26,6 @@ export const DropdownField: React.FC<DropdownFieldProps> = ({
   }, [field.enumOptions]);
 
   return (
-    <div className="field">
-      <label htmlFor={field.name} className="block font-medium mb-2">
-        {field.label}
-      </label>
       <Dropdown
         id={field.name}
         value={value}
@@ -41,9 +37,5 @@ export const DropdownField: React.FC<DropdownFieldProps> = ({
         tooltip={field.description}
         tooltipOptions={{ position: 'top' }}
       />
-      <small className="text-color-secondary block mt-1">
-        {field.description}
-      </small>
-    </div>
   );
 };

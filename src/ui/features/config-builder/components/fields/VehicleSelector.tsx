@@ -60,10 +60,7 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
   }, [vehicles, value]);
 
   return (
-    <div className="field">
-      <label htmlFor={field.name} className="block font-medium mb-2">
-        {field.label}
-      </label>
+    <>
       <Dropdown
         id={field.name}
         value={value}
@@ -86,6 +83,6 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
           Class: {selectedVehicle.class ?? 'Unknown'}
         </small>
       )}
-    </div>
+    </>
   );
 };
