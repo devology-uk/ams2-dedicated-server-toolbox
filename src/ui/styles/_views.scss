@@ -1,0 +1,277 @@
+// src/ui/styles/_views.scss
+// ============================================
+// View-Level Component Styles
+// ============================================
+
+@use './variables' as v;
+@use './mixins' as m;
+
+// ============================================
+// View Header (hyphenated)
+// ============================================
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: v.$spacing-6;
+  gap: v.$spacing-4;
+
+  @include m.respond-to-sm {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.view-header-title {
+  h1 {
+    margin: 0 0 v.$spacing-1 0;
+    font-size: v.$font-size-2xl;
+    font-weight: v.$font-weight-bold;
+    color: var(--text-color);
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-color-secondary);
+  }
+}
+
+.view-header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: v.$spacing-2;
+
+  @include m.respond-to-sm {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+// ============================================
+// Loading & Status States
+// ============================================
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: v.$spacing-8;
+  gap: v.$spacing-4;
+
+  p {
+    color: var(--text-color-secondary);
+  }
+}
+
+.home-view__loading {
+  @extend .loading-container;
+}
+
+.status-message {
+  margin-bottom: v.$spacing-4;
+  width: 100%;
+}
+
+// ============================================
+// Welcome View (hyphenated)
+// ============================================
+.welcome-view {
+  max-width: v.$view-width-narrow;
+  margin: 0 auto;
+  padding: v.$spacing-8 v.$spacing-4;
+}
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: v.$spacing-8;
+
+  .welcome-icon {
+    font-size: v.$icon-size-lg;
+    color: var(--primary-color);
+    margin-bottom: v.$spacing-4;
+  }
+
+  h1 {
+    margin: 0 0 v.$spacing-3 0;
+    font-size: v.$font-size-2xl;
+    font-weight: v.$font-weight-bold;
+  }
+}
+
+.welcome-description {
+  margin: 0;
+  color: var(--text-color-secondary);
+  line-height: 1.6;
+}
+
+.welcome-servers {
+  h2 {
+    @include m.section-heading;
+  }
+}
+
+// ============================================
+// Server List & Cards (hyphenated)
+// ============================================
+.server-list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-3;
+  margin-bottom: v.$spacing-4;
+}
+
+.server-card {
+  cursor: pointer;
+  transition: v.$transition-fast;
+
+  &:hover {
+    transform: translateX(4px);
+    border-color: var(--primary-color);
+  }
+
+  .p-card-body {
+    padding: v.$spacing-4;
+  }
+}
+
+.server-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: v.$spacing-3;
+}
+
+.server-card-info {
+  h3 {
+    margin: 0 0 v.$spacing-1 0;
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-semibold;
+  }
+}
+
+.server-card-address {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-2;
+  margin: 0;
+  font-size: v.$font-size-sm;
+  font-family: v.$font-family-mono;
+  color: var(--text-color-secondary);
+
+  i {
+    font-size: v.$font-size-xs;
+  }
+}
+
+.server-card-arrow {
+  color: var(--text-color-secondary);
+  transition: v.$transition-fast;
+
+  .server-card:hover & {
+    color: var(--primary-color);
+    transform: translateX(4px);
+  }
+}
+
+.no-servers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: v.$spacing-8;
+  background: var(--surface-card);
+  border: 1px dashed var(--surface-border);
+  border-radius: v.$border-radius-lg;
+  text-align: center;
+  gap: v.$spacing-2;
+
+  i {
+    font-size: 2rem;
+    color: var(--text-color-secondary);
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-color-secondary);
+  }
+}
+
+.add-server-button {
+  width: 100%;
+  margin-top: v.$spacing-2;
+}
+
+// ============================================
+// Server Dashboard (BEM style)
+// ============================================
+.server-dashboard {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.server-dashboard__header {
+  margin-bottom: v.$spacing-6;
+
+  h1 {
+    margin: 0 0 v.$spacing-1 0;
+    font-size: v.$font-size-xl;
+    font-weight: v.$font-weight-bold;
+  }
+}
+
+.server-dashboard__address {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-2;
+  margin: 0;
+  font-family: v.$font-family-mono;
+  color: var(--text-color-secondary);
+
+  i {
+    font-size: v.$font-size-sm;
+  }
+}
+
+.server-dashboard__tiles {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-4;
+}
+
+// ============================================
+// Feature Tiles (BEM style)
+// ============================================
+.feature-tile {
+  cursor: pointer;
+  transition: v.$transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: v.$shadow-card;
+  }
+
+  .p-card-body {
+    padding: v.$spacing-5;
+  }
+}
+
+.feature-tile__content {
+  display: flex;
+  align-items: flex-start;
+  gap: v.$spacing-4;
+}
+
+.feature-tile__title {
+  margin: 0 0 v.$spacing-1 0;
+  font-size: v.$font-size-lg;
+  font-weight: v.$font-weight-semibold;
+}
+
+.feature-tile__description {
+  margin: 0;
+  font-size: v.$font-size-sm;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+}

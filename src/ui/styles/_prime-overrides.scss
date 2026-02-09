@@ -1,0 +1,365 @@
+// src/ui/styles/_prime-overrides.scss
+// ============================================
+// PrimeReact Component Customizations
+// ============================================
+// Centralized overrides for consistent PrimeReact styling
+
+@use './variables' as v;
+@use './mixins' as m;
+
+// ============================================
+// Buttons
+// ============================================
+.p-button {
+  padding: v.$spacing-2 v.$spacing-4;
+
+  .p-button-icon {
+    margin-right: v.$spacing-2;
+  }
+
+  &.p-button-icon-only {
+    padding: v.$spacing-2;
+
+    .p-button-icon {
+      margin-right: 0;
+    }
+  }
+}
+
+.p-button-outlined,
+.p-button-text {
+  padding: v.$spacing-2 v.$spacing-4;
+}
+
+// ============================================
+// TabView
+// ============================================
+.p-tabview-nav {
+  padding: 0 v.$spacing-2;
+  gap: v.$spacing-1;
+
+  li {
+    .p-tabview-nav-link {
+      padding: v.$spacing-3 v.$spacing-5;
+      margin: 0 v.$spacing-1;
+      border-radius: v.$border-radius-base v.$border-radius-base 0 0;
+      font-weight: v.$font-weight-medium;
+      transition: v.$transition-fast;
+
+      &:not(.p-disabled):focus {
+        box-shadow: none;
+      }
+    }
+
+    &.p-highlight .p-tabview-nav-link {
+      border-bottom: 2px solid var(--primary-color);
+    }
+  }
+}
+
+.p-tabview-panels {
+  padding: v.$spacing-5;
+  background: var(--surface-card);
+  border-radius: 0 0 v.$border-radius-base v.$border-radius-base;
+}
+
+// ============================================
+// DataTable
+// ============================================
+.p-datatable {
+  .p-datatable-header {
+    padding: v.$spacing-3;
+  }
+
+  .p-datatable-thead > tr > th,
+  .p-datatable-tbody > tr > td {
+    @include m.table-cell-padding;
+  }
+
+  .p-column-filter-element {
+    width: 100%;
+  }
+}
+
+// ============================================
+// Menus
+// ============================================
+.p-menu {
+  min-width: 220px;
+  max-width: 280px;
+  padding: v.$spacing-2 0;
+
+  .p-menuitem {
+    margin: 0;
+
+    > .p-menuitem-content {
+      padding: v.$spacing-2 v.$spacing-4;
+      border-radius: 0;
+
+      .p-menuitem-link {
+        padding: v.$spacing-2 v.$spacing-3;
+        gap: v.$spacing-3;
+
+        .p-menuitem-icon {
+          margin-right: 0;
+          flex-shrink: 0;
+        }
+
+        .p-menuitem-text {
+          font-size: v.$font-size-base;
+          @include m.text-truncate;
+        }
+      }
+    }
+
+    &:hover > .p-menuitem-content {
+      background-color: var(--surface-hover);
+    }
+  }
+
+  .p-submenu-list {
+    min-width: 160px;
+    padding: v.$spacing-2 0;
+  }
+
+  .p-menuitem-separator {
+    margin: v.$spacing-2 0;
+    border-top: 1px solid var(--surface-border);
+  }
+
+  .p-submenu-header {
+    padding: v.$spacing-2 v.$spacing-4;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-semibold;
+    color: var(--text-color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  // Danger/delete item styling
+  .menu-item-danger {
+    .p-menuitem-link {
+      color: var(--red-400);
+
+      .p-menuitem-icon {
+        color: var(--red-400);
+      }
+
+      &:hover {
+        // Using color-mix for theme-aware transparency (works in Electron)
+        background-color: color-mix(in srgb, var(--red-500) 10%, transparent);
+      }
+    }
+  }
+
+  // Active connection indicator
+  .active-connection {
+    > .p-menuitem-content {
+      background-color: var(--surface-card);
+      border-left: 3px solid var(--primary-color);
+    }
+  }
+}
+
+// ============================================
+// Dropdowns
+// ============================================
+.p-dropdown-panel {
+  .p-dropdown-items {
+    padding: v.$spacing-1 0;
+  }
+
+  .p-dropdown-item {
+    padding: v.$spacing-2 v.$spacing-3;
+  }
+
+  .p-dropdown-item-group {
+    padding: v.$spacing-2 v.$spacing-3;
+    background: var(--surface-ground);
+    border-bottom: 1px solid var(--surface-border);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+// Dropdown clear icon fix (PrimeReact 10.x)
+.p-dropdown.p-dropdown-clearable .p-dropdown-clear-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2.75rem;
+}
+
+.p-dropdown .p-dropdown-label {
+  display: flex;
+  align-items: center;
+}
+
+// Paginator dropdown fix
+.p-paginator .p-dropdown {
+  .p-dropdown-label {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    padding-left: v.$spacing-2;
+  }
+}
+
+// ============================================
+// InputNumber (PrimeReact 10.x fixes)
+// ============================================
+.p-inputnumber {
+  display: flex;
+  height: auto;
+
+  .p-inputnumber-input {
+    flex: 1;
+    min-width: 0;
+    padding-left: v.$spacing-3;
+  }
+
+  .p-button {
+    margin: 0;
+  }
+
+  &.p-inputnumber-buttons-stacked {
+    height: auto;
+
+    .p-inputnumber-button-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .p-inputnumber-button {
+      flex: 1 1 auto;
+      padding: 0;
+      margin: 0;
+    }
+
+    .p-inputnumber-button-up {
+      border-top-right-radius: v.$border-radius-base;
+    }
+
+    .p-inputnumber-button-down {
+      border-bottom-right-radius: v.$border-radius-base;
+    }
+  }
+}
+
+// ============================================
+// Tooltips
+// ============================================
+.p-tooltip {
+  white-space: nowrap;
+  max-width: none;
+
+  .p-tooltip-text {
+    white-space: nowrap;
+    padding: v.$spacing-2 v.$spacing-3;
+  }
+}
+
+// ============================================
+// Tree
+// ============================================
+.p-tree {
+  &.tree-borderless {
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    .p-tree-container {
+      padding: 0;
+    }
+  }
+
+  .p-treenode {
+    padding: v.$spacing-1 0;
+  }
+
+  .p-treenode-content {
+    padding: v.$spacing-2;
+    border-radius: v.$border-radius-base;
+    transition: v.$transition-fast;
+
+    &:hover {
+      background: var(--surface-hover);
+    }
+
+    &.p-highlight {
+      background: var(--primary-color);
+      color: var(--primary-color-text);
+
+      .p-treenode-icon {
+        color: var(--primary-color-text);
+      }
+    }
+  }
+
+  .p-treenode-icon {
+    margin-right: v.$spacing-2;
+    color: var(--text-color-secondary);
+  }
+
+  .p-treenode-label {
+    font-size: v.$font-size-sm;
+  }
+}
+
+// ============================================
+// Responsive Overrides
+// ============================================
+@include m.respond-to-sm {
+  .p-tabview-nav {
+    li .p-tabview-nav-link {
+      padding: v.$spacing-2 v.$spacing-3;
+      font-size: v.$font-size-sm;
+    }
+  }
+
+  .p-tabview-panels {
+    padding: v.$spacing-3;
+  }
+}
+
+// ============================================
+// Input with Icons
+// ============================================
+.p-input-icon-left {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+
+  > i:first-of-type {
+    position: absolute;
+    left: v.$spacing-3;
+    color: var(--text-color-secondary);
+    z-index: 1;
+    // Remove top/transform, let the parent's align-items handle vertical centering
+  }
+
+  > .p-inputtext {
+    padding-left: v.$spacing-8;
+    width: 100%;
+  }
+}
+
+.p-input-icon-right {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+
+  > i:last-of-type {
+    position: absolute;
+    right: v.$spacing-3;
+    color: var(--text-color-secondary);
+  }
+
+  > .p-inputtext {
+    padding-right: v.$spacing-8;
+    width: 100%;
+  }
+}

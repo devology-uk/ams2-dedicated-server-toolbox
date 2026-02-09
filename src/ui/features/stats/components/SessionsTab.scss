@@ -1,0 +1,159 @@
+// src/ui/features/stats/components/SessionsTab.scss
+// ============================================
+// Stats Sessions Tab
+// ============================================
+
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.sessions-tab {
+  @include m.card-base;
+
+  // ============================================
+  // Column Widths (BEM)
+  // ============================================
+  &__index-col {
+    width: v.$table-col-width-sm;
+  }
+
+  &__date-col {
+    width: v.$table-col-width-lg;
+  }
+
+  &__duration-col {
+    width: v.$table-col-width-md;
+  }
+
+  &__status-col {
+    width: v.$table-col-width-md;
+  }
+
+  &__participants-col {
+    width: v.$table-col-width-md;
+  }
+
+  &__actions-col {
+    width: v.$table-col-width-xs;
+  }
+
+  // ============================================
+  // Cell Content (BEM)
+  // ============================================
+  &__index {
+    @include m.mono-text-inline;
+    color: var(--text-color-secondary);
+  }
+
+  &__date {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__time {
+    color: var(--text-color-secondary);
+    font-size: v.$font-size-xs;
+  }
+
+  &__participants {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-2;
+    color: var(--text-color-secondary);
+  }
+
+  &__stages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: v.$spacing-1;
+  }
+
+  &__stage-chip {
+    font-size: v.$font-size-xs;
+  }
+}
+
+// ============================================
+// Session Details Dialog (BEM)
+// ============================================
+.session-details {
+  // Base class if needed
+}
+
+.session-details__header {
+  display: flex;
+  align-items: flex-start;
+  gap: v.$spacing-2;
+
+  i {
+    font-size: v.$font-size-xl;
+  }
+}
+
+.session-details__content {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-6;
+}
+
+.session-details__info-grid {
+  @include m.grid-cols(2);
+
+  @include m.min-width-md {
+    @include m.grid-cols(4);
+  }
+}
+
+.session-details__info-item {
+  @include m.info-item;
+}
+
+.session-details__label {
+  @include m.info-label;
+}
+
+.session-details__value {
+  @include m.info-value;
+}
+
+.session-details__section {
+  h4 {
+    @include m.section-heading;
+  }
+}
+
+.session-details__stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$spacing-4;
+}
+
+.session-details__stage-card {
+  background: var(--surface-100);
+
+  .p-card-body {
+    padding: v.$spacing-4;
+  }
+}
+
+.session-details__stage-name {
+  display: block;
+  font-weight: v.$font-weight-semibold;
+  margin-bottom: v.$spacing-1;
+}
+
+.session-details__stage-duration {
+  font-size: v.$font-size-sm;
+  color: var(--text-color-secondary);
+}
+
+.session-details__setup-grid {
+  @include m.grid-cols(2);
+
+  @include m.min-width-md {
+    @include m.grid-cols(4);
+  }
+}
+
+.session-details__setup-item {
+  @include m.info-item;
+}

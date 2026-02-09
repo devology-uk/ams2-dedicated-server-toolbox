@@ -6,7 +6,7 @@ import { InputNumber } from 'primereact/inputnumber';
 import { InputSwitch } from 'primereact/inputswitch';
 import { Dropdown } from 'primereact/dropdown';
 import { Panel } from 'primereact/panel';
-import type { ServerConfig } from '../types/config-builder.types';
+import type { ServerConfig } from '../../../../shared/types/config';
 
 interface ServerSettingsFormProps {
   config: ServerConfig;

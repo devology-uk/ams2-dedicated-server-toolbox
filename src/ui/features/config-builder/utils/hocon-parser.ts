@@ -1,4 +1,4 @@
-import type { ServerConfig } from '../types/config-builder.types';
+import type { ServerConfig } from '../../../../shared/types/config';
 
 /**
  * Tokenizer for HOCON-like config format

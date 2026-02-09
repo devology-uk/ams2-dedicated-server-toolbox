@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
 import type { Track } from '../../../../types/electron';
 import { useServerCache } from '../../hooks/useServerCache';
-import type { FieldMetadata } from '../../types/config-builder.types';
+import type { FieldMetadata } from '../../../../../shared/types/config';
 
 interface TrackSelectorProps {
   field: FieldMetadata;

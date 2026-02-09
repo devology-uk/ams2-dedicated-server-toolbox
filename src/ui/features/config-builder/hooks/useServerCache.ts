@@ -12,7 +12,7 @@ import type {
   AttributeDefinition,
   EnumItem,
   FlagItem,
-} from '../types/config-builder.types';
+} from '../../../../shared/types/config';
 
 export interface UseServerCacheResult {
   cache: ServerCache | null;

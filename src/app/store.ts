@@ -1,33 +1,10 @@
+// src/app/store.ts
+
 import Store from 'electron-store';
-
-export interface ServerConnection {
-  id: string;
-  name: string;
-  ipAddress: string;
-  port: string;
-  username: string;
-  password: string;
-  createdAt: number;
-}
-
-export interface ServerVersion {
-  build_version: number;
-  protocol_version: number;
-  lua_version: number;
-}
-
-export interface CachedListData {
-  description: string;
-  list: Record<string, unknown>[];
-}
-
-export interface ServerCache {
-  version: ServerVersion;
-  syncedAt: number;
-  lists: {
-    [path: string]: CachedListData;
-  };
-}
+import type {
+  ServerConnection,
+  ServerCache,
+} from '../shared/types/connections.js';
 
 export interface StoreSchema {
   connections: ServerConnection[];
@@ -46,3 +23,6 @@ const store = new Store<StoreSchema>({
 });
 
 export default store;
+
+// Re-export types for convenience within app folder
+export type { ServerConnection, ServerCache };

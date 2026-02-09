@@ -1,0 +1,80 @@
+// src/ui/features/stats/components/PlayersTab.scss
+// ============================================
+// Stats Players Tab
+// ============================================
+
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.players-tab {
+  @include m.card-base;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-4;
+
+    @include m.min-width-md {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__search {
+    flex: 1;
+    max-width: 300px;
+
+    @include m.respond-to-md {
+      max-width: 100%;
+    }
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-2;
+
+    label {
+      font-weight: v.$font-weight-semibold;
+      white-space: nowrap;
+    }
+  }
+
+  &__sort-dropdown {
+    width: v.$table-col-width-lg;
+  }
+
+  // ============================================
+  // Column Widths
+  // ============================================
+  &__rank-col {
+    width: v.$table-col-width-xs;
+    text-align: center;
+  }
+
+  &__number-col {
+    width: v.$table-col-width-sm;
+    text-align: center;
+  }
+
+  &__distance-col {
+    width: v.$table-col-width-lg;
+  }
+
+  &__date-col {
+    width: v.$table-col-width-xl;
+  }
+
+  // ============================================
+  // Cell Content
+  // ============================================
+  &__steam-id {
+    @include m.mono-text;
+  }
+
+  &__date {
+    color: var(--text-color-secondary);
+    font-size: v.$font-size-sm;
+  }
+}

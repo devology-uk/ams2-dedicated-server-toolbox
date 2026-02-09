@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "main": "dist-app/main.js",
+  "main": "dist-app/app/main.js",
   "scripts": {
     "dev": "npm-run-all -p dev:react dev:app",
     "dev:react": "vite",

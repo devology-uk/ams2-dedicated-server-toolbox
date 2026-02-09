@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
-import type { ServerConnection } from '../types/electron';
+
+import type { ServerConnection } from '../../shared/types/index.js';
+import './ServerConnectionDialog.scss';
 
 interface ServerConnectionDialogProps {
   visible: boolean;
@@ -28,12 +31,12 @@ interface FormErrors {
   password?: string;
 }
 
-const ServerConnectionDialog: React.FC<ServerConnectionDialogProps> = ({
+export const ServerConnectionDialog = ({
   visible,
   onHide,
   onSave,
   connection,
-}) => {
+}: ServerConnectionDialogProps) => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     ipAddress: '',
@@ -295,5 +298,3 @@ const ServerConnectionDialog: React.FC<ServerConnectionDialogProps> = ({
     </Dialog>
   );
 };
-
-export default ServerConnectionDialog;

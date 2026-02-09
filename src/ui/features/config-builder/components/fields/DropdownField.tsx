@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { formatLabel } from '../../utils/schema-processor';
-import type { ResolvedField } from '../../types/config-builder.types';
+import type { ResolvedField } from '../../../../../shared/types/config';
 
 interface DropdownFieldProps {
   field: ResolvedField;

@@ -1,50 +1,159 @@
+// src/ui/styles/_mixins.scss
 // ============================================
-// Mixins
+// Utility Mixins
+// ============================================
+// Note: For simple flex layouts, prefer PrimeFlex utilities:
+// flex, flex-column, align-items-center, justify-content-between, gap-2, etc.
+// Use these mixins for compound patterns or complex responsive logic.
+
+@use './variables' as v;
+
+// ============================================
+// Text Utilities
 // ============================================
 
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-@mixin flex-start {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-@mixin flex-end {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
+/// Truncate text with ellipsis
 @mixin text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+/// Monospace text with background (for code/IDs)
+@mixin mono-text {
+  font-family: v.$font-family-mono;
+  font-size: v.$font-size-sm;
+  background: var(--surface-100);
+  padding: v.$spacing-1 v.$spacing-2;
+  border-radius: v.$border-radius-base;
+}
+
+/// Monospace text without background (inline use)
+@mixin mono-text-inline {
+  font-family: v.$font-family-mono;
+  font-size: v.$font-size-sm;
+}
+
+// ============================================
+// Card & Surface Patterns
+// ============================================
+
+/// Card with shadow
+@mixin card-base {
+  background: var(--surface-card);
+  border-radius: v.$border-radius-lg;
+  box-shadow: v.$shadow-card;
+}
+
+// ============================================
+// Grid Layouts
+// ============================================
+
+/// Auto-fit grid (not available in PrimeFlex)
+@mixin grid-auto-fit($min-width: 200px, $gap: v.$spacing-4) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+/// Fixed column grid
+@mixin grid-cols($cols: 2, $gap: v.$spacing-4) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}
+
+// ============================================
+// Component Patterns
+// ============================================
+
+/// Section heading with icon
+@mixin section-heading {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-2;
+  margin: 0 0 v.$spacing-4;
+  font-size: v.$font-size-md;
+  font-weight: v.$font-weight-semibold;
+
+  i {
+    color: var(--primary-color);
+  }
+}
+
+/// Info item container (label + value pair)
+@mixin info-item {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-1;
+}
+
+/// Info item label
+@mixin info-label {
+  font-size: v.$font-size-xs;
+  font-weight: v.$font-weight-normal;
+  color: var(--text-color-secondary);
+}
+
+/// Info item value
+@mixin info-value {
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-semibold;
+  color: var(--text-color);
+}
+
+/// Table cell padding
+@mixin table-cell-padding {
+  padding: v.$spacing-2 v.$spacing-4;
+  font-size: v.$font-size-base;
+}
+
+// ============================================
+// Responsive Breakpoints
+// ============================================
+// Note: PrimeFlex has sm:, md:, lg: prefixes for utilities.
+// Use these mixins for complex responsive logic in SCSS.
+
+/// Max-width (mobile-first: styles apply below breakpoint)
 @mixin respond-to-sm {
-  @media (max-width: 480px) {
+  @media (max-width: #{v.$breakpoint-sm - 1px}) {
     @content;
   }
 }
 
 @mixin respond-to-md {
-  @media (max-width: 768px) {
+  @media (max-width: #{v.$breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin respond-to-lg {
+  @media (max-width: #{v.$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+/// Min-width (desktop-first: styles apply at/above breakpoint)
+@mixin min-width-sm {
+  @media (min-width: v.$breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin min-width-md {
+  @media (min-width: v.$breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin min-width-lg {
+  @media (min-width: v.$breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin min-width-xl {
+  @media (min-width: v.$breakpoint-xl) {
     @content;
   }
 }

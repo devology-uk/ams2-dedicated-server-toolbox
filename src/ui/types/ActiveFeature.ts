@@ -1,0 +1,1 @@
+export type ActiveFeature = 'home' | 'config' | 'stats' | 'api';

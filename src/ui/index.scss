@@ -1,0 +1,38 @@
+// src/ui/index.scss
+// ============================================
+// Application Entry Point
+// ============================================
+
+@use './styles/variables' as v;
+@use './styles/index';
+
+// ============================================
+// Minimal Reset
+// ============================================
+// PrimeFlex handles most normalization
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: v.$font-family-base;
+  font-size: v.$font-size-base;
+  line-height: v.$line-height-base;
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+}
+
+#root {
+  height: 100%;
+}

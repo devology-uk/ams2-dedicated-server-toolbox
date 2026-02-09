@@ -1,5 +1,3 @@
-// src/ui/features/config-builder/utils/schema-processor.ts
-
 import type {
   AttributeDefinition,
   ApiDataType,
@@ -7,9 +5,7 @@ import type {
   FieldType,
   EnumEndpointName,
   FlagEndpointName,
-} from '../types/config-builder.types';
-
-// ... rest of the file stays the same
+} from '../../../../shared/types/config';
 
 // ============================================
 // Description Parsing
@@ -23,6 +19,25 @@ interface ParsedDescription {
   isBooleanLike?: boolean;
   booleanLabels?: { off: string; on: string };
 }
+
+const KNOWN_BOOLEAN_FIELDS: Set<string> = new Set([
+  'ServerControlsSetup',
+  'ServerControlsTrack',
+  'ServerControlsVehicleClass',
+  'ServerControlsVehicle',
+  'AutoAdvanceSession',
+  'ManualRollingStarts',
+  'PitWhiteLinePenalty',
+  'DriveThroughPenalty',
+  'FullCourseYellows',
+  'QualifyPrivateSession',
+  'RaceExtraLap',
+  'RaceRollingStart',
+  'RaceMandatoryPitStops',
+  'RaceFormationLap',
+  'DisablePitstopRefuelling',
+  // Add any others you identify
+]);
 
 /**
  * Parse attribute description to extract metadata hints
@@ -52,9 +67,7 @@ function parseDescription(name: string, description: string): ParsedDescription 
   }
 
   // Check for boolean-like pattern: "(0) disabled (1) enabled" or similar
-  const booleanMatch = description.match(
-    /$0$\s*(\w+(?:\s+\w+)?)\s*$1$\s*(\w+(?:\s+\w+)?)/i
-  );
+  const booleanMatch = description.match(/$0$\s*(\w+(?:\s+\w+)?)\s*$1$\s*(\w+(?:\s+\w+)?)/i);
   if (booleanMatch) {
     result.isBooleanLike = true;
     result.booleanLabels = {
@@ -76,7 +89,7 @@ export function formatLabel(name: string): string {
   if (name.includes('_') && name === name.toUpperCase()) {
     return name
       .split('_')
-      .map(word => word.charAt(0) + word.slice(1).toLowerCase())
+      .map((word) => word.charAt(0) + word.slice(1).toLowerCase())
       .join(' ');
   }
 
@@ -95,7 +108,7 @@ function determineFieldType(
   name: string,
   dataType: ApiDataType,
   parsed: ParsedDescription,
-  isReadOnly: boolean
+  isReadOnly: boolean,
 ): FieldType {
   if (isReadOnly) {
     return 'readonly';
@@ -106,6 +119,9 @@ function determineFieldType(
   if (name === 'VehicleModelId') return 'vehicle';
   if (name === 'VehicleClassId') return 'vehicleClass';
   if (name.match(/WeatherSlot\d+$/)) return 'weather';
+
+  // Known boolean fields
+  if (KNOWN_BOOLEAN_FIELDS.has(name)) return 'switch';
 
   // Enum reference in description
   if (parsed.enumEndpoint) return 'dropdown';
@@ -128,11 +144,7 @@ function determineFieldType(
   // Default based on data type
   if (dataType === 'string') return 'text';
   if (dataType === 'boolean') return 'switch';
-  if (
-    dataType.includes('int') ||
-    dataType === 'float' ||
-    dataType === 'double'
-  ) {
+  if (dataType.includes('int') || dataType === 'float' || dataType === 'double') {
     return 'number';
   }
 
@@ -154,20 +166,12 @@ function categorizeField(name: string): string {
   }
 
   // Session length/timing
-  if (
-    name.includes('Length') ||
-    name.includes('Date') ||
-    name.includes('Hour')
-  ) {
+  if (name.includes('Length') || name.includes('Date') || name.includes('Hour')) {
     return 'Session Timing';
   }
 
   // Grid/Players
-  if (
-    name.includes('Grid') ||
-    name.includes('Player') ||
-    name.includes('MaxPlayers')
-  ) {
+  if (name.includes('Grid') || name.includes('Player') || name.includes('MaxPlayers')) {
     return 'Grid & Players';
   }
 
@@ -208,18 +212,11 @@ function categorizeField(name: string): string {
 /**
  * Process raw attribute definitions into form field metadata
  */
-export function processAttributeSchema(
-  attributes: AttributeDefinition[]
-): FieldMetadata[] {
-  return attributes.map(attr => {
+export function processAttributeSchema(attributes: AttributeDefinition[]): FieldMetadata[] {
+  return attributes.map((attr) => {
     const parsed = parseDescription(attr.name, attr.description);
     const isReadOnly = attr.access === 'ReadOnly';
-    const fieldType = determineFieldType(
-      attr.name,
-      attr.type,
-      parsed,
-      isReadOnly
-    );
+    const fieldType = determineFieldType(attr.name, attr.type, parsed, isReadOnly);
 
     const metadata: FieldMetadata = {
       name: attr.name,
@@ -261,9 +258,7 @@ export function processAttributeSchema(
 /**
  * Group fields by category
  */
-export function groupFieldsByCategory(
-  fields: FieldMetadata[]
-): Map<string, FieldMetadata[]> {
+export function groupFieldsByCategory(fields: FieldMetadata[]): Map<string, FieldMetadata[]> {
   const groups = new Map<string, FieldMetadata[]>();
 
   // Define category order

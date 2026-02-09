@@ -1,10 +1,9 @@
-// Main entry point - forward all stylesheets
-@use 'global';
-@use 'titlebar';
-@use 'dialog';
-@use 'menu';
-@use 'app';
+// src/ui/styles/index.scss
+// ============================================
+// Styles Barrel File
+// ============================================
+// Forwards all style partials
+
+@use 'prime-overrides';
 @use 'selectors';
 @use 'views';
-@use 'api-explorer';
-@use 'config-builder';

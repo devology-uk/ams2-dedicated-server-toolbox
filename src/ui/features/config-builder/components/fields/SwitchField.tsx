@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputSwitch } from 'primereact/inputswitch';
-import type { FieldMetadata } from '../../types/config-builder.types';
+import type { FieldMetadata } from '../../../../../shared/types/config';
 
 interface SwitchFieldProps {
   field: FieldMetadata;

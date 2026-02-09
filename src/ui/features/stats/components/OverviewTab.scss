@@ -1,0 +1,96 @@
+// src/ui/features/stats/components/OverviewTab.scss
+// ============================================
+// Stats Overview Tab
+// ============================================
+
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+@use 'sass:map';
+
+.overview-tab {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-6;
+
+  &__stats-grid {
+    @include m.grid-cols(2);
+
+    @include m.min-width-md {
+      @include m.grid-cols(3);
+    }
+
+    @include m.min-width-lg {
+      @include m.grid-cols(6);
+    }
+  }
+
+  &__usage-grid {
+    @include m.grid-cols(1, v.$spacing-6);
+
+    @include m.min-width-lg {
+      @include m.grid-cols(2, v.$spacing-6);
+    }
+  }
+
+  &__card {
+    @include m.card-base;
+  }
+}
+
+// ============================================
+// Stat Card Component
+// ============================================
+.stat-card {
+  height: 100%;
+
+  .p-card-body {
+    padding: v.$spacing-4;
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$spacing-4;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: v.$icon-size-md;
+    height: v.$icon-size-md;
+    border-radius: v.$border-radius-lg;
+    flex-shrink: 0;
+
+    i {
+      font-size: v.$font-size-xl;
+    }
+
+    // Generate theme-aware color variants using color-mix
+    @each $color-name, $color-value in v.$stat-card-colors {
+      &--#{$color-name} {
+        background-color: color-mix(in srgb, #{$color-value} 15%, transparent);
+        color: #{$color-value};
+      }
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0; // Allows truncation in flex child
+  }
+
+  &__title {
+    font-size: v.$font-size-xs;
+    color: var(--text-color-secondary);
+    margin-bottom: v.$spacing-1;
+    @include m.text-truncate;
+  }
+
+  &__value {
+    font-size: v.$font-size-xl;
+    font-weight: v.$font-weight-semibold;
+    @include m.text-truncate;
+  }
+}

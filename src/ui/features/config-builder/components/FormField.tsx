@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ResolvedField } from '../types/config-builder.types';
+import type { ResolvedField } from '../../../../shared/types/config';
 
 interface FormFieldProps {
   field: ResolvedField;

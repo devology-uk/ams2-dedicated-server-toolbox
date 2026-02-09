@@ -1,0 +1,50 @@
+// src/ui/features/config-builder/ConfigBuilder.scss
+// ============================================
+// Config Builder View
+// ============================================
+
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.config-builder-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .p-panel-title i {
+    margin: v.$spacing-2 v.$spacing-4;
+  }
+
+  // Fix for scrollable flex containers with PrimeFlex utilities
+  .flex-grow-1.overflow-auto {
+    min-height: 0;
+    flex: 1 1 0;
+  }
+}
+
+// ============================================
+// Dynamic Form Layout
+// ============================================
+.dynamic-form {
+  .p-panel-content .grid {
+    align-items: flex-start;
+  }
+
+  .formgrid {
+    padding: v.$spacing-4;
+  }
+}
+
+// ============================================
+// Server Settings Form
+// ============================================
+.server-settings-form {
+  // Add any specific styles here
+}
+
+// ============================================
+// Access Control Form
+// ============================================
+.access-control-form {
+  // Add any specific styles here
+}

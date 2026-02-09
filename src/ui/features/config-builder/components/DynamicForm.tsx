@@ -4,7 +4,7 @@ import React from 'react';
 import { Panel } from 'primereact/panel';
 import { FieldRenderer } from './FieldRenderer';
 import { FormField } from './FormField';
-import type { FieldGroup, SessionAttributes } from '../types/config-builder.types';
+import type { FieldGroup, SessionAttributes } from '../../../../shared/types/config';
 
 interface DynamicFormProps {
   fieldGroups: FieldGroup[];
@@ -38,6 +38,11 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
         >
           <div className="formgrid grid">
             {group.fields.map(field => {
+
+              if(field.fieldType === 'readonly') {
+                return null
+              }
+              
               // Flags get full width, no FormField wrapper
               if (field.fieldType === 'flags') {
                 return (

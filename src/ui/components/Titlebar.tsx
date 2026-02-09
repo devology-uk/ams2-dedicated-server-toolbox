@@ -1,31 +1,40 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, use } from 'react';
+
 import { Button } from 'primereact/button';
 import { Menu } from 'primereact/menu';
 import { Tooltip } from 'primereact/tooltip';
+
+import './Titlebar.scss';
 import type { MenuItem } from 'primereact/menuitem';
-import ServerConnectionDialog from './ServerConnectionDialog';
-import type { ServerConnection } from '../types/electron';
+import type { ServerConnection } from '../../shared/types/index.js';
+import {ServerConnectionDialog} from './ServerConnectionDialog';
+import type { ActiveFeature } from '../types/ActiveFeature.js';
 
 interface TitlebarProps {
   title?: string;
-  showBackButton?: boolean;
+  activeFeature: ActiveFeature;
   onBack?: () => void;
 }
 
-const Titlebar: React.FC<TitlebarProps> = ({ 
+export const Titlebar = ({ 
   title = 'AMS2 Dedicated Server Toolbox',
-  showBackButton = false,
-  onBack,
-}) => {
+  activeFeature,
+  onBack
+} : TitlebarProps) => {
   const [isConnectionDialogVisible, setIsConnectionDialogVisible] = useState(false);
   const [editingConnection, setEditingConnection] = useState<ServerConnection | null>(null);
   const [connections, setConnections] = useState<ServerConnection[]>([]);
   const [activeConnection, setActiveConnection] = useState<ServerConnection | null>(null);
+  const [showBackButton, setShowBackButton] = useState(false);
   const menuRef = useRef<Menu>(null);
 
   useEffect(() => {
     loadConnections();
   }, []);
+
+  useEffect(() => {
+    setShowBackButton(activeFeature !== 'home');
+  }, [activeFeature]);
 
   const loadConnections = async () => {
     const conns = await window.electron.getConnections();
@@ -144,5 +153,3 @@ const Titlebar: React.FC<TitlebarProps> = ({
     </>
   );
 };
-
-export default Titlebar;

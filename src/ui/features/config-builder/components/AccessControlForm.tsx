@@ -8,7 +8,7 @@ import { Column } from 'primereact/column';
 import { Panel } from 'primereact/panel';
 import { Dialog } from 'primereact/dialog';
 import { Chips } from 'primereact/chips';
-import type { ServerConfig } from '../types/config-builder.types';
+import type { ServerConfig } from '../../../../shared/types/config';
 
 interface AccessControlFormProps {
   config: ServerConfig;

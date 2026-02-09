@@ -1,7 +1,5 @@
-// src/ui/features/config-builder/components/FieldRenderer.tsx
-
 import React from 'react';
-import type { ResolvedField } from '../types/config-builder.types';
+import type { ResolvedField } from '../../../../shared/types/config';
 import {
   TextField,
   NumberField,
@@ -14,7 +12,6 @@ import {
   VehicleClassSelector,
   WeatherSelector,
 } from './fields';
-import { InputNumber } from 'primereact/inputnumber';
 
 interface FieldRendererProps {
   field: ResolvedField;

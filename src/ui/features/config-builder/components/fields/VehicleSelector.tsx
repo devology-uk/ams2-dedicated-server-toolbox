@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
 import { useServerCache } from '../../hooks/useServerCache';
-import type { FieldMetadata } from '../../types/config-builder.types';
+import type { FieldMetadata } from '../../../../../shared/types/config';
 
 interface VehicleSelectorProps {
   field: FieldMetadata;

@@ -1,4 +1,4 @@
-import type { FlagItem } from '../types/config-builder.types';
+import type { FlagItem } from '../../../../shared/types/config';
 
 /**
  * Parse a combined flag value into individual selected flags

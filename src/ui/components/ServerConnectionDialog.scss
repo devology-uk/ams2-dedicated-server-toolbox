@@ -1,0 +1,110 @@
+// src/ui/components/ServerConnectionDialog.scss
+// ============================================
+// Server Connection Dialog
+// ============================================
+
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.server-connection-dialog {
+  width: v.$dialog-width;
+
+  // ============================================
+  // Dialog Structure
+  // ============================================
+  .p-dialog-header {
+    padding: v.$spacing-4 v.$spacing-5;
+  }
+
+  .p-dialog-content {
+    padding: v.$spacing-5;
+    padding-top: v.$spacing-4;
+    overflow: visible;
+  }
+
+  .p-dialog-footer {
+    padding: v.$spacing-4 v.$spacing-5;
+    border-top: 1px solid var(--surface-border);
+  }
+
+  // ============================================
+  // Form Fields
+  // ============================================
+  .field {
+    margin-bottom: v.$spacing-5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: v.$spacing-2;
+      font-weight: v.$font-weight-medium;
+      color: var(--text-color);
+    }
+  }
+
+  // ============================================
+  // Input Groups
+  // ============================================
+  .p-inputgroup {
+    width: 100%;
+
+    .p-inputgroup-addon {
+      min-width: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .p-inputtext {
+      width: 100%;
+      flex: 1;
+    }
+  }
+
+  // Password field
+  .p-password {
+    width: 100%;
+
+    .p-inputtext {
+      width: 100%;
+    }
+  }
+
+  // Error messages
+  .p-error {
+    display: block;
+    margin-top: v.$spacing-1;
+    font-size: v.$font-size-xs;
+  }
+
+  // ============================================
+  // Responsive
+  // ============================================
+  @include m.respond-to-sm {
+    &.p-dialog {
+      width: 95%;
+      margin: v.$spacing-4;
+    }
+
+    .p-dialog-header,
+    .p-dialog-content,
+    .p-dialog-footer {
+      padding-left: v.$spacing-4;
+      padding-right: v.$spacing-4;
+    }
+  }
+}
+
+// ============================================
+// Dialog Footer Actions
+// ============================================
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: v.$spacing-2;
+  width: 100%;
+}

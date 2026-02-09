@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputText } from 'primereact/inputtext';
-import type { FieldMetadata } from '../../types/config-builder.types';
+import type { FieldMetadata } from '../../../../../shared/types/config';
 
 interface TextFieldProps {
   field: FieldMetadata;

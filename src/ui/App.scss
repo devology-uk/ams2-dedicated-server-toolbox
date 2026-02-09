@@ -1,0 +1,19 @@
+// src/ui/App.scss
+// ============================================
+// App-Level Layout
+// ============================================
+
+@use './styles/variables' as v;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-content {
+  margin-top: v.$titlebar-height;
+  height: calc(100vh - #{v.$titlebar-height});
+  overflow: auto;
+  padding: v.$content-padding;
+}

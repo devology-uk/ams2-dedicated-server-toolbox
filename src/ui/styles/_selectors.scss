@@ -1,0 +1,161 @@
+// src/ui/styles/_selectors.scss
+// ============================================
+// Entity Selector Components
+// ============================================
+// Track, Vehicle, Vehicle Class dropdown selectors
+
+@use './variables' as v;
+@use './mixins' as m;
+
+// ============================================
+// Base Selector
+// ============================================
+.entity-selector {
+  width: 100%;
+  min-width: 300px;
+
+  @include m.respond-to-sm {
+    min-width: 100%;
+  }
+}
+
+.entity-selector-panel {
+  max-height: 400px;
+}
+
+// ============================================
+// Group Header
+// ============================================
+.entity-group-header {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-2;
+  font-weight: v.$font-weight-semibold;
+  color: var(--text-color);
+
+  i {
+    color: var(--primary-color);
+    font-size: v.$font-size-sm;
+  }
+
+  &__count {
+    margin-left: auto;
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-normal;
+    color: var(--text-color-secondary);
+    background: var(--surface-card);
+    padding: v.$spacing-1 v.$spacing-2;
+    border-radius: v.$border-radius-base;
+  }
+}
+
+// ============================================
+// Option Template
+// ============================================
+.entity-option {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-1;
+
+  &__name {
+    font-weight: v.$font-weight-medium;
+    color: var(--text-color);
+  }
+
+  &__details {
+    font-size: v.$font-size-xs;
+    color: var(--text-color-secondary);
+  }
+}
+
+// ============================================
+// Selected Value Template
+// ============================================
+.entity-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: v.$spacing-2;
+
+  &__details {
+    font-size: v.$font-size-xs;
+    color: var(--text-color-secondary);
+  }
+}
+
+// ============================================
+// Form Field Wrapper
+// ============================================
+.selector-field {
+  margin-bottom: v.$spacing-4;
+
+  label {
+    display: block;
+    margin-bottom: v.$spacing-2;
+    font-weight: v.$font-weight-medium;
+    color: var(--text-color);
+  }
+
+  .selector-help {
+    margin-top: v.$spacing-1;
+    font-size: v.$font-size-xs;
+    color: var(--text-color-secondary);
+  }
+}
+
+// ============================================
+// Error State
+// ============================================
+.selector-error {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-2;
+  padding: v.$spacing-2;
+  background: var(--surface-card);
+  border: 1px solid var(--red-400);
+  border-radius: v.$border-radius-base;
+
+  .p-error {
+    font-size: v.$font-size-sm;
+  }
+}
+
+// ============================================
+// Legacy Class Aliases
+// ============================================
+// For backwards compatibility - can be removed after JSX migration
+
+.track-selector,
+.vehicle-selector,
+.vehicle-class-selector {
+  @extend .entity-selector;
+}
+
+.track-selector-panel,
+.vehicle-selector-panel,
+.vehicle-class-selector-panel {
+  @extend .entity-selector-panel;
+}
+
+.track-group-header,
+.vehicle-group-header {
+  @extend .entity-group-header;
+}
+
+.track-group-count,
+.vehicle-group-count {
+  @extend .entity-group-header__count;
+}
+
+.track-option,
+.vehicle-option,
+.vehicle-class-option {
+  @extend .entity-option;
+}
+
+.track-selected,
+.vehicle-selected,
+.vehicle-class-selected {
+  @extend .entity-selected;
+}
