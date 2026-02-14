@@ -1,6 +1,11 @@
 // src/shared/utils/ams2StatsParser.ts
 
-import type { AMS2StatsFile, Participant, SessionHistory, PlayerStats } from '../types/ams2Stats.js';
+import type {
+  AMS2StatsFile,
+  Participant,
+  PlayerStats,
+  SessionHistory,
+} from '../../../../shared/types';
 
 export class AMS2StatsParser {
   private data: AMS2StatsFile;
@@ -44,14 +49,16 @@ export class AMS2StatsParser {
     raceFinishes: number;
     totalDistance: number;
   }> {
-    return Object.entries(this.data.stats.players).map(([steamId, player]: [string, PlayerStats]) => ({
-      steamId,
-      name: player.name,
-      lastJoined: new Date(player.last_joined * 1000),
-      raceJoins: player.counts.race_joins,
-      raceFinishes: player.counts.race_finishes,
-      totalDistance: this.sumValues(player.counts.track_distances),
-    }));
+    return Object.entries(this.data.stats.players).map(
+      ([steamId, player]: [string, PlayerStats]) => ({
+        steamId,
+        name: player.name,
+        lastJoined: new Date(player.last_joined * 1000),
+        raceJoins: player.counts.race_joins,
+        raceFinishes: player.counts.race_finishes,
+        totalDistance: this.sumValues(player.counts.track_distances),
+      }),
+    );
   }
 
   getPlayerBySteamId(steamId: string): PlayerStats | null {
@@ -81,9 +88,7 @@ export class AMS2StatsParser {
   }
 
   getRecentSessions(count: number = 10): SessionHistory[] {
-    return [...this.data.stats.history]
-      .sort((a, b) => b.start_time - a.start_time)
-      .slice(0, count);
+    return [...this.data.stats.history].sort((a, b) => b.start_time - a.start_time).slice(0, count);
   }
 
   getSessionParticipants(session: SessionHistory): Participant[] {
@@ -112,42 +117,53 @@ export class AMS2StatsParser {
       vehicleDistances: counts.vehicle_distances,
     };
   }
-
   getTotalDistance(): number {
     return this.sumValues(this.data.stats.session.counts.track_distances);
   }
-
   getFormattedTotalDistance(): string {
     const meters = this.getTotalDistance();
     if (meters >= 1000) {
       return `${(meters / 1000).toFixed(2)} km`;
     }
-    return `${meters} m`;
+    return `${meters.toFixed(2)} m`;
   }
-
-  // --- Track & Vehicle Stats ---
   getTrackUsage(): Array<{ trackId: string; sessions: number; distance: number }> {
     const { tracks, track_distances } = this.data.stats.session.counts;
 
     return Object.keys({ ...tracks, ...track_distances }).map((trackId) => ({
       trackId,
       sessions: tracks[trackId] || 0,
-      distance: track_distances[trackId] || 0,
+      distance: this.parseDistance(track_distances[trackId]),
     }));
   }
 
   getVehicleUsage(): Array<{ vehicleId: string; distance: number }> {
     const { vehicle_distances } = this.data.stats.session.counts;
 
-    return Object.entries(vehicle_distances).map(([vehicleId, distance]) => ({
+    return Object.entries(vehicle_distances).map(([vehicleId, rawDistance]) => ({
       vehicleId,
-      distance: distance as number,
+      distance: this.parseDistance(rawDistance),
     }));
   }
 
   // --- Utility Methods ---
-  private sumValues(obj: Record<string, number>): number {
-    return Object.values(obj).reduce((sum, val) => sum + val, 0);
+  private sumValues(obj: Record<string, number | string>): number {
+    return Object.values(obj).reduce<number>((sum, val) => {
+      return sum + this.parseDistance(val);
+    }, 0);
+  }
+
+  // Distance values appear to be in millimeters
+  private parseDistance(value: number | string | undefined): number {
+    if (value === undefined) return 0;
+    const num = typeof value === 'string' ? parseFloat(value) : value;
+    if (isNaN(num)) return 0;
+
+    // Convert negative (overflow) to unsigned 32-bit equivalent
+    let distance = num < 0 ? 4294967296 + num : num;
+
+    // Convert from millimeters to meters
+    return distance / 1000;
   }
 
   private formatDuration(seconds: number): string {
@@ -165,11 +181,23 @@ export class AMS2StatsParser {
     return parts.join(' ');
   }
 
-  private formatStageDurations(durations: Record<string, number>): Record<string, string> {
+  private formatStageDurations(durations: Record<string, number | string>): Record<string, string> {
     const formatted: Record<string, string> = {};
-    for (const [stage, seconds] of Object.entries(durations)) {
+    for (const [stage, value] of Object.entries(durations)) {
+      const seconds = this.parseDuration(value);
       formatted[stage] = this.formatDuration(seconds);
     }
     return formatted;
+  }
+  private parseDuration(value: number | string | undefined): number {
+    if (value === undefined) return 0;
+    const num = typeof value === 'string' ? parseFloat(value) : value;
+    if (isNaN(num)) return 0;
+
+    // Convert negative (overflow) to unsigned 32-bit equivalent
+    let duration = num < 0 ? 4294967296 + num : num;
+
+    // Convert from milliseconds to seconds
+    return duration / 1000;
   }
 }

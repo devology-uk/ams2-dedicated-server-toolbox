@@ -5,8 +5,6 @@ import { Column } from 'primereact/column';
 import './OverviewTab.scss';
 import type { AMS2StatsParser } from '../utils/ams2StatsParser';
 
-// ... rest of component
-
 interface OverviewTabProps {
   parser: AMS2StatsParser;
 }
@@ -15,6 +13,9 @@ export function OverviewTab({ parser }: OverviewTabProps) {
   const stats = parser.getSessionStats();
   const trackUsage = parser.getTrackUsage();
   const vehicleUsage = parser.getVehicleUsage();
+
+console.log('Track Usage:', trackUsage);
+console.log('Vehicle Usage:', vehicleUsage);
 
   const stageData = Object.entries(stats.stageCounts).map(([stage, count]) => ({
     stage: formatStageName(stage),
