@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ${{ matrix.os }}
@@ -27,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Rebuild native modules for Electron
+        run: npx @electron/rebuild
+
       - name: Transpile App
         run: npm run transpile:app
 
@@ -36,17 +42,17 @@ jobs:
       - name: Build and Release (macOS)
         if: matrix.os == 'macos-latest'
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx electron-builder --mac --publish always
 
       - name: Build and Release (Linux)
         if: matrix.os == 'ubuntu-latest'
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx electron-builder --linux --publish always
 
       - name: Build and Release (Windows)
         if: matrix.os == 'windows-latest'
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx electron-builder --win --publish always
