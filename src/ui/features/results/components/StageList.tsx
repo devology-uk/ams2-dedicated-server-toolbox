@@ -11,6 +11,7 @@ import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode } from 'primereact/api';
 import type { StageListItem } from '../hooks/useResults';
 import { useGameLookup } from '../../../hooks/useGameLookup';
+import { formatStageName, formatEpochDate, formatEpochTime, formatDurationRange } from '../../../utils/formatters';
 
 interface StageListProps {
     stages: StageListItem[];
@@ -26,32 +27,6 @@ const STAGE_COLORS: Record<string, 'info' | 'warning' | 'success' | 'secondary'>
     race1: 'success',
 };
 
-function formatStageName(stage: string): string {
-    return stage
-        .replace(/([0-9]+)/g, ' \$1')
-        .replace(/^./, (str) => str.toUpperCase())
-        .trim();
-}
-
-function formatDate(epoch: number): string {
-    const date = new Date(epoch * 1000);
-    return date.toLocaleDateString();
-}
-
-function formatTime(epoch: number): string {
-    const date = new Date(epoch * 1000);
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-}
-
-function formatDuration(startTime: number, endTime: number | null): string {
-    if (!endTime) return '-';
-    const seconds = endTime - startTime;
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    if (hours > 0) return `${hours}h ${remainingMinutes}m`;
-    return `${minutes}m`;
-}
 
 export function StageList({ stages, loading, onSelectStage }: StageListProps) {
     const { resolveTrack, resolveVehicle } = useGameLookup();
@@ -103,8 +78,8 @@ export function StageList({ stages, loading, onSelectStage }: StageListProps) {
 
     const dateBodyTemplate = (row: StageListItem): ReactNode => (
         <div className="flex flex-column">
-            <span className="font-semibold">{formatDate(row.startTime)}</span>
-            <span className="text-color-secondary text-xs">{formatTime(row.startTime)}</span>
+            <span className="font-semibold">{formatEpochDate(row.startTime)}</span>
+            <span className="text-color-secondary text-xs">{formatEpochTime(row.startTime)}</span>
         </div>
     );
 
@@ -134,7 +109,7 @@ export function StageList({ stages, loading, onSelectStage }: StageListProps) {
 
     const durationBodyTemplate = (row: StageListItem): ReactNode => (
         <span className="text-color-secondary">
-      {formatDuration(row.startTime, row.endTime)}
+      {formatDurationRange(row.startTime, row.endTime)}
     </span>
     );
 

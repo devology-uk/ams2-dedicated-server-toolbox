@@ -5,6 +5,7 @@ import { Column } from 'primereact/column';
 import './OverviewTab.scss';
 import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 import { useGameLookup } from '../../../hooks/useGameLookup';
+import { formatStageName } from '../../../utils/formatters';
 
 interface OverviewTabProps {
   parser: AMS2StatsParser;
@@ -155,9 +156,3 @@ function StatCard({ title, value, icon, color }: StatCardProps) {
   );
 }
 
-function formatStageName(stage: string): string {
-  return stage
-    .replace(/([0-9]+)/g, ' \$1')
-    .replace(/^./, (str) => str.toUpperCase())
-    .trim();
-}

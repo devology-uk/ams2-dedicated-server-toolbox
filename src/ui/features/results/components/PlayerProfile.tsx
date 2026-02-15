@@ -11,6 +11,7 @@ import { Divider } from 'primereact/divider';
 
 import type { PlayerResultHistory, PlayerBestLap } from '../../../../shared/types';
 import { useGameLookup } from '../../../hooks/useGameLookup';
+import { formatStageName, formatLapTime } from '../../../utils/formatters';
 
 interface PlayerProfileProps {
     visible: boolean;
@@ -28,26 +29,6 @@ const STAGE_COLORS: Record<string, 'info' | 'warning' | 'success' | 'secondary'>
     qualifying1: 'warning',
     race1: 'success',
 };
-
-function formatStageName(stage: string): string {
-    return stage
-        .replace(/([0-9]+)/g, ' \$1')
-        .replace(/^./, (str) => str.toUpperCase())
-        .trim();
-}
-
-function formatLapTime(ms: number | null): string {
-    if (!ms || ms <= 0) return '--:--.---';
-    const totalSeconds = ms / 1000;
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    const secWhole = Math.floor(seconds);
-    const secFraction = Math.round((seconds - secWhole) * 1000);
-    const secStr = secWhole.toString().padStart(2, '0');
-    const msStr = secFraction.toString().padStart(3, '0');
-    if (minutes > 0) return `${minutes}:${secStr}.${msStr}`;
-    return `${secStr}.${msStr}`;
-}
 
 export function PlayerProfile({
                                   visible,

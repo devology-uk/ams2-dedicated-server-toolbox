@@ -13,6 +13,7 @@ import './SessionsTab.scss';
 import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 import type { Participant, SessionHistory } from '../../../../shared/types';
 import { useGameLookup } from '../../../hooks/useGameLookup';
+import { formatStageName, formatDurationSeconds } from '../../../utils/formatters';
 
 interface SessionsTabProps {
   parser: AMS2StatsParser;
@@ -32,23 +33,6 @@ interface SessionDetailsDialogProps {
   onHide: () => void;
 }
 
-const formatStageName = (stage: string): string => {
-  return stage
-    .replace(/([0-9]+)/g, ' \$1')
-    .replace(/^./, (str) => str.toUpperCase())
-    .trim();
-};
-
-const formatDuration = (seconds: number): string => {
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const remainingMinutes = minutes % 60;
-
-  if (hours > 0) {
-    return `${hours}h ${remainingMinutes}m`;
-  }
-  return `${minutes}m`;
-};
 
 const SessionDetailsDialog = ({
   session,
@@ -140,7 +124,7 @@ const SessionDetailsDialog = ({
                     {formatStageName(stageName)}
                   </span>
                   <span className="session-details__stage-duration">
-                    Duration: {formatDuration(stageDuration)}
+                    Duration: {formatDurationSeconds(stageDuration)}
                   </span>
                 </Card>
               );
@@ -230,7 +214,7 @@ export const SessionsTab = ({ parser }: SessionsTabProps) => {
   );
 
   const durationBodyTemplate = (rowData: SessionRowData): ReactNode => (
-    <span>{formatDuration(rowData.duration)}</span>
+    <span>{formatDurationSeconds(rowData.duration)}</span>
   );
 
   const statusBodyTemplate = (rowData: SessionRowData): ReactNode => (

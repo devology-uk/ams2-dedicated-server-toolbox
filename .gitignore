@@ -24,3 +24,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Dev/test data files
+project-structure.txt
+sms_stats_data*.json

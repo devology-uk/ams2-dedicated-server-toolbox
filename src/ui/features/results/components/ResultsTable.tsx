@@ -10,6 +10,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 
 import type { StageResultRow } from '../../../../shared/types';
 import { useGameLookup } from '../../../hooks/useGameLookup';
+import { formatStageName, formatLapTime, formatTotalTime } from '../../../utils/formatters';
 
 interface StageContext {
     sessionIndex: number;
@@ -32,44 +33,6 @@ const STAGE_COLORS: Record<string, 'info' | 'warning' | 'success' | 'secondary'>
     race1: 'success',
 };
 
-function formatStageName(stage: string): string {
-    return stage
-        .replace(/([0-9]+)/g, ' \$1')
-        .replace(/^./, (str) => str.toUpperCase())
-        .trim();
-}
-
-function formatLapTime(ms: number | null): string {
-    if (!ms || ms <= 0) return '--:--.---';
-
-    const totalSeconds = ms / 1000;
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    const secWhole = Math.floor(seconds);
-    const secFraction = Math.round((seconds - secWhole) * 1000);
-
-    const secStr = secWhole.toString().padStart(2, '0');
-    const msStr = secFraction.toString().padStart(3, '0');
-
-    if (minutes > 0) {
-        return `${minutes}:${secStr}.${msStr}`;
-    }
-    return `${secStr}.${msStr}`;
-}
-
-function formatTotalTime(ms: number): string {
-    if (ms <= 0) return '-';
-
-    const totalSeconds = ms / 1000;
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = Math.floor(totalSeconds % 60);
-
-    if (hours > 0) {
-        return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-}
 
 export function ResultsTable({
                                  results,
