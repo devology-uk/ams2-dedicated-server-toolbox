@@ -5,7 +5,7 @@ import { Button } from 'primereact/button';
 import { Tag } from 'primereact/tag';
 import { ProgressBar } from 'primereact/progressbar';
 
-import type { ImportResult } from '../../../../shared/types';
+import type { ImportResult } from '../../shared/types';
 
 interface ImportDialogProps {
     visible: boolean;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Button } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
@@ -8,10 +9,14 @@ import { useStats } from './hooks/useStats.js';
 import { OverviewTab } from './components/OverviewTab.js';
 import { PlayersTab } from './components/PlayersTab.js';
 import { SessionsTab } from './components/SessionsTab.js';
+import { useImport } from '../../hooks/useImport';
+import { ImportDialog } from '../../components/ImportDialog';
 
 
 export function StatsViewer() {
-  const { parser, fileName, loading, error, loadFile, reload } = useStats();
+  const { parser, fileName, filePath, loading, error, loadFile, reload } = useStats();
+  const { importing, lastImport, error: importError, importFile, clearLastImport } = useImport();
+  const [showImportDialog, setShowImportDialog] = useState(false);
 
   if (loading) {
     return (
@@ -56,6 +61,16 @@ export function StatsViewer() {
         </div>
         <div className="flex gap-2">
           <Button
+            label="Import to Database"
+            icon="pi pi-database"
+            onClick={async () => {
+              setShowImportDialog(true);
+              await importFile(filePath);
+            }}
+            severity="info"
+            disabled={importing}
+          />
+          <Button
             label="Reload"
             icon="pi pi-refresh"
             onClick={reload}
@@ -86,6 +101,17 @@ export function StatsViewer() {
           <SessionsTab parser={parser} />
         </TabPanel>
       </TabView>
+
+      <ImportDialog
+        visible={showImportDialog}
+        onHide={() => {
+          setShowImportDialog(false);
+          clearLastImport();
+        }}
+        importing={importing}
+        result={lastImport}
+        error={importError}
+      />
     </div>
   );
 }

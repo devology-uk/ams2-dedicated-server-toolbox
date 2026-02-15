@@ -1,7 +1,7 @@
 // src/ui/features/results/hooks/useImport.ts
 
 import { useState, useCallback } from 'react';
-import type { ImportResult } from '../../../../shared/types';
+import type { ImportResult } from '../../shared/types';
 
 interface UseImportReturn {
     importing: boolean;

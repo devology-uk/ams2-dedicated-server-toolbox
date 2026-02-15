@@ -6,12 +6,12 @@ import { Message } from 'primereact/message';
 import './ResultsViewer.scss';
 import { useServers } from './hooks/useServers.js';
 import { useResults } from './hooks/useResults.js';
-import { useImport } from './hooks/useImport.js';
+import { useImport } from '../../hooks/useImport.js';
 import { usePlayerProfile } from './hooks/usePlayerProfile.js';
 import { ServerSelector } from './components/ServerSelector.js';
 import { StageList } from './components/StageList.js';
 import { ResultsTable } from './components/ResultsTable.js';
-import { ImportDialog } from './components/ImportDialog.js';
+import { ImportDialog } from '../../components/ImportDialog.js';
 import { PlayerProfile } from './components/PlayerProfile.js';
 
 export function ResultsViewer() {
