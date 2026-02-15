@@ -42,7 +42,7 @@ const KNOWN_BOOLEAN_FIELDS: Set<string> = new Set([
 /**
  * Parse attribute description to extract metadata hints
  */
-function parseDescription(name: string, description: string): ParsedDescription {
+function parseDescription(_name: string, description: string): ParsedDescription {
   const result: ParsedDescription = {};
 
   // Check for enum endpoint reference

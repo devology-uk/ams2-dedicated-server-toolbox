@@ -2,27 +2,31 @@
 
 import Store from 'electron-store';
 import type {
-  ServerConnection,
-  ServerCache,
+    ServerConnection,
+    ServerCache,
 } from '../shared/types/connections.js';
 
 export interface StoreSchema {
-  connections: ServerConnection[];
-  activeConnectionId: string | null;
-  apiCache: {
-    [connectionId: string]: ServerCache;
-  };
+    connections: ServerConnection[];
+    activeConnectionId: string | null;
+    apiCache: {
+        [connectionId: string]: ServerCache;
+    };
+    // Game data — shared cache not tied to any connection
+    gameData: ServerCache | null;
+    gameDataVersion: string | null; // Track which build the data is from
 }
 
 const store = new Store<StoreSchema>({
-  defaults: {
-    connections: [],
-    activeConnectionId: null,
-    apiCache: {},
-  },
-});
+                                         defaults: {
+                                             connections: [],
+                                             activeConnectionId: null,
+                                             apiCache: {},
+                                             gameData: null,
+                                             gameDataVersion: null,
+                                         },
+                                     });
 
 export default store;
 
-// Re-export types for convenience within app folder
 export type { ServerConnection, ServerCache };

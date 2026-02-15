@@ -7,13 +7,13 @@ import { getConnectionById } from './connectionHandlers.js';
 
 export function registerApiHandlers(): void {
   ipcMain.handle(IPC_CHANNELS.API_TEST_CONNECTION, async (_event, connectionId: string) => {
-    const connection = getConnectionById(connectionId);
+    const connection = getConnectionById(connectionId)
     if (!connection) {
       return { success: false, error: 'Connection not found' };
     }
     return ams2Api.testConnection(connection);
   });
-
+  
   ipcMain.handle(IPC_CHANNELS.API_GET_TRACKS, async (_event, connectionId: string) => {
     const connection = getConnectionById(connectionId);
     if (!connection) {

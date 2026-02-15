@@ -1,152 +1,42 @@
 // src/ui/components/Titlebar.scss
-// ============================================
-// Electron Window Titlebar
-// ============================================
-
-@use '../styles/variables' as v;
-@use '../styles/mixins' as m;
 
 .titlebar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: v.$titlebar-height;
-  background: var(--surface-ground);
-  border-bottom: v.$border-width-base solid var(--surface-border);
+  justify-content: space-between;
+  height: 40px;
+  background: var(--surface-card);
+  border-bottom: 1px solid var(--surface-border);
+  padding: 0 0.75rem;
+  -webkit-app-region: drag;
   user-select: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: v.$z-index-titlebar;
-  flex-wrap: nowrap; // Ensure no wrapping
+}
 
-  // ============================================
-  // Drag Region (left side - grows to fill space)
-  // ============================================
-  &-drag-region {
-    flex: 1 1 auto;
-    min-width: 0; // Allow shrinking below content size
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: v.$titlebar-padding-x;
-    -webkit-app-region: drag;
-    overflow: hidden; // Prevent content from overflowing
-  }
+.titlebar-drag-region {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
 
-  // ============================================
-  // Back Button
-  // ============================================
-  &-back-button {
-    -webkit-app-region: no-drag;
-    width: 32px !important;
-    height: 32px !important;
-    min-width: 32px !important; // Prevent shrinking
-    margin-right: v.$spacing-2;
-    border-radius: v.$border-radius-base !important;
-    color: var(--text-color-secondary) !important;
-    transition: v.$transition-fast;
-    flex-shrink: 0;
+.titlebar-back-button {
+  -webkit-app-region: no-drag;
+  width: 2rem !important;
+  height: 2rem !important;
+  margin-right: 0.5rem;
+}
 
-    &:hover {
-      background-color: var(--surface-hover) !important;
-      color: var(--text-color) !important;
-    }
-  }
+.titlebar-title {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
 
-  // ============================================
-  // Title
-  // ============================================
-  &-title {
-    display: flex;
-    align-items: center;
-    font-size: v.$font-size-base;
-    font-weight: v.$font-weight-semibold;
-    color: var(--text-color);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
-
-    i {
-      margin-right: v.$spacing-2;
-      flex-shrink: 0;
-    }
-  }
-
-  // ============================================
-  // Controls (right side - fixed width)
-  // ============================================
-  &-controls {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding-right: v.$spacing-2;
-    gap: v.$spacing-2;
-    -webkit-app-region: no-drag;
-    flex: 0 0 auto; // Don't grow, don't shrink
-    flex-wrap: nowrap; // Ensure buttons don't wrap
-  }
-
-  // ============================================
-  // Connection Status Badge
-  // ============================================
-  &-connection-status {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: v.$spacing-2;
-    padding: v.$spacing-1 v.$spacing-3;
-    background: var(--surface-card);
-    border: v.$border-width-base solid var(--surface-border);
-    border-radius: v.$border-radius-base;
-    font-size: v.$font-size-sm;
-    color: var(--text-color-secondary);
-    max-width: 200px;
-    cursor: default;
-    flex-shrink: 0;
-
-    i {
-      color: var(--green-400);
-      font-size: v.$font-size-xs;
-      flex-shrink: 0;
-    }
-
-    span {
-      @include m.text-truncate;
-    }
-  }
-
-  // ============================================
-  // Titlebar Buttons (cog, etc.)
-  // ============================================
-  &-button {
-    -webkit-app-region: no-drag;
-    width: v.$titlebar-button-width !important;
-    height: 32px !important;
-    min-width: v.$titlebar-button-width !important; // Prevent shrinking
-    border-radius: v.$border-radius-base !important;
-    color: var(--text-color-secondary) !important;
-    transition: v.$transition-fast;
-    flex-shrink: 0;
-
-    &:hover {
-      background-color: var(--surface-hover) !important;
-      color: var(--text-color) !important;
-    }
-  }
-
-  // ============================================
-  // Responsive
-  // ============================================
-  @include m.respond-to-sm {
-    &-title {
-      font-size: v.$font-size-xs;
-    }
-
-    &-connection-status {
-      display: none;
-    }
-  }
+.titlebar-feature-label {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  color: var(--text-color-secondary);
 }

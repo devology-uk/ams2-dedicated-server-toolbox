@@ -1,6 +1,6 @@
 // src/ui/features/config-builder/components/fields/TrackSelector.tsx
 
-import React, { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
 import type { Track } from '../../../../types/electron';
 import { useServerCache } from '../../hooks/useServerCache';
@@ -10,21 +10,17 @@ interface TrackSelectorProps {
   field: FieldMetadata;
   value: number;
   onChange: (value: number) => void;
-  connectionId: string | null;
   disabled?: boolean;
 }
 
-export const TrackSelector: React.FC<TrackSelectorProps> = ({
+export const TrackSelector = ({
   field,
   value,
   onChange,
-  connectionId,
   disabled = false,
-}) => {
-  const { getTracks } = useServerCache(connectionId);
+}: TrackSelectorProps) => {
+  const { getTracks } = useServerCache();
   const tracks = getTracks();
-
-  const [filter, setFilter] = useState('');
 
   // Format track names for display
   const options = useMemo(() => {

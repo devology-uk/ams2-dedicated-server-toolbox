@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo, type ReactNode } from 'react';
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -10,7 +10,7 @@ import { Chip } from 'primereact/chip';
 import { Divider } from 'primereact/divider';
 
 import './SessionsTab.scss';
-import type { AMS2StatsParser } from '../utils/ams2StatsParser';
+import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 import type { Participant, SessionHistory } from '../../../../shared/types';
 
 interface SessionsTabProps {
@@ -49,11 +49,11 @@ const formatDuration = (seconds: number): string => {
   return `${minutes}m`;
 };
 
-const SessionDetailsDialog: React.FC<SessionDetailsDialogProps> = ({
+const SessionDetailsDialog = ({
   session,
   visible,
   onHide,
-}) => {
+}: SessionDetailsDialogProps) => {
   if (!session) return null;
 
   const headerElement = (
@@ -181,14 +181,14 @@ interface SetupItemProps {
   value: string | number;
 }
 
-const SetupItem: React.FC<SetupItemProps> = ({ label, value }) => (
+const SetupItem = ({ label, value }: SetupItemProps) => (
   <div className="session-details__setup-item">
     <span className="session-details__label">{label}</span>
     <span className="session-details__value">{value}</span>
   </div>
 );
 
-export const SessionsTab: React.FC<SessionsTabProps> = ({ parser }) => {
+export const SessionsTab = ({ parser }: SessionsTabProps) => {
   const [selectedSession, setSelectedSession] = useState<SessionRowData | null>(
     null
   );
@@ -214,11 +214,11 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({ parser }) => {
     setDetailsVisible(false);
   };
 
-  const indexBodyTemplate = (rowData: SessionRowData): React.ReactNode => (
+  const indexBodyTemplate = (rowData: SessionRowData): ReactNode => (
     <span className="sessions-tab__index">#{rowData.index}</span>
   );
 
-  const dateBodyTemplate = (rowData: SessionRowData): React.ReactNode => (
+  const dateBodyTemplate = (rowData: SessionRowData): ReactNode => (
     <div className="sessions-tab__date">
       <span>{rowData.startDate.toLocaleDateString()}</span>
       <span className="sessions-tab__time">
@@ -227,11 +227,11 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({ parser }) => {
     </div>
   );
 
-  const durationBodyTemplate = (rowData: SessionRowData): React.ReactNode => (
+  const durationBodyTemplate = (rowData: SessionRowData): ReactNode => (
     <span>{formatDuration(rowData.duration)}</span>
   );
 
-  const statusBodyTemplate = (rowData: SessionRowData): React.ReactNode => (
+  const statusBodyTemplate = (rowData: SessionRowData): ReactNode => (
     <Tag
       value={rowData.finished ? 'Completed' : 'Incomplete'}
       severity={rowData.finished ? 'success' : 'warning'}
@@ -239,14 +239,14 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({ parser }) => {
     />
   );
 
-  const participantsBodyTemplate = (rowData: SessionRowData): React.ReactNode => (
+  const participantsBodyTemplate = (rowData: SessionRowData): ReactNode => (
     <div className="sessions-tab__participants">
       <i className="pi pi-users" />
       <span>{rowData.participants.length}</span>
     </div>
   );
 
-  const stagesBodyTemplate = (rowData: SessionRowData): React.ReactNode => (
+  const stagesBodyTemplate = (rowData: SessionRowData): ReactNode => (
     <div className="sessions-tab__stages">
       {rowData.stageList.map((stage) => (
         <Chip key={stage} label={formatStageName(stage)} className="sessions-tab__stage-chip" />
@@ -254,7 +254,7 @@ export const SessionsTab: React.FC<SessionsTabProps> = ({ parser }) => {
     </div>
   );
 
-  const actionsBodyTemplate = (rowData: SessionRowData): React.ReactNode => (
+  const actionsBodyTemplate = (rowData: SessionRowData): ReactNode => (
     <Button
       icon="pi pi-eye"
       rounded

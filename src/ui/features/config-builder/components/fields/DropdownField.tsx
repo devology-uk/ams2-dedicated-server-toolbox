@@ -1,6 +1,6 @@
 // src/ui/features/config-builder/components/fields/DropdownField.tsx
 
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { formatLabel } from '../../utils/schema-processor';
 import type { ResolvedField } from '../../../../../shared/types/config';
@@ -12,12 +12,12 @@ interface DropdownFieldProps {
   disabled?: boolean;
 }
 
-export const DropdownField: React.FC<DropdownFieldProps> = ({
+export const DropdownField = ({
   field,
   value,
   onChange,
   disabled = false,
-}) => {
+}: DropdownFieldProps) => {
   const options = useMemo(() => {
     return (field.enumOptions ?? []).map(item => ({
       label: formatLabel(item.name),

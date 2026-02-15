@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { InputNumber } from 'primereact/inputnumber';
 import type { FieldMetadata } from '../../../../../shared/types/config';
 
@@ -10,12 +9,12 @@ interface NumberFieldProps {
   disabled?: boolean;
 }
 
-export const NumberField: React.FC<NumberFieldProps> = ({
+export const NumberField = ({
   field,
   value,
   onChange,
   disabled = false,
-}) => {
+}: NumberFieldProps) => {
   return (
     <InputNumber
       id={field.name}

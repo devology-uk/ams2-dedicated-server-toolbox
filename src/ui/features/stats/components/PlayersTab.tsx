@@ -8,7 +8,7 @@ import { Tag } from 'primereact/tag';
 import { FilterMatchMode } from 'primereact/api';
 
 import './PlayersTab.scss';
-import type { AMS2StatsParser } from '../utils/ams2StatsParser';
+import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 
 interface PlayersTabProps {
   parser: AMS2StatsParser;

@@ -1,6 +1,5 @@
 // src/ui/features/config-builder/components/DynamicForm.tsx
 
-import React from 'react';
 import { Panel } from 'primereact/panel';
 import { FieldRenderer } from './FieldRenderer';
 import { FormField } from './FormField';
@@ -10,17 +9,15 @@ interface DynamicFormProps {
   fieldGroups: FieldGroup[];
   values: SessionAttributes;
   onChange: (name: string, value: unknown) => void;
-  connectionId: string | null;
   disabled?: boolean;
 }
 
-export const DynamicForm: React.FC<DynamicFormProps> = ({
+export const DynamicForm = ({
   fieldGroups,
   values,
   onChange,
-  connectionId,
   disabled = false,
-}) => {
+}: DynamicFormProps) => {
   return (
     <div className="dynamic-form">
       {fieldGroups.map(group => (
@@ -51,7 +48,6 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
                       field={field}
                       value={values[field.name]}
                       onChange={(value) => onChange(field.name, value)}
-                      connectionId={connectionId}
                       disabled={disabled}
                     />
                   </div>
@@ -64,7 +60,6 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
                     field={field}
                     value={values[field.name]}
                     onChange={(value) => onChange(field.name, value)}
-                    connectionId={connectionId}
                     disabled={disabled}
                   />
                 </FormField>

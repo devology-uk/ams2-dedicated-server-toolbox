@@ -1,0 +1,26 @@
+// src/ui/features/results/ResultsViewer.scss
+
+.results-viewer {
+  // Row click cursor for the stage list
+  .p-datatable {
+    &.cursor-pointer {
+      .p-datatable-tbody > tr {
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--surface-hover) !important;
+        }
+      }
+    }
+  }
+
+  // Consistent font-mono for lap times
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+
+  // Medal emoji sizing
+  .text-lg {
+    line-height: 1;
+  }
+}

@@ -3,7 +3,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 
 import './OverviewTab.scss';
-import type { AMS2StatsParser } from '../utils/ams2StatsParser';
+import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 
 interface OverviewTabProps {
   parser: AMS2StatsParser;

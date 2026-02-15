@@ -1,6 +1,5 @@
 // src/ui/features/config-builder/components/ServerSettingsForm.tsx
 
-import React from 'react';
 import { InputText } from 'primereact/inputtext';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputSwitch } from 'primereact/inputswitch';
@@ -20,10 +19,10 @@ const LOG_LEVELS = [
   { label: 'Error', value: 'error' },
 ];
 
-export const ServerSettingsForm: React.FC<ServerSettingsFormProps> = ({
+export const ServerSettingsForm = ({
   config,
   onChange,
-}) => {
+}: ServerSettingsFormProps) => {
   return (
     <div className="server-settings-form">
       {/* Basic Server Settings */}

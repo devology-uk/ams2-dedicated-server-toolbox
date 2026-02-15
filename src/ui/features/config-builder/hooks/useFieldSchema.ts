@@ -2,79 +2,76 @@
 
 import { useMemo } from 'react';
 import type {
-  FieldMetadata,
-  ResolvedField,
-  FieldGroup,
+    FieldMetadata,
+    ResolvedField,
+    FieldGroup,
 } from '../../../../shared/types/config';
 import {
-  processAttributeSchema,
-  groupFieldsByCategory,
-  getCategoryIcon,
+    processAttributeSchema,
+    groupFieldsByCategory,
+    getCategoryIcon,
 } from '../utils/schema-processor';
 import { useServerCache } from './useServerCache';
 
 export interface UseFieldSchemaResult {
-  fields: FieldMetadata[];
-  resolvedFields: ResolvedField[];
-  fieldGroups: FieldGroup[];
-  isLoading: boolean;
-  error: string | null;
+    fields: FieldMetadata[];
+    resolvedFields: ResolvedField[];
+    fieldGroups: FieldGroup[];
+    isLoading: boolean;
+    error: string | null;
 }
 
-export function useFieldSchema(connectionId: string | null): UseFieldSchemaResult {
-  const {
-    isLoading,
-    error,
-    getSessionAttributes,
-    getEnum,
-    getFlags,
-  } = useServerCache(connectionId);
+export function useFieldSchema(): UseFieldSchemaResult {
+    const {
+        isLoading,
+        error,
+        getSessionAttributes,
+        getEnum,
+        getFlags,
+    } = useServerCache();
 
-  // Process raw attributes into field metadata
-  const fields = useMemo(() => {
-    const attributes = getSessionAttributes();
-    return processAttributeSchema(attributes);
-  }, [getSessionAttributes]);
+    const fields = useMemo(() => {
+        const attributes = getSessionAttributes();
+        return processAttributeSchema(attributes);
+    }, [getSessionAttributes]);
 
-  // Resolve fields with their enum/flag options
-  const resolvedFields = useMemo((): ResolvedField[] => {
-    return fields.map(field => {
-      const resolved: ResolvedField = { ...field };
+    const resolvedFields = useMemo((): ResolvedField[] => {
+        return fields.map((field) => {
+            const resolved: ResolvedField = { ...field };
 
-      if (field.enumEndpoint) {
-        resolved.enumOptions = getEnum(field.enumEndpoint);
-      }
+            if (field.enumEndpoint) {
+                resolved.enumOptions = getEnum(field.enumEndpoint);
+            }
 
-      if (field.flagsEndpoint) {
-        resolved.flagOptions = getFlags(field.flagsEndpoint);
-      }
+            if (field.flagsEndpoint) {
+                resolved.flagOptions = getFlags(field.flagsEndpoint);
+            }
 
-      return resolved;
-    });
-  }, [fields, getEnum, getFlags]);
+            return resolved;
+        });
+    }, [fields, getEnum, getFlags]);
 
-  // Group fields by category
-  const fieldGroups = useMemo((): FieldGroup[] => {
-    const grouped = groupFieldsByCategory(resolvedFields);
-    const groups: FieldGroup[] = [];
+    const fieldGroups = useMemo((): FieldGroup[] => {
+        const grouped = groupFieldsByCategory(resolvedFields);
+        const groups: FieldGroup[] = [];
 
-    for (const [category, categoryFields] of grouped) {
-      groups.push({
-        id: category.toLowerCase().replace(/\s+/g, '-'),
-        label: category,
-        icon: getCategoryIcon(category),
-        fields: categoryFields as ResolvedField[],
-      });
-    }
+        for (const [category, categoryFields] of grouped) {
+            groups.push({
+                            id: category.toLowerCase().replace(/\s+/g, '-'),
+                            label: category,
+                            icon: getCategoryIcon(category),
+                            fields: categoryFields as ResolvedField[],
+                        });
+        }
 
-    return groups;
-  }, [resolvedFields]);
+        return groups;
+    }, [resolvedFields]);
 
-  return {
-    fields,
-    resolvedFields,
-    fieldGroups,
-    isLoading,
-    error,
-  };
+    return {
+        fields,
+        resolvedFields,
+        fieldGroups,
+        isLoading,
+        error,
+    };
 }

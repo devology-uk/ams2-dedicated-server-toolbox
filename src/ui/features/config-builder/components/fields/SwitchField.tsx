@@ -1,4 +1,3 @@
-import React from 'react';
 import { InputSwitch } from 'primereact/inputswitch';
 import type { FieldMetadata } from '../../../../../shared/types/config';
 
@@ -9,12 +8,12 @@ interface SwitchFieldProps {
   disabled?: boolean;
 }
 
-export const SwitchField: React.FC<SwitchFieldProps> = ({
+export const SwitchField = ({
   field,
   value,
   onChange,
   disabled = false,
-}) => {
+}: SwitchFieldProps) => {
   // Convert number to boolean for the switch
   const boolValue = typeof value === 'boolean' ? value : value === 1;
 

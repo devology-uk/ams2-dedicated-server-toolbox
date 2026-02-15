@@ -1,331 +1,36 @@
 // src/ui/features/api-explorer/ApiExplorerView.scss
-// ============================================
-// API Explorer View
-// ============================================
 
-@use '../../styles/variables' as v;
-@use '../../styles/mixins' as m;
-
-// ============================================
-// Main Layout
-// ============================================
-.api-explorer-view {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; // Prevent outer overflow
-}
-
-.api-explorer-content {
-  display: grid;
-  grid-template-columns: v.$api-tree-panel-width 1fr;
-  gap: v.$spacing-4;
-  flex: 1;
-  min-height: 0; // Critical for nested flex scrolling
-  overflow: hidden;
-
-  @include m.respond-to-md {
-    grid-template-columns: 1fr;
-    grid-template-rows: v.$api-tree-panel-height-mobile 1fr;
-  }
-}
-
-// ============================================
-// Tree Panel (left)
-// ============================================
-.api-explorer-tree-card {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-height: 0;
-
-  // Override PrimeReact Card internals
-  .p-card-body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-    padding: v.$spacing-3;
-  }
-
-  .p-card-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-    padding: 0; // Remove default padding
-  }
-}
-
-.tree-filter {
-  display: flex;
-  align-items: center;
-  gap: v.$spacing-2;
-  margin-bottom: v.$spacing-3;
-  padding-bottom: v.$spacing-3;
-  border-bottom: 1px solid var(--surface-border);
-  flex-shrink: 0; // Don't shrink the filter
-
-  .p-input-icon-left {
-    flex: 1;
-  }
-}
-
-.tree-filter-input {
-  width: 100%;
-}
-
-.api-tree {
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  border: none;
-  padding: 0;
-  background: transparent;
-
-  .p-tree-container {
-    padding: 0;
-  }
-
-  .p-treenode {
-    padding: v.$spacing-1 0;
-  }
-
-  .p-treenode-content {
-    padding: v.$spacing-2;
-    border-radius: v.$border-radius-base;
-    transition: v.$transition-fast;
+.api-explorer {
+  .api-action-card {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
-      background: var(--surface-hover);
+      transform: translateY(-1px);
     }
 
-    &.p-highlight {
-      background: var(--primary-color);
-      color: var(--primary-color-text);
+    .p-card-body {
+      padding: 1rem;
+    }
+  }
 
-      .p-treenode-icon {
-        color: var(--primary-color-text);
+  // Monospace for API responses
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  }
+
+  // Danger menu item styling
+  .p-menuitem-danger {
+    .p-menuitem-link {
+      color: var(--red-500) !important;
+
+      .p-menuitem-icon {
+        color: var(--red-500) !important;
+      }
+
+      &:hover {
+        background: var(--red-50) !important;
       }
     }
-  }
-
-  .p-treenode-icon {
-    margin-right: v.$spacing-2;
-    color: var(--text-color-secondary);
-  }
-
-  .p-treenode-label {
-    font-size: v.$font-size-sm;
-  }
-}
-
-// ============================================
-// Detail Panel (right)
-// ============================================
-.api-explorer-detail-card {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-height: 0;
-
-  // Override PrimeReact Card internals
-  .p-card-body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-    padding: v.$spacing-4;
-  }
-
-  .p-card-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-    padding: 0;
-  }
-}
-
-.detail-header {
-  margin-bottom: v.$spacing-4;
-  padding-bottom: v.$spacing-3;
-  border-bottom: 1px solid var(--surface-border);
-  flex-shrink: 0; // Don't shrink the header
-
-  h3 {
-    margin: 0 0 v.$spacing-1 0;
-    font-size: v.$font-size-lg;
-    font-weight: v.$font-weight-semibold;
-  }
-}
-
-.detail-description {
-  margin: 0 0 v.$spacing-3 0;
-  font-size: v.$font-size-sm;
-  color: var(--text-color-secondary);
-}
-
-.detail-meta {
-  display: flex;
-  align-items: center;
-  gap: v.$spacing-4;
-  flex-wrap: wrap;
-}
-
-.detail-count {
-  display: inline-flex;
-  align-items: center;
-  padding: v.$spacing-1 v.$spacing-2;
-  background: var(--primary-color);
-  color: var(--primary-color-text);
-  border-radius: v.$border-radius-base;
-  font-size: v.$font-size-xs;
-  font-weight: v.$font-weight-medium;
-}
-
-.detail-path {
-  display: inline-flex;
-  align-items: center;
-  gap: v.$spacing-1;
-  padding: v.$spacing-1 v.$spacing-2;
-  background: var(--surface-ground);
-  border-radius: v.$border-radius-base;
-  font-size: v.$font-size-xs;
-  font-family: v.$font-family-mono;
-  color: var(--text-color-secondary);
-
-  i {
-    font-size: v.$font-size-xs;
-  }
-}
-
-// ============================================
-// DataTable Container - Critical for scrollHeight="flex"
-// ============================================
-.detail-table {
-  flex: 1;
-  min-height: 0; // Critical!
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-
-  // PrimeReact DataTable structure overrides
-  &.p-datatable {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-  }
-
-  .p-datatable-wrapper {
-    flex: 1;
-    min-height: 0;
-    overflow: auto;
-  }
-
-  .p-datatable-table {
-    min-width: 100%;
-  }
-
-  // Paginator should not shrink
-  .p-paginator {
-    flex-shrink: 0;
-  }
-}
-
-.detail-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  gap: v.$spacing-3;
-  color: var(--text-color-secondary);
-
-  i {
-    font-size: v.$icon-size-md;
-  }
-
-  p {
-    margin: 0;
-  }
-}
-
-// ============================================
-// Sync Prompt
-// ============================================
-.sync-prompt-card {
-  max-width: v.$sync-prompt-max-width;
-  margin: v.$spacing-8 auto;
-}
-
-.sync-prompt {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: v.$spacing-8;
-  gap: v.$spacing-4;
-
-  h2 {
-    margin: 0;
-  }
-
-  p {
-    margin: 0;
-    color: var(--text-color-secondary);
-    max-width: 400px;
-  }
-}
-
-.sync-prompt-icon {
-  font-size: v.$icon-size-lg;
-  color: var(--primary-color);
-}
-
-.sync-prompt-note {
-  font-size: v.$font-size-sm;
-  font-style: italic;
-}
-
-// ============================================
-// Sync Status
-// ============================================
-.sync-status {
-  display: flex;
-  align-items: center;
-  gap: v.$spacing-4;
-}
-
-.sync-time {
-  display: flex;
-  align-items: center;
-  gap: v.$spacing-2;
-  font-size: v.$font-size-sm;
-  color: var(--text-color-secondary);
-
-  i {
-    font-size: v.$font-size-sm;
-  }
-}
-
-// ============================================
-// Loading Container
-// ============================================
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  gap: v.$spacing-4;
-
-  p {
-    color: var(--text-color-secondary);
   }
 }

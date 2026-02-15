@@ -1,6 +1,6 @@
 // src/ui/features/config-builder/components/fields/VehicleSelector.tsx
 
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
 import { useServerCache } from '../../hooks/useServerCache';
 import type { FieldMetadata } from '../../../../../shared/types/config';
@@ -9,18 +9,16 @@ interface VehicleSelectorProps {
   field: FieldMetadata;
   value: number;
   onChange: (value: number) => void;
-  connectionId: string | null;
   disabled?: boolean;
 }
 
-export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
+export const VehicleSelector = ({
   field,
   value,
   onChange,
-  connectionId,
   disabled = false,
-}) => {
-  const { getVehicles } = useServerCache(connectionId);
+}: VehicleSelectorProps) => {
+  const { getVehicles } = useServerCache();
   const vehicles = getVehicles();
 
   // Group vehicles by class

@@ -1,12 +1,12 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import type { ResolvedField } from '../../../../shared/types/config';
 
 interface FormFieldProps {
   field: ResolvedField;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const FormField: React.FC<FormFieldProps> = ({ field, children }) => {
+export const FormField = ({ field, children }: FormFieldProps) => {
   return (
     <>
       <label

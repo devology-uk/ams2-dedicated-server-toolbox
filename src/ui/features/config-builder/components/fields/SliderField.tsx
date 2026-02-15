@@ -1,6 +1,5 @@
 // src/ui/features/config-builder/components/fields/SliderField.tsx
 
-import React from 'react';
 import { Slider } from 'primereact/slider';
 import { InputNumber } from 'primereact/inputnumber';
 import type { FieldMetadata } from '../../../../../shared/types/config';
@@ -12,12 +11,12 @@ interface SliderFieldProps {
   disabled?: boolean;
 }
 
-export const SliderField: React.FC<SliderFieldProps> = ({
+export const SliderField = ({
   field,
   value,
   onChange,
   disabled = false,
-}) => {
+}: SliderFieldProps) => {
   const min = field.min ?? 0;
   const max = field.max ?? 100;
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { InputText } from 'primereact/inputtext';
 import type { FieldMetadata } from '../../../../../shared/types/config';
 
@@ -9,12 +8,12 @@ interface TextFieldProps {
   disabled?: boolean;
 }
 
-export const TextField: React.FC<TextFieldProps> = ({
+export const TextField = ({
   field,
   value,
   onChange,
   disabled = false,
-}) => {
+}: TextFieldProps) => {
   return (
       <InputText
         id={field.name}

@@ -1,6 +1,8 @@
+// src/ui/features/stats/hooks/useStats.ts
+
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import type { AMS2StatsFile } from '../../../../shared/types';
-import { AMS2StatsParser } from '../utils/ams2StatsParser';
+import { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 
 interface UseStatsReturn {
   data: AMS2StatsFile | null;

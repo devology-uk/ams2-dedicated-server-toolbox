@@ -1,6 +1,6 @@
 // src/ui/features/config-builder/components/fields/FlagsField.tsx
 
-import React, { useMemo, useCallback } from 'react';
+import { useMemo, useCallback } from 'react';
 import { Checkbox } from 'primereact/checkbox';
 import { Panel } from 'primereact/panel';
 import { formatLabel } from '../../utils/schema-processor';
@@ -14,12 +14,12 @@ interface FlagsFieldProps {
   disabled?: boolean;
 }
 
-export const FlagsField: React.FC<FlagsFieldProps> = ({
+export const FlagsField = ({
   field,
   value,
   onChange,
   disabled = false,
-}) => {
+}: FlagsFieldProps) => {
   const flags = field.flagOptions ?? [];
 
   const handleFlagToggle = useCallback((flagValue: number, checked: boolean) => {

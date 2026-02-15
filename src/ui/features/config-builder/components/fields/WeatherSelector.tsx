@@ -1,6 +1,6 @@
 // src/ui/features/config-builder/components/fields/WeatherSelector.tsx
 
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
 import { useServerCache } from '../../hooks/useServerCache';
 import type { FieldMetadata } from '../../../../../shared/types/config';
@@ -10,18 +10,16 @@ interface WeatherSelectorProps {
   field: FieldMetadata;
   value: number;
   onChange: (value: number) => void;
-  connectionId: string | null;
   disabled?: boolean;
 }
 
-export const WeatherSelector: React.FC<WeatherSelectorProps> = ({
+export const WeatherSelector = ({
   field,
   value,
   onChange,
-  connectionId,
   disabled = false,
-}) => {
-  const { getEnum } = useServerCache(connectionId);
+}: WeatherSelectorProps) => {
+  const { getEnum } = useServerCache();
   const weatherOptions = getEnum('weather');
 
   const options = useMemo(() => {

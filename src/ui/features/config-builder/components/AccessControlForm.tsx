@@ -1,6 +1,6 @@
 // src/ui/features/config-builder/components/AccessControlForm.tsx
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
@@ -15,10 +15,10 @@ interface AccessControlFormProps {
   onChange: <K extends keyof ServerConfig>(key: K, value: ServerConfig[K]) => void;
 }
 
-export const AccessControlForm: React.FC<AccessControlFormProps> = ({
+export const AccessControlForm = ({
   config,
   onChange,
-}) => {
+}: AccessControlFormProps) => {
   const [showUserDialog, setShowUserDialog] = useState(false);
   const [showGroupDialog, setShowGroupDialog] = useState(false);
   const [editingUser, setEditingUser] = useState<{ username: string; password: string } | null>(null);
@@ -167,7 +167,7 @@ export const AccessControlForm: React.FC<AccessControlFormProps> = ({
       >
         <DataTable value={usersArray} emptyMessage="No users configured">
           <Column field="username" header="Username" />
-          <Column field="password" header="Password" body={(row) => '••••••••'} />
+          <Column field="password" header="Password" body={() => '••••••••'} />
           <Column body={userActionsTemplate} style={{ width: '100px' }} />
         </DataTable>
       </Panel>

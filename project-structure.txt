@@ -1,0 +1,123 @@
+C:\_src\_electron\ams2-server-manager
+├── api-response.json
+├── appIcon.png
+├── electron-builder.json
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── project-structure.txt
+├── README.md
+├── sms_stats_data.json
+├── sms_stats_data_with_results.json
+├── src
+|  ├── app
+|  |  ├── ams2Api.ts
+|  |  ├── handlers
+|  |  |  ├── apiHandlers.ts
+|  |  |  ├── cacheHandlers.ts
+|  |  |  ├── connectionHandlers.ts
+|  |  |  ├── fileHandlers.ts
+|  |  |  ├── index.ts
+|  |  |  └── statsHandlers.ts
+|  |  ├── isDev.ts
+|  |  ├── main.ts
+|  |  ├── pathResolver.ts
+|  |  ├── preload.cts
+|  |  ├── store.ts
+|  |  └── tsconfig.json
+|  ├── assets
+|  |  └── react.svg
+|  ├── preload
+|  |  └── index.cts
+|  ├── shared
+|  |  └── types
+|  |     ├── ams2Stats.ts
+|  |     ├── api.ts
+|  |     ├── config.ts
+|  |     ├── connections.ts
+|  |     ├── index.ts
+|  |     └── ipc.ts
+|  └── ui
+|     ├── App.scss
+|     ├── App.tsx
+|     ├── components
+|     |  ├── ServerConnectionDialog.scss
+|     |  ├── ServerConnectionDialog.tsx
+|     |  ├── Titlebar.scss
+|     |  └── Titlebar.tsx
+|     ├── features
+|     |  ├── api-explorer
+|     |  |  ├── ApiExplorerView.scss
+|     |  |  └── ApiExplorerView.tsx
+|     |  ├── config-builder
+|     |  |  ├── components
+|     |  |  |  ├── AccessControlForm.tsx
+|     |  |  |  ├── DynamicForm.tsx
+|     |  |  |  ├── FieldRenderer.tsx
+|     |  |  |  ├── fields
+|     |  |  |  |  ├── DropdownField.tsx
+|     |  |  |  |  ├── FlagsField.tsx
+|     |  |  |  |  ├── index.ts
+|     |  |  |  |  ├── NumberField.tsx
+|     |  |  |  |  ├── SliderField.tsx
+|     |  |  |  |  ├── SwitchField.tsx
+|     |  |  |  |  ├── TextField.tsx
+|     |  |  |  |  ├── TrackSelector.tsx
+|     |  |  |  |  ├── VehicleClassSelector.tsx
+|     |  |  |  |  ├── VehicleSelector.tsx
+|     |  |  |  |  └── WeatherSelector.tsx
+|     |  |  |  ├── FormField.tsx
+|     |  |  |  ├── index.ts
+|     |  |  |  └── ServerSettingsForm.tsx
+|     |  |  ├── ConfigBuilder.scss
+|     |  |  ├── ConfigBuilderView.tsx
+|     |  |  ├── hooks
+|     |  |  |  ├── index.ts
+|     |  |  |  ├── useConfigState.ts
+|     |  |  |  ├── useFieldSchema.ts
+|     |  |  |  └── useServerCache.ts
+|     |  |  └── utils
+|     |  |     ├── flags-helper.ts
+|     |  |     ├── hocon-parser.ts
+|     |  |     └── schema-processor.ts
+|     |  ├── home
+|     |  |  ├── components
+|     |  |  |  ├── FeatureTile.tsx
+|     |  |  |  ├── ServerDashboard.tsx
+|     |  |  |  └── WelcomeContent.tsx
+|     |  |  └── HomeView.tsx
+|     |  └── stats
+|     |     ├── components
+|     |     |  ├── OverviewTab.scss
+|     |     |  ├── OverviewTab.tsx
+|     |     |  ├── PlayersTab.scss
+|     |     |  ├── PlayersTab.tsx
+|     |     |  ├── SessionsTab.scss
+|     |     |  └── SessionsTab.tsx
+|     |     ├── hooks
+|     |     |  └── useStats.ts
+|     |     ├── StatsViewer.scss
+|     |     ├── StatsViewer.tsx
+|     |     └── utils
+|     |        └── ams2StatsParser.ts
+|     ├── index.scss
+|     ├── main.tsx
+|     ├── styles
+|     |  ├── index.scss
+|     |  ├── _mixins.scss
+|     |  ├── _prime-overrides.scss
+|     |  ├── _selectors.scss
+|     |  ├── _variables.scss
+|     |  └── _views.scss
+|     └── types
+|        ├── ActiveFeature.ts
+|        └── electron.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+directory: 2456 file: 20703
+
+ignored: directory (64)

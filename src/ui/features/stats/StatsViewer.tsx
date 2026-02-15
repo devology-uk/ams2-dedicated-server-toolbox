@@ -10,10 +10,7 @@ import { PlayersTab } from './components/PlayersTab.js';
 import { SessionsTab } from './components/SessionsTab.js';
 
 
-interface StatsViewerProps {
-  onBack: () => void;
-}
-export function StatsViewer({ onBack }: StatsViewerProps) {
+export function StatsViewer() {
   const { parser, fileName, loading, error, loadFile, reload } = useStats();
 
   if (loading) {

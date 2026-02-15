@@ -1,15 +1,6 @@
 import type { ServerConfig } from '../../../../shared/types/config';
 
 /**
- * Tokenizer for HOCON-like config format
- */
-interface Token {
-  type: 'key' | 'value' | 'objectStart' | 'objectEnd' | 'arrayStart' | 'arrayEnd' | 'comma' | 'colon';
-  value: string;
-  line: number;
-}
-
-/**
  * Parse HOCON-style server.cfg content into a JavaScript object
  * 
  * This parser handles the specific format used by AMS2:

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ResolvedField } from '../../../../shared/types/config';
 import {
   TextField,
@@ -17,17 +16,15 @@ interface FieldRendererProps {
   field: ResolvedField;
   value: unknown;
   onChange: (value: unknown) => void;
-  connectionId: string | null;
   disabled?: boolean;
 }
 
-export const FieldRenderer: React.FC<FieldRendererProps> = ({
+export const FieldRenderer = ({
   field,
   value,
   onChange,
-  connectionId,
   disabled = false,
-}) => {
+}: FieldRendererProps) => {
   switch (field.fieldType) {
     case 'number':
   return (
@@ -94,7 +91,7 @@ export const FieldRenderer: React.FC<FieldRendererProps> = ({
           field={field}
           value={(value as number) ?? 0}
           onChange={onChange}
-          connectionId={connectionId}
+
           disabled={disabled}
         />
       );
@@ -105,7 +102,7 @@ export const FieldRenderer: React.FC<FieldRendererProps> = ({
           field={field}
           value={(value as number) ?? 0}
           onChange={onChange}
-          connectionId={connectionId}
+
           disabled={disabled}
         />
       );
@@ -116,7 +113,7 @@ export const FieldRenderer: React.FC<FieldRendererProps> = ({
           field={field}
           value={(value as number) ?? 0}
           onChange={onChange}
-          connectionId={connectionId}
+
           disabled={disabled}
         />
       );
@@ -127,7 +124,7 @@ export const FieldRenderer: React.FC<FieldRendererProps> = ({
           field={field}
           value={(value as number) ?? 0}
           onChange={onChange}
-          connectionId={connectionId}
+
           disabled={disabled}
         />
       );

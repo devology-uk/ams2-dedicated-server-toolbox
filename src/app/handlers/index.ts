@@ -6,11 +6,13 @@ import { registerApiHandlers } from './apiHandlers.js';
 import { registerCacheHandlers } from './cacheHandlers.js';
 import { registerFileHandlers } from './fileHandlers.js';
 import { registerStatsHandlers } from './statsHandlers.js';
+import { registerStatsDbHandlers } from './statsDbHandlers.js';
 
 export function registerAllHandlers(mainWindow: BrowserWindow): void {
-  registerConnectionHandlers();
-  registerApiHandlers();
-  registerCacheHandlers();
-  registerFileHandlers();
-  registerStatsHandlers(mainWindow);
+    registerConnectionHandlers();
+    registerApiHandlers();
+    registerCacheHandlers();
+    registerFileHandlers();
+    registerStatsHandlers(mainWindow);
+    registerStatsDbHandlers(mainWindow);
 }

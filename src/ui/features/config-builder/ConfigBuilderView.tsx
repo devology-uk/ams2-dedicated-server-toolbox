@@ -12,19 +12,11 @@ import { DynamicForm } from './components';
 import { ServerSettingsForm } from './components/ServerSettingsForm';
 import { AccessControlForm } from './components/AccessControlForm';
 
-interface ConfigBuilderViewProps {
-  connectionId: string | null;
-  onBack: () => void;
-}
-
-export const ConfigBuilderView = ({
-  connectionId,
-  onBack
-}: ConfigBuilderViewProps) => {
+export const ConfigBuilderView = () => {
   const toast = useRef<Toast>(null);
   const [activeTab, setActiveTab] = useState(0);
 
-  const { fieldGroups, isLoading, error } = useFieldSchema(connectionId);
+  const { fieldGroups, isLoading, error } = useFieldSchema();
   const {
     config,
     isDirty,
@@ -160,35 +152,36 @@ export const ConfigBuilderView = ({
   }
 
   // Error state
-  if (error) {
-    return (
-      <div className="flex align-items-center justify-content-center h-full">
-        <div className="text-center">
-          <i className="pi pi-exclamation-triangle text-5xl text-yellow-500 mb-3"></i>
-          <h3>Failed to Load Schema</h3>
-          <p className="text-color-secondary">{error}</p>
-          <p className="text-color-secondary mt-2">
-            Make sure you have synced data from the server in the API Explorer.
-          </p>
-        </div>
-      </div>
-    );
-  }
+    if (error) {
+        return (
+            <div className="flex align-items-center justify-content-center h-full">
+                <div className="text-center">
+                    <i className="pi pi-exclamation-triangle text-5xl text-yellow-500 mb-3"></i>
+                    <h3>Game Data Not Available</h3>
+                    <p className="text-color-secondary">{error}</p>
+                    <p className="text-color-secondary mt-2">
+                        Use the API Explorer to sync data from a running server.
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
   // No data state
-  if (fieldGroups.length === 0) {
-    return (
-      <div className="flex align-items-center justify-content-center h-full">
-        <div className="text-center">
-          <i className="pi pi-database text-5xl text-color-secondary mb-3"></i>
-          <h3>No Schema Data</h3>
-          <p className="text-color-secondary">
-            Please sync data from your server using the API Explorer first.
-          </p>
-        </div>
-      </div>
-    );
-  }
+    if (fieldGroups.length === 0) {
+        return (
+            <div className="flex align-items-center justify-content-center h-full">
+                <div className="text-center">
+                    <i className="pi pi-database text-5xl text-color-secondary mb-3"></i>
+                    <h3>No Game Data</h3>
+                    <p className="text-color-secondary">
+                        Sync data from a running server using the API Explorer, or check
+                        that the bundled game data file is present.
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
   return (
     <div className="config-builder-view h-full flex flex-column">
@@ -238,7 +231,6 @@ export const ConfigBuilderView = ({
       fieldGroups={fieldGroups}
       values={config.sessionAttributes ?? {}}
       onChange={handleAttributeChange}
-      connectionId={connectionId}
     />
   </TabPanel>
 
