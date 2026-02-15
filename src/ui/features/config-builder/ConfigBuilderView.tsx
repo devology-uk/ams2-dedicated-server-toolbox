@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
@@ -11,12 +11,20 @@ import { useConfigState, useFieldSchema } from './hooks';
 import { DynamicForm } from './components';
 import { ServerSettingsForm } from './components/ServerSettingsForm';
 import { HttpApiForm } from './components/HttpApiForm';
+import { LuaApiForm } from './components/LuaApiForm';
 
 export const ConfigBuilderView = () => {
   const toast = useRef<Toast>(null);
   const [activeTab, setActiveTab] = useState(0);
 
   const { fieldGroups, isLoading, error } = useFieldSchema();
+
+  // Separate flags groups from other session attribute groups
+  const { attributeGroups, flagsGroups } = useMemo(() => {
+    const attrs = fieldGroups.filter(g => g.id !== 'session-flags');
+    const flags = fieldGroups.filter(g => g.id === 'session-flags');
+    return { attributeGroups: attrs, flagsGroups: flags };
+  }, [fieldGroups]);
   const {
     config,
     isDirty,
@@ -226,14 +234,6 @@ export const ConfigBuilderView = () => {
       <div className="flex-grow-1 overflow-auto p-3">
         
 <TabView activeIndex={activeTab} onTabChange={(e) => setActiveTab(e.index)}>
-  <TabPanel header="Session Attributes" leftIcon="pi pi-cog mr-2">
-    <DynamicForm
-      fieldGroups={fieldGroups}
-      values={config.sessionAttributes ?? {}}
-      onChange={handleAttributeChange}
-    />
-  </TabPanel>
-
   <TabPanel header="Server Settings" leftIcon="pi pi-server mr-2">
     <ServerSettingsForm
       config={config}
@@ -241,8 +241,31 @@ export const ConfigBuilderView = () => {
     />
   </TabPanel>
 
+  <TabPanel header="Session Attributes" leftIcon="pi pi-cog mr-2">
+    <DynamicForm
+      fieldGroups={attributeGroups}
+      values={config.sessionAttributes ?? {}}
+      onChange={handleAttributeChange}
+    />
+  </TabPanel>
+
+  <TabPanel header="Session Flags" leftIcon="pi pi-flag mr-2">
+    <DynamicForm
+      fieldGroups={flagsGroups}
+      values={config.sessionAttributes ?? {}}
+      onChange={handleAttributeChange}
+    />
+  </TabPanel>
+
   <TabPanel header="HTTP API" leftIcon="pi pi-globe mr-2">
     <HttpApiForm
+      config={config}
+      onChange={updateRootField}
+    />
+  </TabPanel>
+
+  <TabPanel header="Lua API" leftIcon="pi pi-code mr-2">
+    <LuaApiForm
       config={config}
       onChange={updateRootField}
     />

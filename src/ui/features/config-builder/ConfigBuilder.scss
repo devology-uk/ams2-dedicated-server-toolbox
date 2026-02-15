@@ -43,8 +43,14 @@
 }
 
 // ============================================
-// Access Control Form
+// HTTP API Form
 // ============================================
-.access-control-form {
-  // Add any specific styles here
+.http-api-form {
+  // Make panel header title span fill available width
+  // so justify-content-between works for label + button layouts
+  .p-panel-header {
+    .p-panel-title {
+      flex: 1;
+    }
+  }
 }

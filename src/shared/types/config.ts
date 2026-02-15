@@ -117,8 +117,9 @@ export interface FieldGroup {
 // HTTP API Access Filter
 // ============================================
 export interface HttpApiAccessFilter {
-  type: 'accept' | 'reject' | 'ip-accept' | 'ip-reject' | 'group' | 'reject-password';
+  type: 'accept' | 'reject' | 'ip-accept' | 'ip-reject' | 'user' | 'group' | 'reject-password';
   ip?: string;
+  user?: string;
   group?: string;
 }
 

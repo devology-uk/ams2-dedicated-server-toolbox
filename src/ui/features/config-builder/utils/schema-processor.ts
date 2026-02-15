@@ -192,13 +192,14 @@ function categorizeField(name: string): string {
     name.includes('Tire') ||
     name.includes('Fuel') ||
     name.includes('Penalties') ||
-    name.includes('Difficulty')
+    name.includes('Difficulty') ||
+    name.includes('Allowed')
   ) {
     return 'Realism & Difficulty';
   }
 
   // Flags
-  if (name === 'Flags' || name.includes('Allowed')) {
+  if (name === 'Flags') {
     return 'Session Flags';
   }
 
