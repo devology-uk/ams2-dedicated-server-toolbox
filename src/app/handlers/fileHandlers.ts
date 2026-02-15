@@ -47,8 +47,23 @@ export function registerFileHandlers(): void {
     }
 
     try {
-      await fs.writeFile(result.filePath, data, 'utf-8');
-      const filename = path.basename(result.filePath);
+      const filePath = result.filePath;
+      const filename = path.basename(filePath);
+
+      // Auto-backup existing file before overwriting (timestamped)
+      try {
+        await fs.access(filePath);
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+        const ext = path.extname(filePath);
+        const base = filePath.slice(0, -ext.length);
+        const backupPath = `${base}_${timestamp}${ext}.bak`;
+        await fs.copyFile(filePath, backupPath);
+        console.log(`Backup created: ${backupPath}`);
+      } catch {
+        // File doesn't exist yet — no backup needed
+      }
+
+      await fs.writeFile(filePath, data, 'utf-8');
 
       return { success: true, filename };
     } catch (error) {
