@@ -12,6 +12,7 @@ import { Divider } from 'primereact/divider';
 import './SessionsTab.scss';
 import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 import type { Participant, SessionHistory } from '../../../../shared/types';
+import { useGameLookup } from '../../../hooks/useGameLookup';
 
 interface SessionsTabProps {
   parser: AMS2StatsParser;
@@ -54,6 +55,7 @@ const SessionDetailsDialog = ({
   visible,
   onHide,
 }: SessionDetailsDialogProps) => {
+  const { resolveTrack, resolveVehicle } = useGameLookup();
   if (!session) return null;
 
   const headerElement = (
@@ -95,8 +97,8 @@ const SessionDetailsDialog = ({
             </span>
           </div>
           <div className="session-details__info-item">
-            <span className="session-details__label">Track ID</span>
-            <code>{session.setup.TrackId}</code>
+            <span className="session-details__label">Track</span>
+            <span className="session-details__value">{resolveTrack(session.setup.TrackId)}</span>
           </div>
         </div>
 
@@ -115,7 +117,7 @@ const SessionDetailsDialog = ({
               header="Steam ID"
               body={(row: Participant) => <code>{row.SteamID}</code>}
             />
-            <Column field="VehicleId" header="Vehicle ID" />
+            <Column field="VehicleId" header="Vehicle" body={(row: Participant) => resolveVehicle(row.VehicleId)} />
             <Column field="LiveryId" header="Livery ID" />
           </DataTable>
         </section>

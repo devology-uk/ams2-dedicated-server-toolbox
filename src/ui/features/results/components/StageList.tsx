@@ -10,6 +10,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode } from 'primereact/api';
 import type { StageListItem } from '../hooks/useResults';
+import { useGameLookup } from '../../../hooks/useGameLookup';
 
 interface StageListProps {
     stages: StageListItem[];
@@ -53,6 +54,7 @@ function formatDuration(startTime: number, endTime: number | null): string {
 }
 
 export function StageList({ stages, loading, onSelectStage }: StageListProps) {
+    const { resolveTrack, resolveVehicle } = useGameLookup();
     const [stageFilter, setStageFilter] = useState<StageFilter>('all');
     const [globalFilter, setGlobalFilter] = useState('');
     const [filters] = useState<DataTableFilterMeta>({
@@ -116,11 +118,11 @@ export function StageList({ stages, loading, onSelectStage }: StageListProps) {
     };
 
     const trackBodyTemplate = (row: StageListItem): ReactNode => (
-        <code className="text-sm surface-100 px-2 py-1 border-round">{row.trackId}</code>
+        <span className="text-sm">{resolveTrack(row.trackId)}</span>
     );
 
     const vehicleBodyTemplate = (row: StageListItem): ReactNode => (
-        <code className="text-sm surface-100 px-2 py-1 border-round">{row.vehicleModelId}</code>
+        <span className="text-sm">{resolveVehicle(row.vehicleModelId)}</span>
     );
 
     const participantsBodyTemplate = (row: StageListItem): ReactNode => (

@@ -4,18 +4,17 @@ import { Column } from 'primereact/column';
 
 import './OverviewTab.scss';
 import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
+import { useGameLookup } from '../../../hooks/useGameLookup';
 
 interface OverviewTabProps {
   parser: AMS2StatsParser;
 }
 
 export function OverviewTab({ parser }: OverviewTabProps) {
+  const { resolveTrack, resolveVehicle } = useGameLookup();
   const stats = parser.getSessionStats();
   const trackUsage = parser.getTrackUsage();
   const vehicleUsage = parser.getVehicleUsage();
-
-console.log('Track Usage:', trackUsage);
-console.log('Vehicle Usage:', vehicleUsage);
 
   const stageData = Object.entries(stats.stageCounts).map(([stage, count]) => ({
     stage: formatStageName(stage),
@@ -91,7 +90,7 @@ console.log('Vehicle Usage:', vehicleUsage);
         <div className="col-12 lg:col-6">
           <Card title="Track Usage" className="shadow-2 h-full">
             <DataTable value={trackUsage} stripedRows size="small">
-              <Column field="trackId" header="Track ID" sortable />
+              <Column field="trackId" header="Track" sortable body={(row) => resolveTrack(row.trackId)} />
               <Column field="sessions" header="Sessions" sortable />
               <Column
                 field="distance"
@@ -105,7 +104,7 @@ console.log('Vehicle Usage:', vehicleUsage);
         <div className="col-12 lg:col-6">
           <Card title="Vehicle Usage" className="shadow-2 h-full">
             <DataTable value={vehicleUsage} stripedRows size="small">
-              <Column field="vehicleId" header="Vehicle ID" sortable />
+              <Column field="vehicleId" header="Vehicle" sortable body={(row) => resolveVehicle(row.vehicleId)} />
               <Column
                 field="distance"
                 header="Distance"

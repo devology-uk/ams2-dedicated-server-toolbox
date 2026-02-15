@@ -558,24 +558,24 @@ export class AMS2StatsParser {
     }
 
     getTrackUsage(): Array<{
-        trackId: string;
+        trackId: number;
         sessions: number;
         distance: number;
     }> {
         const { tracks, track_distances } = this.data.stats.session.counts;
 
         return Object.keys({ ...tracks, ...track_distances }).map((trackId) => ({
-            trackId,
+            trackId: Number(trackId),
             sessions: tracks[trackId] || 0,
             distance: this.parseDistance(track_distances[trackId]),
         }));
     }
 
-    getVehicleUsage(): Array<{ vehicleId: string; distance: number }> {
+    getVehicleUsage(): Array<{ vehicleId: number; distance: number }> {
         const { vehicle_distances } = this.data.stats.session.counts;
 
         return Object.entries(vehicle_distances).map(([vehicleId, rawDistance]) => ({
-            vehicleId,
+            vehicleId: Number(vehicleId),
             distance: this.parseDistance(rawDistance),
         }));
     }

@@ -9,6 +9,7 @@ import { Button } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
 import type { StageResultRow } from '../../../../shared/types';
+import { useGameLookup } from '../../../hooks/useGameLookup';
 
 interface StageContext {
     sessionIndex: number;
@@ -77,6 +78,7 @@ export function ResultsTable({
                                  onBack,
                                  onPlayerClick,
                              }: ResultsTableProps) {
+    const { resolveTrack } = useGameLookup();
     // Find fastest lap across all results for highlighting
     const fastestLapTime = results.reduce<number | null>((best, r) => {
         if (r.fastestLapTime && r.fastestLapTime > 0) {
@@ -110,7 +112,7 @@ export function ResultsTable({
                     </div>
                     <span className="text-color-secondary text-sm">
             {sessionDate.toLocaleDateString()} {sessionDate.toLocaleTimeString()} ·
-            Track {stageContext.trackId}
+            {resolveTrack(stageContext.trackId)}
           </span>
                 </div>
             </div>

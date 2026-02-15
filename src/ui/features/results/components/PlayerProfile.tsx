@@ -10,6 +10,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 import { Divider } from 'primereact/divider';
 
 import type { PlayerResultHistory, PlayerBestLap } from '../../../../shared/types';
+import { useGameLookup } from '../../../hooks/useGameLookup';
 
 interface PlayerProfileProps {
     visible: boolean;
@@ -58,6 +59,7 @@ export function PlayerProfile({
                                   loading,
                                   error,
                               }: PlayerProfileProps) {
+    const { resolveTrack } = useGameLookup();
     const headerElement = (
         <div className="flex align-items-center gap-3">
             <i className="pi pi-user text-2xl text-primary" />
@@ -174,7 +176,7 @@ export function PlayerProfile({
                                 <Column
                                     field="trackId"
                                     header="Track"
-                                    body={(row: PlayerBestLap) => <code>{row.trackId}</code>}
+                                    body={(row: PlayerBestLap) => resolveTrack(row.trackId)}
                                 />
                                 <Column
                                     field="bestLapTime"
@@ -221,7 +223,7 @@ export function PlayerProfile({
                         <Column field="sessionStartTime" header="Date" body={dateBodyTemplate} sortable />
                         <Column field="sessionIndex" header="Session" body={(r: PlayerResultHistory) => `#${r.sessionIndex}`} sortable />
                         <Column field="stageName" header="Stage" body={stageBodyTemplate} sortable />
-                        <Column field="trackId" header="Track" body={(r: PlayerResultHistory) => <code>{r.trackId}</code>} />
+                        <Column field="trackId" header="Track" body={(r: PlayerResultHistory) => resolveTrack(r.trackId)} />
                         <Column field="position" header="Pos" body={positionBodyTemplate} sortable style={{ width: '5rem' }} />
                         <Column field="fastestLapTime" header="Fastest Lap" body={fastestLapBodyTemplate} sortable />
                         <Column field="lapsCompleted" header="Laps" sortable style={{ width: '5rem' }} />
