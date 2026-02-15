@@ -28,3 +28,4 @@ dist-ssr
 # Dev/test data files
 project-structure.txt
 sms_stats_data*.json
+config_sample/

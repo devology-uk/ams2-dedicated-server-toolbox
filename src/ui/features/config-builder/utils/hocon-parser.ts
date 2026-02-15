@@ -237,7 +237,19 @@ function parseUnquotedValue(content: string, startIndex: number): ParseResult {
   if (rawValue === 'false') return { value: false, endIndex: i };
   if (rawValue === 'null') return { value: null, endIndex: i };
   
-  // Try to parse as number
+  // Try to parse as number, but keep large integers as strings to avoid precision loss
+  // (e.g. Steam IDs like 76561197994111033 exceed Number.MAX_SAFE_INTEGER)
+  if (/^-?\d+(\.\d+)?$/.test(rawValue)) {
+    const num = Number(rawValue);
+    if (Number.isSafeInteger(num) && !rawValue.includes('.')) {
+      return { value: num, endIndex: i };
+    }
+    if (rawValue.includes('.') && !isNaN(num)) {
+      return { value: num, endIndex: i };
+    }
+    // Large integer — keep as string to preserve precision
+    return { value: rawValue, endIndex: i };
+  }
   const num = Number(rawValue);
   if (!isNaN(num) && rawValue !== '') {
     return { value: num, endIndex: i };
@@ -303,11 +315,15 @@ export function serializeServerConfig(config: ServerConfig): string {
     return String(value);
   };
   
+  // Skip HOCON dummy comment keys (e.g. "//" : "comment text")
+  const SKIP_KEYS = new Set(['//', 'rem', '#']);
+
   // Property order for readability
-  const orderedKeys: (keyof ServerConfig)[] = [
+  const orderedKeys: string[] = [
     'logLevel', 'eventsLogSize', 'name', 'secure', 'password', 'maxPlayerCount',
     'bindIP', 'steamPort', 'hostPort', 'queryPort',
     'sleepWaiting', 'sleepActive', 'sportsPlay',
+    'blackList', 'whiteList',
     'enableHttpApi', 'httpApiLogLevel', 'httpApiInterface', 'httpApiPort',
     'httpApiExtraHeaders', 'httpApiAccessLevels', 'httpApiAccessFilters',
     'httpApiUsers', 'httpApiGroups', 'staticWebFiles',
@@ -320,25 +336,17 @@ export function serializeServerConfig(config: ServerConfig): string {
   const written = new Set<string>();
   
   for (const key of orderedKeys) {
-    if (key in config && config[key] !== undefined) {
-      const value = config[key];
+    const value = (config as Record<string, unknown>)[key];
+    if (value !== undefined && !SKIP_KEYS.has(key)) {
       const serialized = serializeValue(value, 0);
-      
-      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        lines.push(`${key} : ${serialized}`);
-      } else if (Array.isArray(value)) {
-        lines.push(`${key} : ${serialized}`);
-      } else {
-        lines.push(`${key} : ${serialized}`);
-      }
-      
+      lines.push(`${key} : ${serialized}`);
       written.add(key);
     }
   }
-  
-  // Write any remaining keys not in the ordered list
+
+  // Write any remaining keys not in the ordered list (skip dummy comment keys)
   for (const [key, value] of Object.entries(config)) {
-    if (!written.has(key) && value !== undefined) {
+    if (!written.has(key) && !SKIP_KEYS.has(key) && value !== undefined) {
       const serialized = serializeValue(value, 0);
       lines.push(`${key} : ${serialized}`);
     }

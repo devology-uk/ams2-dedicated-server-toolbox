@@ -10,7 +10,7 @@ import './ConfigBuilder.scss';
 import { useConfigState, useFieldSchema } from './hooks';
 import { DynamicForm } from './components';
 import { ServerSettingsForm } from './components/ServerSettingsForm';
-import { AccessControlForm } from './components/AccessControlForm';
+import { HttpApiForm } from './components/HttpApiForm';
 
 export const ConfigBuilderView = () => {
   const toast = useRef<Toast>(null);
@@ -241,8 +241,8 @@ export const ConfigBuilderView = () => {
     />
   </TabPanel>
 
-  <TabPanel header="Access Control" leftIcon="pi pi-lock mr-2">
-    <AccessControlForm
+  <TabPanel header="HTTP API" leftIcon="pi pi-globe mr-2">
+    <HttpApiForm
       config={config}
       onChange={updateRootField}
     />

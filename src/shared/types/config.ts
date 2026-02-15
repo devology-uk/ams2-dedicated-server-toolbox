@@ -205,5 +205,9 @@ export interface ServerConfig {
   luaOutputRoot?: string;
   luaApiAddons?: string[];
   luaAllowedLibraries?: string[];
+  blackList?: Array<string | number>;
+  whiteList?: Record<string, string | number> | Array<string | number>;
   sessionAttributes?: SessionAttributes;
+  // Allow extra/unknown keys from parsed configs (e.g. "//" dummy comment entries)
+  [key: string]: unknown;
 }

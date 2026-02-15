@@ -1,7 +1,10 @@
-// src/ui/features/config-builder/components/AccessControlForm.tsx
+// src/ui/features/config-builder/components/HttpApiForm.tsx
 
 import { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
+import { InputNumber } from 'primereact/inputnumber';
+import { InputSwitch } from 'primereact/inputswitch';
+import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -10,15 +13,22 @@ import { Dialog } from 'primereact/dialog';
 import { Chips } from 'primereact/chips';
 import type { ServerConfig } from '../../../../shared/types/config';
 
-interface AccessControlFormProps {
+interface HttpApiFormProps {
   config: ServerConfig;
   onChange: <K extends keyof ServerConfig>(key: K, value: ServerConfig[K]) => void;
 }
 
-export const AccessControlForm = ({
+const LOG_LEVELS = [
+  { label: 'Debug', value: 'debug' },
+  { label: 'Info', value: 'info' },
+  { label: 'Warning', value: 'warning' },
+  { label: 'Error', value: 'error' },
+];
+
+export const HttpApiForm = ({
   config,
   onChange,
-}: AccessControlFormProps) => {
+}: HttpApiFormProps) => {
   const [showUserDialog, setShowUserDialog] = useState(false);
   const [showGroupDialog, setShowGroupDialog] = useState(false);
   const [editingUser, setEditingUser] = useState<{ username: string; password: string } | null>(null);
@@ -148,12 +158,94 @@ export const AccessControlForm = ({
   };
 
   return (
-    <div className="access-control-form">
+    <div className="http-api-form">
+      {/* HTTP API Settings */}
+      <Panel header="Connection Settings" toggleable className="mb-3">
+        <div className="grid">
+          <div className="col-12 md:col-4">
+            <div className="field flex align-items-center gap-3">
+              <InputSwitch
+                id="enableHttpApi"
+                checked={config.enableHttpApi ?? false}
+                onChange={(e) => onChange('enableHttpApi', e.value)}
+              />
+              <label htmlFor="enableHttpApi">Enable HTTP API</label>
+            </div>
+          </div>
+
+          {config.enableHttpApi && (
+            <>
+              <div className="col-12 md:col-4">
+                <div className="field">
+                  <label htmlFor="httpApiInterface" className="block font-medium mb-2">
+                    API Interface
+                  </label>
+                  <InputText
+                    id="httpApiInterface"
+                    value={config.httpApiInterface ?? ''}
+                    onChange={(e) => onChange('httpApiInterface', e.target.value)}
+                    className="w-full"
+                    placeholder="0.0.0.0"
+                  />
+                </div>
+              </div>
+
+              <div className="col-12 md:col-4">
+                <div className="field">
+                  <label htmlFor="httpApiPort" className="block font-medium mb-2">
+                    API Port
+                  </label>
+                  <InputNumber
+                    id="httpApiPort"
+                    value={config.httpApiPort ?? 9000}
+                    onValueChange={(e) => onChange('httpApiPort', e.value ?? 9000)}
+                    min={1024}
+                    max={65535}
+                    useGrouping={false}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              <div className="col-12 md:col-4">
+                <div className="field">
+                  <label htmlFor="httpApiLogLevel" className="block font-medium mb-2">
+                    API Log Level
+                  </label>
+                  <Dropdown
+                    id="httpApiLogLevel"
+                    value={config.httpApiLogLevel ?? 'warning'}
+                    options={LOG_LEVELS}
+                    onChange={(e) => onChange('httpApiLogLevel', e.value)}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              <div className="col-12 md:col-8">
+                <div className="field">
+                  <label htmlFor="staticWebFiles" className="block font-medium mb-2">
+                    Static Web Files Path
+                  </label>
+                  <InputText
+                    id="staticWebFiles"
+                    value={config.staticWebFiles ?? ''}
+                    onChange={(e) => onChange('staticWebFiles', e.target.value)}
+                    className="w-full"
+                    placeholder="web_files"
+                  />
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </Panel>
+
       {/* Users Panel */}
       <Panel
         header={
           <div className="flex align-items-center justify-content-between w-full">
-            <span>HTTP API Users</span>
+            <span>Users</span>
             <Button
               icon="pi pi-plus"
               label="Add User"
@@ -176,7 +268,7 @@ export const AccessControlForm = ({
       <Panel
         header={
           <div className="flex align-items-center justify-content-between w-full">
-            <span>HTTP API Groups</span>
+            <span>Groups</span>
             <Button
               icon="pi pi-plus"
               label="Add Group"
