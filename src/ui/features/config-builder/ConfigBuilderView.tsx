@@ -12,6 +12,7 @@ import { DynamicForm } from './components';
 import { ServerSettingsForm } from './components/ServerSettingsForm';
 import { HttpApiForm } from './components/HttpApiForm';
 import { LuaApiForm } from './components/LuaApiForm';
+import { validateConfig } from './utils/config-validation';
 
 export const ConfigBuilderView = () => {
   const toast = useRef<Toast>(null);
@@ -97,6 +98,33 @@ export const ConfigBuilderView = () => {
 
   // Handle export
   const handleExport = async () => {
+    const issues = validateConfig(config);
+    const errors = issues.filter(i => i.severity === 'error');
+    const warnings = issues.filter(i => i.severity === 'warn');
+
+    if (errors.length > 0) {
+      toast.current?.show({
+        severity: 'error',
+        summary: 'Validation Failed',
+        detail: errors.map(e => e.message).join('\n'),
+        life: 8000,
+      });
+      return;
+    }
+
+    if (warnings.length > 0) {
+      const proceed = await new Promise<boolean>(resolve => {
+        confirmDialog({
+          message: warnings.map(w => w.message).join('\n'),
+          header: 'Export Warnings',
+          icon: 'pi pi-exclamation-triangle',
+          accept: () => resolve(true),
+          reject: () => resolve(false),
+        });
+      });
+      if (!proceed) return;
+    }
+
     try {
       const content = exportToString();
       const result = await window.electron.exportConfig(content);

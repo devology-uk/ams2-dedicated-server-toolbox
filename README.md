@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# AMS2 Dedicated Server Toolbox
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Provides a cross platform desktop application aimed at making it easier to configure an Automobilista 2 Dedicated Server and view the results of multiplayer sessions.  It includes the following features.
 
-Currently, two official plugins are available:
+## API Explorer
+Allows you to connect to the HTTP API of your server to read and cache data from all of the endpoints.  The cached data is presented as a tree structure representing the endpoint hierarchy provided by the HTTP Server.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Config Builder
+Allows you to create a configuration set that works for your server then export to a local file.  The tool also allows you to import an existing file as a starting point or simply to analyse it.
 
-## React Compiler
+## Stats Viewer
+Allows you to open a file produced by the **sms_stats** plugin and analyse the contents.  Once opened a file can be imported to the application database making the data available to the Results Viewer.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Results Viewer
+Allows you to import a file produced by the **sms_stats** plugin to update the application database with any new stage (Practice, Qualifying or Race) results.  It is intelligent enough to recognise results it has already imported and avoids creating duplicates.
 
-## Expanding the ESLint configuration
+## Documentation
+AMS2 Dedicated Server Toolbox is brought to you by the Sim Racer Tools team. Documentation for the application and the individual tools is available at [Sim Racer Tools -> AMS2 Dedicated Server Toolbox](https://www.simracertools.com/docs/ams2-dedi-getting-started/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Contributing
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Contributions are welcome! If you'd like to help improve the toolbox, please follow these steps:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature-name`)
+3. Make your changes and commit them with clear, descriptive messages
+4. Push your branch to your fork (`git push origin feature/your-feature-name`)
+5. Open a Pull Request against the `master` branch of this repository
+
+### Guidelines
+
+- Please open an issue first to discuss significant changes before starting work
+- Keep pull requests focused on a single feature or fix
+- Follow the existing code style and conventions
+- Test your changes locally before submitting
+
+### Development Setup
+
+#### Prerequisites
+
+- [Node.js](https://nodejs.org/) v20 or later
+- [npm](https://www.npmjs.com/) (included with Node.js)
+- [Git](https://git-scm.com/)
+- [VS Code](https://code.visualstudio.com/) is the recommended editor for this project
+
+#### Getting Started
+
+```bash
+# Clone your fork
+git clone https://github.com/<your-username>/ams2-dedicated-server-toolbox.git
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## License
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
