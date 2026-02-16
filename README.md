@@ -14,6 +14,7 @@ Allows you to open a file produced by the **sms_stats** plugin and analyse the c
 ## Results Viewer
 Allows you to import a file produced by the **sms_stats** plugin to update the application database with any new stage (Practice, Qualifying or Race) results.  It is intelligent enough to recognise results it has already imported and avoids creating duplicates.
 
+
 ## Documentation
 AMS2 Dedicated Server Toolbox is brought to you by the Sim Racer Tools team. Documentation for the application and the individual tools is available at [Sim Racer Tools -> AMS2 Dedicated Server Toolbox](https://www.simracertools.com/docs/ams2-dedi-getting-started/)
 
