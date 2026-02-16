@@ -45,6 +45,32 @@
 // ============================================
 // HTTP API Form
 // ============================================
+// ============================================
+// Export Preview Dialog
+// ============================================
+.export-preview-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.export-preview-code {
+  flex: 1;
+  margin: 0;
+  padding: v.$spacing-4;
+  background: var(--surface-ground);
+  border: 1px solid var(--surface-border);
+  border-radius: v.$spacing-2;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow: auto;
+  white-space: pre;
+}
+
+// ============================================
+// HTTP API Form
+// ============================================
 .http-api-form {
   // Make panel header title span fill available width
   // so justify-content-between works for label + button layouts

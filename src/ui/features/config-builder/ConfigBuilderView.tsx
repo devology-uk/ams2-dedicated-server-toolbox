@@ -12,11 +12,15 @@ import { DynamicForm } from './components';
 import { ServerSettingsForm } from './components/ServerSettingsForm';
 import { HttpApiForm } from './components/HttpApiForm';
 import { LuaApiForm } from './components/LuaApiForm';
-import { validateConfig } from './utils/config-validation';
+import { ExportPreviewDialog } from './components/ExportPreviewDialog';
+import { validateConfig, type ValidationIssue } from './utils/config-validation';
 
 export const ConfigBuilderView = () => {
   const toast = useRef<Toast>(null);
   const [activeTab, setActiveTab] = useState(0);
+  const [showExportPreview, setShowExportPreview] = useState(false);
+  const [exportContent, setExportContent] = useState('');
+  const [exportIssues, setExportIssues] = useState<ValidationIssue[]>([]);
 
   const { fieldGroups, isLoading, error } = useFieldSchema();
 
@@ -96,42 +100,25 @@ export const ConfigBuilderView = () => {
     }
   };
 
-  // Handle export
-  const handleExport = async () => {
+  // Handle export — open preview dialog
+  const handleExport = () => {
+    const content = exportToString();
     const issues = validateConfig(config);
-    const errors = issues.filter(i => i.severity === 'error');
-    const warnings = issues.filter(i => i.severity === 'warn');
+    setExportContent(content);
+    setExportIssues(issues);
+    setShowExportPreview(true);
+  };
 
-    if (errors.length > 0) {
-      toast.current?.show({
-        severity: 'error',
-        summary: 'Validation Failed',
-        detail: errors.map(e => e.message).join('\n'),
-        life: 8000,
-      });
-      return;
-    }
-
-    if (warnings.length > 0) {
-      const proceed = await new Promise<boolean>(resolve => {
-        confirmDialog({
-          message: warnings.map(w => w.message).join('\n'),
-          header: 'Export Warnings',
-          icon: 'pi pi-exclamation-triangle',
-          accept: () => resolve(true),
-          reject: () => resolve(false),
-        });
-      });
-      if (!proceed) return;
-    }
-
+  // Save from preview dialog
+  const handleSaveExport = async () => {
     try {
-      const content = exportToString();
-      const result = await window.electron.exportConfig(content);
+      const result = await window.electron.exportConfig(exportContent);
 
       if (result.cancelled) {
         return;
       }
+
+      setShowExportPreview(false);
 
       if (result.success) {
         markAsSaved();
@@ -223,6 +210,13 @@ export const ConfigBuilderView = () => {
     <div className="config-builder-view h-full flex flex-column">
       <Toast ref={toast} />
       <ConfirmDialog />
+      <ExportPreviewDialog
+        visible={showExportPreview}
+        onHide={() => setShowExportPreview(false)}
+        content={exportContent}
+        issues={exportIssues}
+        onSave={handleSaveExport}
+      />
 
       {/* Header / Toolbar */}
       <div className="flex align-items-center justify-content-between p-3 border-bottom-1 surface-border">
