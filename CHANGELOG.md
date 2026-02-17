@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Implemented auto update so the app keeps itself up to date automatically
 
 ### Changed
 
@@ -17,15 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
-## [1.0.2] - 2026-02-16
-
-### Added
-- Config Builder - Show config preview on export
-- Config Builder - Validation of config on export
-- Config Builder - Display validation errors and warnings in config preview
-
-
-## [1.0.1] - 2026-02-15
+## [1.0.0] - 2026-02-17
 
 ### Added
 - Initial feature set
@@ -33,5 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config Builder
   - Stats Viewer
   - Results Viewer
+- Automatic Updates
 
 
