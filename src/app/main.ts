@@ -7,7 +7,8 @@ import isDev from './isDev.js';
 import { getPreloadPath } from './pathResolver.js';
 import { registerAllHandlers } from './handlers/index.js';
 import { getDatabase, closeDatabase } from './db/index.js';
-import { autoUpdater } from 'electron-updater';
+import electronUpdater from 'electron-updater';
+const { autoUpdater } = electronUpdater;
 import log from 'electron-log';
 
 app.whenReady().then(() => {

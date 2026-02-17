@@ -31,8 +31,10 @@ export const Titlebar = ({
     const featureLabel = FEATURE_LABELS[activeFeature];
     const showBack = activeFeature !== 'home';
 
+    const platform = window.electron.platform;
+
     return (
-        <div className="titlebar">
+        <div className={`titlebar${platform === 'win32' ? ' titlebar--win32' : ''}`}>
             <div className="titlebar-drag-region">
                 {showBack && (
                     <Button
@@ -56,7 +58,7 @@ export const Titlebar = ({
             </div>
             {updateReady && (
                 <Button
-                    label="Update"
+                    label="Restart to Update"
                     icon="pi pi-download"
                     className="p-button-text p-button-sm titlebar-update-button"
                     onClick={onInstallUpdate}
