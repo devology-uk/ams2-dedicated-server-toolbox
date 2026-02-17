@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.0.1] - 2026-02-17
+
+### Added
+- Display 'Restart to Update' button when new update downloaded
+
+
 ## [1.0.0] - 2026-02-17
 
 ### Added
