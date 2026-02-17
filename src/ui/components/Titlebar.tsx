@@ -9,6 +9,8 @@ interface TitlebarProps {
     title?: string;
     activeFeature: ActiveFeature;
     onBack?: () => void;
+    updateReady?: boolean;
+    onInstallUpdate?: () => void;
 }
 
 const FEATURE_LABELS: Record<ActiveFeature, string | null> = {
@@ -23,6 +25,8 @@ export const Titlebar = ({
                              title = 'AMS2 Dedicated Server Toolbox',
                              activeFeature,
                              onBack,
+                             updateReady,
+                             onInstallUpdate,
                          }: TitlebarProps) => {
     const featureLabel = FEATURE_LABELS[activeFeature];
     const showBack = activeFeature !== 'home';
@@ -50,6 +54,16 @@ export const Titlebar = ({
                     )}
                 </div>
             </div>
+            {updateReady && (
+                <Button
+                    label="Update"
+                    icon="pi pi-download"
+                    className="p-button-text p-button-sm titlebar-update-button"
+                    onClick={onInstallUpdate}
+                    tooltip="Update available — click to restart and install"
+                    tooltipOptions={{ position: 'bottom' }}
+                />
+            )}
         </div>
     );
 };

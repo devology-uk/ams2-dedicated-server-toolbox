@@ -1,6 +1,6 @@
 // src/ui/App.tsx
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Titlebar } from './components/Titlebar';
 import { Toolbox } from './features/home/Toolbox';
 import { ApiExplorerView } from './features/api-explorer/ApiExplorerView';
@@ -13,6 +13,11 @@ import './App.scss';
 
 export const App = () => {
     const [activeFeature, setActiveFeature] = useState<ActiveFeature>('home');
+    const [updateReady, setUpdateReady] = useState(false);
+
+    useEffect(() => {
+        return window.electron.onUpdateReady(() => setUpdateReady(true));
+    }, []);
 
     const handleBack = () => setActiveFeature('home');
 
@@ -33,7 +38,12 @@ export const App = () => {
 
     return (
         <div className="app">
-            <Titlebar activeFeature={activeFeature} onBack={handleBack} />
+            <Titlebar
+                activeFeature={activeFeature}
+                onBack={handleBack}
+                updateReady={updateReady}
+                onInstallUpdate={() => window.electron.installUpdate()}
+            />
             <main className="app-content">{renderFeature()}</main>
         </div>
     );

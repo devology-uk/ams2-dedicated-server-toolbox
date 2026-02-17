@@ -1,7 +1,7 @@
 // src/app/main.ts
 
 import path from 'path';
-import { app, BrowserWindow, Menu } from 'electron';
+import { app, BrowserWindow, Menu, ipcMain } from 'electron';
 
 import isDev from './isDev.js';
 import { getPreloadPath } from './pathResolver.js';
@@ -71,6 +71,14 @@ app.whenReady().then(() => {
     if (app.isPackaged) {
         autoUpdater.logger = log;
         autoUpdater.checkForUpdatesAndNotify();
+
+        autoUpdater.on('update-downloaded', () => {
+            mainWindow.webContents.send('update-ready');
+        });
+
+        ipcMain.handle('install-update', () => {
+            autoUpdater.quitAndInstall();
+        });
     }
 });
 

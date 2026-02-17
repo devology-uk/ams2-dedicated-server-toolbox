@@ -160,4 +160,8 @@ export interface ElectronAPI {
             limit?: number,
         ) => Promise<IpcResult<ImportLogEntry[]>>;
     };
+
+    // Auto-update
+    onUpdateReady: (callback: () => void) => () => void;
+    installUpdate: () => void;
 }

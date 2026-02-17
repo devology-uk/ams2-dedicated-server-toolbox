@@ -52,4 +52,8 @@ export const IPC_CHANNELS = {
     STATS_DB_GET_SESSION_RESULTS: 'stats-db-get-session-results',
     STATS_DB_GET_STAGE_RESULTS: 'stats-db-get-stage-results',
     STATS_DB_GET_IMPORT_HISTORY: 'stats-db-get-import-history',
+
+    // Auto-update
+    UPDATE_READY: 'update-ready',
+    INSTALL_UPDATE: 'install-update',
 } as const;
