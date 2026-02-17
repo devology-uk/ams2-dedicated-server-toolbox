@@ -1,5 +1,8 @@
 // src/ui/features/api-explorer/ApiExplorerView.scss
 
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
 .api-explorer {
   .api-action-card {
     cursor: pointer;
@@ -32,5 +35,124 @@
         background: var(--red-50) !important;
       }
     }
+  }
+}
+
+// ============================================
+// Explorer View Layout
+// ============================================
+.api-explorer-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.api-explorer-content {
+  display: flex;
+  gap: v.$spacing-4;
+  flex: 1;
+  min-height: 0;
+
+  @include m.respond-to-md {
+    flex-direction: column;
+  }
+}
+
+.api-explorer-tree-card {
+  width: v.$api-tree-panel-width;
+  flex-shrink: 0;
+  overflow: auto;
+
+  @include m.respond-to-md {
+    width: 100%;
+    max-height: v.$api-tree-panel-height-mobile;
+  }
+}
+
+.api-explorer-detail-card {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+  .p-card-body,
+  .p-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+}
+
+.detail-header {
+  margin-bottom: v.$spacing-4;
+
+  h3 {
+    margin: 0 0 v.$spacing-2 0;
+  }
+}
+
+.detail-description {
+  margin: 0 0 v.$spacing-3 0;
+  color: var(--text-color-secondary);
+  font-size: v.$font-size-sm;
+}
+
+.detail-meta {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-4;
+  font-size: v.$font-size-sm;
+}
+
+.detail-count {
+  font-weight: v.$font-weight-semibold;
+}
+
+.detail-path {
+  color: var(--text-color-secondary);
+  font-family: v.$font-family-mono;
+
+  i {
+    margin-right: v.$spacing-1;
+  }
+}
+
+.detail-table {
+  flex: 1;
+  min-height: 0;
+}
+
+.detail-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: var(--text-color-secondary);
+  gap: v.$spacing-3;
+
+  i {
+    font-size: 2rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.tree-filter {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-2;
+  margin-bottom: v.$spacing-3;
+
+  .p-input-icon-left {
+    flex: 1;
+  }
+
+  .tree-filter-input {
+    width: 100%;
   }
 }

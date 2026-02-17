@@ -67,6 +67,34 @@ const API_STRUCTURE: { path: string; label: string; icon: string; category?: str
   { path: 'flags/player', label: 'Player Flags', icon: 'pi pi-flag', category: 'Flags' },
 ];
 
+// The HTTP API returns swapped descriptions for scheduledfcy and livetrack_preset.
+// Detect by checking if scheduledfcy data contains small sequential values (0-4) —
+// that means the data is actually FCY (correct) so the bug is fixed.
+// If values are large hashes, the data is still swapped and we override descriptions.
+const CORRECTED_DESCRIPTIONS: Record<string, string> = {
+  'enums/scheduledfcy': 'Enum describing scheduled full course yellow settings',
+  'enums/livetrack_preset': 'Enum describing live track presets',
+};
+
+function isDescriptionSwapped(path: string, list: Record<string, unknown>[]): boolean {
+  if (path === 'enums/scheduledfcy') {
+    // If the values are small (0-4), the data matches the endpoint — no swap
+    return list.some(item => Math.abs(Number(item.value)) > 100);
+  }
+  if (path === 'enums/livetrack_preset') {
+    // If the values are large hashes, the data matches the endpoint — no swap
+    return list.every(item => Math.abs(Number(item.value)) <= 100);
+  }
+  return false;
+}
+
+function getDescription(path: string, listData: { description: string; list: Record<string, unknown>[] }): string {
+  if (CORRECTED_DESCRIPTIONS[path] && isDescriptionSwapped(path, listData.list)) {
+    return CORRECTED_DESCRIPTIONS[path];
+  }
+  return listData.description;
+}
+
 export const ApiExplorerView = () => {
   const toast = useRef<Toast>(null);
 
@@ -723,7 +751,9 @@ export const ApiExplorerView = () => {
             <>
               <div className="detail-header">
                 <h3>{selectedNode?.label}</h3>
-                <p className="detail-description">{selectedListData.description}</p>
+                <p className="detail-description">
+                  {getDescription(selectedNode?.data?.path, selectedListData)}
+                </p>
                 <div className="detail-meta">
                   <span className="detail-count">{selectedListData.list.length} items</span>
                   <span className="detail-path">
