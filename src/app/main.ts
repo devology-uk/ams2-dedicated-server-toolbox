@@ -7,6 +7,8 @@ import isDev from './isDev.js';
 import { getPreloadPath } from './pathResolver.js';
 import { registerAllHandlers } from './handlers/index.js';
 import { getDatabase, closeDatabase } from './db/index.js';
+import { autoUpdater } from 'electron-updater';
+import log from 'electron-log';
 
 app.whenReady().then(() => {
     if (process.platform === 'darwin') {
@@ -35,10 +37,19 @@ app.whenReady().then(() => {
     }
 
     const mainWindow = new BrowserWindow({
-                                             width: 1000,
-                                             height: 700,
+                                             width: 1280,
+                                             height: 980,
                                              minWidth: 600,
                                              minHeight: 400,
+                                             icon: path.join(app.getAppPath(), 'appIcon.png'),
+                                             ...(process.platform === 'win32' && {
+                                                 titleBarStyle: 'hidden',
+                                                 titleBarOverlay: {
+                                                     color: '#1e1e2e',
+                                                     symbolColor: '#cdd6f4',
+                                                     height: 36,
+                                                 },
+                                             }),
                                              webPreferences: {
                                                  preload: getPreloadPath(),
                                              },
@@ -54,6 +65,12 @@ app.whenReady().then(() => {
 
     if (process.env.NODE_ENV === 'development' || !app.isPackaged) {
         mainWindow.webContents.openDevTools();
+    }
+
+    // Auto-update (production only)
+    if (app.isPackaged) {
+        autoUpdater.logger = log;
+        autoUpdater.checkForUpdatesAndNotify();
     }
 });
 
