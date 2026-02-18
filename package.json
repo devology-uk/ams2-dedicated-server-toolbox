@@ -1,7 +1,7 @@
 {
   "name": "ams2-dedicated-server-toolbox",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist-app/app/main.js",
   "scripts": {
