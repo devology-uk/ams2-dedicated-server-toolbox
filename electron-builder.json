@@ -6,7 +6,7 @@
     "dist-ui/"
   ],
   "extraResources": [
-    "dist-app/preload.cjs",
+    "dist-app/preload/**",
     "dist-app/data/**"
   ],
   "asar": true,
