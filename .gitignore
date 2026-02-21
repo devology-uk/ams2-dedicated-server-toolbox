@@ -29,3 +29,4 @@ dist-ssr
 project-structure.txt
 sms_stats_data*.json
 config_sample/
+sms_stats_data.json
