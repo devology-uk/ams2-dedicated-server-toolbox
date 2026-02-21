@@ -1,64 +1,54 @@
 import { useState, useMemo } from 'react';
 import { DataTable, type DataTableFilterMeta } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { ColumnGroup } from 'primereact/columngroup';
+import { Row } from 'primereact/row';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
-import { Dropdown } from 'primereact/dropdown';
 import { Tag } from 'primereact/tag';
+import { Tooltip } from 'primereact/tooltip';
 import { FilterMatchMode } from 'primereact/api';
 
 import './PlayersTab.scss';
 import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
+import type { PlayerEventStats } from '../../../../shared/types/index.ts';
 
 interface PlayersTabProps {
   parser: AMS2StatsParser;
 }
 
-type SortField = 'distance' | 'joins' | 'finishes';
+const DASH = '—';
+
+function TooltipHeader({ id, label, tip }: { id: string; label: string; tip: string }) {
+  return (
+    <>
+      <Tooltip target={`#${id}`} content={tip} position="top" />
+      <span id={id} style={{ cursor: 'default' }}>
+        {label} <i className="pi pi-info-circle text-xs text-color-secondary" />
+      </span>
+    </>
+  );
+}
 
 export function PlayersTab({ parser }: PlayersTabProps) {
-  const [sortBy, setSortBy] = useState<SortField>('distance');
   const [globalFilter, setGlobalFilter] = useState<string>('');
   const [filters] = useState<DataTableFilterMeta>({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    steamId: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
 
-  const players = useMemo(() => {
-    return parser.getPlayerLeaderboard(sortBy);
-  }, [parser, sortBy]);
-
-  const sortOptions = [
-    { label: 'Distance', value: 'distance' },
-    { label: 'Race Joins', value: 'joins' },
-    { label: 'Race Finishes', value: 'finishes' },
-  ];
+  const players = useMemo(() => parser.getPlayerEventStats(), [parser]);
 
   const header = (
-    <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center gap-3">
-      <div className="flex align-items-center gap-2">
-        <span className="p-input-icon-left">
-          <i className="pi pi-search" />
-          <InputText
-            value={globalFilter}
-            onChange={(e) => setGlobalFilter(e.target.value)}
-            placeholder="Search players..."
-          />
-        </span>
-      </div>
-      <div className="flex align-items-center gap-2">
-        <label htmlFor="sortBy" className="font-semibold">
-          Sort by:
-        </label>
-        <Dropdown
-          id="sortBy"
-          value={sortBy}
-          options={sortOptions}
-          onChange={(e) => setSortBy(e.value)}
-          className="w-10rem"
+    <div className="flex align-items-center gap-2">
+      <span className="p-input-icon-left">
+        <i className="pi pi-search" />
+        <InputText
+          value={globalFilter}
+          onChange={(e) => setGlobalFilter(e.target.value)}
+          placeholder="Search drivers..."
         />
-      </div>
+      </span>
     </div>
   );
 
@@ -75,100 +65,136 @@ export function PlayersTab({ parser }: PlayersTabProps) {
         2: '🥈',
         3: '🥉',
       };
-      return (
-        <Tag value={icons[rank]} severity={severities[rank]} />
-      );
+      return <Tag value={icons[rank]} severity={severities[rank]} />;
     }
     return <span className="text-color-secondary">{rank}</span>;
   };
 
-  const distanceBodyTemplate = (rowData: ReturnType<typeof parser.getPlayers>[0]) => {
-    return (
-      <span className="font-semibold">
-        {(rowData.totalDistance / 1000).toFixed(2)} km
-      </span>
-    );
-  };
-
-  const dateBodyTemplate = (rowData: ReturnType<typeof parser.getPlayers>[0]) => {
-    return (
-      <span className="text-color-secondary">
-        {rowData.lastJoined.toLocaleDateString()} {rowData.lastJoined.toLocaleTimeString()}
-      </span>
-    );
-  };
-
-  const steamIdBodyTemplate = (rowData: ReturnType<typeof parser.getPlayers>[0]) => {
-    return (
-      <code className="text-sm surface-100 px-2 py-1 border-round">
-        {rowData.steamId}
-      </code>
-    );
-  };
+  const colHeader = (
+    <ColumnGroup>
+      <Row>
+        <Column header="#" rowSpan={2} style={{ width: '3.5rem' }} className="text-center" />
+        <Column header="Driver" rowSpan={2} />
+        <Column header="Qualifying" colSpan={3} className="text-center" />
+        <Column header="Race" colSpan={5} className="text-center" />
+      </Row>
+      <Row>
+        <Column
+          header={<TooltipHeader id="qual-apps" label="Apps" tip="Number of qualifying sessions participated in" />}
+          sortable field="qualifying.appearances"
+          style={{ width: '5rem' }} className="text-center"
+        />
+        <Column header="Poles" sortable field="qualifying.poles" style={{ width: '4.5rem' }} className="text-center" />
+        <Column header="Best Grid" sortable field="qualifying.bestPosition" style={{ width: '6rem' }} className="text-center" />
+        <Column
+          header={<TooltipHeader id="race-apps" label="Apps" tip="Number of races entered (Finishes + DNFs)" />}
+          sortable field="race.appearances"
+          style={{ width: '5rem' }} className="text-center"
+        />
+        <Column header="Wins" sortable field="race.wins" style={{ width: '4.5rem' }} className="text-center" />
+        <Column header="Podiums" sortable field="race.podiums" style={{ width: '5.5rem' }} className="text-center" />
+        <Column header="Finishes" sortable field="race.finishes" style={{ width: '5.5rem' }} className="text-center" />
+        <Column header="DNFs" sortable field="race.dnfs" style={{ width: '4.5rem' }} className="text-center" />
+        <Column header="Best Pos" sortable field="race.bestPosition" style={{ width: '5.5rem' }} className="text-center" />
+      </Row>
+    </ColumnGroup>
+  );
 
   return (
     <Card className="shadow-2">
       <DataTable
         value={players}
         header={header}
+        headerColumnGroup={colHeader}
         globalFilter={globalFilter}
         filters={filters}
+        globalFilterFields={['name']}
         paginator
         rows={10}
         rowsPerPageOptions={[10, 25, 50]}
         stripedRows
-        emptyMessage="No players found."
-        sortField={sortBy === 'distance' ? 'totalDistance' : sortBy === 'joins' ? 'raceJoins' : 'raceFinishes'}
+        emptyMessage="No event data found."
+        sortField="race.wins"
         sortOrder={-1}
         removableSort
       >
+        <Column body={rankBodyTemplate} style={{ width: '3.5rem' }} className="text-center" />
+        <Column field="name" className="font-semibold" />
         <Column
-          header="#"
-          body={rankBodyTemplate}
-          style={{ width: '4rem' }}
+          field="qualifying.appearances"
+          body={(row: PlayerEventStats) =>
+            row.qualifying ? row.qualifying.appearances : DASH
+          }
+          style={{ width: '5rem' }}
           className="text-center"
         />
         <Column
-          field="name"
-          header="Name"
-          sortable
-          filter
-          filterPlaceholder="Search by name"
-          className="font-semibold"
+          field="qualifying.poles"
+          body={(row: PlayerEventStats) =>
+            row.qualifying ? row.qualifying.poles : DASH
+          }
+          style={{ width: '4.5rem' }}
+          className="text-center"
         />
         <Column
-          field="steamId"
-          header="Steam ID"
-          body={steamIdBodyTemplate}
-          sortable
-        />
-        <Column
-          field="totalDistance"
-          header="Distance"
-          body={distanceBodyTemplate}
-          sortable
-          style={{ width: '10rem' }}
-        />
-        <Column
-          field="raceJoins"
-          header="Joins"
-          sortable
+          field="qualifying.bestPosition"
+          body={(row: PlayerEventStats) =>
+            row.qualifying && row.qualifying.bestPosition > 0
+              ? `P${row.qualifying.bestPosition}`
+              : DASH
+          }
           style={{ width: '6rem' }}
           className="text-center"
         />
         <Column
-          field="raceFinishes"
-          header="Finishes"
-          sortable
-          style={{ width: '6rem' }}
+          field="race.appearances"
+          body={(row: PlayerEventStats) =>
+            row.race ? row.race.appearances : DASH
+          }
+          style={{ width: '5rem' }}
           className="text-center"
         />
         <Column
-          field="lastJoined"
-          header="Last Seen"
-          body={dateBodyTemplate}
-          sortable
-          style={{ width: '12rem' }}
+          field="race.wins"
+          body={(row: PlayerEventStats) =>
+            row.race ? row.race.wins : DASH
+          }
+          style={{ width: '4.5rem' }}
+          className="text-center"
+        />
+        <Column
+          field="race.podiums"
+          body={(row: PlayerEventStats) =>
+            row.race ? row.race.podiums : DASH
+          }
+          style={{ width: '5.5rem' }}
+          className="text-center"
+        />
+        <Column
+          field="race.finishes"
+          body={(row: PlayerEventStats) =>
+            row.race ? row.race.finishes : DASH
+          }
+          style={{ width: '5.5rem' }}
+          className="text-center"
+        />
+        <Column
+          field="race.dnfs"
+          body={(row: PlayerEventStats) =>
+            row.race ? row.race.dnfs : DASH
+          }
+          style={{ width: '4.5rem' }}
+          className="text-center"
+        />
+        <Column
+          field="race.bestPosition"
+          body={(row: PlayerEventStats) =>
+            row.race && row.race.bestPosition > 0
+              ? `P${row.race.bestPosition}`
+              : DASH
+          }
+          style={{ width: '5.5rem' }}
+          className="text-center"
         />
       </DataTable>
     </Card>

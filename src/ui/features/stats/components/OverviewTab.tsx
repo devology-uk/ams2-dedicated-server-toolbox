@@ -5,23 +5,19 @@ import { Column } from 'primereact/column';
 import './OverviewTab.scss';
 import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 import { useGameLookup } from '../../../hooks/useGameLookup';
-import { formatStageName } from '../../../utils/formatters';
 
 interface OverviewTabProps {
   parser: AMS2StatsParser;
 }
 
 export function OverviewTab({ parser }: OverviewTabProps) {
-  const { resolveTrack, resolveVehicle } = useGameLookup();
-  const stats = parser.getSessionStats();
-  const trackUsage = parser.getTrackUsage();
-  const vehicleUsage = parser.getVehicleUsage();
+  const { resolveTrack } = useGameLookup();
+  const uptime = parser.getFormattedUptime();
+  const stats = parser.getEventOverviewStats();
 
-  const stageData = Object.entries(stats.stageCounts).map(([stage, count]) => ({
-    stage: formatStageName(stage),
-    count,
-    duration: stats.stageDurations[stage] || '-',
-  }));
+  const trackUsage = [...stats.trackUsage].sort(
+    (a, b) => b.qualifyingCount + b.raceCount - (a.qualifyingCount + a.raceCount),
+  );
 
   return (
     <div className="flex flex-column gap-4">
@@ -30,92 +26,58 @@ export function OverviewTab({ parser }: OverviewTabProps) {
         <div className="col-12 md:col-6 lg:col-4 xl:col-2">
           <StatCard
             title="Server Uptime"
-            value={parser.getFormattedUptime()}
+            value={uptime}
             icon="pi-clock"
             color="blue"
           />
         </div>
         <div className="col-12 md:col-6 lg:col-4 xl:col-2">
           <StatCard
-            title="Total Sessions"
-            value={stats.totalSessions.toString()}
+            title="Total Events"
+            value={stats.totalEvents.toString()}
             icon="pi-calendar"
             color="green"
           />
         </div>
         <div className="col-12 md:col-6 lg:col-4 xl:col-2">
           <StatCard
-            title="Total Lobbies"
-            value={stats.totalLobbies.toString()}
-            icon="pi-th-large"
+            title="Qualifying Sessions"
+            value={stats.qualifyingCount.toString()}
+            icon="pi-stopwatch"
             color="purple"
           />
         </div>
         <div className="col-12 md:col-6 lg:col-4 xl:col-2">
           <StatCard
-            title="Total Distance"
-            value={parser.getFormattedTotalDistance()}
-            icon="pi-map"
+            title="Race Sessions"
+            value={stats.raceCount.toString()}
+            icon="pi-flag-fill"
             color="orange"
           />
         </div>
         <div className="col-12 md:col-6 lg:col-4 xl:col-2">
           <StatCard
-            title="Race Finishes"
-            value={stats.raceFinishes.toString()}
-            icon="pi-flag-fill"
+            title="Unique Drivers"
+            value={stats.uniqueDrivers.toString()}
+            icon="pi-users"
             color="cyan"
           />
         </div>
-        <div className="col-12 md:col-6 lg:col-4 xl:col-2">
-          <StatCard
-            title="Race Loads"
-            value={stats.raceLoads.toString()}
-            icon="pi-download"
-            color="pink"
-          />
-        </div>
       </div>
 
-      {/* Stage Statistics */}
-      <Card title="Stage Statistics" className="shadow-2">
-        <DataTable value={stageData} stripedRows size="small">
-          <Column field="stage" header="Stage" sortable />
-          <Column field="count" header="Count" sortable />
-          <Column field="duration" header="Total Duration" sortable />
+      {/* Event Track Usage */}
+      <Card title="Event Track Usage" className="shadow-2">
+        <DataTable value={trackUsage} stripedRows size="small" emptyMessage="No event sessions found.">
+          <Column
+            field="trackId"
+            header="Track"
+            sortable
+            body={(row) => resolveTrack(row.trackId)}
+          />
+          <Column field="qualifyingCount" header="Qualifying" sortable style={{ width: '8rem' }} className="text-center" />
+          <Column field="raceCount" header="Race" sortable style={{ width: '6rem' }} className="text-center" />
         </DataTable>
       </Card>
-
-      {/* Track & Vehicle Usage */}
-      <div className="grid">
-        <div className="col-12 lg:col-6">
-          <Card title="Track Usage" className="shadow-2 h-full">
-            <DataTable value={trackUsage} stripedRows size="small">
-              <Column field="trackId" header="Track" sortable body={(row) => resolveTrack(row.trackId)} />
-              <Column field="sessions" header="Sessions" sortable />
-              <Column
-                field="distance"
-                header="Distance"
-                sortable
-                body={(row) => `${(row.distance / 1000).toFixed(2)} km`}
-              />
-            </DataTable>
-          </Card>
-        </div>
-        <div className="col-12 lg:col-6">
-          <Card title="Vehicle Usage" className="shadow-2 h-full">
-            <DataTable value={vehicleUsage} stripedRows size="small">
-              <Column field="vehicleId" header="Vehicle" sortable body={(row) => resolveVehicle(row.vehicleId)} />
-              <Column
-                field="distance"
-                header="Distance"
-                sortable
-                body={(row) => `${(row.distance / 1000).toFixed(2)} km`}
-              />
-            </DataTable>
-          </Card>
-        </div>
-      </div>
     </div>
   );
 }
@@ -155,4 +117,3 @@ function StatCard({ title, value, icon, color }: StatCardProps) {
     </Card>
   );
 }
-

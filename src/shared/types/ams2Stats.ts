@@ -267,3 +267,43 @@ export interface StageOverview {
     resultCount: number;
     hasResults: boolean;
 }
+
+export interface PlayerQualifyingStats {
+    steamId: string;
+    name: string;
+    appearances: number;
+    poles: number;             // times qualified in P1
+    bestPosition: number;      // best grid pos achieved; 0 = none
+    avgPosition: number;
+}
+
+export interface PlayerRaceStats {
+    steamId: string;
+    name: string;
+    appearances: number;       // total race entries (finished + DNF)
+    wins: number;
+    podiums: number;           // position <= 3, State === 'Finished'
+    finishes: number;          // State === 'Finished'
+    dnfs: number;
+    bestPosition: number;      // best finishing position; 0 = no finish
+    avgPosition: number;       // average of finished positions only
+}
+
+export interface PlayerEventStats {
+    steamId: string;
+    name: string;
+    qualifying: PlayerQualifyingStats | null;
+    race: PlayerRaceStats | null;
+}
+
+export interface EventOverviewStats {
+    totalEvents: number;
+    qualifyingCount: number;   // events with qualifying1 results
+    raceCount: number;         // events with race1 results
+    uniqueDrivers: number;     // distinct steamIds across all event results
+    trackUsage: Array<{
+        trackId: number;
+        qualifyingCount: number;
+        raceCount: number;
+    }>;
+}
