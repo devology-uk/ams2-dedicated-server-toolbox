@@ -2,10 +2,12 @@
 
 import type {
     AMS2StatsFile,
+    EventOverviewStats,
     Member,
     Participant,
     ParsedMember,
     ParsedResult,
+    PlayerEventStats,
     PlayerStats,
     SessionHistory,
     Stage,
@@ -135,6 +137,167 @@ export class AMS2StatsParser {
         return this.data.stats.history.filter((session) =>
                                                   stageType in session.stages,
         );
+    }
+
+    /**
+     * Get sessions that are considered "events": those with qualifying1 or race1 stages
+     * that have a non-empty results array.
+     */
+    getEventSessions(): SessionHistory[] {
+        return this.data.stats.history.filter((session) => {
+            const qualStage = session.stages['qualifying1'];
+            const raceStage = session.stages['race1'];
+            return (
+                (qualStage && this.stageHasResults(qualStage)) ||
+                (raceStage && this.stageHasResults(raceStage))
+            );
+        });
+    }
+
+    /**
+     * Get aggregate stats derived exclusively from event sessions.
+     */
+    getEventOverviewStats(): EventOverviewStats {
+        const events = this.getEventSessions();
+
+        const allDrivers = new Set<string>();
+        const trackUsageMap = new Map<number, { qualifyingCount: number; raceCount: number }>();
+        let qualifyingCount = 0;
+        let raceCount = 0;
+
+        for (const session of events) {
+            const trackId = session.setup.TrackId;
+            if (!trackUsageMap.has(trackId)) {
+                trackUsageMap.set(trackId, { qualifyingCount: 0, raceCount: 0 });
+            }
+            const trackEntry = trackUsageMap.get(trackId)!;
+
+            const qualStage = session.stages['qualifying1'];
+            if (qualStage && this.stageHasResults(qualStage)) {
+                qualifyingCount++;
+                trackEntry.qualifyingCount++;
+                for (const r of this.getParsedStageResults(session, 'qualifying1')) {
+                    if (r.steamId) allDrivers.add(r.steamId);
+                }
+            }
+
+            const raceStage = session.stages['race1'];
+            if (raceStage && this.stageHasResults(raceStage)) {
+                raceCount++;
+                trackEntry.raceCount++;
+                for (const r of this.getParsedStageResults(session, 'race1')) {
+                    if (r.steamId) allDrivers.add(r.steamId);
+                }
+            }
+        }
+
+        return {
+            totalEvents: events.length,
+            qualifyingCount,
+            raceCount,
+            uniqueDrivers: allDrivers.size,
+            trackUsage: Array.from(trackUsageMap.entries()).map(([trackId, counts]) => ({
+                trackId,
+                ...counts,
+            })),
+        };
+    }
+
+    /**
+     * Get per-player stats from event sessions, with qualifying and race stats separated.
+     */
+    getPlayerEventStats(): PlayerEventStats[] {
+        const events = this.getEventSessions();
+
+        const qualMap = new Map<string, {
+            name: string;
+            positions: number[];
+            poles: number;
+        }>();
+
+        const raceMap = new Map<string, {
+            name: string;
+            wins: number;
+            podiums: number;
+            finishes: number;
+            dnfs: number;
+            positions: number[];
+        }>();
+
+        for (const session of events) {
+            for (const r of this.getParsedStageResults(session, 'qualifying1')) {
+                const key = r.steamId || r.name;
+                if (!qualMap.has(key)) {
+                    qualMap.set(key, { name: r.name, positions: [], poles: 0 });
+                }
+                const entry = qualMap.get(key)!;
+                if (r.position > 0) entry.positions.push(r.position);
+                if (r.position === 1) entry.poles++;
+            }
+
+            for (const r of this.getParsedStageResults(session, 'race1')) {
+                const key = r.steamId || r.name;
+                if (!raceMap.has(key)) {
+                    raceMap.set(key, {
+                        name: r.name,
+                        wins: 0,
+                        podiums: 0,
+                        finishes: 0,
+                        dnfs: 0,
+                        positions: [],
+                    });
+                }
+                const entry = raceMap.get(key)!;
+                const finished = r.state === 'Finished';
+                if (finished) {
+                    entry.finishes++;
+                    if (r.position === 1) entry.wins++;
+                    if (r.position <= 3) entry.podiums++;
+                    if (r.position > 0) entry.positions.push(r.position);
+                } else {
+                    entry.dnfs++;
+                }
+            }
+        }
+
+        const allKeys = new Set([...qualMap.keys(), ...raceMap.keys()]);
+
+        return Array.from(allKeys).map((key) => {
+            const qualEntry = qualMap.get(key);
+            const raceEntry = raceMap.get(key);
+            const name = (qualEntry ?? raceEntry)!.name;
+
+            const qualifying = qualEntry
+                ? {
+                    steamId: key,
+                    name,
+                    appearances: qualEntry.positions.length,
+                    poles: qualEntry.poles,
+                    bestPosition: qualEntry.positions.length > 0 ? Math.min(...qualEntry.positions) : 0,
+                    avgPosition: qualEntry.positions.length > 0
+                        ? qualEntry.positions.reduce((a, b) => a + b, 0) / qualEntry.positions.length
+                        : 0,
+                }
+                : null;
+
+            const race = raceEntry
+                ? {
+                    steamId: key,
+                    name,
+                    appearances: raceEntry.finishes + raceEntry.dnfs,
+                    wins: raceEntry.wins,
+                    podiums: raceEntry.podiums,
+                    finishes: raceEntry.finishes,
+                    dnfs: raceEntry.dnfs,
+                    bestPosition: raceEntry.positions.length > 0 ? Math.min(...raceEntry.positions) : 0,
+                    avgPosition: raceEntry.positions.length > 0
+                        ? raceEntry.positions.reduce((a, b) => a + b, 0) / raceEntry.positions.length
+                        : 0,
+                }
+                : null;
+
+            return { steamId: key, name, qualifying, race };
+        });
     }
 
     // =============================================
@@ -546,7 +709,14 @@ export class AMS2StatsParser {
     }
 
     getTotalDistance(): number {
-        return this.sumValues(this.data.stats.session.counts.track_distances);
+        // Use per-player distances rather than the pre-aggregated session total.
+        // The session total is a raw arithmetic sum of individual counters (which may
+        // each have independently overflowed), making it impossible to correct reliably.
+        // Summing individually-corrected player values gives a more accurate result.
+        const players = this.data.stats.players;
+        return Object.values(players).reduce<number>((sum, player) => {
+            return sum + this.sumValues(player.counts.track_distances);
+        }, 0);
     }
 
     getFormattedTotalDistance(): string {
@@ -637,19 +807,23 @@ export class AMS2StatsParser {
 
     /**
      * Parse distance values that may be in millimeters and may have
-     * overflowed past 32-bit signed integer range.
+     * overflowed past 32-bit signed integer range — possibly multiple times
+     * if the stored value is an accumulated sum of several overflowed values.
      * Returns meters.
      */
     private parseDistance(value: number | string | undefined): number {
         if (value === undefined) return 0;
-        const num = typeof value === 'string' ? parseFloat(value) : value;
+        let num = typeof value === 'string' ? parseFloat(value) : value;
         if (isNaN(num)) return 0;
 
-        // Convert negative (overflow) to unsigned 32-bit equivalent
-        const distance = num < 0 ? 4294967296 + num : num;
+        // Each 32-bit overflow wraps by 2^32. Apply corrections until positive.
+        // (e.g. a session total summing two overflowed player values needs two corrections)
+        while (num < 0) {
+            num += 4294967296;
+        }
 
         // Convert from millimeters to meters
-        return distance / 1000;
+        return num / 1000;
     }
 
     private formatStageDurations(
@@ -665,13 +839,15 @@ export class AMS2StatsParser {
 
     private parseDuration(value: number | string | undefined): number {
         if (value === undefined) return 0;
-        const num = typeof value === 'string' ? parseFloat(value) : value;
+        let num = typeof value === 'string' ? parseFloat(value) : value;
         if (isNaN(num)) return 0;
 
-        // Convert negative (overflow) to unsigned 32-bit equivalent
-        const duration = num < 0 ? 4294967296 + num : num;
+        // Each 32-bit overflow wraps by 2^32. Apply corrections until positive.
+        while (num < 0) {
+            num += 4294967296;
+        }
 
         // Convert from milliseconds to seconds
-        return duration / 1000;
+        return num / 1000;
     }
 }

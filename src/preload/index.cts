@@ -61,6 +61,9 @@ const IPC_CHANNELS = {
     // Auto-update
     UPDATE_READY: 'update-ready',
     INSTALL_UPDATE: 'install-update',
+
+    // Shell
+    OPEN_EXTERNAL_URL: 'open-external-url',
 } as const;
 
 interface ServerConnectionInput {
@@ -179,6 +182,10 @@ electron.contextBridge.exposeInMainWorld('electron', {
         getImportHistory: (serverId: number, limit?: number) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_GET_IMPORT_HISTORY, serverId, limit),
     },
+
+    // Shell
+    openExternalUrl: (url: string) =>
+        electron.ipcRenderer.invoke(IPC_CHANNELS.OPEN_EXTERNAL_URL, url),
 
     // Auto-update
     onUpdateReady: (callback: () => void) => {

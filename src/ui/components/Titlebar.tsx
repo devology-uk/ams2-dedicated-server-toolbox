@@ -66,6 +66,13 @@ export const Titlebar = ({
                     tooltipOptions={{ position: 'bottom' }}
                 />
             )}
+            <Button
+                icon="pi pi-question-circle"
+                className="p-button-text p-button-plain titlebar-help-button"
+                onClick={() => window.electron.openExternalUrl('https://www.simracertools.com/docs/ams2-dedi-getting-started/')}
+                tooltip="Open documentation"
+                tooltipOptions={{ position: 'bottom' }}
+            />
         </div>
     );
 };

@@ -161,6 +161,9 @@ export interface ElectronAPI {
         ) => Promise<IpcResult<ImportLogEntry[]>>;
     };
 
+    // Shell
+    openExternalUrl: (url: string) => Promise<void>;
+
     // Auto-update
     onUpdateReady: (callback: () => void) => () => void;
     installUpdate: () => void;

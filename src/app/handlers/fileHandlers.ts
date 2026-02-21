@@ -1,11 +1,16 @@
 // src/app/handlers/fileHandlers.ts
 
-import { ipcMain, dialog } from 'electron';
+import { ipcMain, dialog, shell } from 'electron';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { IPC_CHANNELS } from '../../shared/types/ipc.js';
 
 export function registerFileHandlers(): void {
+  ipcMain.handle(IPC_CHANNELS.OPEN_EXTERNAL_URL, (_event, url: string) => {
+    shell.openExternal(url);
+  });
+
+
   ipcMain.handle(IPC_CHANNELS.IMPORT_CONFIG, async () => {
     const result = await dialog.showOpenDialog({
       title: 'Import Server Configuration',

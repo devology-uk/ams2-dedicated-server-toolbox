@@ -56,4 +56,7 @@ export const IPC_CHANNELS = {
     // Auto-update
     UPDATE_READY: 'update-ready',
     INSTALL_UPDATE: 'install-update',
+
+    // Shell
+    OPEN_EXTERNAL_URL: 'open-external-url',
 } as const;
