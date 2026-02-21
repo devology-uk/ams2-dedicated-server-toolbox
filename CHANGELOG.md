@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.2] - 2026-02-17
 
+### Added
+- Button to open documentation web site
+
 ### Fixed
 - Issue preventing the app from rendering correctly after install
 
