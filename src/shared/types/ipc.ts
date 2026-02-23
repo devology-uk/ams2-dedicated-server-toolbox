@@ -34,6 +34,7 @@ export const IPC_CHANNELS = {
     // Files
     IMPORT_CONFIG: 'import-config',
     EXPORT_CONFIG: 'export-config',
+    EXPORT_RESULTS: 'export-results',
 
     // Stats (existing - file-based)
     STATS_SELECT_FILE: 'stats-select-file',

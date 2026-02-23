@@ -133,6 +133,7 @@ export interface ElectronAPI {
     cache: CacheAPI;
     deleteConnection: (id: string) => Promise<boolean>;
     exportConfig: (data: string) => Promise<FileOperationResult>;
+    exportResults: (params: { filename: string; content: string; format: 'csv' | 'json' }) => Promise<FileOperationResult>;
     // Game data (shared, connection-independent)
     gameData: GameDataAPI;
     getActiveConnection: () => Promise<ServerConnection | null>;

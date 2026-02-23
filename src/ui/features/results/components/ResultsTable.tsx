@@ -6,6 +6,7 @@ import { Column } from 'primereact/column';
 import { Card } from 'primereact/card';
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
+import { SplitButton } from 'primereact/splitbutton';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { AddResultDialog } from './AddResultDialog.js';
@@ -51,6 +52,7 @@ export function ResultsTable({
     const { resolveAlias, aliasVersion } = useDriverAliases();
     const [addResultVisible, setAddResultVisible] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
+    const [exporting, setExporting] = useState(false);
 
     // Pre-resolve display names into new row objects so PrimeReact DataTable
     // sees changed data (and re-runs body templates) when aliases change.
@@ -75,6 +77,54 @@ export function ResultsTable({
 
     const stageSeverity = STAGE_COLORS[stageContext.stageName] ?? 'secondary';
     const sessionDate = new Date(stageContext.startTime * 1000);
+
+    const buildCsv = (rows: ResolvedRow[]): string => {
+        const escape = (v: string | number | null | undefined): string => {
+            const s = String(v ?? '');
+            return s.includes(',') || s.includes('"') || s.includes('\n')
+                ? `"${s.replace(/"/g, '""')}"` : s;
+        };
+        const header = ['Position', 'Driver', 'Steam Name', 'Steam ID', 'Fastest Lap', 'Laps', 'Total Time', 'Status', 'Manual'];
+        const dataRows = rows.map((r) => [
+            r.position,
+            escape(r.displayName),
+            escape(r.steamName),
+            escape(r.steamId),
+            escape(formatLapTime(r.fastestLapTime)),
+            r.lapsCompleted,
+            escape(formatTotalTime(r.totalTime)),
+            escape(r.state),
+            r.isManual ? 'Yes' : 'No',
+        ]);
+        return [header.join(','), ...dataRows.map((row) => row.join(','))].join('\n');
+    };
+
+    const buildJson = (rows: ResolvedRow[]): string => {
+        return JSON.stringify(
+            rows.map((r) => ({
+                position: r.position,
+                driver: r.displayName,
+                steamName: r.steamName,
+                steamId: r.steamId,
+                fastestLap: formatLapTime(r.fastestLapTime),
+                laps: r.lapsCompleted,
+                totalTime: formatTotalTime(r.totalTime),
+                status: r.state,
+                isManual: r.isManual,
+            })),
+            null, 2,
+        );
+    };
+
+    const handleExport = async (format: 'csv' | 'json') => {
+        const stagePart = formatStageName(stageContext.stageName).replace(/\s+/g, '_');
+        const datePart = sessionDate.toISOString().slice(0, 10);
+        const filename = `Session_${stageContext.sessionIndex}_${stagePart}_${datePart}.${format}`;
+        const content = format === 'csv' ? buildCsv(resolvedResults) : buildJson(resolvedResults);
+        setExporting(true);
+        await window.electron.exportResults({ filename, content, format });
+        setExporting(false);
+    };
 
     const title = (
         <div className="flex flex-column md:flex-row md:align-items-center md:justify-content-between gap-3">
@@ -121,6 +171,19 @@ export function ResultsTable({
                     size="small"
                     severity="secondary"
                     onClick={() => setAddResultVisible(true)}
+                />
+                <SplitButton
+                    label="Export CSV"
+                    icon="pi pi-download"
+                    size="small"
+                    severity="secondary"
+                    loading={exporting}
+                    onClick={() => handleExport('csv')}
+                    model={[{
+                        label: 'Export JSON',
+                        icon: 'pi pi-file',
+                        command: () => handleExport('json'),
+                    }]}
                 />
             </div>
         </div>

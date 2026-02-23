@@ -39,6 +39,7 @@ const IPC_CHANNELS = {
     // Files
     IMPORT_CONFIG: 'import-config',
     EXPORT_CONFIG: 'export-config',
+    EXPORT_RESULTS: 'export-results',
 
     // Stats
     STATS_SELECT_FILE: 'stats-select-file',
@@ -152,6 +153,8 @@ electron.contextBridge.exposeInMainWorld('electron', {
         electron.ipcRenderer.invoke(IPC_CHANNELS.IMPORT_CONFIG),
     exportConfig: (data: string) =>
         electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_CONFIG, data),
+    exportResults: (params: { filename: string; content: string; format: 'csv' | 'json' }) =>
+        electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_RESULTS, params),
 
     // Stats operations
     stats: {

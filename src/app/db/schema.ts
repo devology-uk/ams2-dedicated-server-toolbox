@@ -157,7 +157,6 @@ export const CREATE_TABLES = `
   CREATE INDEX IF NOT EXISTS idx_stage_results_session ON stage_results(session_id);
   CREATE INDEX IF NOT EXISTS idx_stage_results_player ON stage_results(player_id);
   CREATE INDEX IF NOT EXISTS idx_stage_results_steam ON stage_results(steam_id);
-  CREATE INDEX IF NOT EXISTS idx_stage_results_manual ON stage_results(is_manual);
   CREATE INDEX IF NOT EXISTS idx_session_members_session ON session_members(session_id);
   CREATE INDEX IF NOT EXISTS idx_session_members_steam ON session_members(steam_id);
   CREATE INDEX IF NOT EXISTS idx_players_steam ON players(steam_id);

@@ -29,11 +29,34 @@ export function getDatabase(): AppDatabase {
     return db;
 }
 
+function ensureColumn(
+    database: AppDatabase,
+    table: string,
+    column: string,
+    definition: string,
+): void {
+    const cols = database.pragma(`table_info(${table})`) as Array<{ name: string }>;
+    if (!cols.some((c) => c.name === column)) {
+        database.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+        console.log(`[DB] Added missing column ${table}.${column}`);
+    }
+}
+
 function initializeSchema(database: AppDatabase): void {
-    // Execute all CREATE TABLE IF NOT EXISTS statements
+    // Create any tables that don't yet exist
     database.exec(CREATE_TABLES);
 
-    // Track schema version
+    // Structural column checks — run unconditionally on every startup.
+    // These are idempotent and guard against partial migrations where the
+    // schema_version was bumped before the ALTER TABLE actually ran.
+    ensureColumn(database, 'stage_results', 'is_manual', 'INTEGER NOT NULL DEFAULT 0');
+
+    // Index for is_manual must be created after the column is guaranteed to exist
+    database.exec(
+        'CREATE INDEX IF NOT EXISTS idx_stage_results_manual ON stage_results(is_manual)',
+    );
+
+    // Version-gated migrations (for non-column-additive changes)
     const versionRow = database
         .prepare('SELECT value FROM schema_meta WHERE key = ?')
         .get('schema_version') as { value: string } | undefined;
@@ -41,25 +64,11 @@ function initializeSchema(database: AppDatabase): void {
     const currentVersion = versionRow ? parseInt(versionRow.value, 10) : 0;
 
     if (currentVersion < SCHEMA_VERSION) {
-        // v2: add is_manual column to stage_results
-        if (currentVersion < 2) {
-            const cols = database.pragma('table_info(stage_results)') as Array<{ name: string }>;
-            if (!cols.some((c) => c.name === 'is_manual')) {
-                database.exec(
-                    'ALTER TABLE stage_results ADD COLUMN is_manual INTEGER NOT NULL DEFAULT 0',
-                );
-            }
-        }
-
         database
-            .prepare(
-                'INSERT OR REPLACE INTO schema_meta (key, value) VALUES (?, ?)',
-            )
+            .prepare('INSERT OR REPLACE INTO schema_meta (key, value) VALUES (?, ?)')
             .run('schema_version', String(SCHEMA_VERSION));
 
-        console.log(
-            `[DB] Schema updated from v${currentVersion} to v${SCHEMA_VERSION}`,
-        );
+        console.log(`[DB] Schema updated from v${currentVersion} to v${SCHEMA_VERSION}`);
     }
 }
 

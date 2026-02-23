@@ -37,6 +37,34 @@ export function registerFileHandlers(): void {
     }
   });
 
+  ipcMain.handle(IPC_CHANNELS.EXPORT_RESULTS, async (
+    _event,
+    params: { filename: string; content: string; format: 'csv' | 'json' },
+  ) => {
+    const { filename, content, format } = params;
+    const filters = format === 'csv'
+      ? [{ name: 'CSV Files', extensions: ['csv'] }, { name: 'All Files', extensions: ['*'] }]
+      : [{ name: 'JSON Files', extensions: ['json'] }, { name: 'All Files', extensions: ['*'] }];
+
+    const result = await dialog.showSaveDialog({
+      title: 'Export Results',
+      defaultPath: filename,
+      filters,
+    });
+
+    if (result.canceled || !result.filePath) {
+      return { success: false, cancelled: true };
+    }
+
+    try {
+      await fs.writeFile(result.filePath, content, 'utf-8');
+      return { success: true, filename: path.basename(result.filePath) };
+    } catch (error) {
+      console.error('Failed to export results:', error);
+      return { success: false, error: 'Failed to write results file' };
+    }
+  });
+
   ipcMain.handle(IPC_CHANNELS.EXPORT_CONFIG, async (_event, data: string) => {
     const result = await dialog.showSaveDialog({
       title: 'Export Server Configuration',

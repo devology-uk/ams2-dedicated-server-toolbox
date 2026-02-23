@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ability to add an alias for driver in driver profile dialog
 - Ability to add a missing result to a session in results viewer, required when users exit the game before sms_stats plugin captures results
 - What's New dialog displays when new update is installed
+- Export session results to CSV or JSON from Results Viewer
 
 
 ## [1.0.3] - 2026-02-23
