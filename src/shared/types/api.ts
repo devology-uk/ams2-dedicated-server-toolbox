@@ -103,6 +103,16 @@ export type ApiListData = CachedListData;
 
 export type Platform = 'aix' | 'darwin' | 'freebsd' | 'linux' | 'openbsd' | 'sunos' | 'win32';
 
+export interface WhatsNewContent {
+    currentVersion: string;
+    markdown: string;
+}
+
+export interface WhatsNewAPI {
+    get: () => Promise<WhatsNewContent | null>;
+    dismiss: () => Promise<void>;
+}
+
 export interface AliasesAPI {
     getAll: () => Promise<Record<string, string>>;
     set: (steamId: string, alias: string) => Promise<void>;
@@ -169,6 +179,9 @@ export interface ElectronAPI {
         insertManualResult: (params: InsertManualResultParams) => Promise<IpcResult<StageResultRow>>;
         deleteManualResult: (resultId: number) => Promise<IpcResult<void>>;
     };
+
+    // What's New
+    whatsNew: WhatsNewAPI;
 
     // Driver Aliases
     aliases: AliasesAPI;

@@ -64,6 +64,10 @@ export const IPC_CHANNELS = {
     UPDATE_READY: 'update-ready',
     INSTALL_UPDATE: 'install-update',
 
+    // What's New
+    WHATS_NEW_GET:     'whats-new-get',
+    WHATS_NEW_DISMISS: 'whats-new-dismiss',
+
     // Shell
     OPEN_EXTERNAL_URL: 'open-external-url',
 } as const;

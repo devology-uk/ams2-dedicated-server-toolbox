@@ -17,18 +17,21 @@ export interface StoreSchema {
     gameDataVersion: string | null; // Track which build the data is from
     // Driver aliases — steamId → friendly display name
     driverAliases: Record<string, string>;
+    // Last version the user has seen the What's New dialog for
+    lastSeenVersion: string | null;
 }
 
 const store = new Store<StoreSchema>({
-                                         defaults: {
-                                             connections: [],
-                                             activeConnectionId: null,
-                                             apiCache: {},
-                                             gameData: null,
-                                             gameDataVersion: null,
-                                             driverAliases: {},
-                                         },
-                                     });
+    defaults: {
+        connections: [],
+        activeConnectionId: null,
+        apiCache: {},
+        gameData: null,
+        gameDataVersion: null,
+        driverAliases: {},
+        lastSeenVersion: null,
+    },
+});
 
 export default store;
 

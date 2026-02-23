@@ -69,6 +69,10 @@ const IPC_CHANNELS = {
     UPDATE_READY: 'update-ready',
     INSTALL_UPDATE: 'install-update',
 
+    // What's New
+    WHATS_NEW_GET:     'whats-new-get',
+    WHATS_NEW_DISMISS: 'whats-new-dismiss',
+
     // Shell
     OPEN_EXTERNAL_URL: 'open-external-url',
 } as const;
@@ -202,6 +206,14 @@ electron.contextBridge.exposeInMainWorld('electron', {
             electron.ipcRenderer.invoke(IPC_CHANNELS.ALIASES_SET, steamId, alias),
         delete: (steamId: string) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.ALIASES_DELETE, steamId),
+    },
+
+    // What's New
+    whatsNew: {
+        get: () =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.WHATS_NEW_GET),
+        dismiss: () =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.WHATS_NEW_DISMISS),
     },
 
     // Shell

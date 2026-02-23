@@ -7,7 +7,8 @@
   ],
   "extraResources": [
     "dist-app/preload/**",
-    "dist-app/data/**"
+    "dist-app/data/**",
+    "CHANGELOG.md"
   ],
   "asar": true,
   "asarUnpack": [

@@ -197,7 +197,7 @@ export class StatsQueryService {
          WHERE sr.session_id = ? AND st.name = ?
          ORDER BY sr.position ASC`,
                     )
-                    .all(sessionId, stageName) as Array<StageResultRow & { isManual: number }>)
+                    .all(sessionId, stageName) as Array<Omit<StageResultRow, 'isManual'> & { isManual: number }>)
             .map((r) => ({ ...r, isManual: r.isManual === 1 }));
     }
 
@@ -217,7 +217,7 @@ export class StatsQueryService {
          WHERE sr.session_id = ?
          ORDER BY st.name, sr.position ASC`,
                           )
-                          .all(sessionId) as Array<StageResultRow & { isManual: number }>)
+                          .all(sessionId) as Array<Omit<StageResultRow, 'isManual'> & { isManual: number }>)
             .map((r) => ({ ...r, isManual: r.isManual === 1 }));
 
         const grouped: Record<string, StageResultRow[]> = {};
@@ -424,7 +424,7 @@ export class StatsQueryService {
              JOIN stages st ON st.id = sr.stage_id
              WHERE sr.id = ?`,
                              )
-                             .get(result.lastInsertRowid) as (StageResultRow & { isManual: number });
+                             .get(result.lastInsertRowid) as (Omit<StageResultRow, 'isManual'> & { isManual: number });
         return { ...inserted, isManual: true };
     }
 
