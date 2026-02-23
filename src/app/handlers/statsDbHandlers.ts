@@ -3,6 +3,7 @@
 import { ipcMain, dialog, BrowserWindow } from 'electron';
 import * as fs from 'fs/promises';
 import { IPC_CHANNELS } from '../../shared/types/ipc.js';
+import type { InsertManualResultParams } from '../../shared/types/statsDb.js';
 import { getDatabase } from '../db/index.js';
 import { StatsImportService } from '../services/statsImportService.js';
 import { StatsQueryService } from '../services/statsQueryService.js';
@@ -266,6 +267,42 @@ export function registerStatsDbHandlers(mainWindow: BrowserWindow): void {
                     success: true,
                     data: services.queryService.getImportHistory(serverId, limit),
                 };
+            } catch (error) {
+                return { success: false, error: String(error) };
+            }
+        },
+    );
+
+    // =============================================
+    // Manual Results
+    // =============================================
+
+    ipcMain.handle(
+        IPC_CHANNELS.STATS_DB_INSERT_MANUAL_RESULT,
+        (_event, params: InsertManualResultParams) => {
+            const services = getServices();
+            if (!services) return DB_UNAVAILABLE_RESPONSE;
+
+            try {
+                return {
+                    success: true,
+                    data: services.queryService.insertManualResult(params),
+                };
+            } catch (error) {
+                return { success: false, error: String(error) };
+            }
+        },
+    );
+
+    ipcMain.handle(
+        IPC_CHANNELS.STATS_DB_DELETE_MANUAL_RESULT,
+        (_event, resultId: number) => {
+            const services = getServices();
+            if (!services) return DB_UNAVAILABLE_RESPONSE;
+
+            try {
+                services.queryService.deleteManualResult(resultId);
+                return { success: true };
             } catch (error) {
                 return { success: false, error: String(error) };
             }

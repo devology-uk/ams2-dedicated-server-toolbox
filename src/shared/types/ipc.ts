@@ -52,6 +52,8 @@ export const IPC_CHANNELS = {
     STATS_DB_GET_SESSION_RESULTS: 'stats-db-get-session-results',
     STATS_DB_GET_STAGE_RESULTS: 'stats-db-get-stage-results',
     STATS_DB_GET_IMPORT_HISTORY: 'stats-db-get-import-history',
+    STATS_DB_INSERT_MANUAL_RESULT: 'stats-db-insert-manual-result',
+    STATS_DB_DELETE_MANUAL_RESULT: 'stats-db-delete-manual-result',
 
     // Driver Aliases
     ALIASES_GET_ALL: 'aliases-get-all',

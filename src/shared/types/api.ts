@@ -21,6 +21,7 @@ import type {
     StageResultRow,
     ImportLogEntry,
     IpcResult,
+    InsertManualResultParams,
 } from './statsDb.js';
 
 // Re-export for convenience
@@ -165,6 +166,8 @@ export interface ElectronAPI {
             serverId: number,
             limit?: number,
         ) => Promise<IpcResult<ImportLogEntry[]>>;
+        insertManualResult: (params: InsertManualResultParams) => Promise<IpcResult<StageResultRow>>;
+        deleteManualResult: (resultId: number) => Promise<IpcResult<void>>;
     };
 
     // Driver Aliases

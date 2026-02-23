@@ -1,12 +1,14 @@
 // src/ui/features/results/components/ResultsTable.tsx
 
-import { type ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Card } from 'primereact/card';
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { AddResultDialog } from './AddResultDialog.js';
 
 import type { StageResultRow } from '../../../../shared/types';
 import { useGameLookup } from '../../../hooks/useGameLookup';
@@ -14,6 +16,7 @@ import { useDriverAliases } from '../../../hooks/useDriverAliases';
 import { formatStageName, formatLapTime, formatTotalTime } from '../../../utils/formatters';
 
 interface StageContext {
+    sessionId: number;
     sessionIndex: number;
     stageName: string;
     trackId: number;
@@ -26,6 +29,7 @@ interface ResultsTableProps {
     loading: boolean;
     onBack: () => void;
     onPlayerClick: (steamId: string, name: string) => void;
+    onRefresh: () => void;
 }
 
 const STAGE_COLORS: Record<string, 'info' | 'warning' | 'success' | 'secondary'> = {
@@ -41,9 +45,12 @@ export function ResultsTable({
                                  loading,
                                  onBack,
                                  onPlayerClick,
+                                 onRefresh,
                              }: ResultsTableProps) {
     const { resolveTrack } = useGameLookup();
     const { resolveAlias, aliasVersion } = useDriverAliases();
+    const [addResultVisible, setAddResultVisible] = useState(false);
+    const [deletingId, setDeletingId] = useState<number | null>(null);
 
     // Pre-resolve display names into new row objects so PrimeReact DataTable
     // sees changed data (and re-runs body templates) when aliases change.
@@ -108,6 +115,13 @@ export function ResultsTable({
                         severity="success"
                     />
                 )}
+                <Button
+                    label="Add Result"
+                    icon="pi pi-plus"
+                    size="small"
+                    severity="secondary"
+                    onClick={() => setAddResultVisible(true)}
+                />
             </div>
         </div>
     );
@@ -188,8 +202,53 @@ export function ResultsTable({
         <span className="text-center">{row.lapsCompleted}</span>
     );
 
+    const handleDeleteManual = (id: number) => {
+        confirmDialog({
+            message: 'Remove this manually-added result?',
+            header: 'Confirm deletion',
+            icon: 'pi pi-trash',
+            acceptClassName: 'p-button-danger',
+            accept: async () => {
+                setDeletingId(id);
+                const res = await window.electron.statsDb.deleteManualResult(id);
+                setDeletingId(null);
+                if (res.success) {
+                    onRefresh();
+                }
+            },
+        });
+    };
+
+    const actionsBodyTemplate = (row: ResolvedRow): ReactNode => {
+        if (!row.isManual) return null;
+        return (
+            <div className="flex align-items-center gap-1">
+                <Tag value="Manual" severity="warning" />
+                <Button
+                    icon="pi pi-trash"
+                    size="small"
+                    severity="danger"
+                    text
+                    loading={deletingId === row.id}
+                    tooltip="Remove manual result"
+                    tooltipOptions={{ position: 'top' }}
+                    onClick={() => handleDeleteManual(row.id)}
+                />
+            </div>
+        );
+    };
+
     return (
         <Card title={title} className="shadow-2">
+            <ConfirmDialog />
+            <AddResultDialog
+                visible={addResultVisible}
+                onHide={() => setAddResultVisible(false)}
+                sessionId={stageContext.sessionId}
+                stageName={stageContext.stageName}
+                existingResults={resolvedResults}
+                onResultAdded={() => { setAddResultVisible(false); onRefresh(); }}
+            />
             <DataTable
                 value={resolvedResults}
                 stripedRows
@@ -237,6 +296,11 @@ export function ResultsTable({
                     body={stateBodyTemplate}
                     sortable
                     style={{ width: '8rem' }}
+                />
+                <Column
+                    header=""
+                    body={actionsBodyTemplate}
+                    style={{ width: '9rem' }}
                 />
             </DataTable>
         </Card>

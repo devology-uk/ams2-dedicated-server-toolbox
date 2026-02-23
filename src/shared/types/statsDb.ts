@@ -59,6 +59,19 @@ export interface StageResultRow {
     totalTime: number;
     state: string;
     vehicleId: number;
+    isManual: boolean;
+}
+
+export interface InsertManualResultParams {
+    sessionId: number;
+    stageName: string;
+    name: string;
+    steamId: string | null;
+    position: number;
+    state: string;
+    lapsCompleted: number;
+    fastestLapTime: number | null;
+    totalTime: number;
 }
 
 export interface PlayerResultHistory {

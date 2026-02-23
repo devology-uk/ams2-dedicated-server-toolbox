@@ -5,7 +5,7 @@
 // .sql files in the Electron package. Tables use IF NOT EXISTS so
 // this is safe to run on every app start.
 
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 export const CREATE_TABLES = `
   -- Schema version tracking
@@ -120,7 +120,8 @@ export const CREATE_TABLES = `
     total_time INTEGER NOT NULL,
     state TEXT NOT NULL,
     vehicle_id INTEGER NOT NULL,
-    recorded_at INTEGER NOT NULL
+    recorded_at INTEGER NOT NULL,
+    is_manual INTEGER NOT NULL DEFAULT 0
   );
 
   -- Player distance tracking per server/track/vehicle
@@ -156,6 +157,7 @@ export const CREATE_TABLES = `
   CREATE INDEX IF NOT EXISTS idx_stage_results_session ON stage_results(session_id);
   CREATE INDEX IF NOT EXISTS idx_stage_results_player ON stage_results(player_id);
   CREATE INDEX IF NOT EXISTS idx_stage_results_steam ON stage_results(steam_id);
+  CREATE INDEX IF NOT EXISTS idx_stage_results_manual ON stage_results(is_manual);
   CREATE INDEX IF NOT EXISTS idx_session_members_session ON session_members(session_id);
   CREATE INDEX IF NOT EXISTS idx_session_members_steam ON session_members(steam_id);
   CREATE INDEX IF NOT EXISTS idx_players_steam ON players(steam_id);

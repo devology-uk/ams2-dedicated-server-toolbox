@@ -11,6 +11,7 @@ import type {
     PlayerBestLap,
     ImportLogEntry,
     ServerOverview,
+    InsertManualResultParams,
 } from '../../shared/types/statsDb.js';
 
 export class StatsQueryService {
@@ -181,39 +182,43 @@ export class StatsQueryService {
     // --------------------------------------------------
 
     getStageResults(sessionId: number, stageName: string): StageResultRow[] {
-        return this.db
-                   .prepare(
-                       `SELECT
+        return (this.db
+                    .prepare(
+                        `SELECT
           sr.id, st.name as stageName, sr.position,
           sr.name, sr.steam_id as steamId,
           sr.fastest_lap_time as fastestLapTime,
           sr.laps_completed as lapsCompleted,
           sr.total_time as totalTime,
-          sr.state, sr.vehicle_id as vehicleId
+          sr.state, sr.vehicle_id as vehicleId,
+          sr.is_manual as isManual
          FROM stage_results sr
          JOIN stages st ON st.id = sr.stage_id
          WHERE sr.session_id = ? AND st.name = ?
          ORDER BY sr.position ASC`,
-                   )
-                   .all(sessionId, stageName) as StageResultRow[];
+                    )
+                    .all(sessionId, stageName) as Array<StageResultRow & { isManual: number }>)
+            .map((r) => ({ ...r, isManual: r.isManual === 1 }));
     }
 
     getAllSessionResults(sessionId: number): Record<string, StageResultRow[]> {
-        const rows = this.db
-                         .prepare(
-                             `SELECT
+        const rows = (this.db
+                          .prepare(
+                              `SELECT
           sr.id, st.name as stageName, sr.position,
           sr.name, sr.steam_id as steamId,
           sr.fastest_lap_time as fastestLapTime,
           sr.laps_completed as lapsCompleted,
           sr.total_time as totalTime,
-          sr.state, sr.vehicle_id as vehicleId
+          sr.state, sr.vehicle_id as vehicleId,
+          sr.is_manual as isManual
          FROM stage_results sr
          JOIN stages st ON st.id = sr.stage_id
          WHERE sr.session_id = ?
          ORDER BY st.name, sr.position ASC`,
-                         )
-                         .all(sessionId) as StageResultRow[];
+                          )
+                          .all(sessionId) as Array<StageResultRow & { isManual: number }>)
+            .map((r) => ({ ...r, isManual: r.isManual === 1 }));
 
         const grouped: Record<string, StageResultRow[]> = {};
         for (const row of rows) {
@@ -366,6 +371,71 @@ export class StatsQueryService {
     // --------------------------------------------------
     // Import history
     // --------------------------------------------------
+
+    // --------------------------------------------------
+    // Manual result entry
+    // --------------------------------------------------
+
+    insertManualResult(params: InsertManualResultParams): StageResultRow {
+        const stage = this.db
+                          .prepare('SELECT id FROM stages WHERE session_id = ? AND name = ?')
+                          .get(params.sessionId, params.stageName) as { id: number } | undefined;
+        if (!stage) {
+            throw new Error(
+                `Stage '${params.stageName}' not found for session ${params.sessionId}`,
+            );
+        }
+
+        let playerId: number | null = null;
+        if (params.steamId) {
+            const player = this.db
+                               .prepare('SELECT id FROM players WHERE steam_id = ?')
+                               .get(params.steamId) as { id: number } | undefined;
+            playerId = player?.id ?? null;
+        }
+
+        const now = Math.floor(Date.now() / 1000);
+        const result = this.db
+                           .prepare(
+                               `INSERT INTO stage_results
+                (stage_id, session_id, player_id, steam_id, name,
+                 participant_id, ref_id, is_player, position,
+                 fastest_lap_time, laps_completed, total_time,
+                 state, vehicle_id, recorded_at, is_manual)
+               VALUES (?, ?, ?, ?, ?, 0, 0, 1, ?, ?, ?, ?, ?, 0, ?, 1)`,
+                           )
+                           .run(
+                               stage.id, params.sessionId, playerId, params.steamId, params.name,
+                               params.position, params.fastestLapTime, params.lapsCompleted,
+                               params.totalTime, params.state, now,
+                           );
+
+        const inserted = this.db
+                             .prepare(
+                                 `SELECT
+              sr.id, st.name as stageName, sr.position,
+              sr.name, sr.steam_id as steamId,
+              sr.fastest_lap_time as fastestLapTime,
+              sr.laps_completed as lapsCompleted,
+              sr.total_time as totalTime,
+              sr.state, sr.vehicle_id as vehicleId,
+              sr.is_manual as isManual
+             FROM stage_results sr
+             JOIN stages st ON st.id = sr.stage_id
+             WHERE sr.id = ?`,
+                             )
+                             .get(result.lastInsertRowid) as (StageResultRow & { isManual: number });
+        return { ...inserted, isManual: true };
+    }
+
+    deleteManualResult(resultId: number): void {
+        const result = this.db
+                           .prepare('DELETE FROM stage_results WHERE id = ? AND is_manual = 1')
+                           .run(resultId);
+        if (result.changes === 0) {
+            throw new Error('Result not found or is not a manual entry');
+        }
+    }
 
     getImportHistory(serverId: number, limit: number = 20): ImportLogEntry[] {
         return this.db

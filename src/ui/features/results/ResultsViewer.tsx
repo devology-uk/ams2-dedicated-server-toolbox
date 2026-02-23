@@ -157,6 +157,7 @@ export function ResultsViewer() {
                 <ResultsTable
                     results={selectedStageResults}
                     stageContext={{
+                        sessionId: selectedStage.sessionId,
                         sessionIndex: selectedStage.sessionIndex,
                         stageName: selectedStage.stageName,
                         trackId: selectedStage.trackId,
@@ -165,6 +166,7 @@ export function ResultsViewer() {
                     loading={loadingResults}
                     onBack={clearSelection}
                     onPlayerClick={handlePlayerClick}
+                    onRefresh={() => selectStage(selectedStage!)}
                 />
             ) : (
                 <StageList

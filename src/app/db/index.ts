@@ -41,8 +41,16 @@ function initializeSchema(database: AppDatabase): void {
     const currentVersion = versionRow ? parseInt(versionRow.value, 10) : 0;
 
     if (currentVersion < SCHEMA_VERSION) {
-        // Run any migration logic for version upgrades here in future
-        // For now, just set the version
+        // v2: add is_manual column to stage_results
+        if (currentVersion < 2) {
+            const cols = database.pragma('table_info(stage_results)') as Array<{ name: string }>;
+            if (!cols.some((c) => c.name === 'is_manual')) {
+                database.exec(
+                    'ALTER TABLE stage_results ADD COLUMN is_manual INTEGER NOT NULL DEFAULT 0',
+                );
+            }
+        }
+
         database
             .prepare(
                 'INSERT OR REPLACE INTO schema_meta (key, value) VALUES (?, ?)',
