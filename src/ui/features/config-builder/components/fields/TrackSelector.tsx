@@ -2,7 +2,6 @@
 
 import { useMemo } from 'react';
 import { Dropdown, type DropdownChangeEvent } from 'primereact/dropdown';
-import type { Track } from '../../../../types/electron';
 import { useServerCache } from '../../hooks/useServerCache';
 import type { FieldMetadata } from '../../../../../shared/types/config';
 
@@ -22,12 +21,11 @@ export const TrackSelector = ({
   const { getTracks } = useServerCache();
   const tracks = getTracks();
 
-  // Format track names for display
+  // Format track names for display — name with track ID in parentheses
   const options = useMemo(() => {
     return tracks.map(track => ({
-      label: formatTrackName(track.name),
+      label: `${formatTrackName(track.name)} (${track.id})`,
       value: track.id,
-      gridsize: track.gridsize,
       track,
     }));
   }, [tracks]);
@@ -36,33 +34,6 @@ export const TrackSelector = ({
   const selectedTrack = useMemo(() => {
     return tracks.find(t => t.id === value);
   }, [tracks, value]);
-
-  // Custom option template
-  const optionTemplate = (option: { label: string; gridsize: number; track: Track }) => {
-    return (
-      <div className="flex justify-content-between align-items-center">
-        <span>{option.label}</span>
-        <span className="text-color-secondary text-sm">
-          Grid: {option.gridsize}
-        </span>
-      </div>
-    );
-  };
-
-  // Custom value template
-  const valueTemplate = (option: { label: string; gridsize: number } | null) => {
-    if (!option) {
-      return <span className="text-color-secondary">Select a track...</span>;
-    }
-    return (
-      <div className="flex justify-content-between align-items-center">
-        <span>{option.label}</span>
-        <span className="text-color-secondary text-sm">
-          Grid: {option.gridsize}
-        </span>
-      </div>
-    );
-  };
 
   return (
     <>
@@ -76,20 +47,17 @@ export const TrackSelector = ({
         filterBy="label"
         placeholder="Select a track..."
         className="w-full"
-        itemTemplate={optionTemplate}
-        valueTemplate={valueTemplate}
         virtualScrollerOptions={{ itemSize: 40 }}
         showClear
       />
       {selectedTrack && (
         <small className="text-color-secondary block mt-1">
-          Default date: {selectedTrack.default_month}/{selectedTrack.default_day}/{selectedTrack.default_year} 
+          Default date: {selectedTrack.default_month}/{selectedTrack.default_day}/{selectedTrack.default_year}
           | Max grid: {selectedTrack.gridsize}
         </small>
-      )
-    }    
+      )}
     </>
-  )
+  );
 };
 
 /**

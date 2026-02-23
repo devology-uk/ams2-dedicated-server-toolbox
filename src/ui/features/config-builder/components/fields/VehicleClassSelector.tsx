@@ -24,7 +24,7 @@ export const VehicleClassSelector = ({
   const options = useMemo(() => {
     return vehicleClasses
       .map(vc => ({
-        label: vc.translated_name,
+        label: `${vc.translated_name} (${vc.value})`,
         value: vc.value,
         name: vc.name,
       }))

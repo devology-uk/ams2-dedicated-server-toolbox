@@ -16,6 +16,7 @@ interface ParsedDescription {
   flagsEndpoint?: FlagEndpointName;
   min?: number;
   max?: number;
+  step?: number;
   isBooleanLike?: boolean;
   booleanLabels?: { off: string; on: string };
 }
@@ -59,11 +60,20 @@ function parseDescription(_name: string, description: string): ParsedDescription
     result.flagsEndpoint = flagsMatch[1] as FlagEndpointName;
   }
 
-  // Check for range pattern: "Valid values in range X-Y" or "range 0-100"
-  const rangeMatch = description.match(/range\s+(\d+)\s*[-–]\s*(\d+)/i);
+  // Check for range pattern: "range X-Y", "range from X to Y", "between X and Y", or bare "X-Y" at end
+  const rangeMatch = description.match(/range\s+(\d+)\s*[-–]\s*(\d+)/i)
+    ?? description.match(/range\s+from\s+(\d+)\s+to\s+(\d+)/i)
+    ?? description.match(/between\s+(\d+)\s+and\s+(\d+)/i)
+    ?? description.match(/\b(\d+)\s*[-–]\s*(\d+)\s*$/);
   if (rangeMatch) {
     result.min = parseInt(rangeMatch[1], 10);
     result.max = parseInt(rangeMatch[2], 10);
+  }
+
+  // Check for step pattern: "in steps of N" or "steps of N"
+  const stepMatch = description.match(/(?:in\s+)?steps?\s+of\s+(\d+)/i);
+  if (stepMatch) {
+    result.step = parseInt(stepMatch[1], 10);
   }
 
   // Check for boolean-like pattern: "(0) disabled (1) enabled" or similar
@@ -119,6 +129,11 @@ function determineFieldType(
   if (name === 'VehicleModelId') return 'vehicle';
   if (name === 'VehicleClassId') return 'vehicleClass';
   if (name.match(/WeatherSlot\d+$/)) return 'weather';
+  if (name.match(/MultiClassSlot\d+$/)) return 'vehicleClass';
+  if (name === 'PracticeLiveTrackPreset' || name === 'QualifyLiveTrackPreset' || name === 'RaceLiveTrackPreset') return 'dropdown';
+  if (name.endsWith('DateHour')) return 'hour';
+  if (name.endsWith('DateMonth')) return 'month';
+  if (name.endsWith('DateYear')) return 'year';
 
   // Known boolean fields
   if (KNOWN_BOOLEAN_FIELDS.has(name)) return 'switch';
@@ -229,8 +244,10 @@ export function processAttributeSchema(attributes: AttributeDefinition[]): Field
       category: categorizeField(attr.name),
     };
 
-    // Add enum endpoint if detected
-    if (parsed.enumEndpoint) {
+    // Override enum endpoint for LiveTrackPreset fields (description is incorrect/missing)
+    if (attr.name === 'PracticeLiveTrackPreset' || attr.name === 'QualifyLiveTrackPreset' || attr.name === 'RaceLiveTrackPreset') {
+      metadata.enumEndpoint = 'livetrack_preset';
+    } else if (parsed.enumEndpoint) {
       metadata.enumEndpoint = parsed.enumEndpoint;
     }
 
@@ -247,9 +264,49 @@ export function processAttributeSchema(attributes: AttributeDefinition[]): Field
       metadata.max = parsed.max;
     }
 
+    // Name-based range overrides for date part fields
+    if (attr.name.endsWith('DateDay')) {
+      metadata.min = 1;
+      metadata.max = 31;
+    }
+    if (attr.name.endsWith('DateYear')) {
+      const currentYear = new Date().getFullYear();
+      metadata.min = currentYear - 10;
+      metadata.max = currentYear + 5;
+    }
+
+    // Name-based range overrides for fields whose description range excludes 0 but 0 is a valid sentinel
+    if (attr.name === 'AllowedCutsBeforePenalty') {
+      metadata.min = 0;
+      metadata.max = 50;
+    }
+    if (attr.name === 'PracticeWeatherSlots' || attr.name === 'QualifyWeatherSlots' || attr.name === 'RaceWeatherSlots') {
+      metadata.min = 0;
+      metadata.max = 4;
+    }
+    if (attr.name === 'MultiClassSlots') {
+      metadata.min = 0;
+      metadata.max = 3;
+    }
+
     // Add boolean labels if detected
     if (parsed.booleanLabels) {
       metadata.booleanLabels = parsed.booleanLabels;
+    }
+
+    // Add step if detected
+    if (parsed.step !== undefined) {
+      metadata.step = parsed.step;
+    }
+
+    // Static options for Privacy field
+    if (attr.name === 'Privacy') {
+      metadata.fieldType = 'dropdown';
+      metadata.staticOptions = [
+        { value: 0, name: 'Public' },
+        { value: 1, name: 'Friends Only' },
+        { value: 2, name: 'Private' },
+      ];
     }
 
     return metadata;

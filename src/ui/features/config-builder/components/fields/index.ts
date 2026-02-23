@@ -10,3 +10,5 @@ export { TrackSelector } from './TrackSelector';
 export { VehicleSelector } from './VehicleSelector';
 export { VehicleClassSelector } from './VehicleClassSelector';
 export { WeatherSelector } from './WeatherSelector';
+export { HourSelector } from './HourSelector';
+export { MonthSelector } from './MonthSelector';

@@ -33,7 +33,7 @@ export function formatLapTime(ms: number | null): string {
 }
 
 /**
- * Formats a total race time in milliseconds to "h:mm:ss" or "m:ss".
+ * Formats a total race time in milliseconds to "h:mm:ss.SSS" or "m:ss.SSS".
  */
 export function formatTotalTime(ms: number): string {
     if (ms <= 0) return '-';
@@ -41,12 +41,17 @@ export function formatTotalTime(ms: number): string {
     const totalSeconds = ms / 1000;
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = Math.floor(totalSeconds % 60);
+    const seconds = totalSeconds % 60;
+    const secWhole = Math.floor(seconds);
+    const secFraction = Math.round((seconds - secWhole) * 1000);
+
+    const secStr = secWhole.toString().padStart(2, '0');
+    const msStr = secFraction.toString().padStart(3, '0');
 
     if (hours > 0) {
-        return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        return `${hours}:${minutes.toString().padStart(2, '0')}:${secStr}.${msStr}`;
     }
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes}:${secStr}.${msStr}`;
 }
 
 /**

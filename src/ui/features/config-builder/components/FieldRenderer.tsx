@@ -10,6 +10,8 @@ import {
   VehicleSelector,
   VehicleClassSelector,
   WeatherSelector,
+  HourSelector,
+  MonthSelector,
 } from './fields';
 
 interface FieldRendererProps {
@@ -30,7 +32,7 @@ export const FieldRenderer = ({
   return (
     <NumberField
       field={field}
-      value={(value as number) ?? 0}
+      value={(value as number) ?? field.min ?? 0}
       onChange={onChange}
       disabled={disabled}
     />
@@ -125,6 +127,36 @@ export const FieldRenderer = ({
           value={(value as number) ?? 0}
           onChange={onChange}
 
+          disabled={disabled}
+        />
+      );
+
+    case 'hour':
+      return (
+        <HourSelector
+          field={field}
+          value={(value as number) ?? 0}
+          onChange={onChange}
+          disabled={disabled}
+        />
+      );
+
+    case 'month':
+      return (
+        <MonthSelector
+          field={field}
+          value={(value as number) ?? 1}
+          onChange={onChange}
+          disabled={disabled}
+        />
+      );
+
+    case 'year':
+      return (
+        <SliderField
+          field={field}
+          value={(value as number) ?? new Date().getFullYear()}
+          onChange={onChange}
           disabled={disabled}
         />
       );

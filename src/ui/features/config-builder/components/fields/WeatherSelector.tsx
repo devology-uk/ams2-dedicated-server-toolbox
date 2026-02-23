@@ -24,7 +24,7 @@ export const WeatherSelector = ({
 
   const options = useMemo(() => {
     return weatherOptions.map(w => ({
-      label: formatLabel(w.name),
+      label: `${formatLabel(w.name)} (${w.value})`,
       value: w.value,
     }));
   }, [weatherOptions]);

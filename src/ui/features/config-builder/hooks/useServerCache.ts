@@ -79,7 +79,7 @@ export function useServerCache(): UseServerCacheResult {
 
     const getEnum = useCallback(
         (name: string): EnumItem[] => {
-            const data = getList(`enums/${name}`);
+            const data = getList(`enums/${name}`) ?? getList(name);
             return (data?.list as unknown as EnumItem[]) ?? [];
         },
         [getList],

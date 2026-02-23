@@ -494,9 +494,13 @@ export class AMS2StatsParser {
             );
         }
 
-        // Also build a refid-to-member lookup for Steam ID via members
+        // Also build a refid-to-member lookup for Steam ID and name via members
         const refIdToSteamId = new Map<number, string>();
+        const steamIdToName = new Map<string, string>();
         for (const member of Object.values(session.members)) {
+            if (member.name) {
+                steamIdToName.set(member.steamid, member.name);
+            }
             if (member.participantid >= 0) {
                 const participant = participantMap.get(member.participantid);
                 if (participant) {
@@ -514,9 +518,12 @@ export class AMS2StatsParser {
                 steamId = refIdToSteamId.get(result.refid) ?? null;
             }
 
+            // Fall back to member name when the result/participant name is empty
+            const name = result.name || (steamId ? (steamIdToName.get(steamId) ?? '') : '');
+
             return {
                 position: result.attributes.RacePosition,
-                name: result.name,
+                name,
                 steamId,
                 fastestLap: result.attributes.FastestLapTime,
                 fastestLapFormatted: this.formatLapTime(

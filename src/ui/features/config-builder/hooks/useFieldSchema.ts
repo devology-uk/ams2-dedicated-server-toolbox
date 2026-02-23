@@ -39,7 +39,9 @@ export function useFieldSchema(): UseFieldSchemaResult {
         return fields.map((field) => {
             const resolved: ResolvedField = { ...field };
 
-            if (field.enumEndpoint) {
+            if (field.staticOptions) {
+                resolved.enumOptions = field.staticOptions;
+            } else if (field.enumEndpoint) {
                 resolved.enumOptions = getEnum(field.enumEndpoint);
             }
 

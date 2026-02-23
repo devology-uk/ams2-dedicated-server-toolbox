@@ -184,9 +184,11 @@
 }
 
 // Dropdown clear icon fix (PrimeReact 10.x)
+// The Lara theme applies margin-top: -0.5rem which conflicts with transform: translateY(-50%)
 .p-dropdown.p-dropdown-clearable .p-dropdown-clear-icon {
   position: absolute;
   top: 50%;
+  margin-top: 0;
   transform: translateY(-50%);
   right: 2.75rem;
 }

@@ -1,6 +1,5 @@
 // src/ui/features/config-builder/components/DynamicForm.tsx
 
-import { Panel } from 'primereact/panel';
 import { FieldRenderer } from './FieldRenderer';
 import { FormField } from './FormField';
 import type { FieldGroup, SessionAttributes } from '../../../../shared/types/config';
@@ -21,25 +20,18 @@ export const DynamicForm = ({
   return (
     <div className="dynamic-form">
       {fieldGroups.map(group => (
-        <Panel
-          key={group.id}
-          header={
-            <span className="flex align-items-center gap-2">
-              <i className={group.icon}></i>
-              <span>{group.label}</span>
-            </span>
-          }
-          toggleable
-          collapsed={false}
-          className="mb-3"
-        >
+        <div key={group.id} className="mb-4">
+          <div className="flex align-items-center gap-2 mb-3 pb-2 border-bottom-1 surface-border">
+            <i className={`${group.icon} text-color-secondary`}></i>
+            <span className="font-semibold">{group.label}</span>
+          </div>
           <div className="formgrid grid">
             {group.fields.map(field => {
 
               if(field.fieldType === 'readonly') {
                 return null
               }
-              
+
               // Flags get full width, no FormField wrapper
               if (field.fieldType === 'flags') {
                 return (
@@ -66,7 +58,7 @@ export const DynamicForm = ({
               );
             })}
           </div>
-        </Panel>
+        </div>
       ))}
     </div>
   );

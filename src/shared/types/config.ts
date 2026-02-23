@@ -75,6 +75,9 @@ export type FieldType =
   | 'vehicle'
   | 'vehicleClass'
   | 'weather'
+  | 'hour'
+  | 'month'
+  | 'year'
   | 'readonly';
 
 export interface FieldMetadata {
@@ -86,8 +89,10 @@ export interface FieldMetadata {
   isReadOnly: boolean;
   enumEndpoint?: EnumEndpointName;
   flagsEndpoint?: FlagEndpointName;
+  staticOptions?: EnumItem[];
   min?: number;
   max?: number;
+  step?: number;
   booleanLabels?: {
     off: string;
     on: string;

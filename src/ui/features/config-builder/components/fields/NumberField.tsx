@@ -23,6 +23,7 @@ export const NumberField = ({
       disabled={disabled || field.isReadOnly}
       min={field.min}
       max={field.max}
+      step={field.step ?? 1}
       showButtons
       className="w-full"
     />

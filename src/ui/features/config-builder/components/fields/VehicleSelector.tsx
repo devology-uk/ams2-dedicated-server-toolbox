@@ -31,7 +31,7 @@ export const VehicleSelector = ({
         byClass.set(className, []);
       }
       byClass.get(className)!.push({
-        label: vehicle.name,
+        label: `${vehicle.name} (${vehicle.id})`,
         value: vehicle.id,
       });
     }
@@ -73,7 +73,6 @@ export const VehicleSelector = ({
         filterBy="label"
         placeholder="Select a vehicle..."
         className="w-full"
-        virtualScrollerOptions={{ itemSize: 40 }}
         showClear
       />
       {selectedVehicle && (

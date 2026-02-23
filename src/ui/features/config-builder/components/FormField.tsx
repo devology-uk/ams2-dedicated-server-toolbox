@@ -11,7 +11,7 @@ export const FormField = ({ field, children }: FormFieldProps) => {
     <>
       <label
         htmlFor={field.name}
-        className="col-12 md:col-4 flex align-items-center font-medium"
+        className="col-12 md:col-4 flex align-items-start pt-2 font-medium"
       >
         {field.label}
       </label>
