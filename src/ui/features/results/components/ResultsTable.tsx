@@ -1,6 +1,6 @@
 // src/ui/features/results/components/ResultsTable.tsx
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Card } from 'primereact/card';
@@ -10,6 +10,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 
 import type { StageResultRow } from '../../../../shared/types';
 import { useGameLookup } from '../../../hooks/useGameLookup';
+import { useDriverAliases } from '../../../hooks/useDriverAliases';
 import { formatStageName, formatLapTime, formatTotalTime } from '../../../utils/formatters';
 
 interface StageContext {
@@ -42,6 +43,21 @@ export function ResultsTable({
                                  onPlayerClick,
                              }: ResultsTableProps) {
     const { resolveTrack } = useGameLookup();
+    const { resolveAlias, aliasVersion } = useDriverAliases();
+
+    // Pre-resolve display names into new row objects so PrimeReact DataTable
+    // sees changed data (and re-runs body templates) when aliases change.
+    type ResolvedRow = StageResultRow & { displayName: string; steamName: string };
+    const resolvedResults = useMemo<ResolvedRow[]>(
+        () => results.map((r) => ({
+            ...r,
+            displayName: resolveAlias(r.steamId, r.name || '(Unknown)'),
+            steamName: r.name,
+        })),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [results, aliasVersion],
+    );
+
     // Find fastest lap across all results for highlighting
     const fastestLapTime = results.reduce<number | null>((best, r) => {
         if (r.fastestLapTime && r.fastestLapTime > 0) {
@@ -118,20 +134,24 @@ export function ResultsTable({
         return <span className="font-semibold text-color-secondary">P{row.position}</span>;
     };
 
-    const nameBodyTemplate = (row: StageResultRow): ReactNode => (
-        <Button
-            label={row.name || '(Unknown)'}
-            link
-            className="p-0 font-semibold"
-            onClick={(e) => {
-                e.stopPropagation();
-                if (row.steamId) {
-                    onPlayerClick(row.steamId, row.name);
-                }
-            }}
-            disabled={!row.steamId}
-        />
-    );
+    const nameBodyTemplate = (row: ResolvedRow): ReactNode => {
+        const hasAlias = row.displayName !== row.steamName;
+        return (
+            <Button
+                label={row.displayName}
+                title={hasAlias ? row.steamName : undefined}
+                link
+                className="p-0 font-semibold"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    if (row.steamId) {
+                        onPlayerClick(row.steamId, row.steamName);
+                    }
+                }}
+                disabled={!row.steamId}
+            />
+        );
+    };
 
     const fastestLapBodyTemplate = (row: StageResultRow): ReactNode => {
         const isOverallFastest =
@@ -171,7 +191,7 @@ export function ResultsTable({
     return (
         <Card title={title} className="shadow-2">
             <DataTable
-                value={results}
+                value={resolvedResults}
                 stripedRows
                 emptyMessage="No results available."
                 rowHover

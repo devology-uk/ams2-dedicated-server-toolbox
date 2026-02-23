@@ -102,6 +102,12 @@ export type ApiListData = CachedListData;
 
 export type Platform = 'aix' | 'darwin' | 'freebsd' | 'linux' | 'openbsd' | 'sunos' | 'win32';
 
+export interface AliasesAPI {
+    getAll: () => Promise<Record<string, string>>;
+    set: (steamId: string, alias: string) => Promise<void>;
+    delete: (steamId: string) => Promise<void>;
+}
+
 export interface GameDataAPI {
     get: () => Promise<ServerCache | null>;
     set: (data: { version: ServerVersion; lists: AllListsData }, version?: string) => Promise<void>;
@@ -160,6 +166,9 @@ export interface ElectronAPI {
             limit?: number,
         ) => Promise<IpcResult<ImportLogEntry[]>>;
     };
+
+    // Driver Aliases
+    aliases: AliasesAPI;
 
     // Shell
     openExternalUrl: (url: string) => Promise<void>;

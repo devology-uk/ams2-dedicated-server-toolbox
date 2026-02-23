@@ -53,6 +53,11 @@ export const IPC_CHANNELS = {
     STATS_DB_GET_STAGE_RESULTS: 'stats-db-get-stage-results',
     STATS_DB_GET_IMPORT_HISTORY: 'stats-db-get-import-history',
 
+    // Driver Aliases
+    ALIASES_GET_ALL: 'aliases-get-all',
+    ALIASES_SET:     'aliases-set',
+    ALIASES_DELETE:  'aliases-delete',
+
     // Auto-update
     UPDATE_READY: 'update-ready',
     INSTALL_UPDATE: 'install-update',

@@ -12,6 +12,7 @@ import { FilterMatchMode } from 'primereact/api';
 import './PlayersTab.scss';
 import type { AMS2StatsParser } from '../../../../shared/utils/ams2StatsParser.ts';
 import type { PlayerEventStats } from '../../../../shared/types/index.ts';
+import { useDriverAliases } from '../../../hooks/useDriverAliases';
 
 interface PlayersTabProps {
   parser: AMS2StatsParser;
@@ -36,8 +37,17 @@ export function PlayersTab({ parser }: PlayersTabProps) {
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
+  const { resolveAlias, aliasVersion } = useDriverAliases();
 
   const players = useMemo(() => parser.getPlayerEventStats(), [parser]);
+
+  // Pre-resolve display names into new row objects so PrimeReact DataTable
+  // sees changed data (and re-runs body templates) when aliases change.
+  const resolvedPlayers = useMemo(
+    () => players.map((p) => ({ ...p, name: resolveAlias(p.steamId, p.name) })),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [players, aliasVersion],
+  );
 
   const header = (
     <div className="flex align-items-center gap-2">
@@ -103,7 +113,7 @@ export function PlayersTab({ parser }: PlayersTabProps) {
   return (
     <Card className="shadow-2">
       <DataTable
-        value={players}
+        value={resolvedPlayers}
         header={header}
         headerColumnGroup={colHeader}
         globalFilter={globalFilter}
@@ -119,7 +129,11 @@ export function PlayersTab({ parser }: PlayersTabProps) {
         removableSort
       >
         <Column body={rankBodyTemplate} style={{ width: '3.5rem' }} className="text-center" />
-        <Column field="name" className="font-semibold" />
+        <Column
+          field="name"
+          className="font-semibold"
+          body={(row: PlayerEventStats) => <span>{row.name}</span>}
+        />
         <Column
           field="qualifying.appearances"
           body={(row: PlayerEventStats) =>

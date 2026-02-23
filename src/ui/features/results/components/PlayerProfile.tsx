@@ -1,6 +1,6 @@
 // src/ui/features/results/components/PlayerProfile.tsx
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useState, useEffect } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -8,9 +8,12 @@ import { Tag } from 'primereact/tag';
 import { Card } from 'primereact/card';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Divider } from 'primereact/divider';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
 
 import type { PlayerResultHistory, PlayerBestLap } from '../../../../shared/types';
 import { useGameLookup } from '../../../hooks/useGameLookup';
+import { useDriverAliases } from '../../../hooks/useDriverAliases';
 import { formatStageName, formatLapTime } from '../../../utils/formatters';
 
 interface PlayerProfileProps {
@@ -41,11 +44,39 @@ export function PlayerProfile({
                                   error,
                               }: PlayerProfileProps) {
     const { resolveTrack } = useGameLookup();
+    const { getAlias, setAlias, deleteAlias } = useDriverAliases();
+
+    const currentAlias = steamId ? getAlias(steamId) : undefined;
+    const [aliasInput, setAliasInput] = useState(currentAlias ?? '');
+    const [saving, setSaving] = useState(false);
+
+    // Sync input when the dialog opens for a new player
+    useEffect(() => {
+        setAliasInput(currentAlias ?? '');
+    }, [steamId, currentAlias]);
+
+    const handleSaveAlias = async () => {
+        if (!steamId || !aliasInput.trim()) return;
+        setSaving(true);
+        await setAlias(steamId, aliasInput.trim());
+        setSaving(false);
+    };
+
+    const handleClearAlias = async () => {
+        if (!steamId) return;
+        setSaving(true);
+        await deleteAlias(steamId);
+        setAliasInput('');
+        setSaving(false);
+    };
+
+    const displayName = currentAlias ?? name ?? 'Unknown Player';
+
     const headerElement = (
         <div className="flex align-items-center gap-3">
             <i className="pi pi-user text-2xl text-primary" />
             <div className="flex flex-column">
-                <span className="text-xl font-semibold">{name ?? 'Unknown Player'}</span>
+                <span className="text-xl font-semibold">{displayName}</span>
                 {steamId && (
                     <code className="text-xs text-color-secondary">{steamId}</code>
                 )}
@@ -125,6 +156,45 @@ export function PlayerProfile({
                 </div>
             ) : (
                 <div className="flex flex-column gap-3">
+                    {/* Alias editor */}
+                    {steamId && (
+                        <div className="flex flex-column gap-1">
+                        <label className="text-sm text-color-secondary">
+                            Display name — overrides the Steam username shown in Results and Stats
+                        </label>
+                        <div className="flex align-items-center gap-2">
+                            <i className="pi pi-tag text-color-secondary" />
+                            <InputText
+                                value={aliasInput}
+                                onChange={(e) => setAliasInput(e.target.value)}
+                                onKeyDown={(e) => { if (e.key === 'Enter') handleSaveAlias(); }}
+                                placeholder={name ?? 'Set display name…'}
+                                className="flex-1"
+                                size="small"
+                            />
+                            <Button
+                                label="Save"
+                                icon="pi pi-check"
+                                size="small"
+                                onClick={handleSaveAlias}
+                                loading={saving}
+                                disabled={!aliasInput.trim() || aliasInput.trim() === currentAlias}
+                            />
+                            {currentAlias && (
+                                <Button
+                                    icon="pi pi-times"
+                                    size="small"
+                                    severity="secondary"
+                                    tooltip="Remove alias"
+                                    tooltipOptions={{ position: 'top' }}
+                                    onClick={handleClearAlias}
+                                    loading={saving}
+                                />
+                            )}
+                        </div>
+                        </div>
+                    )}
+
                     {/* Summary cards */}
                     <div className="grid">
                         <div className="col-6 md:col-3">

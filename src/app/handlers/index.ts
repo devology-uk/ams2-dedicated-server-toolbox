@@ -7,6 +7,7 @@ import { registerCacheHandlers } from './cacheHandlers.js';
 import { registerFileHandlers } from './fileHandlers.js';
 import { registerStatsHandlers } from './statsHandlers.js';
 import { registerStatsDbHandlers } from './statsDbHandlers.js';
+import { registerAliasHandlers } from './aliasHandlers.js';
 
 export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerConnectionHandlers();
@@ -15,4 +16,5 @@ export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerFileHandlers();
     registerStatsHandlers(mainWindow);
     registerStatsDbHandlers(mainWindow);
+    registerAliasHandlers();
 }

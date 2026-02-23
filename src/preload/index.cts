@@ -58,6 +58,11 @@ const IPC_CHANNELS = {
     STATS_DB_GET_STAGE_RESULTS: 'stats-db-get-stage-results',
     STATS_DB_GET_IMPORT_HISTORY: 'stats-db-get-import-history',
 
+    // Driver Aliases
+    ALIASES_GET_ALL: 'aliases-get-all',
+    ALIASES_SET:     'aliases-set',
+    ALIASES_DELETE:  'aliases-delete',
+
     // Auto-update
     UPDATE_READY: 'update-ready',
     INSTALL_UPDATE: 'install-update',
@@ -181,6 +186,16 @@ electron.contextBridge.exposeInMainWorld('electron', {
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_GET_STAGE_RESULTS, sessionId, stageName),
         getImportHistory: (serverId: number, limit?: number) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_GET_IMPORT_HISTORY, serverId, limit),
+    },
+
+    // Driver Aliases
+    aliases: {
+        getAll: () =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.ALIASES_GET_ALL),
+        set: (steamId: string, alias: string) =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.ALIASES_SET, steamId, alias),
+        delete: (steamId: string) =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.ALIASES_DELETE, steamId),
     },
 
     // Shell

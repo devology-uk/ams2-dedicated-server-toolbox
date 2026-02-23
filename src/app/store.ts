@@ -15,6 +15,8 @@ export interface StoreSchema {
     // Game data — shared cache not tied to any connection
     gameData: ServerCache | null;
     gameDataVersion: string | null; // Track which build the data is from
+    // Driver aliases — steamId → friendly display name
+    driverAliases: Record<string, string>;
 }
 
 const store = new Store<StoreSchema>({
@@ -24,6 +26,7 @@ const store = new Store<StoreSchema>({
                                              apiCache: {},
                                              gameData: null,
                                              gameDataVersion: null,
+                                             driverAliases: {},
                                          },
                                      });
 
