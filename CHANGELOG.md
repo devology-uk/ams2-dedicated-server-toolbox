@@ -15,7 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-## [1.1.0] -2026-02-24
+
+## [1.1.1] - 2026-03-13
+
+### Fixed
+- Bundled game data not found on Linux (and other packaged builds) — added `process.resourcesPath` to the file lookup paths in `loadBundledGameData`
+
+
+## [1.1.0] - 2026-02-24
 
 ### Added
 - Ability to add an alias for driver in driver profile dialog

@@ -95,6 +95,8 @@ function loadBundledGameData(): ServerCache | null {
             path.join(app.getAppPath(), 'src', 'app', 'data', 'ams2-game-data.json'),
             // Dev mode: compiled output
             path.join(app.getAppPath(), 'dist-app', 'data', 'ams2-game-data.json'),
+            // Production: extraResources places files under process.resourcesPath
+            path.join(process.resourcesPath, 'dist-app', 'data', 'ams2-game-data.json'),
             // Production: relative to compiled main.js
             path.join(__dirname, 'data', 'ams2-game-data.json'),
             // Production: app resources
