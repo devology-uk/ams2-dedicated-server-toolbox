@@ -47,6 +47,7 @@ export interface ServerCache {
   version: ServerVersion;
   syncedAt: number;
   lists: AllListsData;
+  bundledDataVersion?: number;
 }
 
 // ============================================

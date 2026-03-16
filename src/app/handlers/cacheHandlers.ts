@@ -43,18 +43,44 @@ export function registerCacheHandlers(): void {
 
     ipcMain.handle(IPC_CHANNELS.GAME_DATA_GET, () => {
         let gameData: ServerCache | null = store.get('gameData');
-        console.log('[Cache] GAME_DATA_GET called, stored gameData:', gameData ? 'exists' : 'null');
+        const gameDataVersion: string | null = store.get('gameDataVersion');
+        console.log('[Cache] GAME_DATA_GET called, stored gameData:', gameData ? 'exists' : 'null', 'version:', gameDataVersion);
 
-        // If no game data, try to seed from bundled defaults
+        const bundled = loadBundledGameData();
+        const bundledVersion = bundled?.bundledDataVersion ?? 1;
+
         if (!gameData) {
-            console.log('[Cache] No stored game data, attempting to load bundled...');
-            gameData = loadBundledGameData();
-            if (gameData) {
+            // No stored data — seed entirely from bundled
+            if (bundled) {
+                console.log(`[Cache] Seeding game data from bundled v${bundledVersion}`);
+                gameData = bundled;
                 store.set('gameData', gameData);
                 store.set('gameDataVersion', 'bundled');
-                console.log('[Cache] Seeded game data from bundled defaults');
-            } else {
-                console.log('[Cache] loadBundledGameData returned null');
+            }
+        } else if (gameDataVersion === 'bundled') {
+            // Stored data came from the bundle — replace wholesale if bundle is newer
+            const storedVersion = gameData.bundledDataVersion ?? 1;
+            if (bundled && bundledVersion > storedVersion) {
+                console.log(`[Cache] Updating bundled game data: v${storedVersion} -> v${bundledVersion}`);
+                gameData = bundled;
+                store.set('gameData', gameData);
+                store.set('gameDataVersion', 'bundled');
+            }
+        } else {
+            // Stored data came from a live server sync — only patch in lists that the server
+            // didn't return (never overwrite server-provided values)
+            const lastMergedVersion = gameData.bundledDataVersion ?? 0;
+            if (bundled && bundledVersion > lastMergedVersion) {
+                let mergeCount = 0;
+                for (const [key, value] of Object.entries(bundled.lists)) {
+                    if (!gameData.lists[key]) {
+                        gameData.lists[key] = value;
+                        mergeCount++;
+                    }
+                }
+                gameData.bundledDataVersion = bundledVersion;
+                store.set('gameData', gameData);
+                console.log(`[Cache] Merged ${mergeCount} missing lists from bundled v${bundledVersion} into synced data`);
             }
         }
 

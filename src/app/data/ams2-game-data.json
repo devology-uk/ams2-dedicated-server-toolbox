@@ -1,4 +1,5 @@
 {
+  "bundledDataVersion": 2,
   "version": {
     "build_version": 1,
     "protocol_version": 90,
@@ -18044,6 +18045,19 @@
         {
           "value": -603314990,
           "name": "MP_RallyCross"
+        }
+      ]
+    },
+    "enums/pit_control": {
+      "description": "Enum describing pit control modes",
+      "list": [
+        {
+          "value": 0,
+          "name": "Auto"
+        },
+        {
+          "value": 1,
+          "name": "Manual"
         }
       ]
     },
