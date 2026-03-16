@@ -10,6 +10,7 @@ export const FormField = ({ field, children }: FormFieldProps) => {
   return (
     <>
       <label
+        id={`field-${field.name}`}
         htmlFor={field.name}
         className="col-12 md:col-4 flex align-items-start pt-2 font-medium"
       >

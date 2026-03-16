@@ -7,9 +7,32 @@
 @use '../../styles/mixins' as m;
 
 .stats-viewer {
-  padding: v.$spacing-6;
-  max-width: v.$view-width-full;
-  margin: 0 auto;
+  // Ensure flex children can shrink below their content size
+  .flex-grow-1.overflow-hidden {
+    min-height: 0;
+    flex: 1 1 0;
+  }
+
+  // Make TabView fill the container and scroll only the panel content
+  .p-tabview {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .p-tabview-panels {
+      flex: 1 1 0;
+      min-height: 0;
+      overflow-y: auto;
+    }
+  }
+
+  // Keep DataTable header (search bar) visible while rows scroll
+  .p-datatable-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--surface-card);
+  }
 
   // ============================================
   // Loading State
@@ -120,10 +143,4 @@
     margin-bottom: v.$spacing-4;
   }
 
-  // ============================================
-  // Tabs
-  // ============================================
-  &__tabs .p-tabview-panels {
-    padding: v.$spacing-6 0 0;
-  }
 }

@@ -16,9 +16,32 @@
   }
 
   // Fix for scrollable flex containers with PrimeFlex utilities
-  .flex-grow-1.overflow-auto {
+  .flex-grow-1.overflow-hidden {
     min-height: 0;
     flex: 1 1 0;
+  }
+
+  // Make TabView fill the container and scroll only the panel content
+  .p-tabview {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .p-tabview-panels {
+      flex: 1 1 0;
+      min-height: 0;
+      overflow-y: auto;
+    }
+  }
+
+  // Sticky search bar at the top of the Session Attributes panel
+  .attr-search-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--surface-ground);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0;
   }
 }
 

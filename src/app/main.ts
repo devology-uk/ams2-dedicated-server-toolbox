@@ -39,7 +39,7 @@ app.whenReady().then(() => {
 
     const mainWindow = new BrowserWindow({
                                              width: 1280,
-                                             height: 980,
+                                             height: 1050,
                                              minWidth: 600,
                                              minHeight: 400,
                                              icon: path.join(app.getAppPath(), 'appIcon.png'),

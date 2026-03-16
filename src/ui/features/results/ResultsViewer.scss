@@ -1,6 +1,19 @@
 // src/ui/features/results/ResultsViewer.scss
 
 .results-viewer {
+  // Ensure flex children can shrink below their content size
+  .flex-grow-1.overflow-auto {
+    min-height: 0;
+  }
+
+  // Keep DataTable header (search/filter bar) visible while rows scroll
+  .p-datatable-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--surface-card);
+  }
+
   // Row click cursor for the stage list
   .p-datatable {
     &.cursor-pointer {

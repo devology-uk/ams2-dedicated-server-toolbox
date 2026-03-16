@@ -46,9 +46,9 @@ export function StatsViewer() {
   }
 
   return (
-    <div className="p-3">
+    <div className="stats-viewer h-full flex flex-column">
       {/* Header */}
-      <div className="flex align-items-center justify-content-between mb-4">
+      <div className="flex align-items-center justify-content-between px-3 pt-3 pb-3 border-bottom-1 surface-border flex-shrink-0">
         <div className="flex align-items-center gap-3">
           <i className="pi pi-server text-3xl text-primary"></i>
           <div>
@@ -85,22 +85,23 @@ export function StatsViewer() {
         </div>
       </div>
 
-      {error && (
-        <Message severity="error" text={error} className="w-full mb-4" />
-      )}
-
       {/* Tabs */}
-      <TabView>
-        <TabPanel header="Overview" leftIcon="pi pi-chart-pie mr-2">
-          <OverviewTab parser={parser} />
-        </TabPanel>
-        <TabPanel header="Players" leftIcon="pi pi-users mr-2">
-          <PlayersTab parser={parser} />
-        </TabPanel>
-        <TabPanel header="Sessions" leftIcon="pi pi-history mr-2">
-          <SessionsTab parser={parser} />
-        </TabPanel>
-      </TabView>
+      <div className="flex-grow-1 overflow-hidden p-3">
+        {error && (
+          <Message severity="error" text={error} className="w-full mb-4" />
+        )}
+        <TabView>
+          <TabPanel header="Overview" leftIcon="pi pi-chart-pie mr-2">
+            <OverviewTab parser={parser} />
+          </TabPanel>
+          <TabPanel header="Players" leftIcon="pi pi-users mr-2">
+            <PlayersTab parser={parser} />
+          </TabPanel>
+          <TabPanel header="Sessions" leftIcon="pi pi-history mr-2">
+            <SessionsTab parser={parser} />
+          </TabPanel>
+        </TabView>
+      </div>
 
       <ImportDialog
         visible={showImportDialog}

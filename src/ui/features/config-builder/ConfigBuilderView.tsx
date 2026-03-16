@@ -2,6 +2,7 @@ import { useState, useRef, useMemo } from 'react';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import { AutoComplete, type AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { ProgressSpinner } from 'primereact/progressspinner';
@@ -21,6 +22,8 @@ export const ConfigBuilderView = () => {
   const [showExportPreview, setShowExportPreview] = useState(false);
   const [exportContent, setExportContent] = useState('');
   const [exportIssues, setExportIssues] = useState<ValidationIssue[]>([]);
+  const [attrSearch, setAttrSearch] = useState('');
+  const [attrSuggestions, setAttrSuggestions] = useState<{ label: string; name: string }[]>([]);
 
   const { fieldGroups, isLoading, error } = useFieldSchema();
 
@@ -30,6 +33,21 @@ export const ConfigBuilderView = () => {
     const flags = fieldGroups.filter(g => g.id === 'session-flags');
     return { attributeGroups: attrs, flagsGroups: flags };
   }, [fieldGroups]);
+  const allAttrFields = useMemo(
+    () => attributeGroups.flatMap(g => g.fields).map(f => ({ label: f.label, name: f.name })),
+    [attributeGroups],
+  );
+
+  const handleAttrSearch = ({ query }: AutoCompleteCompleteEvent) => {
+    const q = query.toLowerCase();
+    setAttrSuggestions(allAttrFields.filter(f => f.label.toLowerCase().includes(q)));
+  };
+
+  const handleAttrSelect = (name: string) => {
+    setAttrSearch('');
+    document.getElementById(`field-${name}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
   const {
     config,
     isDirty,
@@ -253,7 +271,7 @@ export const ConfigBuilderView = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow-1 overflow-auto p-3">
+      <div className="flex-grow-1 overflow-hidden p-3">
         
 <TabView activeIndex={activeTab} onTabChange={(e) => setActiveTab(e.index)}>
   <TabPanel header="Server Settings" leftIcon="pi pi-server mr-2">
@@ -264,6 +282,19 @@ export const ConfigBuilderView = () => {
   </TabPanel>
 
   <TabPanel header="Session Attributes" leftIcon="pi pi-cog mr-2">
+    <div className="attr-search-bar">
+      <AutoComplete
+        value={attrSearch}
+        suggestions={attrSuggestions}
+        field="label"
+        placeholder="Jump to field..."
+        className="w-full"
+        inputClassName="w-full"
+        completeMethod={handleAttrSearch}
+        onChange={(e) => setAttrSearch(typeof e.value === 'string' ? e.value : e.value?.label ?? '')}
+        onSelect={(e) => handleAttrSelect(e.value.name)}
+      />
+    </div>
     <DynamicForm
       fieldGroups={attributeGroups}
       values={config.sessionAttributes ?? {}}

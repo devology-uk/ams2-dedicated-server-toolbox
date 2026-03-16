@@ -125,9 +125,9 @@ export function ResultsViewer() {
     }
 
     return (
-        <div className="results-viewer p-3">
+        <div className="results-viewer h-full flex flex-column">
             {/* Header */}
-            <div className="flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+            <div className="flex align-items-center justify-content-between px-3 pt-3 pb-3 flex-wrap gap-3 border-bottom-1 surface-border flex-shrink-0">
                 <div className="flex align-items-center gap-3">
                     <i className="pi pi-chart-bar text-3xl text-primary" />
                     <div>
@@ -150,31 +150,32 @@ export function ResultsViewer() {
                 />
             </div>
 
-            {error && <Message severity="error" text={error} className="w-full mb-3" />}
-
             {/* Content — either results table or stage list */}
-            {selectedStage ? (
-                <ResultsTable
-                    results={selectedStageResults}
-                    stageContext={{
-                        sessionId: selectedStage.sessionId,
-                        sessionIndex: selectedStage.sessionIndex,
-                        stageName: selectedStage.stageName,
-                        trackId: selectedStage.trackId,
-                        startTime: selectedStage.startTime,
-                    }}
-                    loading={loadingResults}
-                    onBack={clearSelection}
-                    onPlayerClick={handlePlayerClick}
-                    onRefresh={() => selectStage(selectedStage!)}
-                />
-            ) : (
-                <StageList
-                    stages={stages}
-                    loading={sessionsLoading}
-                    onSelectStage={selectStage}
-                />
-            )}
+            <div className="flex-grow-1 overflow-auto p-3">
+                {error && <Message severity="error" text={error} className="w-full mb-3" />}
+                {selectedStage ? (
+                    <ResultsTable
+                        results={selectedStageResults}
+                        stageContext={{
+                            sessionId: selectedStage.sessionId,
+                            sessionIndex: selectedStage.sessionIndex,
+                            stageName: selectedStage.stageName,
+                            trackId: selectedStage.trackId,
+                            startTime: selectedStage.startTime,
+                        }}
+                        loading={loadingResults}
+                        onBack={clearSelection}
+                        onPlayerClick={handlePlayerClick}
+                        onRefresh={() => selectStage(selectedStage!)}
+                    />
+                ) : (
+                    <StageList
+                        stages={stages}
+                        loading={sessionsLoading}
+                        onSelectStage={selectStage}
+                    />
+                )}
+            </div>
 
             {/* Dialogs */}
             <ImportDialog

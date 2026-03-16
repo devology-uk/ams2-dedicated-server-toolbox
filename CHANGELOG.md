@@ -15,6 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.2] - 2026-03-16
+
+### Added
+- Session Attributes tab now has a "Jump to field" search box that scrolls to the first matching field as you type
+
+### Changed
+- Improvements to layout to keep search boxes in view and minimise scrolling
+
+### Fixed
+- Manual Pit Stops dropdown on Session Attributes tab was empty due to missing `pit_control` enum in bundled game data
+- Bundled game data changes were not picked up by existing installs — app now re-seeds from the bundled file whenever `bundledDataVersion` is incremented; for server-synced installs, missing lists are patched in from the bundle without overwriting server-provided values
 
 ## [1.1.1] - 2026-03-13
 

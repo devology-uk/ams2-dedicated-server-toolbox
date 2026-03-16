@@ -35,7 +35,7 @@ export const DynamicForm = ({
               // Flags get full width, no FormField wrapper
               if (field.fieldType === 'flags') {
                 return (
-                  <div key={field.name} className="col-12 mb-3">
+                  <div key={field.name} id={`field-${field.name}`} className="col-12 mb-3">
                     <FieldRenderer
                       field={field}
                       value={values[field.name]}
