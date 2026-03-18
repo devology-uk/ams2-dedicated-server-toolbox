@@ -13,11 +13,18 @@
 
 local _ = ...  -- addon_storage: not used by this logger, but must be consumed
 
+---@diagnostic disable-next-line: undefined-global
+local GetOutputPath = GetOutputPath  -- server-injected global; nil in older builds
+
 -- ─── File handling ───────────────────────────────────────────────────────────
 local logFile = nil
 
 local function openLog()
-  local path = "ams2-event-log-" .. os.date("%Y%m%d-%H%M%S") .. ".txt"
+  local prefix = (type(GetOutputPath) == "function" and GetOutputPath()) or ""
+  if prefix ~= "" and not prefix:match("[/\\]$") then
+    prefix = prefix .. "/"
+  end
+  local path = prefix .. "ams2-event-log-" .. os.date("%Y%m%d-%H%M%S") .. ".txt"
   logFile = io.open(path, "w")
   if logFile then
     logFile:write("=== AMS2 Event Logger started " .. os.date("%Y-%m-%d %H:%M:%S") .. " ===\n\n")
