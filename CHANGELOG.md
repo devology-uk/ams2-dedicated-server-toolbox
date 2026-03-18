@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.3] - 2026-03-18
+
+### Fixed
+- Bundled game data still not found on Linux — the file was placed in `extraResources` (outside the asar) but the path lookup had a wrong directory level (`handlers/data/` instead of `dist-app/data/`); moved data file back into the asar and fixed the relative path
+
 ## [1.1.2] - 2026-03-16
 
 ### Added

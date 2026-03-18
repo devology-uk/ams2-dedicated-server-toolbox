@@ -116,17 +116,17 @@ function loadBundledGameData(): ServerCache | null {
     try {
         // In dev: look relative to project root
         // In production: look in app resources
+        console.log(`[Cache] app.getAppPath()=${app.getAppPath()} __dirname=${__dirname} process.resourcesPath=${process.resourcesPath}`);
         const possiblePaths = [
             // Dev mode: source location
             path.join(app.getAppPath(), 'src', 'app', 'data', 'ams2-game-data.json'),
-            // Dev mode: compiled output
+            // Dev mode: compiled output / production inside asar (dist-app/ is in files[])
             path.join(app.getAppPath(), 'dist-app', 'data', 'ams2-game-data.json'),
-            // Production: extraResources places files under process.resourcesPath
+            // Production: relative to this compiled file (dist-app/handlers/ -> dist-app/data/)
+            path.join(__dirname, '..', 'data', 'ams2-game-data.json'),
+            // Production: extraResources fallback (legacy path, kept for older installs)
             path.join(process.resourcesPath, 'dist-app', 'data', 'ams2-game-data.json'),
-            // Production: relative to compiled main.js
-            path.join(__dirname, 'data', 'ams2-game-data.json'),
-            // Production: app resources
-            path.join(app.getAppPath(), 'data', 'ams2-game-data.json'),
+            path.join(process.resourcesPath, 'data', 'ams2-game-data.json'),
         ];
 
         for (const filePath of possiblePaths) {
