@@ -60,6 +60,24 @@ export interface StageResultRow {
     state: string;
     vehicleId: number;
     isManual: boolean;
+    bestS1: number | null;
+    bestS2: number | null;
+    bestS3: number | null;
+}
+
+export interface LapRecord {
+    id: number;
+    sessionId: number;
+    stageId: number;
+    refid: number;
+    name: string | null;
+    lapNumber: number | null;
+    lapTime: number | null;
+    s1: number | null;
+    s2: number | null;
+    s3: number | null;
+    isValid: boolean;
+    racePosition: number | null;
 }
 
 export interface InsertManualResultParams {

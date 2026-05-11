@@ -1,6 +1,7 @@
 // src/shared/types/index.ts
 
 export * from './ams2Stats.js';
+export * from './ams2EnhancedStats.js';
 export * from './api.js';
 export * from './config.js';
 export * from './connections.js';

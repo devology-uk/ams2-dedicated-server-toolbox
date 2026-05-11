@@ -75,6 +75,10 @@ export function ResultsTable({
         return best;
     }, null);
 
+    const hasSectorData = results.some(
+        (r) => r.bestS1 != null || r.bestS2 != null || r.bestS3 != null,
+    );
+
     const stageSeverity = STAGE_COLORS[stageContext.stageName] ?? 'secondary';
     const sessionDate = new Date(stageContext.startTime * 1000);
 
@@ -338,6 +342,36 @@ export function ResultsTable({
                     sortable
                     style={{ width: '10rem' }}
                 />
+                {hasSectorData && (
+                    <Column
+                        field="bestS1"
+                        header="S1"
+                        body={(r: StageResultRow) => (
+                            <span className="font-mono text-sm">{formatLapTime(r.bestS1)}</span>
+                        )}
+                        style={{ width: '8rem' }}
+                    />
+                )}
+                {hasSectorData && (
+                    <Column
+                        field="bestS2"
+                        header="S2"
+                        body={(r: StageResultRow) => (
+                            <span className="font-mono text-sm">{formatLapTime(r.bestS2)}</span>
+                        )}
+                        style={{ width: '8rem' }}
+                    />
+                )}
+                {hasSectorData && (
+                    <Column
+                        field="bestS3"
+                        header="S3"
+                        body={(r: StageResultRow) => (
+                            <span className="font-mono text-sm">{formatLapTime(r.bestS3)}</span>
+                        )}
+                        style={{ width: '8rem' }}
+                    />
+                )}
                 <Column
                     field="lapsCompleted"
                     header="Laps"

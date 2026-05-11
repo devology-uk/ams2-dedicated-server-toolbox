@@ -69,6 +69,16 @@ export const IPC_CHANNELS = {
     WHATS_NEW_GET:     'whats-new-get',
     WHATS_NEW_DISMISS: 'whats-new-dismiss',
 
+    // Stats DB — enhanced (ams2_stats format)
+    ENHANCED_STATS_DB_IMPORT_FILE: 'enhanced-stats-db-import-file',
+    STATS_DB_GET_LAP_RECORDS: 'stats-db-get-lap-records',
+
+    // Plugins
+    PLUGIN_GET_KNOWN_PLUGINS: 'plugin-get-known-plugins',
+    PLUGIN_SELECT_SERVER_DIR: 'plugin-select-server-dir',
+    PLUGIN_CHECK_INSTALLED:   'plugin-check-installed',
+    PLUGIN_INSTALL:           'plugin-install',
+
     // Shell
     OPEN_EXTERNAL_URL: 'open-external-url',
 } as const;

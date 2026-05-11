@@ -134,6 +134,22 @@ export const CREATE_TABLES = `
     UNIQUE(player_id, server_id, track_id)
   );
 
+  -- Per-lap records (ams2_stats format only)
+  CREATE TABLE IF NOT EXISTS lap_records (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id INTEGER NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
+    stage_id INTEGER NOT NULL REFERENCES stages(id) ON DELETE CASCADE,
+    refid INTEGER NOT NULL,
+    name TEXT,
+    lap_number INTEGER,
+    lap_time INTEGER,
+    s1 INTEGER,
+    s2 INTEGER,
+    s3 INTEGER,
+    is_valid INTEGER NOT NULL DEFAULT 1,
+    race_position INTEGER
+  );
+
   -- Import audit log
   CREATE TABLE IF NOT EXISTS import_log (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

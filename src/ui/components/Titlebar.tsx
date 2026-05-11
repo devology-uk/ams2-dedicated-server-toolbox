@@ -19,6 +19,7 @@ const FEATURE_LABELS: Record<ActiveFeature, string | null> = {
     config: 'Config Builder',
     stats: 'Stats Viewer',
     results: 'Results Viewer',
+    plugins: 'Lua Plugins',
 };
 
 export const Titlebar = ({

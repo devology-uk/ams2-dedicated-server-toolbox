@@ -14,10 +14,12 @@ export const Toolbox = ({ onFeatureSelect }: ToolboxProps) => {
         <div className="toolbox">
             <header className="toolbox__header">
                 <i className="pi pi-car toolbox__logo" />
-                <h1 className="toolbox__title">AMS2 Dedicated Server Toolbox</h1>
-                <p className="toolbox__subtitle">
-                    Tools for managing your Automobilista 2 dedicated servers
-                </p>
+                <div>
+                    <h1 className="toolbox__title">AMS2 Dedicated Server Toolbox</h1>
+                    <p className="toolbox__subtitle">
+                        Tools for managing your Automobilista 2 dedicated servers
+                    </p>
+                </div>
             </header>
 
             <div className="toolbox__grid">
@@ -48,6 +50,13 @@ export const Toolbox = ({ onFeatureSelect }: ToolboxProps) => {
                     icon="pi pi-trophy"
                     color="purple"
                     onClick={() => onFeatureSelect('results')}
+                />
+                <FeatureTile
+                    title="Server Plugins"
+                    description="Install bundled Lua plugins — including the ams2_stats plugin for sector times and full DNF tracking"
+                    icon="pi pi-box"
+                    color="cyan"
+                    onClick={() => onFeatureSelect('plugins')}
                 />
             </div>
         </div>

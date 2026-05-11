@@ -7,7 +7,11 @@
   ],
   "extraResources": [
     "dist-app/preload/**",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    {
+      "from": "lua-plugins/ams2_stats",
+      "to": "lua-plugins/ams2_stats"
+    }
   ],
   "asar": true,
   "asarUnpack": [

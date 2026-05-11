@@ -7,6 +7,7 @@ import type { InsertManualResultParams } from '../../shared/types/statsDb.js';
 import { getDatabase } from '../db/index.js';
 import { StatsImportService } from '../services/statsImportService.js';
 import { StatsQueryService } from '../services/statsQueryService.js';
+import { AMS2EnhancedStatsImportService } from '../services/ams2EnhancedStatsImportService.js';
 
 function stripComments(content: string): string {
     return content
@@ -303,6 +304,103 @@ export function registerStatsDbHandlers(mainWindow: BrowserWindow): void {
             try {
                 services.queryService.deleteManualResult(resultId);
                 return { success: true };
+            } catch (error) {
+                return { success: false, error: String(error) };
+            }
+        },
+    );
+
+    // =============================================
+    // Enhanced stats (ams2_stats format) import
+    // =============================================
+
+    ipcMain.handle(
+        IPC_CHANNELS.ENHANCED_STATS_DB_IMPORT_FILE,
+        async (_event, filePath?: string) => {
+            try {
+                const db = getDatabase();
+                const service = new AMS2EnhancedStatsImportService(db);
+
+                let targetPath = filePath;
+
+                if (!targetPath) {
+                    const result = await dialog.showOpenDialog(mainWindow, {
+                        title: 'Import AMS2 Enhanced Stats File',
+                        filters: [
+                            { name: 'JSON Files', extensions: ['json'] },
+                            { name: 'All Files', extensions: ['*'] },
+                        ],
+                        properties: ['openFile'],
+                    });
+
+                    if (result.canceled || result.filePaths.length === 0) {
+                        return { success: false, error: 'No file selected' };
+                    }
+
+                    targetPath = result.filePaths[0];
+                }
+
+                const content = await fs.readFile(targetPath, 'utf-8');
+                const importResult = service.importFile(targetPath, content);
+
+                return { success: true, data: importResult };
+            } catch (error) {
+                console.error('[StatsDB] Enhanced import failed:', error);
+                return {
+                    success: false,
+                    error: error instanceof Error ? error.message : 'Import failed',
+                };
+            }
+        },
+    );
+
+    // =============================================
+    // Lap records query
+    // =============================================
+
+    ipcMain.handle(
+        IPC_CHANNELS.STATS_DB_GET_LAP_RECORDS,
+        (_event, sessionId: number) => {
+            try {
+                const db = getDatabase();
+                const rows = db
+                    .prepare(
+                        `SELECT id, session_id, stage_id, refid, name, lap_number,
+                                lap_time, s1, s2, s3, is_valid, race_position
+                         FROM lap_records WHERE session_id = ?
+                         ORDER BY refid, lap_number`,
+                    )
+                    .all(sessionId) as Array<{
+                    id: number;
+                    session_id: number;
+                    stage_id: number;
+                    refid: number;
+                    name: string | null;
+                    lap_number: number | null;
+                    lap_time: number | null;
+                    s1: number | null;
+                    s2: number | null;
+                    s3: number | null;
+                    is_valid: number;
+                    race_position: number | null;
+                }>;
+
+                const records = rows.map((r) => ({
+                    id: r.id,
+                    sessionId: r.session_id,
+                    stageId: r.stage_id,
+                    refid: r.refid,
+                    name: r.name,
+                    lapNumber: r.lap_number,
+                    lapTime: r.lap_time,
+                    s1: r.s1,
+                    s2: r.s2,
+                    s3: r.s3,
+                    isValid: r.is_valid === 1,
+                    racePosition: r.race_position,
+                }));
+
+                return { success: true, data: records };
             } catch (error) {
                 return { success: false, error: String(error) };
             }

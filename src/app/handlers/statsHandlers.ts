@@ -12,6 +12,18 @@ function stripComments(content: string): string {
     .join('\n');
 }
 
+function detectFormat(data: unknown): 'sms_stats' | 'ams2_stats' | 'unknown' {
+  if (data === null || typeof data !== 'object') return 'unknown';
+  const d = data as Record<string, unknown>;
+  if (Array.isArray(d.sessions) && d.meta && typeof (d.meta as Record<string, unknown>).plugin_version === 'string') {
+    return 'ams2_stats';
+  }
+  if (d.stats && typeof d.stats === 'object' && Array.isArray((d.stats as Record<string, unknown>).history)) {
+    return 'sms_stats';
+  }
+  return 'unknown';
+}
+
 export function registerStatsHandlers(mainWindow: BrowserWindow): void {
   ipcMain.handle(IPC_CHANNELS.STATS_SELECT_FILE, async () => {
     const result = await dialog.showOpenDialog(mainWindow, {
@@ -36,8 +48,14 @@ export function registerStatsHandlers(mainWindow: BrowserWindow): void {
       const cleanedContent = stripComments(content);
       const data = JSON.parse(cleanedContent);
 
+      const format = detectFormat(data);
+      if (format === 'unknown') {
+        return { success: false, error: 'Unrecognised stats file format. Expected sms_stats or ams2_stats output.' };
+      }
+
       return {
         success: true,
+        format,
         data,
         filePath,
         fileName: path.basename(filePath),

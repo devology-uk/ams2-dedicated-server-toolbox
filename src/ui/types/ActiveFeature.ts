@@ -1,1 +1,1 @@
-export type ActiveFeature = 'home' | 'config' | 'stats' | 'api' | 'results';
+export type ActiveFeature = 'home' | 'config' | 'stats' | 'api' | 'results' | 'plugins';

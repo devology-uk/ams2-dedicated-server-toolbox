@@ -16,7 +16,11 @@ import { LuaApiForm } from './components/LuaApiForm';
 import { ExportPreviewDialog } from './components/ExportPreviewDialog';
 import { validateConfig, type ValidationIssue } from './utils/config-validation';
 
-export const ConfigBuilderView = () => {
+interface ConfigBuilderViewProps {
+    onOpenPluginsInstaller?: () => void;
+}
+
+export const ConfigBuilderView = ({ onOpenPluginsInstaller }: ConfigBuilderViewProps) => {
   const toast = useRef<Toast>(null);
   const [activeTab, setActiveTab] = useState(0);
   const [showExportPreview, setShowExportPreview] = useState(false);
@@ -321,6 +325,7 @@ export const ConfigBuilderView = () => {
     <LuaApiForm
       config={config}
       onChange={updateRootField}
+      onOpenPluginsInstaller={onOpenPluginsInstaller}
     />
   </TabPanel>
 </TabView>

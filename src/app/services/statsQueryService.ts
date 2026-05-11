@@ -191,7 +191,8 @@ export class StatsQueryService {
           sr.laps_completed as lapsCompleted,
           sr.total_time as totalTime,
           sr.state, sr.vehicle_id as vehicleId,
-          sr.is_manual as isManual
+          sr.is_manual as isManual,
+          sr.best_s1 as bestS1, sr.best_s2 as bestS2, sr.best_s3 as bestS3
          FROM stage_results sr
          JOIN stages st ON st.id = sr.stage_id
          WHERE sr.session_id = ? AND st.name = ?
@@ -211,7 +212,8 @@ export class StatsQueryService {
           sr.laps_completed as lapsCompleted,
           sr.total_time as totalTime,
           sr.state, sr.vehicle_id as vehicleId,
-          sr.is_manual as isManual
+          sr.is_manual as isManual,
+          sr.best_s1 as bestS1, sr.best_s2 as bestS2, sr.best_s3 as bestS3
          FROM stage_results sr
          JOIN stages st ON st.id = sr.stage_id
          WHERE sr.session_id = ?
@@ -419,7 +421,8 @@ export class StatsQueryService {
               sr.laps_completed as lapsCompleted,
               sr.total_time as totalTime,
               sr.state, sr.vehicle_id as vehicleId,
-              sr.is_manual as isManual
+              sr.is_manual as isManual,
+              sr.best_s1 as bestS1, sr.best_s2 as bestS2, sr.best_s3 as bestS3
              FROM stage_results sr
              JOIN stages st ON st.id = sr.stage_id
              WHERE sr.id = ?`,

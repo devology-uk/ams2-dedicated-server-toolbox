@@ -50,10 +50,24 @@ function initializeSchema(database: AppDatabase): void {
     // These are idempotent and guard against partial migrations where the
     // schema_version was bumped before the ALTER TABLE actually ran.
     ensureColumn(database, 'stage_results', 'is_manual', 'INTEGER NOT NULL DEFAULT 0');
+    ensureColumn(database, 'stage_results', 'best_s1', 'INTEGER');
+    ensureColumn(database, 'stage_results', 'best_s2', 'INTEGER');
+    ensureColumn(database, 'stage_results', 'best_s3', 'INTEGER');
+    ensureColumn(database, 'sessions', 'source_format', "TEXT NOT NULL DEFAULT 'sms_stats'");
+    ensureColumn(database, 'sessions', 'source_uid', "TEXT NOT NULL DEFAULT ''");
 
-    // Index for is_manual must be created after the column is guaranteed to exist
+    // Indexes must be created after the columns are guaranteed to exist
     database.exec(
         'CREATE INDEX IF NOT EXISTS idx_stage_results_manual ON stage_results(is_manual)',
+    );
+    database.exec(
+        'CREATE INDEX IF NOT EXISTS idx_lap_records_session ON lap_records(session_id)',
+    );
+    database.exec(
+        'CREATE INDEX IF NOT EXISTS idx_lap_records_stage ON lap_records(stage_id)',
+    );
+    database.exec(
+        'CREATE INDEX IF NOT EXISTS idx_sessions_source_uid ON sessions(server_id, source_uid)',
     );
 
     // Version-gated migrations (for non-column-additive changes)

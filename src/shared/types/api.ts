@@ -12,6 +12,7 @@ import type {
 
 import type {
     ImportResult,
+    LapRecord,
     ServerSummary,
     ServerOverview,
     PlayerSummary,
@@ -49,15 +50,25 @@ export interface FileOperationResult {
 // Stats Parse Result
 // ============================================
 
-export type StatsParseResult = {
-    success: true;
-    data: import('./ams2Stats.js').AMS2StatsFile;
-    filePath: string;
-    fileName: string;
-} | {
-    success: false;
-    error: string;
-};
+export type StatsParseResult =
+    | {
+          success: true;
+          format: 'sms_stats';
+          data: import('./ams2Stats.js').AMS2StatsFile;
+          filePath: string;
+          fileName: string;
+      }
+    | {
+          success: true;
+          format: 'ams2_stats';
+          data: import('./ams2EnhancedStats.js').AMS2EnhancedStatsFile;
+          filePath: string;
+          fileName: string;
+      }
+    | {
+          success: false;
+          error: string;
+      };
 
 export interface StatsFileUpdatedPayload {
     data: import('./ams2Stats.js').AMS2StatsFile;
@@ -111,6 +122,31 @@ export interface WhatsNewContent {
 export interface WhatsNewAPI {
     get: () => Promise<WhatsNewContent | null>;
     dismiss: () => Promise<void>;
+}
+
+// ============================================
+// Plugin Types
+// ============================================
+
+export interface KnownPlugin {
+    id: string;
+    name: string;
+    description: string;
+    addonName: string;
+    version: string;
+    bundled: boolean;
+}
+
+export interface PluginInstallResult {
+    success: boolean;
+    error?: string;
+}
+
+export interface PluginsAPI {
+    getKnownPlugins: () => Promise<KnownPlugin[]>;
+    selectServerDir: () => Promise<string | null>;
+    checkInstalled: (pluginId: string, serverDir: string) => Promise<boolean>;
+    install: (pluginId: string, serverDir: string) => Promise<PluginInstallResult>;
 }
 
 export interface AliasesAPI {
@@ -179,7 +215,12 @@ export interface ElectronAPI {
         ) => Promise<IpcResult<ImportLogEntry[]>>;
         insertManualResult: (params: InsertManualResultParams) => Promise<IpcResult<StageResultRow>>;
         deleteManualResult: (resultId: number) => Promise<IpcResult<void>>;
+        importEnhancedFile: (filePath?: string) => Promise<IpcResult<ImportResult>>;
+        getLapRecords: (sessionId: number) => Promise<IpcResult<LapRecord[]>>;
     };
+
+    // Plugins
+    plugins: PluginsAPI;
 
     // What's New
     whatsNew: WhatsNewAPI;

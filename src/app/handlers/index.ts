@@ -9,6 +9,7 @@ import { registerStatsHandlers } from './statsHandlers.js';
 import { registerStatsDbHandlers } from './statsDbHandlers.js';
 import { registerAliasHandlers } from './aliasHandlers.js';
 import { registerWhatsNewHandler } from './whatsNewHandler.js';
+import { registerPluginHandlers } from './pluginHandlers.js';
 
 export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerConnectionHandlers();
@@ -19,4 +20,5 @@ export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerStatsDbHandlers(mainWindow);
     registerAliasHandlers();
     registerWhatsNewHandler();
+    registerPluginHandlers();
 }

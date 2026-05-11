@@ -333,11 +333,25 @@ export function serializeServerConfig(config: ServerConfig): string {
     'sessionAttributes',
   ];
   
+  // Sort addon names: sms_base first, other sms_* next, then everything else, ams2_stats last
+  const sortAddons = (addons: string[]): string[] => {
+    const bucket = (name: string): number => {
+      if (name === 'sms_base') return 0;
+      if (name.startsWith('sms_')) return 1;
+      if (name === 'ams2_stats') return 3;
+      return 2;
+    };
+    return [...addons].sort((a, b) => bucket(a) - bucket(b));
+  };
+
   const written = new Set<string>();
-  
+
   for (const key of orderedKeys) {
-    const value = (config as Record<string, unknown>)[key];
+    let value = (config as Record<string, unknown>)[key];
     if (value !== undefined && !SKIP_KEYS.has(key)) {
+      if (key === 'luaApiAddons' && Array.isArray(value)) {
+        value = sortAddons(value as string[]);
+      }
       const serialized = serializeValue(value, 0);
       lines.push(`${key} : ${serialized}`);
       written.add(key);
