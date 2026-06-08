@@ -9,7 +9,7 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode } from 'primereact/api';
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { confirmDialog } from 'primereact/confirmdialog';
 import type { StageListItem } from '../hooks/useResults';
 import { useGameLookup } from '../../../hooks/useGameLookup';
 import { formatStageName, formatEpochDate, formatEpochTime, formatDurationRange } from '../../../utils/formatters';
@@ -153,7 +153,6 @@ export function StageList({ stages, loading, onSelectStage, onDeleteSession }: S
 
     return (
         <Card className="shadow-2">
-            <ConfirmDialog />
             <DataTable
                 value={filteredStages}
                 header={header}
