@@ -65,6 +65,12 @@ export class StatsQueryService {
         })();
     }
 
+    deleteSession(sessionId: number): void {
+        // foreign_keys = ON with ON DELETE CASCADE handles stages, stage_results,
+        // lap_records, session_participants, session_members automatically
+        this.db.prepare('DELETE FROM sessions WHERE id = ?').run(sessionId);
+    }
+
     // --------------------------------------------------
     // Players
     // --------------------------------------------------
@@ -171,7 +177,7 @@ export class StatsQueryService {
                 trackId: s.trackId,
                 vehicleModelId: s.vehicleModelId,
                 stageNames: stageRows.map((r) => r.name),
-                participantCount: partCount.count,
+                participantCount: partCount.count || resCount.count,
                 hasResults: resCount.count > 0,
             };
         });

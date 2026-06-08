@@ -1,4 +1,4 @@
-version : [ 1, 0 ]
+version : [ 1, 1 ]
 description : "Alternative to sms_stats that captures more data and improves output"
 apiVersion : [ 3, 0 ]
 files : [ "ams2_stats.lua" ]

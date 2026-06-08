@@ -35,6 +35,7 @@ export function ResultsViewer() {
         error: resultsError,
         fetchSessions,
         selectStage,
+        deleteSession,
         clearSelection,
     } = useResults();
 
@@ -42,7 +43,7 @@ export function ResultsViewer() {
         importing,
         lastImport,
         error: importError,
-        importFile,
+        importAuto,
         clearLastImport,
     } = useImport();
 
@@ -59,15 +60,16 @@ export function ResultsViewer() {
 
     const handleImport = useCallback(async () => {
         setImportDialogVisible(true);
-        const result = await importFile();
+        const result = await importAuto(selectedServer?.name);
         if (result) {
-            // Refresh data after successful import
-            await refreshServers();
             if (selectedServer) {
                 await fetchSessions(selectedServer.id, { hasResults: true, limit: 200 });
+            } else {
+                // First import ever — fetchServers auto-selects the new server
+                await refreshServers();
             }
         }
-    }, [importFile, refreshServers, selectedServer, fetchSessions]);
+    }, [importAuto, refreshServers, selectedServer, fetchSessions]);
 
     const handleImportDialogClose = useCallback(() => {
         setImportDialogVisible(false);
@@ -87,6 +89,16 @@ export function ResultsViewer() {
             clearSelection();
         },
         [deleteServer, clearSelection],
+    );
+
+    const handleDeleteSession = useCallback(
+        async (sessionId: number) => {
+            await deleteSession(sessionId);
+            if (selectedStage?.sessionId === sessionId) {
+                clearSelection();
+            }
+        },
+        [deleteSession, selectedStage, clearSelection],
     );
 
     const error = serversError ?? resultsError;
@@ -173,6 +185,7 @@ export function ResultsViewer() {
                         stages={stages}
                         loading={sessionsLoading}
                         onSelectStage={selectStage}
+                        onDeleteSession={handleDeleteSession}
                     />
                 )}
             </div>

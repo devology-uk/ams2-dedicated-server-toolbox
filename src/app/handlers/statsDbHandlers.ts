@@ -142,6 +142,21 @@ export function registerStatsDbHandlers(mainWindow: BrowserWindow): void {
         },
     );
 
+    ipcMain.handle(
+        IPC_CHANNELS.STATS_DB_DELETE_SESSION,
+        (_event, sessionId: number) => {
+            const services = getServices();
+            if (!services) return DB_UNAVAILABLE_RESPONSE;
+
+            try {
+                services.queryService.deleteSession(sessionId);
+                return { success: true };
+            } catch (error) {
+                return { success: false, error: String(error) };
+            }
+        },
+    );
+
     // =============================================
     // Players
     // =============================================
@@ -316,7 +331,7 @@ export function registerStatsDbHandlers(mainWindow: BrowserWindow): void {
 
     ipcMain.handle(
         IPC_CHANNELS.ENHANCED_STATS_DB_IMPORT_FILE,
-        async (_event, filePath?: string) => {
+        async (_event, filePath?: string, serverNameOverride?: string) => {
             try {
                 const db = getDatabase();
                 const service = new AMS2EnhancedStatsImportService(db);
@@ -341,7 +356,7 @@ export function registerStatsDbHandlers(mainWindow: BrowserWindow): void {
                 }
 
                 const content = await fs.readFile(targetPath, 'utf-8');
-                const importResult = service.importFile(targetPath, content);
+                const importResult = service.importFile(targetPath, stripComments(content), serverNameOverride);
 
                 return { success: true, data: importResult };
             } catch (error) {

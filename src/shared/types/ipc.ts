@@ -55,6 +55,7 @@ export const IPC_CHANNELS = {
     STATS_DB_GET_IMPORT_HISTORY: 'stats-db-get-import-history',
     STATS_DB_INSERT_MANUAL_RESULT: 'stats-db-insert-manual-result',
     STATS_DB_DELETE_MANUAL_RESULT: 'stats-db-delete-manual-result',
+    STATS_DB_DELETE_SESSION: 'stats-db-delete-session',
 
     // Driver Aliases
     ALIASES_GET_ALL: 'aliases-get-all',

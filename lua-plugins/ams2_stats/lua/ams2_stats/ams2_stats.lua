@@ -46,6 +46,10 @@ local pid_to_refid = {}
 -- In-progress session record (nil between sessions).
 local cur = nil
 
+-- Stage name received from SessionManagerStateChanged before the first event
+-- fires and creates the session record.  Cleared once consumed.
+local pending_stage = nil
+
 -- Telemetry attribute names we do not want to capture on participant change.
 local SKIP_ATTRS = {
   Speed=true, Orientation=true, RPM=true,
@@ -217,12 +221,22 @@ local function addon_callback(cb, ...)
       -- Reset cross-stage state; server session is over.
       known_members  = {}
       pid_to_refid   = {}
+      pending_stage  = nil
+    else
+      -- The server is entering a new stage (e.g. "Practice1", "Race1").
+      -- Record this so the next new_session() call can name the stage correctly,
+      -- covering the case where no StageChanged event precedes the first event.
+      if cur then
+        if not cur.stage then cur.stage = new_state end
+      else
+        pending_stage = new_state
+      end
     end
     return
   end
 
   -- Ensure we have an active session record for all other events.
-  if not cur then new_session(nil, nil) end
+  if not cur then new_session(pending_stage, nil); pending_stage = nil end
 
   -- ── Session attributes ────────────────────────────────────────────────────
   if cb == Callback.SessionAttributesChanged then

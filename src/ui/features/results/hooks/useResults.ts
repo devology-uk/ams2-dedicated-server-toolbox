@@ -31,6 +31,7 @@ interface UseResultsReturn {
     ) => Promise<void>;
     selectStage: (stage: StageListItem) => Promise<void>;
     fetchAllSessionResults: (sessionId: number) => Promise<void>;
+    deleteSession: (sessionId: number) => Promise<boolean>;
     clearSelection: () => void;
 }
 
@@ -135,6 +136,21 @@ export function useResults(): UseResultsReturn {
         }
     }, []);
 
+    const deleteSession = useCallback(async (sessionId: number): Promise<boolean> => {
+        try {
+            const result = await window.electron.statsDb.deleteSession(sessionId);
+            if (result.success) {
+                setStages((prev) => prev.filter((s) => s.sessionId !== sessionId));
+                return true;
+            }
+            setError(result.error ?? 'Failed to delete session');
+            return false;
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Unknown error');
+            return false;
+        }
+    }, []);
+
     const clearSelection = useCallback(() => {
         setSelectedStage(null);
         setSelectedStageResults([]);
@@ -152,6 +168,7 @@ export function useResults(): UseResultsReturn {
         fetchSessions,
         selectStage,
         fetchAllSessionResults,
+        deleteSession,
         clearSelection,
     };
 }

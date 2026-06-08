@@ -4,14 +4,6 @@
 {
   "events" : [
     {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:14"
-    },
-    {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
@@ -21,8 +13,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:14"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:00"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -35,8 +27,20 @@
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:00"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:14"
+      "time" : "2026-06-07 16:51:00"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -49,7 +53,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:14"
+      "time" : "2026-06-07 16:51:00"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -61,8 +65,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:14"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:00"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -74,229 +78,40 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:14"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:14"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:00"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:14"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:15"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:00"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:15"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:00"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:15"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:15"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:16"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:16"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:16"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -309,8 +124,21 @@
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:01"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:16"
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -323,7 +151,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:16"
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -335,20 +163,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:16"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:16"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -360,29 +176,16 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:16"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:16"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:16"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -395,8 +198,21 @@
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:01"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:16"
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -409,7 +225,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:16"
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -421,20 +237,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:16"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:16"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -446,21 +250,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:16"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:17"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:01"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -473,107 +264,21 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:17"
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
+        "Orientation",
         "RPM",
-        "Sector3Time",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:17"
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -586,7 +291,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:17"
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -598,60 +303,37 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:17"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:17"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
+        "Orientation",
         "RPM",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:17"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:18"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:18"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:18"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -664,8 +346,21 @@
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:02"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:18"
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -678,7 +373,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:18"
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -690,32 +385,21 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:18"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
+        "Speed",
         "Orientation",
         "RPM",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:18"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:18"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:02"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -723,9 +407,9 @@
         "SessionTimeElapsed",
         "AirPressure"
       ],
-      "time" : "2026-05-10 16:51:18",
+      "time" : "2026-06-07 16:51:03",
       "values" : {
-        "AirPressure" : 100754,
+        "AirPressure" : 100948,
         "SessionTimeElapsed" : 1800
       }
     },
@@ -734,96 +418,24 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:18"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:03"
     },
     {
-      "cb" : "ParticipantAttributesChanged",
+      "cb" : "MemberAttributesChanged",
       "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
+        "Ping"
       ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:18"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:03"
     },
     {
-      "cb" : "ParticipantAttributesChanged",
+      "cb" : "MemberAttributesChanged",
       "names" : [
-        "Speed",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
+        "Ping"
       ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:18"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:18"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:18"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:18"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:18"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:19"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:03"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -836,107 +448,21 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:19"
+      "time" : "2026-06-07 16:51:03"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
+        "Orientation",
         "RPM",
-        "Sector3Time",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:19"
+      "time" : "2026-06-07 16:51:03"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -949,7 +475,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:19"
+      "time" : "2026-06-07 16:51:03"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -961,8 +487,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:19"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:03"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -974,219 +500,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:19"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:20"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:21"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:21"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:03"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1199,12 +514,26 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:21"
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:04"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
         "Orientation",
         "RPM",
         "PositionX",
@@ -1212,7 +541,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:21"
+      "time" : "2026-06-07 16:51:04"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1224,8 +553,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:21"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:04"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1237,8 +566,116 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:21"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:04"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:05"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:05"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1251,24 +688,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:21"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:21"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:21"
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:05"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1280,22 +701,71 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:21"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:05"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
         "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:05"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:05"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:05"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:05"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
         "RPM",
         "Sector3Time",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:05"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:21"
+      "time" : "2026-06-07 16:51:05"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1308,7 +778,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:21"
+      "time" : "2026-06-07 16:51:05"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1320,8 +790,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:21"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:05"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1333,50 +803,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:21"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:21"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:22"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:05"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1389,20 +817,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:22"
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:06"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1414,8 +830,61 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:22"
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:06"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:06"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:06"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:06"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:06"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1428,55 +897,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:22"
+      "time" : "2026-06-07 16:51:06"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1489,7 +911,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:22"
+      "time" : "2026-06-07 16:51:06"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1501,22 +923,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:22"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:22"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:06"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1528,16 +936,239 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:22"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:06"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:23"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:06"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:06"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Gear",
+        "Speed",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:07"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:08"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:08"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:08"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:08"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:08"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -1545,9 +1176,9 @@
         "SessionTimeElapsed",
         "AirPressure"
       ],
-      "time" : "2026-05-10 16:51:23",
+      "time" : "2026-06-07 16:51:08",
       "values" : {
-        "AirPressure" : 100755,
+        "AirPressure" : 100937,
         "SessionTimeElapsed" : 1800
       }
     },
@@ -1555,14 +1186,14 @@
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
-        "Orientation",
         "RPM",
+        "Sector3Time",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:23"
+      "time" : "2026-06-07 16:51:08"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1570,13 +1201,12 @@
         "Speed",
         "Orientation",
         "RPM",
-        "Sector3Time",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:23"
+      "time" : "2026-06-07 16:51:08"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1589,7 +1219,19 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:23"
+      "time" : "2026-06-07 16:51:08"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:08"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1601,76 +1243,49 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:23"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:23"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:23"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:08"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:23"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:08"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:23"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:23"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:08"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
-        "Orientation",
         "RPM",
         "Sector3Time",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:23"
+      "time" : "2026-06-07 16:51:09"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1683,86 +1298,87 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:23"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:23"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:23"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:23"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:24"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:24"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:24"
+      "time" : "2026-06-07 16:51:09"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Gear",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
         "Speed",
         "Orientation",
         "RPM",
@@ -1771,7 +1387,19 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:24"
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:09"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1783,8 +1411,34 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:24"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:09"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "Sector3Time",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:10"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1796,8 +1450,20 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:24"
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:10"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -1809,16 +1475,53 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:24"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:10"
     },
     {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:24"
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "CountThisLap" : 1,
+          "CountThisLapTimes" : 1,
+          "Lap" : 12,
+          "Sector" : 0,
+          "SectorTime" : 60449,
+          "TotalTime" : 1934595
+        },
+        "index" : 603,
+        "name" : "Sector",
+        "participantid" : 0,
+        "refid" : 65344,
+        "time" : 1780847469,
+        "type" : "Participant"
+      },
+      "name" : "Sector",
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "CountThisLapTimes" : 1,
+          "DistanceTravelled" : 4875,
+          "Lap" : 12,
+          "LapTime" : 140748,
+          "RacePosition" : 5,
+          "Sector1Time" : 35311,
+          "Sector2Time" : 44988,
+          "Sector3Time" : 60449
+        },
+        "index" : 604,
+        "name" : "Lap",
+        "participantid" : 0,
+        "refid" : 65344,
+        "time" : 1780847469,
+        "type" : "Participant"
+      },
+      "name" : "Lap",
+      "participant" : {},
+      "time" : "2026-06-07 16:51:10"
     },
     {
       "cb" : "EventLogged",
@@ -1827,137 +1530,15 @@
           "NewState" : "Finished",
           "PreviousState" : "Racing"
         },
-        "index" : 1005,
+        "index" : 605,
         "name" : "State",
-        "participantid" : 1,
-        "refid" : 16705,
-        "time" : 1778428283,
+        "participantid" : 0,
+        "refid" : 65344,
+        "time" : 1780847469,
         "type" : "Participant"
       },
       "name" : "State",
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "Sector3Time",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "CountThisLap" : 1,
-          "CountThisLapTimes" : 1,
-          "Lap" : 15,
-          "Sector" : 0,
-          "SectorTime" : 40163,
-          "TotalTime" : 1860063
-        },
-        "index" : 1006,
-        "name" : "Sector",
-        "participantid" : 1,
-        "refid" : 16705,
-        "time" : 1778428283,
-        "type" : "Participant"
-      },
-      "name" : "Sector",
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "CountThisLapTimes" : 1,
-          "DistanceTravelled" : 3643,
-          "Lap" : 15,
-          "LapTime" : 108486,
-          "RacePosition" : 6,
-          "Sector1Time" : 27925,
-          "Sector2Time" : 40398,
-          "Sector3Time" : 40163
-        },
-        "index" : 1007,
-        "name" : "Lap",
-        "participantid" : 1,
-        "refid" : 16705,
-        "time" : 1778428283,
-        "type" : "Participant"
-      },
-      "name" : "Lap",
-      "participant" : {},
-      "time" : "2026-05-10 16:51:25"
+      "time" : "2026-06-07 16:51:10"
     },
     {
       "cb" : "EventLogged",
@@ -1966,153 +1547,123 @@
           "NewState" : "PostRace",
           "PreviousState" : "Race"
         },
-        "index" : 1008,
+        "index" : 606,
         "name" : "StateChanged",
-        "time" : 1778428283,
+        "time" : 1780847469,
         "type" : "Session"
       },
       "name" : "StateChanged",
-      "time" : "2026-05-10 16:51:25"
+      "time" : "2026-06-07 16:51:10"
     },
     {
       "cb" : "EventLogged",
       "event" : {
         "attributes" : {
-          "FastestLapTime" : 101472,
-          "Lap" : 17,
+          "FastestLapTime" : 134897,
+          "Lap" : 13,
           "RacePosition" : 1,
           "State" : "Finished",
-          "TotalTime" : 1801073,
+          "TotalTime" : 1808717,
           "VehicleId" : 851522805
         },
-        "index" : 1009,
-        "name" : "Results",
-        "participantid" : 7,
-        "refid" : 52419,
-        "time" : 1778428283,
-        "type" : "Participant"
-      },
-      "name" : "Results",
-      "participant" : {},
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "FastestLapTime" : 101287,
-          "Lap" : 17,
-          "RacePosition" : 2,
-          "State" : "Finished",
-          "TotalTime" : 1809147,
-          "VehicleId" : 851522805
-        },
-        "index" : 1010,
-        "name" : "Results",
-        "participantid" : 2,
-        "refid" : 59586,
-        "time" : 1778428283,
-        "type" : "Participant"
-      },
-      "name" : "Results",
-      "participant" : {},
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "FastestLapTime" : 102018,
-          "Lap" : 17,
-          "RacePosition" : 3,
-          "State" : "Finished",
-          "TotalTime" : 1813167,
-          "VehicleId" : 851522805
-        },
-        "index" : 1011,
-        "name" : "Results",
-        "participantid" : 6,
-        "refid" : 61124,
-        "time" : 1778428283,
-        "type" : "Participant"
-      },
-      "name" : "Results",
-      "participant" : {},
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "FastestLapTime" : 103442,
-          "Lap" : 17,
-          "RacePosition" : 4,
-          "State" : "Finished",
-          "TotalTime" : 1848125,
-          "VehicleId" : 851522805
-        },
-        "index" : 1012,
-        "name" : "Results",
-        "participantid" : 8,
-        "refid" : 45765,
-        "time" : 1778428283,
-        "type" : "Participant"
-      },
-      "name" : "Results",
-      "participant" : {},
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "FastestLapTime" : 105639,
-          "Lap" : 16,
-          "RacePosition" : 5,
-          "State" : "Finished",
-          "TotalTime" : 1805156,
-          "VehicleId" : 851522805
-        },
-        "index" : 1013,
-        "name" : "Results",
-        "participantid" : 0,
-        "refid" : 28160,
-        "time" : 1778428283,
-        "type" : "Participant"
-      },
-      "name" : "Results",
-      "participant" : {},
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "FastestLapTime" : 106007,
-          "Lap" : 16,
-          "RacePosition" : 6,
-          "State" : "Finished",
-          "TotalTime" : 1860065,
-          "VehicleId" : 851522805
-        },
-        "index" : 1014,
+        "index" : 607,
         "name" : "Results",
         "participantid" : 1,
-        "refid" : 16705,
-        "time" : 1778428283,
+        "refid" : 36161,
+        "time" : 1780847469,
         "type" : "Participant"
       },
       "name" : "Results",
       "participant" : {},
-      "time" : "2026-05-10 16:51:25"
+      "time" : "2026-06-07 16:51:10"
     },
     {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "RaceStatFlags"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:25"
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "FastestLapTime" : 135197,
+          "Lap" : 13,
+          "RacePosition" : 2,
+          "State" : "Finished",
+          "TotalTime" : 1823597,
+          "VehicleId" : 851522805
+        },
+        "index" : 608,
+        "name" : "Results",
+        "participantid" : 3,
+        "refid" : 35459,
+        "time" : 1780847469,
+        "type" : "Participant"
+      },
+      "name" : "Results",
+      "participant" : {},
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "FastestLapTime" : 135705,
+          "Lap" : 13,
+          "RacePosition" : 3,
+          "State" : "Finished",
+          "TotalTime" : 1842681,
+          "VehicleId" : 851522805
+        },
+        "index" : 609,
+        "name" : "Results",
+        "participantid" : 4,
+        "refid" : 8132,
+        "time" : 1780847469,
+        "type" : "Participant"
+      },
+      "name" : "Results",
+      "participant" : {},
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "FastestLapTime" : 134751,
+          "Lap" : 13,
+          "RacePosition" : 4,
+          "State" : "Finished",
+          "TotalTime" : 1850342,
+          "VehicleId" : 851522805
+        },
+        "index" : 610,
+        "name" : "Results",
+        "participantid" : 2,
+        "refid" : 5250,
+        "time" : 1780847469,
+        "type" : "Participant"
+      },
+      "name" : "Results",
+      "participant" : {},
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "FastestLapTime" : 140069,
+          "Lap" : 13,
+          "RacePosition" : 5,
+          "State" : "Finished",
+          "TotalTime" : 1934586,
+          "VehicleId" : 851522805
+        },
+        "index" : 611,
+        "name" : "Results",
+        "participantid" : 0,
+        "refid" : 65344,
+        "time" : 1780847469,
+        "type" : "Participant"
+      },
+      "name" : "Results",
+      "participant" : {},
+      "time" : "2026-06-07 16:51:10"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -2122,55 +1673,20 @@
         "AirPressure",
         "SessionState"
       ],
-      "time" : "2026-05-10 16:51:25",
+      "time" : "2026-06-07 16:51:10",
       "values" : {
-        "AirPressure" : 100751,
-        "NumParticipantsFinished" : 10,
+        "AirPressure" : 100929,
+        "NumParticipantsFinished" : 9,
         "SessionState" : "PostRace",
         "SessionTimeElapsed" : 1800
       }
     },
     {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "RaceStatFlags"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "RaceStatFlags"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "CurrentSector",
+        "Speed",
+        "Orientation",
         "RPM",
         "CurrentLap",
         "Sector1Time",
@@ -2182,8 +1698,238 @@
         "PositionZ",
         "State"
       ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:25"
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "RaceStatFlags"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:10"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Gear",
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:11"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:12"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2196,8 +1942,59 @@
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:12"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:25"
+      "time" : "2026-06-07 16:51:12"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:12"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:12"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:12"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2210,77 +2007,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:25"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:26"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:26"
+      "time" : "2026-06-07 16:51:12"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2293,32 +2021,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:26"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:26"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:26"
+      "time" : "2026-06-07 16:51:12"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2331,21 +2034,40 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:26"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:12"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:12"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:26"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:12"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:12"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
-        "Speed",
         "Orientation",
         "RPM",
         "PositionX",
@@ -2353,12 +2075,11 @@
         "PositionZ"
       ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:26"
+      "time" : "2026-06-07 16:51:13"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
-        "Speed",
         "Orientation",
         "RPM",
         "PositionX",
@@ -2366,7 +2087,7 @@
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:26"
+      "time" : "2026-06-07 16:51:13"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2379,7 +2100,19 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:26"
+      "time" : "2026-06-07 16:51:13"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:13"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2391,38 +2124,36 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:26"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:13"
     },
     {
-      "cb" : "ParticipantAttributesChanged",
+      "cb" : "MemberAttributesChanged",
       "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
+        "Ping"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:26"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:13"
     },
     {
-      "cb" : "ParticipantAttributesChanged",
+      "cb" : "MemberAttributesChanged",
       "names" : [
-        "Speed",
-        "Orientation",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
+        "Ping"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:26"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:13"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:13"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
-        "Speed",
         "Orientation",
         "RPM",
         "PositionX",
@@ -2430,7 +2161,68 @@
         "PositionZ"
       ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:27"
+      "time" : "2026-06-07 16:51:13"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:13"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:13"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:13"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:13"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2443,20 +2235,31 @@
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:27"
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
-        "Orientation",
         "RPM",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:27"
+      "time" : "2026-06-07 16:51:14"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2468,38 +2271,12 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:27"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:27"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:27"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
         "Orientation",
         "RPM",
         "PositionX",
@@ -2507,7 +2284,7 @@
         "PositionZ"
       ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:27"
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2520,7 +2297,7 @@
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:27"
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2533,7 +2310,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:27"
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2545,8 +2322,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:27"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2557,42 +2334,28 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:27"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:27"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:27"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:27"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:14"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
-        "Speed",
         "Orientation",
         "RPM",
         "PositionX",
@@ -2600,185 +2363,7 @@
         "PositionZ"
       ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:28"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:29"
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2791,32 +2376,19 @@
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:29"
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
-        "Orientation",
         "RPM",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:29"
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2828,8 +2400,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:29"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -2841,201 +2413,32 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:29"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:29"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:29"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:29"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:30"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:30"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:30"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:30"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:30"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:30"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:30"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:30"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:15"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -3043,9 +2446,736 @@
         "SessionTimeElapsed",
         "AirPressure"
       ],
-      "time" : "2026-05-10 16:51:30",
+      "time" : "2026-06-07 16:51:15",
       "values" : {
-        "AirPressure" : 100747,
+        "AirPressure" : 100919,
+        "SessionTimeElapsed" : 1800
+      }
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:15"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:15"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:15"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:15"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:15"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Gear",
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:16"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Gear",
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Gear",
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:17"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:18"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Gear",
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:19"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "SessionTimeElapsed",
+        "AirPressure"
+      ],
+      "time" : "2026-06-07 16:51:20",
+      "values" : {
+        "AirPressure" : 100918,
         "SessionTimeElapsed" : 1800
       }
     },
@@ -3054,8 +3184,16 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:30"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:20"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:20"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3068,7 +3206,7 @@
         "PositionZ"
       ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:30"
+      "time" : "2026-06-07 16:51:21"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3081,7 +3219,7 @@
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:30"
+      "time" : "2026-06-07 16:51:21"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3094,7 +3232,7 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:30"
+      "time" : "2026-06-07 16:51:21"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3106,8 +3244,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:30"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:21"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3119,8 +3257,37 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:30"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:21"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:21"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:21"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Gear",
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:21"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3132,8 +3299,47 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:30"
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:21"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:21"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:21"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:21"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3146,19 +3352,20 @@
         "PositionZ"
       ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:31"
+      "time" : "2026-06-07 16:51:22"
     },
     {
       "cb" : "ParticipantAttributesChanged",
       "names" : [
         "Speed",
+        "Orientation",
         "RPM",
         "PositionX",
         "PositionY",
         "PositionZ"
       ],
       "pid" : 1,
-      "time" : "2026-05-10 16:51:31"
+      "time" : "2026-06-07 16:51:22"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3171,7 +3378,19 @@
         "PositionZ"
       ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:31"
+      "time" : "2026-06-07 16:51:22"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:22"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3183,8 +3402,32 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:31"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:22"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:22"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:22"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3196,8 +3439,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:31"
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:22"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3209,32 +3452,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:31"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:31"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:31"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:31"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:22"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3247,8 +3466,347 @@
         "PositionY",
         "PositionZ"
       ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:22"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:22"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionZ"
+      ],
       "pid" : 0,
-      "time" : "2026-05-10 16:51:31"
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:23"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 2,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:24"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:25"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 0,
+      "time" : "2026-06-07 16:51:25"
+    },
+    {
+      "cb" : "ParticipantAttributesChanged",
+      "names" : [
+        "Speed",
+        "Orientation",
+        "RPM",
+        "PositionX",
+        "PositionY",
+        "PositionZ"
+      ],
+      "pid" : 1,
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3261,22 +3819,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:31"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
       "pid" : 2,
-      "time" : "2026-05-10 16:51:31"
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3288,21 +3832,8 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:31"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:31"
+      "pid" : 3,
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "ParticipantAttributesChanged",
@@ -3314,997 +3845,32 @@
         "PositionY",
         "PositionZ"
       ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:31"
+      "pid" : 4,
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:32"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:32"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:33"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:33"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:34"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "SessionAttributesChanged",
-      "names" : [
-        "SessionTimeElapsed",
-        "AirPressure"
-      ],
-      "time" : "2026-05-10 16:51:35",
-      "values" : {
-        "AirPressure" : 100726,
-        "SessionTimeElapsed" : 1800
-      }
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:35"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Gear",
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:36"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 0,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 1,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 2,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 6,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "RPM",
-        "PositionX",
-        "PositionY",
-        "PositionZ"
-      ],
-      "pid" : 7,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "ParticipantAttributesChanged",
-      "names" : [
-        "Speed",
-        "Orientation",
-        "RPM",
-        "PositionX",
-        "PositionZ"
-      ],
-      "pid" : 8,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:37"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:37"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "EventLogged",
@@ -4313,27 +3879,25 @@
           "NewState" : "Returning",
           "PreviousState" : "PostRace"
         },
-        "index" : 1015,
+        "index" : 612,
         "name" : "StateChanged",
-        "time" : 1778428296,
+        "time" : 1780847484,
         "type" : "Session"
       },
       "name" : "StateChanged",
-      "time" : "2026-05-10 16:51:38"
+      "time" : "2026-06-07 16:51:25"
     },
     {
       "cb" : "SessionAttributesChanged",
       "names" : [
         "SessionTimeDuration",
         "SessionTimeElapsed",
-        "AirPressure",
         "NumParticipantsValid",
         "SessionPhase",
         "SessionState"
       ],
-      "time" : "2026-05-10 16:51:38",
+      "time" : "2026-06-07 16:51:25",
       "values" : {
-        "AirPressure" : 100717,
         "NumParticipantsValid" : 0,
         "SessionPhase" : "Invalid",
         "SessionState" : "Returning",
@@ -4346,40 +3910,8 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:38"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:38"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:39"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:39"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:40"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:27"
     },
     {
       "cb" : "EventLogged",
@@ -4388,13 +3920,13 @@
           "NewState" : "Lobby",
           "PreviousState" : "Returning"
         },
-        "index" : 1016,
+        "index" : 613,
         "name" : "StateChanged",
-        "time" : 1778428299,
+        "time" : 1780847486,
         "type" : "Session"
       },
       "name" : "StateChanged",
-      "time" : "2026-05-10 16:51:40"
+      "time" : "2026-06-07 16:51:27"
     },
     {
       "cb" : "EventLogged",
@@ -4404,21 +3936,47 @@
           "NewStage" : "Practice1",
           "PreviousStage" : "Race1"
         },
-        "index" : 1017,
+        "index" : 614,
         "name" : "StageChanged",
-        "time" : 1778428299,
+        "time" : 1780847486,
         "type" : "Session"
       },
       "name" : "StageChanged",
-      "time" : "2026-05-10 16:51:40"
+      "time" : "2026-06-07 16:51:27"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:40"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:27"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:27"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "Flags"
+      ],
+      "time" : "2026-06-07 16:51:27",
+      "values" : {
+        "Flags" : -1323810022
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:27"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -4426,7 +3984,7 @@
         "SessionStage",
         "SessionState"
       ],
-      "time" : "2026-05-10 16:51:40",
+      "time" : "2026-06-07 16:51:27",
       "values" : {
         "SessionStage" : "Practice1",
         "SessionState" : "Lobby"
@@ -4437,280 +3995,208 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:40"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:29"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:40"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:29"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:41"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:29"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:41"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:29"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:42"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:29"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:42"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:31"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:42"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:31"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:43"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:45"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:45"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:46"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:46"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:47"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:47"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:32"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "LoadState"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:47"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:32"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "LoadState"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:47"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:32"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "LoadState"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:47"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:32"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:33"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:33"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:33"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "LoadState"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:47"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:33"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:34"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:35"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:35"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:35"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:35"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "LoadState"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:47"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "LoadState"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:47"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:35"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:47"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:36"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:48"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:37"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:48"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:37"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:49"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:37"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:49"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:49"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:49"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:50"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:50"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:51"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:51"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:51"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:51"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:52"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:52"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:37"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -4723,7 +4209,7 @@
         "AirPressure",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:51:52",
+      "time" : "2026-06-07 16:51:37",
       "values" : {
         "AirPressure" : 101325,
         "CurrentDay" : 5,
@@ -4731,7 +4217,7 @@
         "CurrentMonth" : 7,
         "CurrentYear" : 2012,
         "TemperatureAmbient" : 28243,
-        "TemperatureTrack" : 45951
+        "TemperatureTrack" : 23306
       }
     },
     {
@@ -4739,96 +4225,88 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:53"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:38"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:53"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:39"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:53"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:39"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:54"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:39"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:54"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:39"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:54"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:40"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:55"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:41"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:56"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:41"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 59586,
-      "time" : "2026-05-10 16:51:56"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:41"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:56"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:41"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:57"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:57"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:42"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -4836,10 +4314,10 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:51:57",
+      "time" : "2026-06-07 16:51:43",
       "values" : {
-        "TemperatureAmbient" : 28206,
-        "TemperatureTrack" : 45922
+        "TemperatureAmbient" : 28205,
+        "TemperatureTrack" : 23392
       }
     },
     {
@@ -4847,130 +4325,104 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:57"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:43"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:58"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "GameReasonId" : 1,
-          "Reason" : "left"
-        },
-        "index" : 1018,
-        "name" : "PlayerLeft",
-        "refid" : 45765,
-        "time" : 1778428317,
-        "type" : "Player"
-      },
-      "name" : "PlayerLeft",
-      "time" : "2026-05-10 16:51:58"
-    },
-    {
-      "cb" : "MemberLeft",
-      "refid" : 45765,
-      "time" : "2026-05-10 16:51:58"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:43"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:51:58"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:43"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:51:59"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:43"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:51:59"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:44"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:51:59"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:45"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:00"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:45"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:01"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:45"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:01"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:45"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:01"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "GameReasonId" : 0,
-          "Reason" : "disconnected"
-        },
-        "index" : 1019,
-        "name" : "PlayerLeft",
-        "refid" : 59586,
-        "time" : 1778428321,
-        "type" : "Player"
-      },
-      "name" : "PlayerLeft",
-      "time" : "2026-05-10 16:52:02"
-    },
-    {
-      "cb" : "MemberLeft",
-      "refid" : 59586,
-      "time" : "2026-05-10 16:52:02"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:46"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:02"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:47"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:47"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:47"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -4978,10 +4430,10 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:52:02",
+      "time" : "2026-06-07 16:51:48",
       "values" : {
-        "TemperatureAmbient" : 28169,
-        "TemperatureTrack" : 45892
+        "TemperatureAmbient" : 28168,
+        "TemperatureTrack" : 23477
       }
     },
     {
@@ -4989,335 +4441,48 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:03"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:49"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:03"
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:50"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:03"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:51"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:04"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:51"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:05"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:53"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:05"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:05"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:06"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:07"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:07"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:07"
-    },
-    {
-      "cb" : "SessionAttributesChanged",
-      "names" : [
-        "TemperatureAmbient",
-        "TemperatureTrack"
-      ],
-      "time" : "2026-05-10 16:52:08",
-      "values" : {
-        "TemperatureAmbient" : 28132,
-        "TemperatureTrack" : 45863
-      }
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:08"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:09"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:09"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:10"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:11"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:11"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:11"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:12"
-    },
-    {
-      "cb" : "SessionAttributesChanged",
-      "names" : [
-        "TemperatureAmbient",
-        "TemperatureTrack"
-      ],
-      "time" : "2026-05-10 16:52:13",
-      "values" : {
-        "TemperatureAmbient" : 28094,
-        "TemperatureTrack" : 45833
-      }
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:13"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:13"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:14"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:14"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:15"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:15"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:16"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:16"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:17"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:18"
-    },
-    {
-      "cb" : "SessionAttributesChanged",
-      "names" : [
-        "TemperatureAmbient",
-        "TemperatureTrack"
-      ],
-      "time" : "2026-05-10 16:52:18",
-      "values" : {
-        "TemperatureAmbient" : 28057,
-        "TemperatureTrack" : 45803
-      }
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:18"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:19"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:20"
-    },
-    {
-      "cb" : "EventLogged",
-      "event" : {
-        "attributes" : {
-          "GameReasonId" : 1,
-          "Reason" : "left"
-        },
-        "index" : 1020,
-        "name" : "PlayerLeft",
-        "refid" : 28160,
-        "time" : 1778428339,
-        "type" : "Player"
-      },
-      "name" : "PlayerLeft",
-      "time" : "2026-05-10 16:52:20"
-    },
-    {
-      "cb" : "MemberLeft",
-      "refid" : 28160,
-      "time" : "2026-05-10 16:52:20"
-    },
-    {
-      "cb" : "SessionAttributesChanged",
-      "names" : [
-        "TemperatureAmbient",
-        "NumParticipantsFinished",
-        "TemperatureTrack"
-      ],
-      "time" : "2026-05-10 16:52:20",
-      "values" : {
-        "NumParticipantsFinished" : 11,
-        "TemperatureAmbient" : 28034,
-        "TemperatureTrack" : 45785
-      }
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:20"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:53"
     },
     {
       "cb" : "EventLogged",
@@ -5326,51 +4491,27 @@
           "GameReasonId" : 0,
           "Reason" : "disconnected"
         },
-        "index" : 1021,
+        "index" : 615,
         "name" : "PlayerLeft",
-        "refid" : 61124,
-        "time" : 1778428340,
+        "refid" : 36161,
+        "time" : 1780847513,
         "type" : "Player"
       },
       "name" : "PlayerLeft",
-      "time" : "2026-05-10 16:52:21"
+      "time" : "2026-06-07 16:51:54"
     },
     {
       "cb" : "MemberLeft",
-      "refid" : 61124,
-      "time" : "2026-05-10 16:52:21"
+      "refid" : 36161,
+      "time" : "2026-06-07 16:51:54"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:22"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:24"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:26"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:28"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:55"
     },
     {
       "cb" : "EventLogged",
@@ -5379,19 +4520,90 @@
           "GameReasonId" : 0,
           "Reason" : "disconnected"
         },
-        "index" : 1022,
+        "index" : 616,
         "name" : "PlayerLeft",
-        "refid" : 16705,
-        "time" : 1778428347,
+        "refid" : 8132,
+        "time" : 1780847514,
         "type" : "Player"
       },
       "name" : "PlayerLeft",
-      "time" : "2026-05-10 16:52:28"
+      "time" : "2026-06-07 16:51:55"
     },
     {
       "cb" : "MemberLeft",
-      "refid" : 16705,
-      "time" : "2026-05-10 16:52:28"
+      "refid" : 8132,
+      "time" : "2026-06-07 16:51:55"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:55"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:57"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:51:57"
+    },
+    {
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "GameReasonId" : 0,
+          "Reason" : "disconnected"
+        },
+        "index" : 617,
+        "name" : "PlayerLeft",
+        "refid" : 65344,
+        "time" : 1780847517,
+        "type" : "Player"
+      },
+      "name" : "PlayerLeft",
+      "time" : "2026-06-07 16:51:58"
+    },
+    {
+      "cb" : "MemberLeft",
+      "refid" : 65344,
+      "time" : "2026-06-07 16:51:58"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "PracticeWeatherSlot2",
+        "QualifyWeatherSlot2",
+        "RaceWeatherSlot2",
+        "PracticeWeatherSlot3",
+        "QualifyWeatherSlot3",
+        "RaceWeatherSlot3",
+        "PracticeWeatherSlot4",
+        "QualifyWeatherSlot4",
+        "RaceWeatherSlot4"
+      ],
+      "time" : "2026-06-07 16:51:58",
+      "values" : {
+        "PracticeWeatherSlot2" : -934211870,
+        "PracticeWeatherSlot3" : -934211870,
+        "PracticeWeatherSlot4" : -934211870,
+        "QualifyWeatherSlot2" : -934211870,
+        "QualifyWeatherSlot3" : -934211870,
+        "QualifyWeatherSlot4" : -934211870,
+        "RaceWeatherSlot2" : -934211870,
+        "RaceWeatherSlot3" : -934211870,
+        "RaceWeatherSlot4" : -934211870
+      }
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -5399,10 +4611,10 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:52:29",
+      "time" : "2026-06-07 16:51:59",
       "values" : {
-        "TemperatureAmbient" : 27964,
-        "TemperatureTrack" : 45730
+        "TemperatureAmbient" : 28065,
+        "TemperatureTrack" : 23708
       }
     },
     {
@@ -5410,16 +4622,40 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:30"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:51:59"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:34"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:01"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:01"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:03"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:03"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -5427,10 +4663,10 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:52:34",
+      "time" : "2026-06-07 16:52:04",
       "values" : {
-        "TemperatureAmbient" : 27927,
-        "TemperatureTrack" : 45700
+        "TemperatureAmbient" : 28028,
+        "TemperatureTrack" : 23790
       }
     },
     {
@@ -5438,16 +4674,32 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:36"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:05"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:38"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:07"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:07"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:09"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -5455,10 +4707,10 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:52:39",
+      "time" : "2026-06-07 16:52:09",
       "values" : {
-        "TemperatureAmbient" : 27889,
-        "TemperatureTrack" : 45670
+        "TemperatureAmbient" : 27991,
+        "TemperatureTrack" : 23872
       }
     },
     {
@@ -5466,24 +4718,32 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:40"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:09"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:42"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:11"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:44"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:11"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:13"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -5491,10 +4751,10 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:52:44",
+      "time" : "2026-06-07 16:52:14",
       "values" : {
-        "TemperatureAmbient" : 27852,
-        "TemperatureTrack" : 45640
+        "TemperatureAmbient" : 27953,
+        "TemperatureTrack" : 23953
       }
     },
     {
@@ -5502,16 +4762,180 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:46"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:15"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:48"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:16"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:17"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:18"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:19"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:52:19",
+      "values" : {
+        "TemperatureAmbient" : 27916,
+        "TemperatureTrack" : 24033
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:20"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:22"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:23"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:24"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:52:24",
+      "values" : {
+        "TemperatureAmbient" : 27879,
+        "TemperatureTrack" : 24112
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:25"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:26"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:27"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:28"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:29"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:52:29",
+      "values" : {
+        "TemperatureAmbient" : 27842,
+        "TemperatureTrack" : 24191
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:30"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:32"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:33"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:34"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -5520,11 +4944,11 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:52:49",
+      "time" : "2026-06-07 16:52:34",
       "values" : {
         "CurrentMinute" : 1,
-        "TemperatureAmbient" : 27814,
-        "TemperatureTrack" : 45608
+        "TemperatureAmbient" : 27805,
+        "TemperatureTrack" : 24269
       }
     },
     {
@@ -5532,16 +4956,32 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:50"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:35"
     },
     {
       "cb" : "MemberAttributesChanged",
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:54"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:36"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:37"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:39"
     },
     {
       "cb" : "SessionAttributesChanged",
@@ -5549,10 +4989,10 @@
         "TemperatureAmbient",
         "TemperatureTrack"
       ],
-      "time" : "2026-05-10 16:52:54",
+      "time" : "2026-06-07 16:52:39",
       "values" : {
-        "TemperatureAmbient" : 27777,
-        "TemperatureTrack" : 45577
+        "TemperatureAmbient" : 27768,
+        "TemperatureTrack" : 24346
       }
     },
     {
@@ -5560,16 +5000,8 @@
       "names" : [
         "Ping"
       ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:56"
-    },
-    {
-      "cb" : "MemberAttributesChanged",
-      "names" : [
-        "Ping"
-      ],
-      "refid" : 52419,
-      "time" : "2026-05-10 16:52:58"
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:41"
     },
     {
       "cb" : "EventLogged",
@@ -5578,47 +5010,522 @@
           "GameReasonId" : 0,
           "Reason" : "disconnected"
         },
-        "index" : 1023,
+        "index" : 618,
         "name" : "PlayerLeft",
-        "refid" : 52419,
-        "time" : 1778428383,
+        "refid" : 35459,
+        "time" : 1780847562,
         "type" : "Player"
       },
       "name" : "PlayerLeft",
-      "time" : "2026-05-10 16:53:04"
+      "time" : "2026-06-07 16:52:43"
     },
     {
       "cb" : "MemberLeft",
-      "refid" : 52419,
-      "time" : "2026-05-10 16:53:04"
+      "refid" : 35459,
+      "time" : "2026-06-07 16:52:43"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:43"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:52:45",
+      "values" : {
+        "TemperatureAmbient" : 27730,
+        "TemperatureTrack" : 24423
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:45"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:47"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:52:50",
+      "values" : {
+        "TemperatureAmbient" : 27693,
+        "TemperatureTrack" : 24499
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:51"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:53"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:55"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:52:55",
+      "values" : {
+        "TemperatureAmbient" : 27656,
+        "TemperatureTrack" : 24573
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:57"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:52:59"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:00",
+      "values" : {
+        "TemperatureAmbient" : 27619,
+        "TemperatureTrack" : 24647
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:01"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:05"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:05",
+      "values" : {
+        "TemperatureAmbient" : 27582,
+        "TemperatureTrack" : 24722
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:07"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:09"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:10",
+      "values" : {
+        "TemperatureAmbient" : 27545,
+        "TemperatureTrack" : 24795
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:13"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:15"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:15",
+      "values" : {
+        "TemperatureAmbient" : 27508,
+        "TemperatureTrack" : 24867
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:17"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:19"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:20",
+      "values" : {
+        "TemperatureAmbient" : 27471,
+        "TemperatureTrack" : 24939
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:21"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:23"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:25"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:25",
+      "values" : {
+        "TemperatureAmbient" : 27434,
+        "TemperatureTrack" : 25010
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:27"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:29"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "CurrentMinute",
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:31",
+      "values" : {
+        "CurrentMinute" : 2,
+        "TemperatureAmbient" : 27397,
+        "TemperatureTrack" : 25081
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:31"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:35"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:36",
+      "values" : {
+        "TemperatureAmbient" : 27359,
+        "TemperatureTrack" : 25151
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:37"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:39"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:41",
+      "values" : {
+        "TemperatureAmbient" : 27322,
+        "TemperatureTrack" : 25220
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:41"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:43"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:45"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:46",
+      "values" : {
+        "TemperatureAmbient" : 27285,
+        "TemperatureTrack" : 25289
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:47"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:49"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:51"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:51",
+      "values" : {
+        "TemperatureAmbient" : 27248,
+        "TemperatureTrack" : 25357
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:53"
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:55"
+    },
+    {
+      "cb" : "SessionAttributesChanged",
+      "names" : [
+        "TemperatureAmbient",
+        "TemperatureTrack"
+      ],
+      "time" : "2026-06-07 16:53:56",
+      "values" : {
+        "TemperatureAmbient" : 27211,
+        "TemperatureTrack" : 25424
+      }
+    },
+    {
+      "cb" : "MemberAttributesChanged",
+      "names" : [
+        "Ping"
+      ],
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:57"
+    },
+    {
+      "cb" : "EventLogged",
+      "event" : {
+        "attributes" : {
+          "GameReasonId" : 1,
+          "Reason" : "left"
+        },
+        "index" : 619,
+        "name" : "PlayerLeft",
+        "refid" : 5250,
+        "time" : 1780847638,
+        "type" : "Player"
+      },
+      "name" : "PlayerLeft",
+      "time" : "2026-06-07 16:53:59"
+    },
+    {
+      "cb" : "MemberLeft",
+      "refid" : 5250,
+      "time" : "2026-06-07 16:53:59"
     },
     {
       "cb" : "EventLogged",
       "event" : {
         "attributes" : {},
-        "index" : 1024,
+        "index" : 620,
         "name" : "SessionDestroyed",
-        "time" : 1778428383,
+        "time" : 1780847638,
         "type" : "Session"
       },
       "name" : "SessionDestroyed",
-      "time" : "2026-05-10 16:53:04"
+      "time" : "2026-06-07 16:53:59"
     },
     {
       "cb" : "SessionManagerStateChanged",
       "new" : "Idle",
       "old" : "Running",
-      "time" : "2026-05-10 16:53:04"
+      "time" : "2026-06-07 16:53:59"
     },
     {
       "cb" : "ServerStateChanged",
       "new" : "Running",
       "old" : "RunningActive",
-      "time" : "2026-05-10 16:53:04"
+      "time" : "2026-06-07 16:53:59"
     }
   ],
   "meta" : {
-    "last_start" : "2026-05-10 15:30:32"
+    "last_start" : "2026-06-07 15:28:38"
   }
 }
 

@@ -60,6 +60,7 @@ const IPC_CHANNELS = {
     STATS_DB_GET_IMPORT_HISTORY: 'stats-db-get-import-history',
     STATS_DB_INSERT_MANUAL_RESULT: 'stats-db-insert-manual-result',
     STATS_DB_DELETE_MANUAL_RESULT: 'stats-db-delete-manual-result',
+    STATS_DB_DELETE_SESSION: 'stats-db-delete-session',
 
     // Driver Aliases
     ALIASES_GET_ALL: 'aliases-get-all',
@@ -191,6 +192,8 @@ electron.contextBridge.exposeInMainWorld('electron', {
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_GET_SERVER_OVERVIEW, serverId),
         deleteServer: (serverId: number) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_DELETE_SERVER, serverId),
+        deleteSession: (sessionId: number) =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_DELETE_SESSION, sessionId),
         getPlayers: (serverId: number) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_GET_PLAYERS, serverId),
         getPlayerHistory: (steamId: string, serverId?: number) =>
@@ -209,8 +212,8 @@ electron.contextBridge.exposeInMainWorld('electron', {
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_INSERT_MANUAL_RESULT, params),
         deleteManualResult: (resultId: number) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_DELETE_MANUAL_RESULT, resultId),
-        importEnhancedFile: (filePath?: string) =>
-            electron.ipcRenderer.invoke(IPC_CHANNELS.ENHANCED_STATS_DB_IMPORT_FILE, filePath),
+        importEnhancedFile: (filePath?: string, serverNameHint?: string) =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.ENHANCED_STATS_DB_IMPORT_FILE, filePath, serverNameHint),
         getLapRecords: (sessionId: number) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.STATS_DB_GET_LAP_RECORDS, sessionId),
     },

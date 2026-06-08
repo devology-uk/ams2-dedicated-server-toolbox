@@ -1,0 +1,177 @@
+// Persistent data for addon 'ams2_stats', addon version 1.0
+// Automatically maintained by the addon, do not edit!
+
+{
+  "meta" : {
+    "last_updated" : "2026-05-14T13:29:36",
+    "plugin_version" : "1.0"
+  },
+  "sessions" : [
+    {
+      "attrs" : {
+        "AllowedViews" : 2,
+        "DamageType" : 2,
+        "GridSize" : 20,
+        "MaxPlayers" : 20,
+        "Privacy" : 0,
+        "RaceWeatherSlots" : 1,
+        "TrackId" : -29732804
+      },
+      "drivers" : [
+        {
+          "best_lap" : {
+            "lap" : 1,
+            "s1" : 35884,
+            "s2" : 45676,
+            "s3" : 62296,
+            "time" : 143856
+          },
+          "best_s1" : 35572,
+          "best_s2" : 45559,
+          "best_s3" : 61140,
+          "laps" : [
+            {
+              "lap" : 0,
+              "position" : 1,
+              "s1" : 42006,
+              "s2" : 64572,
+              "s3" : 64500,
+              "time" : 171078,
+              "valid" : true
+            },
+            {
+              "lap" : 1,
+              "position" : 1,
+              "s1" : 35884,
+              "s2" : 45676,
+              "s3" : 62296,
+              "time" : 143856,
+              "valid" : true
+            },
+            {
+              "lap" : 2,
+              "position" : 1,
+              "s1" : 35572,
+              "s2" : 45559,
+              "s3" : 62917,
+              "time" : 144048,
+              "valid" : true
+            },
+            {
+              "lap" : 3,
+              "position" : 1,
+              "s1" : 75613,
+              "s2" : 50660,
+              "s3" : 61140,
+              "time" : 187413,
+              "valid" : true
+            }
+          ],
+          "name" : "Mike Hanson",
+          "refid" : 14528,
+          "started" : true,
+          "state" : "InGarage"
+        }
+      ],
+      "finished_at" : "2026-05-11T09:31:19",
+      "results" : [
+        {
+          "best_lap_time" : 143856,
+          "best_s1" : 35572,
+          "best_s2" : 45559,
+          "best_s3" : 61140,
+          "laps_complete" : 4,
+          "name" : "Mike Hanson",
+          "refid" : 14528,
+          "state" : "InGarage"
+        }
+      ],
+      "started_at" : "2026-05-11T07:57:12",
+      "uid" : "20260511_075712"
+    },
+    {
+      "attrs" : {
+        "AllowedViews" : 2,
+        "DamageType" : 2,
+        "GridSize" : 20,
+        "MaxPlayers" : 20,
+        "Privacy" : 0,
+        "RaceWeatherSlots" : 1,
+        "TrackId" : -29732804
+      },
+      "drivers" : [
+        {
+          "best_lap" : {
+            "lap" : 3,
+            "s1" : 34474,
+            "s2" : 44095,
+            "s3" : 60367,
+            "time" : 138936
+          },
+          "best_s1" : 34474,
+          "best_s2" : 44095,
+          "best_s3" : 60367,
+          "laps" : [
+            {
+              "lap" : 0,
+              "position" : 1,
+              "s1" : 39015,
+              "s2" : 56021,
+              "s3" : 62246,
+              "time" : 157281,
+              "valid" : true
+            },
+            {
+              "lap" : 1,
+              "position" : 1,
+              "s1" : 34976,
+              "s2" : 44504,
+              "s3" : 60897,
+              "time" : 140377,
+              "valid" : true
+            },
+            {
+              "lap" : 2,
+              "position" : 1,
+              "s1" : 35163,
+              "s2" : 44194,
+              "s3" : 60581,
+              "time" : 139938,
+              "valid" : true
+            },
+            {
+              "lap" : 3,
+              "position" : 1,
+              "s1" : 34474,
+              "s2" : 44095,
+              "s3" : 60367,
+              "time" : 138936,
+              "valid" : true
+            }
+          ],
+          "name" : "Stuart Charles",
+          "refid" : 35776,
+          "started" : true,
+          "state" : "Racing"
+        }
+      ],
+      "finished_at" : "2026-05-14T13:29:36",
+      "results" : [
+        {
+          "best_lap_time" : 138936,
+          "best_s1" : 34474,
+          "best_s2" : 44095,
+          "best_s3" : 60367,
+          "laps_complete" : 4,
+          "name" : "Stuart Charles",
+          "refid" : 35776,
+          "state" : "Racing"
+        }
+      ],
+      "started_at" : "2026-05-14T13:15:45",
+      "uid" : "20260514_131545"
+    }
+  ]
+}
+
+// EOF //

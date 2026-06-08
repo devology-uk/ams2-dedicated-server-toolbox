@@ -9,6 +9,7 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { FilterMatchMode } from 'primereact/api';
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import type { StageListItem } from '../hooks/useResults';
 import { useGameLookup } from '../../../hooks/useGameLookup';
 import { formatStageName, formatEpochDate, formatEpochTime, formatDurationRange } from '../../../utils/formatters';
@@ -17,18 +18,21 @@ interface StageListProps {
     stages: StageListItem[];
     loading: boolean;
     onSelectStage: (stage: StageListItem) => void;
+    onDeleteSession: (sessionId: number) => void;
 }
 
 type StageFilter = 'all' | 'practice1' | 'qualifying1' | 'race1';
 
-const STAGE_COLORS: Record<string, 'info' | 'warning' | 'success' | 'secondary'> = {
-    practice1: 'info',
-    qualifying1: 'warning',
-    race1: 'success',
-};
+function stageSeverity(name: string): 'info' | 'warning' | 'success' | 'secondary' {
+    const lower = name.toLowerCase();
+    if (lower.includes('practice')) return 'info';
+    if (lower.includes('qualify')) return 'warning';
+    if (lower.includes('race')) return 'success';
+    return 'secondary';
+}
 
 
-export function StageList({ stages, loading, onSelectStage }: StageListProps) {
+export function StageList({ stages, loading, onSelectStage, onDeleteSession }: StageListProps) {
     const { resolveTrack, resolveVehicle } = useGameLookup();
     const [stageFilter, setStageFilter] = useState<StageFilter>('all');
     const [globalFilter, setGlobalFilter] = useState('');
@@ -87,10 +91,9 @@ export function StageList({ stages, loading, onSelectStage }: StageListProps) {
         <span className="font-mono font-semibold">#{row.sessionIndex}</span>
     );
 
-    const stageBodyTemplate = (row: StageListItem): ReactNode => {
-        const severity = STAGE_COLORS[row.stageName] ?? 'secondary';
-        return <Tag value={formatStageName(row.stageName)} severity={severity} />;
-    };
+    const stageBodyTemplate = (row: StageListItem): ReactNode => (
+        <Tag value={formatStageName(row.stageName)} severity={stageSeverity(row.stageName)} />
+    );
 
     const trackBodyTemplate = (row: StageListItem): ReactNode => (
         <span className="text-sm">{resolveTrack(row.trackId)}</span>
@@ -113,20 +116,44 @@ export function StageList({ stages, loading, onSelectStage }: StageListProps) {
     </span>
     );
 
+    const handleDeleteClick = (e: React.MouseEvent, row: StageListItem) => {
+        e.stopPropagation();
+        confirmDialog({
+            target: e.currentTarget as HTMLElement,
+            message: 'Delete this session and all its results? This cannot be undone.',
+            header: 'Delete Session',
+            icon: 'pi pi-exclamation-triangle',
+            acceptClassName: 'p-button-danger',
+            accept: () => onDeleteSession(row.sessionId),
+        });
+    };
+
     const actionsBodyTemplate = (row: StageListItem): ReactNode => (
-        <Button
-            icon="pi pi-chart-bar"
-            rounded
-            text
-            severity="info"
-            onClick={() => onSelectStage(row)}
-            tooltip="View Results"
-            tooltipOptions={{ position: 'left' }}
-        />
+        <div className="flex gap-1 justify-content-center">
+            <Button
+                icon="pi pi-chart-bar"
+                rounded
+                text
+                severity="info"
+                onClick={(e) => { e.stopPropagation(); onSelectStage(row); }}
+                tooltip="View Results"
+                tooltipOptions={{ position: 'left' }}
+            />
+            <Button
+                icon="pi pi-trash"
+                rounded
+                text
+                severity="danger"
+                onClick={(e) => handleDeleteClick(e, row)}
+                tooltip="Delete Session"
+                tooltipOptions={{ position: 'left' }}
+            />
+        </div>
     );
 
     return (
         <Card className="shadow-2">
+            <ConfirmDialog />
             <DataTable
                 value={filteredStages}
                 header={header}
@@ -193,7 +220,7 @@ export function StageList({ stages, loading, onSelectStage }: StageListProps) {
                 />
                 <Column
                     body={actionsBodyTemplate}
-                    style={{ width: '4rem' }}
+                    style={{ width: '7rem' }}
                     className="text-center"
                 />
             </DataTable>

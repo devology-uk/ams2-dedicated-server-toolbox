@@ -10,7 +10,7 @@ interface UseServersReturn {
     loading: boolean;
     error: string | null;
     selectServer: (server: ServerSummary) => void;
-    refresh: () => Promise<void>;
+    refresh: () => Promise<ServerSummary[]>;
     deleteServer: (serverId: number) => Promise<void>;
 }
 
@@ -21,22 +21,24 @@ export function useServers(): UseServersReturn {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchServers = useCallback(async () => {
+    const fetchServers = useCallback(async (): Promise<ServerSummary[]> => {
         setLoading(true);
         setError(null);
         try {
             const result = await window.electron.statsDb.getServers();
             if (result.success && result.data) {
                 setServers(result.data);
-                // Auto-select first server if none selected
                 if (!selectedServer && result.data.length > 0) {
                     setSelectedServer(result.data[0]);
                 }
+                return result.data;
             } else {
                 setError(result.error ?? 'Failed to load servers');
+                return [];
             }
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Unknown error');
+            return [];
         } finally {
             setLoading(false);
         }

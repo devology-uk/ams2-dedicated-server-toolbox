@@ -189,6 +189,7 @@ export interface ElectronAPI {
         getServers: () => Promise<IpcResult<ServerSummary[]>>;
         getServerOverview: (serverId: number) => Promise<IpcResult<ServerOverview>>;
         deleteServer: (serverId: number) => Promise<IpcResult<void>>;
+        deleteSession: (sessionId: number) => Promise<IpcResult<void>>;
         getPlayers: (serverId: number) => Promise<IpcResult<PlayerSummary[]>>;
         getPlayerHistory: (
             steamId: string,
@@ -215,7 +216,7 @@ export interface ElectronAPI {
         ) => Promise<IpcResult<ImportLogEntry[]>>;
         insertManualResult: (params: InsertManualResultParams) => Promise<IpcResult<StageResultRow>>;
         deleteManualResult: (resultId: number) => Promise<IpcResult<void>>;
-        importEnhancedFile: (filePath?: string) => Promise<IpcResult<ImportResult>>;
+        importEnhancedFile: (filePath?: string, serverNameHint?: string) => Promise<IpcResult<ImportResult>>;
         getLapRecords: (sessionId: number) => Promise<IpcResult<LapRecord[]>>;
     };
 

@@ -12,12 +12,11 @@ import type { ImportResult } from '../../shared/types/statsDb.js';
 export class AMS2EnhancedStatsImportService {
     constructor(private db: AppDatabase) {}
 
-    importFile(filePath: string, fileContent: string): ImportResult {
+    importFile(filePath: string, fileContent: string, serverNameOverride?: string): ImportResult {
         const data: AMS2EnhancedStatsFile = JSON.parse(fileContent);
 
-        const serverName = this.extractServerName(data, filePath);
-        const identifier = `ams2_stats:${serverName}`;
-        const serverId = this.resolveServer(serverName, identifier, filePath);
+        const serverName = this.extractServerName(data, filePath, serverNameOverride);
+        const serverId = this.resolveServer(serverName, serverName, filePath);
 
         const result: ImportResult = {
             serverId,
@@ -66,7 +65,8 @@ export class AMS2EnhancedStatsImportService {
     // Server
     // --------------------------------------------------
 
-    private extractServerName(data: AMS2EnhancedStatsFile, filePath: string): string {
+    private extractServerName(data: AMS2EnhancedStatsFile, filePath: string, serverNameOverride?: string): string {
+        if (serverNameOverride?.trim()) return serverNameOverride.trim();
         for (let i = data.sessions.length - 1; i >= 0; i--) {
             const name = data.sessions[i].attrs?.ServerName;
             if (typeof name === 'string' && name.trim()) return name.trim();
@@ -174,7 +174,7 @@ export class AMS2EnhancedStatsImportService {
                 );
 
             const sessionId = Number(row.lastInsertRowid);
-            const stageName = session.stage ?? 'Race';
+            const stageName = session.stage ?? 'Unknown';
 
             const stageRow = this.db
                 .prepare(
@@ -211,7 +211,7 @@ export class AMS2EnhancedStatsImportService {
                 )
                 .run(endEpoch, endEpoch ? 1 : 0, this.hashSession(session), Date.now(), sessionId);
 
-            const stageName = session.stage ?? 'Race';
+            const stageName = session.stage ?? 'Unknown';
             const stageRow = this.db
                 .prepare(
                     'INSERT INTO stages (session_id, name, start_time, end_time) VALUES (?, ?, ?, ?)',
@@ -257,7 +257,7 @@ export class AMS2EnhancedStatsImportService {
                 displayName,
                 r.refid,
                 r.refid,
-                r.position,
+                r.position ?? 0,
                 r.best_lap_time ?? null,
                 r.laps_complete ?? 0,
                 r.total_time ?? 0,
