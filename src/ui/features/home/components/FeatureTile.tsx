@@ -1,6 +1,7 @@
 // src/ui/features/home/components/FeatureTile.tsx
 
 import { Card } from 'primereact/card';
+import { Badge } from 'primereact/badge';
 
 export type TileColor = 'blue' | 'green' | 'orange' | 'purple' | 'cyan' | 'pink';
 
@@ -9,6 +10,7 @@ interface FeatureTileProps {
     description: string;
     icon: string;
     color?: TileColor;
+    badge?: string;
     onClick: () => void;
 }
 
@@ -26,6 +28,7 @@ export const FeatureTile = ({
                                 description,
                                 icon,
                                 color = 'blue',
+                                badge,
                                 onClick,
                             }: FeatureTileProps) => {
     const colors = COLOR_CLASSES[color];
@@ -35,8 +38,16 @@ export const FeatureTile = ({
             <div className="feature-tile__content">
                 <div
                     className={`feature-tile__icon-wrapper ${colors.bg}`}
+                    style={{ position: 'relative' }}
                 >
                     <i className={`feature-tile__icon ${icon} ${colors.text}`} />
+                    {badge && (
+                        <Badge
+                            value={badge}
+                            severity="warning"
+                            style={{ position: 'absolute', top: '-0.5rem', right: '-0.5rem' }}
+                        />
+                    )}
                 </div>
                 <h3 className="feature-tile__title">{title}</h3>
                 <p className="feature-tile__description">{description}</p>

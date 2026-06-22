@@ -99,6 +99,7 @@ export class StatsImportService {
             updated: 0,
             skipped: 0,
             errors: [],
+            warnings: [],
         };
 
         for (const session of data.stats.history) {

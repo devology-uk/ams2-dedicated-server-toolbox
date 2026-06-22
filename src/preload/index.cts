@@ -80,10 +80,11 @@ const IPC_CHANNELS = {
     STATS_DB_GET_LAP_RECORDS:      'stats-db-get-lap-records',
 
     // Plugins
-    PLUGIN_GET_KNOWN_PLUGINS: 'plugin-get-known-plugins',
-    PLUGIN_SELECT_SERVER_DIR: 'plugin-select-server-dir',
-    PLUGIN_CHECK_INSTALLED:   'plugin-check-installed',
-    PLUGIN_INSTALL:           'plugin-install',
+    PLUGIN_GET_KNOWN_PLUGINS:  'plugin-get-known-plugins',
+    PLUGIN_SELECT_SERVER_DIR:  'plugin-select-server-dir',
+    PLUGIN_CHECK_INSTALLED:    'plugin-check-installed',
+    PLUGIN_INSTALL:            'plugin-install',
+    PLUGIN_GET_UPDATE_STATUS:  'plugin-get-update-status',
 
     // Shell
     OPEN_EXTERNAL_URL: 'open-external-url',
@@ -246,6 +247,8 @@ electron.contextBridge.exposeInMainWorld('electron', {
             electron.ipcRenderer.invoke(IPC_CHANNELS.PLUGIN_CHECK_INSTALLED, pluginId, serverDir),
         install: (pluginId: string, serverDir: string) =>
             electron.ipcRenderer.invoke(IPC_CHANNELS.PLUGIN_INSTALL, pluginId, serverDir),
+        getUpdateStatus: () =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.PLUGIN_GET_UPDATE_STATUS),
     },
 
     // Shell

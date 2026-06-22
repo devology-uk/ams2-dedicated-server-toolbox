@@ -2,15 +2,17 @@
 
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
+import { Message } from 'primereact/message';
 import { Tag } from 'primereact/tag';
-import type { KnownPlugin } from '../../../../shared/types/api';
+import type { KnownPlugin, PluginUpdateStatus } from '../../../../shared/types/api';
 
 interface PluginCardProps {
     plugin: KnownPlugin;
+    updateStatus: PluginUpdateStatus | null;
     onInstall: () => void;
 }
 
-export function PluginCard({ plugin, onInstall }: PluginCardProps) {
+export function PluginCard({ plugin, updateStatus, onInstall }: PluginCardProps) {
     return (
         <Card className="plugin-card h-full">
             <div className="flex flex-column gap-3 h-full">
@@ -29,14 +31,26 @@ export function PluginCard({ plugin, onInstall }: PluginCardProps) {
                     {plugin.description}
                 </p>
 
+                {updateStatus?.updateAvailable && (
+                    <Message
+                        severity="warn"
+                        text={
+                            updateStatus.lastSeenVersion === '0.0'
+                                ? `A newer version (v${updateStatus.latestVersion}) is available with Steam ID and AI driver tracking. Click Update to install it.`
+                                : `Your server is running v${updateStatus.lastSeenVersion}. Click Update to get v${updateStatus.latestVersion}.`
+                        }
+                    />
+                )}
+
                 <div className="flex align-items-center justify-content-between pt-2 border-top-1 surface-border">
                     <span className="text-xs text-color-secondary font-mono">
                         addon: <strong>{plugin.addonName}</strong>
                     </span>
                     <Button
-                        label="Install"
-                        icon="pi pi-download"
+                        label={updateStatus?.updateAvailable ? 'Update' : 'Install'}
+                        icon={updateStatus?.updateAvailable ? 'pi pi-sync' : 'pi pi-download'}
                         size="small"
+                        severity={updateStatus?.updateAvailable ? 'warning' : undefined}
                         onClick={onInstall}
                     />
                 </div>

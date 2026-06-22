@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ProgressSpinner } from 'primereact/progressspinner';
-import type { KnownPlugin } from '../../../shared/types/api';
+import type { KnownPlugin, PluginUpdateStatus } from '../../../shared/types/api';
 import type { ActiveFeature } from '../../types/ActiveFeature';
 import { PluginCard } from './components/PluginCard';
 import { InstallWizardDialog } from './components/InstallWizardDialog';
@@ -14,12 +14,17 @@ interface PluginsViewProps {
 
 export function PluginsView({ onNavigateTo }: PluginsViewProps) {
     const [plugins, setPlugins] = useState<KnownPlugin[]>([]);
+    const [updateStatuses, setUpdateStatuses] = useState<PluginUpdateStatus[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedPlugin, setSelectedPlugin] = useState<KnownPlugin | null>(null);
 
     useEffect(() => {
-        window.electron.plugins.getKnownPlugins().then((list) => {
+        Promise.all([
+            window.electron.plugins.getKnownPlugins(),
+            window.electron.plugins.getUpdateStatus(),
+        ]).then(([list, statuses]) => {
             setPlugins(list);
+            setUpdateStatuses(statuses);
             setLoading(false);
         });
     }, []);
@@ -52,6 +57,7 @@ export function PluginsView({ onNavigateTo }: PluginsViewProps) {
                         <PluginCard
                             key={plugin.id}
                             plugin={plugin}
+                            updateStatus={updateStatuses.find((s) => s.pluginId === plugin.id) ?? null}
                             onInstall={() => setSelectedPlugin(plugin)}
                         />
                     ))}

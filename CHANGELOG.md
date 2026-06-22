@@ -13,6 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.2.1] - 2026-06-22
+
+### Added
+- **Steam ID and IsPlayer fields in ams2_stats plugin** — plugin now captures each driver's Steam ID and human/AI flag from the server API. Import service uses real Steam IDs instead of synthetic placeholders, enabling league websites and external tools to match drivers by Steam ID.
+- **Hide AI drivers toggle in Results Viewer** — when a session contains AI drivers, a toggle appears to show or hide them. Defaults to hidden. Filtering applies to the results table, driver count, fastest lap highlight, and CSV/JSON exports.
+- **Outdated plugin warning on import** — importing an ams2_stats file from an older plugin version shows a warning in the import dialog with instructions to update via the Lua Plugins page.
+- **Plugin update notifications** — the Server Plugins tile on the home screen shows a badge when a plugin update is available. The Lua Plugins page shows the detected server version alongside an "Update" button with a description of what's new.
+
+### Changed
+- Plugin installer now preserves existing `lua_config/` files (e.g. `config.json`) when updating, so user customisations like `max_sessions` are not overwritten.
+
 
 ## [1.2.0] - 2026-06-22
 

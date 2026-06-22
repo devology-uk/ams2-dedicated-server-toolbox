@@ -10,6 +10,7 @@ export interface ImportResult {
     updated: number;
     skipped: number;
     errors: Array<{ sessionIndex: number; error: string }>;
+    warnings: string[];
 }
 
 // ---- Query return types ----
@@ -54,6 +55,7 @@ export interface StageResultRow {
     position: number;
     name: string;
     steamId: string | null;
+    isPlayer: boolean;
     fastestLapTime: number | null;
     lapsCompleted: number;
     totalTime: number;

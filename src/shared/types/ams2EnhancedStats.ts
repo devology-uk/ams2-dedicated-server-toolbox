@@ -34,6 +34,8 @@ export interface EnhancedLap {
 export interface EnhancedDriver {
     refid: number;
     name: string | null;
+    steamid: string | null;
+    is_player: boolean | null;
     car: string | null;
     team: string | null;
     started: boolean;
@@ -56,6 +58,8 @@ export interface EnhancedResult {
     position: number | null;
     refid: number;
     name: string | null;
+    steamid: string | null;
+    is_player: boolean | null;
     car: string | null;
     team: string | null;
     best_lap_time: number | null;

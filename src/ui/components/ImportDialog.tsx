@@ -2,6 +2,7 @@
 
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
+import { Message } from 'primereact/message';
 import { Tag } from 'primereact/tag';
 import { ProgressBar } from 'primereact/progressbar';
 
@@ -111,6 +112,15 @@ export function ImportDialog({
                                     <span className="font-semibold">{err.sessionIndex >= 0 ? `Session #${err.sessionIndex}: ` : ''}</span>
                                     {err.error}
                                 </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Warnings */}
+                    {result.warnings?.length > 0 && (
+                        <div className="flex flex-column gap-2">
+                            {result.warnings.map((warning, i) => (
+                                <Message key={i} severity="warn" text={warning} />
                             ))}
                         </div>
                     )}

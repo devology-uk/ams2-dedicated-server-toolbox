@@ -1,5 +1,6 @@
 // src/ui/features/home/Toolbox.tsx
 
+import { useState, useEffect } from 'react';
 import { FeatureTile } from './components/FeatureTile';
 import type { ActiveFeature } from '../../types/ActiveFeature';
 
@@ -10,6 +11,14 @@ interface ToolboxProps {
 }
 
 export const Toolbox = ({ onFeatureSelect }: ToolboxProps) => {
+    const [pluginUpdateCount, setPluginUpdateCount] = useState(0);
+
+    useEffect(() => {
+        window.electron.plugins.getUpdateStatus().then((statuses) => {
+            setPluginUpdateCount(statuses.filter((s) => s.updateAvailable).length);
+        });
+    }, []);
+
     return (
         <div className="toolbox">
             <header className="toolbox__header">
@@ -56,6 +65,7 @@ export const Toolbox = ({ onFeatureSelect }: ToolboxProps) => {
                     description="Install bundled Lua plugins — including the ams2_stats plugin for sector times and full DNF tracking"
                     icon="pi pi-box"
                     color="cyan"
+                    badge={pluginUpdateCount > 0 ? String(pluginUpdateCount) : undefined}
                     onClick={() => onFeatureSelect('plugins')}
                 />
             </div>

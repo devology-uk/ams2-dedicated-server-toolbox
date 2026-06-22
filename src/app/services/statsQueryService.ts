@@ -192,7 +192,7 @@ export class StatsQueryService {
                     .prepare(
                         `SELECT
           sr.id, st.name as stageName, sr.position,
-          sr.name, sr.steam_id as steamId,
+          sr.name, sr.steam_id as steamId, sr.is_player as isPlayer,
           sr.fastest_lap_time as fastestLapTime,
           sr.laps_completed as lapsCompleted,
           sr.total_time as totalTime,
@@ -204,8 +204,8 @@ export class StatsQueryService {
          WHERE sr.session_id = ? AND st.name = ?
          ORDER BY sr.position ASC`,
                     )
-                    .all(sessionId, stageName) as Array<Omit<StageResultRow, 'isManual'> & { isManual: number }>)
-            .map((r) => ({ ...r, isManual: r.isManual === 1 }));
+                    .all(sessionId, stageName) as Array<Omit<StageResultRow, 'isManual' | 'isPlayer'> & { isManual: number; isPlayer: number }>)
+            .map((r) => ({ ...r, isManual: r.isManual === 1, isPlayer: r.isPlayer === 1 }));
     }
 
     getAllSessionResults(sessionId: number): Record<string, StageResultRow[]> {
@@ -213,7 +213,7 @@ export class StatsQueryService {
                           .prepare(
                               `SELECT
           sr.id, st.name as stageName, sr.position,
-          sr.name, sr.steam_id as steamId,
+          sr.name, sr.steam_id as steamId, sr.is_player as isPlayer,
           sr.fastest_lap_time as fastestLapTime,
           sr.laps_completed as lapsCompleted,
           sr.total_time as totalTime,
@@ -225,8 +225,8 @@ export class StatsQueryService {
          WHERE sr.session_id = ?
          ORDER BY st.name, sr.position ASC`,
                           )
-                          .all(sessionId) as Array<Omit<StageResultRow, 'isManual'> & { isManual: number }>)
-            .map((r) => ({ ...r, isManual: r.isManual === 1 }));
+                          .all(sessionId) as Array<Omit<StageResultRow, 'isManual' | 'isPlayer'> & { isManual: number; isPlayer: number }>)
+            .map((r) => ({ ...r, isManual: r.isManual === 1, isPlayer: r.isPlayer === 1 }));
 
         const grouped: Record<string, StageResultRow[]> = {};
         for (const row of rows) {
@@ -422,7 +422,7 @@ export class StatsQueryService {
                              .prepare(
                                  `SELECT
               sr.id, st.name as stageName, sr.position,
-              sr.name, sr.steam_id as steamId,
+              sr.name, sr.steam_id as steamId, sr.is_player as isPlayer,
               sr.fastest_lap_time as fastestLapTime,
               sr.laps_completed as lapsCompleted,
               sr.total_time as totalTime,
@@ -433,8 +433,8 @@ export class StatsQueryService {
              JOIN stages st ON st.id = sr.stage_id
              WHERE sr.id = ?`,
                              )
-                             .get(result.lastInsertRowid) as (Omit<StageResultRow, 'isManual'> & { isManual: number });
-        return { ...inserted, isManual: true };
+                             .get(result.lastInsertRowid) as (Omit<StageResultRow, 'isManual' | 'isPlayer'> & { isManual: number; isPlayer: number });
+        return { ...inserted, isManual: true, isPlayer: true };
     }
 
     deleteManualResult(resultId: number): void {

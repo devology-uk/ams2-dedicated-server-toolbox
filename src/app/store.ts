@@ -19,6 +19,8 @@ export interface StoreSchema {
     driverAliases: Record<string, string>;
     // Last version the user has seen the What's New dialog for
     lastSeenVersion: string | null;
+    // Last ams2_stats plugin version seen in an imported file
+    lastSeenPluginVersion: string | null;
 }
 
 const store = new Store<StoreSchema>({
@@ -30,6 +32,7 @@ const store = new Store<StoreSchema>({
         gameDataVersion: null,
         driverAliases: {},
         lastSeenVersion: null,
+        lastSeenPluginVersion: null,
     },
 });
 

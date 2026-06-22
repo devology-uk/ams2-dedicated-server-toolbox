@@ -37,7 +37,7 @@ if type(data.meta)     ~= "table" then data.meta     = {} end
 -- ─── Module-level state ───────────────────────────────────────────────────────
 
 -- Known members survive stage changes within one server session.
--- Keyed by refid → { name }
+-- Keyed by refid → { name, steamid }
 local known_members = {}
 
 -- Participant-id → refid mapping; also survives stage changes.
@@ -120,10 +120,12 @@ end
 
 local function get_or_create_driver(refid)
   if not cur.drivers[refid] then
-    local name = known_members[refid] and known_members[refid].name or nil
+    local known = known_members[refid]
     cur.drivers[refid] = {
       refid          = refid,
-      name           = name,
+      name           = known and known.name or nil,
+      steamid        = known and known.steamid or nil,
+      is_player      = nil,   -- true = human, false = AI, nil = unknown
       car            = nil,
       team           = nil,
       laps           = {},
@@ -153,6 +155,8 @@ local function finalise_session()
         position      = nil,
         refid         = refid,
         name          = d.name,
+        steamid       = d.steamid,
+        is_player     = d.is_player,
         car           = d.car,
         team          = d.team,
         best_lap_time = d.best_lap and d.best_lap.time or nil,
@@ -248,12 +252,13 @@ local function addon_callback(cb, ...)
   if cb == Callback.MemberJoined then
     local refid = ...
     if session and session.members and session.members[refid] then
-      local m    = session.members[refid]
-      local name = m.name or m.Name or tostring(refid)
-      known_members[refid] = { name = name }
-      -- Back-fill name into any existing driver record for this session.
+      local m       = session.members[refid]
+      local name    = m.name or m.Name or tostring(refid)
+      local steamid = m.steamid or m.SteamID or m.steamId or nil
+      known_members[refid] = { name = name, steamid = steamid }
       if cur.drivers[refid] then
-        cur.drivers[refid].name = cur.drivers[refid].name or name
+        cur.drivers[refid].name    = cur.drivers[refid].name or name
+        cur.drivers[refid].steamid = cur.drivers[refid].steamid or steamid
       end
     end
     save()
@@ -294,6 +299,16 @@ local function addon_callback(cb, ...)
     local car, team = read_participant_car_team(p)
     if car  then d.car  = car  end
     if team then d.team = team end
+    if d.steamid == nil then
+      d.steamid = p.SteamID or p.steamid or p.steamId
+             or (p.attributes and (p.attributes.SteamID or p.attributes.steamid))
+             or nil
+    end
+    if d.is_player == nil then
+      local ip = p.IsPlayer or p.isPlayer or p.is_player
+              or (p.attributes and (p.attributes.IsPlayer or p.attributes.isPlayer))
+      if ip ~= nil then d.is_player = (ip == 1 or ip == true) end
+    end
     return
   end
 
@@ -349,13 +364,22 @@ local function addon_callback(cb, ...)
       local d = get_or_create_driver(refid)
       d.started = true
 
-      -- Opportunistic car/team capture from participant proxy.
-      if not d.car and pid then
+      -- Opportunistic capture from participant proxy.
+      if pid then
         local p = session and session.participants and session.participants[pid]
         if p then
-          local car, team = read_participant_car_team(p)
-          if car  then d.car  = car  end
-          if team then d.team = team end
+          if not d.car then
+            local car, team = read_participant_car_team(p)
+            if car  then d.car  = car  end
+            if team then d.team = team end
+          end
+          if d.steamid == nil then
+            d.steamid = p.SteamID or p.steamid or p.steamId or nil
+          end
+          if d.is_player == nil then
+            local ip = p.IsPlayer or p.isPlayer or p.is_player
+            if ip ~= nil then d.is_player = (ip == 1 or ip == true) end
+          end
         end
       end
 
@@ -411,6 +435,8 @@ local function addon_callback(cb, ...)
         position      = attrs.RacePosition,
         refid         = refid,
         name          = d.name,
+        steamid       = d.steamid,
+        is_player     = d.is_player,
         car           = d.car,
         team          = d.team,
         best_lap_time = d.best_lap and d.best_lap.time or nil,
@@ -433,7 +459,7 @@ end
 
 -- ─── Startup ─────────────────────────────────────────────────────────────────
 
-data.meta.plugin_version = "1.0"
+data.meta.plugin_version = "1.1"
 new_session(nil, nil)
 save()
 

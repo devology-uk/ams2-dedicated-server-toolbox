@@ -1,10 +1,12 @@
 // src/app/handlers/pluginHandlers.ts
 
 import { ipcMain, dialog } from 'electron';
-import { existsSync, cpSync, mkdirSync } from 'node:fs';
+import { existsSync, cpSync, mkdirSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { IPC_CHANNELS } from '../../shared/types/ipc.js';
-import type { KnownPlugin, PluginInstallResult } from '../../shared/types/api.js';
+import type { KnownPlugin, PluginInstallResult, PluginUpdateStatus } from '../../shared/types/api.js';
+import store from '../store.js';
+import { getDatabase } from '../db/index.js';
 
 const KNOWN_PLUGINS: KnownPlugin[] = [
     {
@@ -15,7 +17,7 @@ const KNOWN_PLUGINS: KnownPlugin[] = [
             'all drivers in results — not just those who finished. A community-focused ' +
             'alternative to the built-in sms_stats plugin.',
         addonName: 'ams2_stats', // addon folder name used by the AMS2 server (lua/<addonName>/)
-        version: '1.0',
+        version: '1.1',
         bundled: true,
     },
 ];
@@ -31,6 +33,19 @@ function getBundledPluginPath(pluginId: string): string | null {
         if (existsSync(candidate)) return candidate;
     }
     return null;
+}
+
+function copyNewFilesOnly(src: string, dest: string): void {
+    for (const entry of readdirSync(src, { withFileTypes: true })) {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        if (entry.isDirectory()) {
+            mkdirSync(destPath, { recursive: true });
+            copyNewFilesOnly(srcPath, destPath);
+        } else if (!existsSync(destPath)) {
+            cpSync(srcPath, destPath);
+        }
+    }
 }
 
 function isInstalled(pluginId: string, serverDir: string): boolean {
@@ -74,11 +89,11 @@ export function registerPluginHandlers(): void {
                 mkdirSync(luaDest, { recursive: true });
                 cpSync(luaSrc, luaDest, { recursive: true });
 
-                // Copy lua_config/ → <serverDir>/lua_config/ (merge)
+                // Copy lua_config/ → <serverDir>/lua_config/ (merge, skip existing files)
                 const configSrc  = path.join(sourcePath, 'lua_config');
                 const configDest = path.join(serverDir, 'lua_config');
                 mkdirSync(configDest, { recursive: true });
-                cpSync(configSrc, configDest, { recursive: true });
+                copyNewFilesOnly(configSrc, configDest);
 
                 return { success: true };
             } catch (err) {
@@ -87,6 +102,28 @@ export function registerPluginHandlers(): void {
                     error: err instanceof Error ? err.message : String(err),
                 };
             }
+        },
+    );
+
+    ipcMain.handle(
+        IPC_CHANNELS.PLUGIN_GET_UPDATE_STATUS,
+        (): PluginUpdateStatus[] => {
+            let lastSeen = store.get('lastSeenPluginVersion');
+            if (lastSeen === null) {
+                try {
+                    const db = getDatabase();
+                    const row = db
+                        .prepare("SELECT 1 FROM sessions WHERE source_format = 'ams2_stats' LIMIT 1")
+                        .get();
+                    if (row) lastSeen = '0.0';
+                } catch { /* DB unavailable — leave as null */ }
+            }
+            return KNOWN_PLUGINS.map((plugin) => ({
+                pluginId: plugin.id,
+                lastSeenVersion: lastSeen,
+                latestVersion: plugin.version,
+                updateAvailable: lastSeen !== null && lastSeen < plugin.version,
+            }));
         },
     );
 }

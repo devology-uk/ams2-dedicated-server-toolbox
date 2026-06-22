@@ -142,11 +142,19 @@ export interface PluginInstallResult {
     error?: string;
 }
 
+export interface PluginUpdateStatus {
+    pluginId: string;
+    lastSeenVersion: string | null;
+    latestVersion: string;
+    updateAvailable: boolean;
+}
+
 export interface PluginsAPI {
     getKnownPlugins: () => Promise<KnownPlugin[]>;
     selectServerDir: () => Promise<string | null>;
     checkInstalled: (pluginId: string, serverDir: string) => Promise<boolean>;
     install: (pluginId: string, serverDir: string) => Promise<PluginInstallResult>;
+    getUpdateStatus: () => Promise<PluginUpdateStatus[]>;
 }
 
 export interface AliasesAPI {

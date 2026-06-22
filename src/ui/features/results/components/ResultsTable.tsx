@@ -7,6 +7,7 @@ import { Card } from 'primereact/card';
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
 import { SplitButton } from 'primereact/splitbutton';
+import { ToggleButton } from 'primereact/togglebutton';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { AddResultDialog } from './AddResultDialog.js';
@@ -54,29 +55,37 @@ export function ResultsTable({
     const [addResultVisible, setAddResultVisible] = useState(false);
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const [exporting, setExporting] = useState(false);
+    const [hideAi, setHideAi] = useState(true);
+
+    const hasAiDrivers = useMemo(
+        () => results.some((r) => !r.isPlayer),
+        [results],
+    );
 
     // Pre-resolve display names into new row objects so PrimeReact DataTable
     // sees changed data (and re-runs body templates) when aliases change.
     type ResolvedRow = StageResultRow & { displayName: string; steamName: string };
     const resolvedResults = useMemo<ResolvedRow[]>(
-        () => results.map((r) => ({
-            ...r,
-            displayName: resolveAlias(r.steamId, r.name || '(Unknown)'),
-            steamName: r.name,
-        })),
+        () => results
+            .filter((r) => !hideAi || r.isPlayer)
+            .map((r) => ({
+                ...r,
+                displayName: resolveAlias(r.steamId, r.name || '(Unknown)'),
+                steamName: r.name,
+            })),
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [results, aliasVersion],
+        [results, aliasVersion, hideAi],
     );
 
-    // Find fastest lap across all results for highlighting
-    const fastestLapTime = results.reduce<number | null>((best, r) => {
+    // Find fastest lap across visible results for highlighting
+    const fastestLapTime = resolvedResults.reduce<number | null>((best, r) => {
         if (r.fastestLapTime && r.fastestLapTime > 0) {
             return best === null ? r.fastestLapTime : Math.min(best, r.fastestLapTime);
         }
         return best;
     }, null);
 
-    const hasSectorData = results.some(
+    const hasSectorData = resolvedResults.some(
         (r) => r.bestS1 != null || r.bestS2 != null || r.bestS3 != null,
     );
 
@@ -157,7 +166,7 @@ export function ResultsTable({
             </div>
             <div className="flex align-items-center gap-2">
                 <Tag
-                    value={`${results.length} drivers`}
+                    value={`${resolvedResults.length} drivers`}
                     icon="pi pi-users"
                     severity="info"
                 />
@@ -166,6 +175,17 @@ export function ResultsTable({
                         value={`Fastest: ${formatLapTime(fastestLapTime)}`}
                         icon="pi pi-bolt"
                         severity="success"
+                    />
+                )}
+                {hasAiDrivers && (
+                    <ToggleButton
+                        checked={hideAi}
+                        onChange={(e) => setHideAi(e.value)}
+                        onLabel="AI Hidden"
+                        offLabel="AI Shown"
+                        onIcon="pi pi-eye-slash"
+                        offIcon="pi pi-eye"
+                        className="p-button-sm"
                     />
                 )}
                 <Button
