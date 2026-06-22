@@ -11,6 +11,13 @@ export class AMS2EnhancedStatsParser {
     private data: AMS2EnhancedStatsFile;
 
     constructor(data: AMS2EnhancedStatsFile) {
+        for (const session of data.sessions) {
+            if (!Array.isArray(session.drivers)) session.drivers = [];
+            if (!Array.isArray(session.results)) session.results = [];
+            for (const driver of session.drivers) {
+                if (!Array.isArray(driver.laps)) driver.laps = [];
+            }
+        }
         this.data = data;
     }
 
