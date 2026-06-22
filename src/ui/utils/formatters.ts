@@ -5,7 +5,8 @@
  * Converts a stage key like "practice1" to "Practice 1".
  */
 export function formatStageName(stage: string): string {
-    return stage
+    const normalised = stage === 'Unknown' ? 'Practice1' : stage;
+    return normalised
         .replace(/([0-9]+)/g, ' $1')
         .replace(/^./, (str) => str.toUpperCase())
         .trim();

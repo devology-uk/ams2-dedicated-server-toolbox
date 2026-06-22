@@ -28,7 +28,8 @@ export class AMS2EnhancedStatsImportService {
             errors: [],
         };
 
-        for (const session of data.sessions) {
+        for (let i = 0; i < data.sessions.length; i++) {
+            const session = this.normaliseSession(data.sessions[i]);
             try {
                 const action = this.classifySession(serverId, session);
                 switch (action) {
@@ -46,7 +47,7 @@ export class AMS2EnhancedStatsImportService {
                 }
             } catch (error) {
                 result.errors.push({
-                    sessionIndex: 0,
+                    sessionIndex: i,
                     error: error instanceof Error ? error.message : String(error),
                 });
             }
@@ -174,7 +175,7 @@ export class AMS2EnhancedStatsImportService {
                 );
 
             const sessionId = Number(row.lastInsertRowid);
-            const stageName = session.stage ?? 'Unknown';
+            const stageName = session.stage ?? 'Practice1';
 
             const stageRow = this.db
                 .prepare(
@@ -211,7 +212,7 @@ export class AMS2EnhancedStatsImportService {
                 )
                 .run(endEpoch, endEpoch ? 1 : 0, this.hashSession(session), Date.now(), sessionId);
 
-            const stageName = session.stage ?? 'Unknown';
+            const stageName = session.stage ?? 'Practice1';
             const stageRow = this.db
                 .prepare(
                     'INSERT INTO stages (session_id, name, start_time, end_time) VALUES (?, ?, ?, ?)',
@@ -331,6 +332,15 @@ export class AMS2EnhancedStatsImportService {
     // --------------------------------------------------
     // Utilities
     // --------------------------------------------------
+
+    private normaliseSession(session: EnhancedSession): EnhancedSession {
+        if (!Array.isArray(session.drivers)) session.drivers = [];
+        if (!Array.isArray(session.results)) session.results = [];
+        for (const driver of session.drivers) {
+            if (!Array.isArray(driver.laps)) driver.laps = [];
+        }
+        return session;
+    }
 
     private parseTime(isoString: string): number {
         return Math.floor(new Date(isoString).getTime() / 1000);

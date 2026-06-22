@@ -37,6 +37,7 @@ const STAGE_COLORS: Record<string, 'info' | 'warning' | 'success' | 'secondary'>
     practice1: 'info',
     qualifying1: 'warning',
     race1: 'success',
+    Unknown: 'info',
 };
 
 
@@ -123,7 +124,7 @@ export function ResultsTable({
     const handleExport = async (format: 'csv' | 'json') => {
         const stagePart = formatStageName(stageContext.stageName).replace(/\s+/g, '_');
         const datePart = sessionDate.toISOString().slice(0, 10);
-        const filename = `Session_${stageContext.sessionIndex}_${stagePart}_${datePart}.${format}`;
+        const filename = `Session_${stagePart}_${datePart}.${format}`;
         const content = format === 'csv' ? buildCsv(resolvedResults) : buildJson(resolvedResults);
         setExporting(true);
         await window.electron.exportResults({ filename, content, format });
@@ -142,9 +143,7 @@ export function ResultsTable({
                 />
                 <div className="flex flex-column">
                     <div className="flex align-items-center gap-2">
-            <span className="text-xl font-semibold">
-              Session #{stageContext.sessionIndex}
-            </span>
+            <span className="text-xl font-semibold">Session</span>
                         <Tag
                             value={formatStageName(stageContext.stageName)}
                             severity={stageSeverity}

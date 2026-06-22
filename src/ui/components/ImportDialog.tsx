@@ -108,7 +108,7 @@ export function ImportDialog({
               </span>
                             {result.errors.map((err, i) => (
                                 <div key={i} className="surface-100 p-2 border-round text-sm">
-                                    <span className="font-semibold">Session #{err.sessionIndex}:</span>{' '}
+                                    <span className="font-semibold">{err.sessionIndex >= 0 ? `Session #${err.sessionIndex}: ` : ''}</span>
                                     {err.error}
                                 </div>
                             ))}

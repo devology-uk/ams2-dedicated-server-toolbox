@@ -25,7 +25,7 @@ type StageFilter = 'all' | 'practice1' | 'qualifying1' | 'race1';
 
 function stageSeverity(name: string): 'info' | 'warning' | 'success' | 'secondary' {
     const lower = name.toLowerCase();
-    if (lower.includes('practice')) return 'info';
+    if (lower.includes('practice') || lower === 'unknown') return 'info';
     if (lower.includes('qualify')) return 'warning';
     if (lower.includes('race')) return 'success';
     return 'secondary';
@@ -87,9 +87,6 @@ export function StageList({ stages, loading, onSelectStage, onDeleteSession }: S
         </div>
     );
 
-    const sessionBodyTemplate = (row: StageListItem): ReactNode => (
-        <span className="font-mono font-semibold">#{row.sessionIndex}</span>
-    );
 
     const stageBodyTemplate = (row: StageListItem): ReactNode => (
         <Tag value={formatStageName(row.stageName)} severity={stageSeverity(row.stageName)} />
@@ -178,13 +175,7 @@ export function StageList({ stages, loading, onSelectStage, onDeleteSession }: S
                     sortable
                     style={{ width: '10rem' }}
                 />
-                <Column
-                    field="sessionIndex"
-                    header="Session"
-                    body={sessionBodyTemplate}
-                    sortable
-                    style={{ width: '7rem' }}
-                />
+
                 <Column
                     field="stageName"
                     header="Stage"

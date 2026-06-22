@@ -31,6 +31,7 @@ const STAGE_COLORS: Record<string, 'info' | 'warning' | 'success' | 'secondary'>
     practice1: 'info',
     qualifying1: 'warning',
     race1: 'success',
+    Unknown: 'info',
 };
 
 export function PlayerProfile({
@@ -272,8 +273,7 @@ export function PlayerProfile({
                         sortOrder={-1}
                     >
                         <Column field="sessionStartTime" header="Date" body={dateBodyTemplate} sortable />
-                        <Column field="sessionIndex" header="Session" body={(r: PlayerResultHistory) => `#${r.sessionIndex}`} sortable />
-                        <Column field="stageName" header="Stage" body={stageBodyTemplate} sortable />
+                                                <Column field="stageName" header="Stage" body={stageBodyTemplate} sortable />
                         <Column field="trackId" header="Track" body={(r: PlayerResultHistory) => resolveTrack(r.trackId)} />
                         <Column field="position" header="Pos" body={positionBodyTemplate} sortable style={{ width: '5rem' }} />
                         <Column field="fastestLapTime" header="Fastest Lap" body={fastestLapBodyTemplate} sortable />
