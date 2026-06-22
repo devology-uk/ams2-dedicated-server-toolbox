@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Fixed
+
+
+## [1.2.0] - 2026-06-22
+
+### Added
 - **ams2_stats Lua plugin** — alternative to `sms_stats` that captures per-lap sector times (S1/S2/S3), complete DNF tracking, and full lap history per driver. Bundled with the app and installable via the new Lua Plugins page.
 - **Lua Plugins page** — new home-screen tile with a step-by-step wizard to install bundled plugins into an AMS2 dedicated server folder.
 - **ams2_stats support in Stats Viewer and Results Viewer** — both viewers auto-detect file format; `ams2_stats` files show sector times and full lap history. Results Viewer import routes to the correct importer based on format and imports into the currently selected server.
