@@ -116,7 +116,6 @@ export function StageList({ stages, loading, onSelectStage, onDeleteSession }: S
     const handleDeleteClick = (e: React.MouseEvent, row: StageListItem) => {
         e.stopPropagation();
         confirmDialog({
-            target: e.currentTarget as HTMLElement,
             message: 'Delete this session and all its results? This cannot be undone.',
             header: 'Delete Session',
             icon: 'pi pi-exclamation-triangle',
