@@ -7,6 +7,16 @@ import type {
     EnhancedDriver,
 } from '../types/ams2EnhancedStats.js';
 
+// Real session stages the server assigns once a stage actually begins.
+// Anything else (e.g. "Allocating", a transient SessionManagerState the
+// plugin can capture before the first StageChanged event) is treated the
+// same as an unspecified stage and falls back to Practice1.
+const RealStagePattern = /^(Practice|Qualify|Warmup|FormationLap|Race)/i;
+
+export function normaliseStageName(stage: string | null | undefined): string {
+    return stage && RealStagePattern.test(stage) ? stage : 'Practice1';
+}
+
 export class AMS2EnhancedStatsParser {
     private data: AMS2EnhancedStatsFile;
 

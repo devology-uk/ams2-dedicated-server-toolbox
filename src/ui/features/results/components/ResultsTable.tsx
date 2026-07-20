@@ -64,7 +64,7 @@ export function ResultsTable({
 
     // Pre-resolve display names into new row objects so PrimeReact DataTable
     // sees changed data (and re-runs body templates) when aliases change.
-    type ResolvedRow = StageResultRow & { displayName: string; steamName: string };
+    type ResolvedRow = StageResultRow & { displayName: string; steamName: string; displayPosition: number };
     const resolvedResults = useMemo<ResolvedRow[]>(
         () => results
             .filter((r) => !hideAi || r.isPlayer)
@@ -72,7 +72,21 @@ export function ResultsTable({
                 ...r,
                 displayName: resolveAlias(r.steamId, r.name || '(Unknown)'),
                 steamName: r.name,
-            })),
+            }))
+            // Finished drivers by classification position; everyone else (DNF/Retired/
+            // Disqualified, or rows with a stale/unset position from older imports)
+            // sorted to the bottom by laps completed descending.
+            .sort((a, b) => {
+                const finishedA = a.state === 'Finished' && a.position > 0;
+                const finishedB = b.state === 'Finished' && b.position > 0;
+                if (finishedA !== finishedB) return finishedA ? -1 : 1;
+                if (finishedA) return a.position - b.position;
+                return b.lapsCompleted - a.lapsCompleted;
+            })
+            // Display position is the row's rank in this (now-correct) order, not the
+            // raw stored position — keeps the column contiguous regardless of whether
+            // the stored value came from an old import with a stale/unset position.
+            .map((r, index) => ({ ...r, displayPosition: index + 1 })),
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [results, aliasVersion, hideAi],
     );
@@ -100,7 +114,7 @@ export function ResultsTable({
         };
         const header = ['Position', 'Driver', 'Steam Name', 'Steam ID', 'Fastest Lap', 'Laps', 'Total Time', 'Status', 'Manual'];
         const dataRows = rows.map((r) => [
-            r.position,
+            r.displayPosition,
             escape(r.displayName),
             escape(r.steamName),
             escape(r.steamId),
@@ -116,7 +130,7 @@ export function ResultsTable({
     const buildJson = (rows: ResolvedRow[]): string => {
         return JSON.stringify(
             rows.map((r) => ({
-                position: r.position,
+                position: r.displayPosition,
                 driver: r.displayName,
                 steamName: r.steamName,
                 steamId: r.steamId,
@@ -222,16 +236,16 @@ export function ResultsTable({
         );
     }
 
-    const positionBodyTemplate = (row: StageResultRow): ReactNode => {
-        if (row.position <= 3) {
+    const positionBodyTemplate = (row: ResolvedRow): ReactNode => {
+        if (row.state === 'Finished' && row.displayPosition <= 3) {
             const icons: Record<number, string> = { 1: '🥇', 2: '🥈', 3: '🥉' };
             return (
-                <span className="text-lg" title={`P${row.position}`}>
-          {icons[row.position]}
+                <span className="text-lg" title={`P${row.displayPosition}`}>
+          {icons[row.displayPosition]}
         </span>
             );
         }
-        return <span className="font-semibold text-color-secondary">P{row.position}</span>;
+        return <span className="font-semibold text-color-secondary">P{row.displayPosition}</span>;
     };
 
     const nameBodyTemplate = (row: ResolvedRow): ReactNode => {
@@ -342,7 +356,7 @@ export function ResultsTable({
                 rowHover
             >
                 <Column
-                    field="position"
+                    field="displayPosition"
                     header="Pos"
                     body={positionBodyTemplate}
                     style={{ width: '5rem' }}

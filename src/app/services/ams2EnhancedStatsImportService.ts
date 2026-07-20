@@ -8,6 +8,7 @@ import type {
     EnhancedSession,
 } from '../../shared/types/ams2EnhancedStats.js';
 import type { ImportResult } from '../../shared/types/statsDb.js';
+import { normaliseStageName } from '../../shared/utils/ams2EnhancedStatsParser.js';
 import store from '../store.js';
 
 const LatestPluginVersion = '1.1';
@@ -181,7 +182,7 @@ export class AMS2EnhancedStatsImportService {
                 );
 
             const sessionId = Number(row.lastInsertRowid);
-            const stageName = session.stage ?? 'Practice1';
+            const stageName = normaliseStageName(session.stage);
 
             const stageRow = this.db
                 .prepare(
@@ -218,7 +219,7 @@ export class AMS2EnhancedStatsImportService {
                 )
                 .run(endEpoch, endEpoch ? 1 : 0, this.hashSession(session), Date.now(), sessionId);
 
-            const stageName = session.stage ?? 'Practice1';
+            const stageName = normaliseStageName(session.stage);
             const stageRow = this.db
                 .prepare(
                     'INSERT INTO stages (session_id, name, start_time, end_time) VALUES (?, ?, ?, ?)',
@@ -264,11 +265,20 @@ export class AMS2EnhancedStatsImportService {
 
         const steamIds = this.buildSteamIdLookup(session);
 
+        // The plugin leaves position null for DNFs and already orders session.results
+        // with finishers first, then DNFs by laps completed descending. Assign DNFs a
+        // synthetic position after the real finishers so that ordering survives import.
+        let nextDnfPosition = 1;
+        for (const r of session.results) {
+            if (r.position != null) nextDnfPosition = Math.max(nextDnfPosition, r.position + 1);
+        }
+
         for (const r of session.results) {
             const displayName = r.name ?? `Driver ${r.refid}`;
             const steamId = r.steamid ?? steamIds.get(r.refid) ?? `ams2_refid_${r.refid}`;
             const isPlayer = r.is_player ?? true;
             const playerId = this.resolvePlayer(steamId, displayName, recordedAt);
+            const position = r.position ?? nextDnfPosition++;
 
             stmt.run(
                 stageId,
@@ -279,7 +289,7 @@ export class AMS2EnhancedStatsImportService {
                 r.refid,
                 r.refid,
                 isPlayer ? 1 : 0,
-                r.position ?? 0,
+                position,
                 r.best_lap_time ?? null,
                 r.laps_complete ?? 0,
                 r.total_time ?? 0,

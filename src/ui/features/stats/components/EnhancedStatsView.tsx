@@ -7,7 +7,7 @@ import { Tag } from 'primereact/tag';
 import { Panel } from 'primereact/panel';
 import type { AMS2EnhancedStatsParser } from '../../../../shared/utils/ams2EnhancedStatsParser';
 import type { EnhancedSession } from '../../../../shared/types/ams2EnhancedStats';
-import { AMS2EnhancedStatsParser as Parser } from '../../../../shared/utils/ams2EnhancedStatsParser.ts';
+import { AMS2EnhancedStatsParser as Parser, normaliseStageName } from '../../../../shared/utils/ams2EnhancedStatsParser.ts';
 import { formatStageName } from '../../../utils/formatters.ts';
 
 interface EnhancedStatsViewProps {
@@ -103,8 +103,8 @@ export function EnhancedStatsView({ parser }: EnhancedStatsViewProps) {
                             header={
                                 <div className="flex align-items-center gap-3 w-full">
                                     <Tag
-                                        value={formatStageName(session.stage ?? 'Practice1')}
-                                        severity={stageSeverity(session.stage ?? 'practice')}
+                                        value={formatStageName(normaliseStageName(session.stage))}
+                                        severity={stageSeverity(normaliseStageName(session.stage))}
                                     />
                                     <span className="font-semibold">{trackName}</span>
                                     <span className="text-color-secondary text-sm ml-auto">

@@ -1,12 +1,15 @@
 // src/ui/utils/formatters.ts
 // Shared formatting utilities used across stats and results views.
 
+import { normaliseStageName } from '../../shared/utils/ams2EnhancedStatsParser.js';
+
 /**
- * Converts a stage key like "practice1" to "Practice 1".
+ * Converts a stage key like "practice1" to "Practice 1". Non-real stage values
+ * (e.g. "Unknown" from older imports, or "Allocating" from a stale ams2_stats
+ * import) are treated the same as unspecified and shown as Practice.
  */
 export function formatStageName(stage: string): string {
-    const normalised = stage === 'Unknown' ? 'Practice1' : stage;
-    return normalised
+    return normaliseStageName(stage)
         .replace(/([0-9]+)/g, ' $1')
         .replace(/^./, (str) => str.toUpperCase())
         .trim();

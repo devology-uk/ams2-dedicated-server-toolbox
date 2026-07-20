@@ -13,7 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-## [1.2.1] - 2026-06-22
+
+## [1.2.3] - 2026-07-20
+
+### Fixed
+- **Sessions no longer show "Allocating" as their type** — now correctly falls back to Practice, like other sessions with an unspecified type.
+- **DNF/retired drivers now sort to the bottom of race results** instead of the top, ordered by laps completed.
+
+
+## [1.2.2] - 2026-06-22
 
 ### Added
 - **Steam ID and IsPlayer fields in ams2_stats plugin** — plugin now captures each driver's Steam ID and human/AI flag from the server API. Import service uses real Steam IDs instead of synthetic placeholders, enabling league websites and external tools to match drivers by Steam ID.
