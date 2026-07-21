@@ -10,6 +10,8 @@ import type {
     VehicleClass,
 } from './connections.js';
 
+import type { ExportPreset, ExportPresetInput } from './export.js';
+
 import type {
     ImportResult,
     LapRecord,
@@ -163,6 +165,12 @@ export interface AliasesAPI {
     delete: (steamId: string) => Promise<void>;
 }
 
+export interface ExportPresetsAPI {
+    getAll: () => Promise<ExportPreset[]>;
+    save: (preset: ExportPresetInput) => Promise<ExportPreset>;
+    delete: (id: string) => Promise<boolean>;
+}
+
 export interface GameDataAPI {
     get: () => Promise<ServerCache | null>;
     set: (data: { version: ServerVersion; lists: AllListsData }, version?: string) => Promise<void>;
@@ -178,6 +186,8 @@ export interface ElectronAPI {
     deleteConnection: (id: string) => Promise<boolean>;
     exportConfig: (data: string) => Promise<FileOperationResult>;
     exportResults: (params: { filename: string; content: string; format: 'csv' | 'json' }) => Promise<FileOperationResult>;
+    // Export presets (API Explorer)
+    exportPresets: ExportPresetsAPI;
     // Game data (shared, connection-independent)
     gameData: GameDataAPI;
     getActiveConnection: () => Promise<ServerConnection | null>;

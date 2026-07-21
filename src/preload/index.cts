@@ -41,6 +41,11 @@ const IPC_CHANNELS = {
     EXPORT_CONFIG: 'export-config',
     EXPORT_RESULTS: 'export-results',
 
+    // Export presets (API Explorer)
+    EXPORT_PRESETS_GET_ALL: 'export-presets-get-all',
+    EXPORT_PRESETS_SAVE: 'export-presets-save',
+    EXPORT_PRESETS_DELETE: 'export-presets-delete',
+
     // Stats
     STATS_SELECT_FILE: 'stats-select-file',
     STATS_PARSE_FILE: 'stats-parse-file',
@@ -97,6 +102,29 @@ interface ServerConnectionInput {
     password: string;
     port: string;
     username: string;
+}
+
+interface ExportField {
+    field: string;
+    alias?: string;
+}
+
+interface ExportLookup {
+    endpoint: string;
+    localField: string;
+    foreignField: string;
+    fields: ExportField[];
+}
+
+interface ExportPresetInput {
+    id?: string;
+    name: string;
+    primaryEndpoint: string;
+    fields: ExportField[];
+    lookups: ExportLookup[];
+    columnOrder: string[];
+    includeHeaders: boolean;
+    format: 'json' | 'csv';
 }
 
 electron.contextBridge.exposeInMainWorld('electron', {
@@ -167,6 +195,16 @@ electron.contextBridge.exposeInMainWorld('electron', {
         electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_CONFIG, data),
     exportResults: (params: { filename: string; content: string; format: 'csv' | 'json' }) =>
         electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_RESULTS, params),
+
+    // Export presets (API Explorer)
+    exportPresets: {
+        getAll: () =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_PRESETS_GET_ALL),
+        save: (preset: ExportPresetInput) =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_PRESETS_SAVE, preset),
+        delete: (id: string) =>
+            electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_PRESETS_DELETE, id),
+    },
 
     // Stats operations
     stats: {

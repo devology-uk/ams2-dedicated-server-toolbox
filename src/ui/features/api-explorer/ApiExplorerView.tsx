@@ -21,6 +21,7 @@ import type { MenuItem } from 'primereact/menuitem';
 
 import './ApiExplorerView.scss';
 import { ServerConnectionDialog } from '../../components/ServerConnectionDialog';
+import { ExportDialog } from './export/ExportDialog';
 import type {
   ServerConnection,
   ServerCache,
@@ -122,6 +123,7 @@ export const ApiExplorerView = () => {
   const [selectedListData, setSelectedListData] = useState<ApiListData | null>(null);
   const [filterValue, setFilterValue] = useState('');
   const [expandedKeys, setExpandedKeys] = useState<TreeExpandedKeysType>({ root: true });
+  const [exportDialogVisible, setExportDialogVisible] = useState(false);
 
   // =============================================
   // Connection management
@@ -698,6 +700,13 @@ export const ApiExplorerView = () => {
             disabled={syncing}
             className={cacheStatus === 'stale' ? 'p-button-warning' : 'p-button-outlined'}
           />
+          <Button
+            label="Export"
+            icon="pi pi-download"
+            onClick={() => setExportDialogVisible(true)}
+            className="p-button-outlined"
+            disabled={!cache}
+          />
         </div>
       </div>
 
@@ -803,6 +812,16 @@ export const ApiExplorerView = () => {
         onSave={handleDialogSave}
         connection={editingConnection}
       />
+
+      {cache && (
+        <ExportDialog
+          visible={exportDialogVisible}
+          onHide={() => setExportDialogVisible(false)}
+          lists={cache.lists}
+          endpoints={API_STRUCTURE}
+          toast={toast}
+        />
+      )}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import type {
     ServerConnection,
     ServerCache,
 } from '../shared/types/connections.js';
+import type { ExportPreset } from '../shared/types/export.js';
 
 export interface StoreSchema {
     connections: ServerConnection[];
@@ -21,6 +22,8 @@ export interface StoreSchema {
     lastSeenVersion: string | null;
     // Last ams2_stats plugin version seen in an imported file
     lastSeenPluginVersion: string | null;
+    // Saved export configurations for the API Explorer export feature
+    exportPresets: ExportPreset[];
 }
 
 const store = new Store<StoreSchema>({
@@ -33,6 +36,7 @@ const store = new Store<StoreSchema>({
         driverAliases: {},
         lastSeenVersion: null,
         lastSeenPluginVersion: null,
+        exportPresets: [],
     },
 });
 

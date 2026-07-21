@@ -10,6 +10,7 @@ import { registerStatsDbHandlers } from './statsDbHandlers.js';
 import { registerAliasHandlers } from './aliasHandlers.js';
 import { registerWhatsNewHandler } from './whatsNewHandler.js';
 import { registerPluginHandlers } from './pluginHandlers.js';
+import { registerExportPresetHandlers } from './exportPresetHandlers.js';
 
 export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerConnectionHandlers();
@@ -21,4 +22,5 @@ export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerAliasHandlers();
     registerWhatsNewHandler();
     registerPluginHandlers();
+    registerExportPresetHandlers();
 }

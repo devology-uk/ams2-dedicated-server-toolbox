@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.3.0] - 2026-07-21
+
+### Added
+- **Export in API Explorer** — export any endpoint's data to JSON or CSV, choosing which fields to include, renaming columns with aliases, and reordering them. Lookups let you combine endpoints (e.g. vehicles enriched with class name and liveries) into a single export. CSV exports can optionally omit the header row. Export configurations can be saved and reused as named presets.
+
+
 ## [1.2.3] - 2026-07-20
 
 ### Fixed

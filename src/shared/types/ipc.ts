@@ -36,6 +36,11 @@ export const IPC_CHANNELS = {
     EXPORT_CONFIG: 'export-config',
     EXPORT_RESULTS: 'export-results',
 
+    // Export presets (API Explorer)
+    EXPORT_PRESETS_GET_ALL: 'export-presets-get-all',
+    EXPORT_PRESETS_SAVE: 'export-presets-save',
+    EXPORT_PRESETS_DELETE: 'export-presets-delete',
+
     // Stats (existing - file-based)
     STATS_SELECT_FILE: 'stats-select-file',
     STATS_PARSE_FILE: 'stats-parse-file',

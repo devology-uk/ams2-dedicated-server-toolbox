@@ -1,0 +1,181 @@
+// src/ui/features/api-explorer/export/ExportDialog.scss
+
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.export-dialog {
+  max-width: 95vw;
+
+  .p-dialog-content {
+    overflow: hidden;
+  }
+
+  .field {
+    margin-bottom: v.$spacing-5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: v.$spacing-2;
+      font-weight: v.$font-weight-medium;
+      color: var(--text-color);
+    }
+  }
+
+  // ============================================
+  // Two-column layout: setup on the left,
+  // output columns + preview on the right —
+  // each scrolls independently so the dialog
+  // itself never grows past the viewport.
+  // ============================================
+  .export-dialog-columns {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$spacing-6;
+  }
+
+  .export-setup-column,
+  .export-output-column {
+    flex: 1 1 0;
+    min-width: 0;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: v.$spacing-2;
+  }
+
+  .export-output-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include m.respond-to-md {
+    .export-dialog-columns {
+      flex-direction: column;
+    }
+
+    .export-setup-column,
+    .export-output-column {
+      max-height: none;
+      overflow-y: visible;
+      width: 100%;
+    }
+  }
+
+  .export-lookups-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: v.$spacing-2;
+  }
+
+  .export-lookup-row {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-2;
+    margin-bottom: v.$spacing-3;
+
+    > .p-dropdown {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    > .p-multiselect {
+      flex: 1.4 1 0;
+      min-width: 0;
+    }
+  }
+
+  .export-lookup-join {
+    color: var(--text-color-secondary);
+    font-size: v.$font-size-sm;
+    white-space: nowrap;
+  }
+
+  .export-columns-hint {
+    margin: 0 0 v.$spacing-2;
+    color: var(--text-color-secondary);
+    font-size: v.$font-size-sm;
+  }
+
+  .export-columns-list {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-2;
+  }
+
+  .export-column-row {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-2;
+
+    > .p-inputtext {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  .export-column-key {
+    flex: 1 1 0;
+    min-width: 0;
+    font-family: monospace;
+    font-size: v.$font-size-sm;
+    color: var(--text-color-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .export-column-reorder {
+    display: flex;
+    flex: 0 0 auto;
+
+    .p-button {
+      padding: v.$spacing-1;
+    }
+  }
+
+  .export-preview-code {
+    margin: 0;
+    padding: v.$spacing-4;
+    background: var(--surface-ground);
+    border: 1px solid var(--surface-border);
+    border-radius: v.$spacing-2;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: v.$font-size-xs;
+    line-height: 1.5;
+    overflow: auto;
+    white-space: pre;
+    max-height: 16rem;
+  }
+
+  .export-output-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: v.$spacing-3;
+    height: 100%;
+    min-height: 12rem;
+    color: var(--text-color-secondary);
+    text-align: center;
+
+    i {
+      font-size: 2rem;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: v.$spacing-2;
+  width: 100%;
+}

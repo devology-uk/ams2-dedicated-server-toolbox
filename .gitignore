@@ -31,3 +31,5 @@ sms_stats_data*.json
 config_sample/
 sms_stats_data.json
 .claude/settings.local.json
+ams2_stats_data.json
+exports/
