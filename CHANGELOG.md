@@ -8,11 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **SMS Rotate plugin configuration in Config Builder** — new tab to build a default session setup and a track/vehicle/weather rotation list for the `sms_rotate` plugin, with its own JSON import/export.
 
 ### Changed
 
 ### Fixed
+
+
+## [1.4.0] - 2026-08-09
+
+### Added
+- **SMS Rotate tool** — new page to configure the `sms_rotate` plugin's rotation file: build a default session setup and a track/vehicle/weather rotation list, with its own JSON import/export. Reachable from its own home-screen tile and cross-linked from Config Builder's Lua API tab.
 
 
 ## [1.3.0] - 2026-07-21
