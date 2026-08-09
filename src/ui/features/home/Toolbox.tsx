@@ -68,6 +68,13 @@ export const Toolbox = ({ onFeatureSelect }: ToolboxProps) => {
                     badge={pluginUpdateCount > 0 ? String(pluginUpdateCount) : undefined}
                     onClick={() => onFeatureSelect('plugins')}
                 />
+                <FeatureTile
+                    title="SMS Rotate"
+                    description="Configure the sms_rotate plugin's default setup and track/vehicle/weather rotation list"
+                    icon="pi pi-sync"
+                    color="pink"
+                    onClick={() => onFeatureSelect('sms-rotate')}
+                />
             </div>
         </div>
     );

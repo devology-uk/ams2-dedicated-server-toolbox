@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/_src/_electron/ams2-server-manager log --all -i --grep=\"sms_rotate\" --oneline)",
+      "Bash(git -C /c/_src/_electron/ams2-server-manager log --all -S \"sms_rotate\" --oneline)",
+      "Bash(git -C /c/_src/_electron/ams2-server-manager log --all -i --grep=\"rotate\" --oneline)",
+      "Bash(mv src/ui/features/config-builder/components/SmsRotateForm.tsx src/ui/features/sms-rotate/components/SmsRotateForm.tsx)",
+      "Bash(mv src/ui/features/config-builder/components/RotationEntryPanel.tsx src/ui/features/sms-rotate/components/RotationEntryPanel.tsx)",
+      "Bash(mv src/ui/features/config-builder/hooks/useSmsRotateConfigState.ts src/ui/features/sms-rotate/hooks/useSmsRotateConfigState.ts)",
+      "Bash(mv src/ui/features/config-builder/utils/sms-rotate-parser.ts src/ui/features/sms-rotate/utils/sms-rotate-parser.ts)"
+    ]
+  }
+}

@@ -12,6 +12,7 @@ interface LuaApiFormProps {
     config: ServerConfig;
     onChange: <K extends keyof ServerConfig>(key: K, value: ServerConfig[K]) => void;
     onOpenPluginsInstaller?: () => void;
+    onOpenSmsRotateConfig?: () => void;
 }
 
 interface KnownPluginEntry {
@@ -21,6 +22,7 @@ interface KnownPluginEntry {
     bundled: boolean;
     dependsOn?: string[];  // other known addon names this plugin requires
     loadLast?: boolean;    // always placed after all other addons in the list
+    configurable?: boolean; // has its own dedicated configuration page (see onOpenSmsRotateConfig)
 }
 
 // Order here defines load order. loadLast plugins are pinned to the end.
@@ -39,6 +41,20 @@ const KNOWN_PLUGINS: KnownPluginEntry[] = [
         dependsOn: ['sms_base'],
     },
     {
+        addonName: 'lib_rotate',
+        label: 'Lib Rotate',
+        description: 'Setup-merging helper library required by SMS Rotate. Must be loaded first.',
+        bundled: false,
+    },
+    {
+        addonName: 'sms_rotate',
+        label: 'SMS Rotate',
+        description: 'Rotates the server through a list of track/vehicle/session setups. Automatically enables lib_rotate.',
+        bundled: false,
+        dependsOn: ['lib_rotate'],
+        configurable: true,
+    },
+    {
         addonName: 'ams2_stats',
         label: 'AMS2 Stats',
         description: 'Enhanced race statistics with sector times and complete results for all drivers.',
@@ -51,6 +67,7 @@ export const LuaApiForm = ({
     config,
     onChange,
     onOpenPluginsInstaller,
+    onOpenSmsRotateConfig,
 }: LuaApiFormProps) => {
     const addons = config.luaApiAddons ?? [];
 
@@ -216,6 +233,18 @@ export const LuaApiForm = ({
                                                 severity="secondary"
                                                 onClick={onOpenPluginsInstaller}
                                                 tooltip="Open the Plugin Installer to copy files to your server folder"
+                                                tooltipOptions={{ position: 'left' }}
+                                            />
+                                        )}
+                                        {plugin.configurable && onOpenSmsRotateConfig && (
+                                            <Button
+                                                label="Configure"
+                                                icon="pi pi-sliders-h"
+                                                size="small"
+                                                outlined
+                                                severity="secondary"
+                                                onClick={onOpenSmsRotateConfig}
+                                                tooltip="Open the SMS Rotate configuration page"
                                                 tooltipOptions={{ position: 'left' }}
                                             />
                                         )}

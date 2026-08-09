@@ -18,9 +18,10 @@ import { validateConfig, type ValidationIssue } from './utils/config-validation'
 
 interface ConfigBuilderViewProps {
     onOpenPluginsInstaller?: () => void;
+    onOpenSmsRotateConfig?: () => void;
 }
 
-export const ConfigBuilderView = ({ onOpenPluginsInstaller }: ConfigBuilderViewProps) => {
+export const ConfigBuilderView = ({ onOpenPluginsInstaller, onOpenSmsRotateConfig }: ConfigBuilderViewProps) => {
   const toast = useRef<Toast>(null);
   const [activeTab, setActiveTab] = useState(0);
   const [showExportPreview, setShowExportPreview] = useState(false);
@@ -326,6 +327,7 @@ export const ConfigBuilderView = ({ onOpenPluginsInstaller }: ConfigBuilderViewP
       config={config}
       onChange={updateRootField}
       onOpenPluginsInstaller={onOpenPluginsInstaller}
+      onOpenSmsRotateConfig={onOpenSmsRotateConfig}
     />
   </TabPanel>
 </TabView>

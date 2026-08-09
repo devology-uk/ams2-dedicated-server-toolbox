@@ -1,1 +1,1 @@
-export type ActiveFeature = 'home' | 'config' | 'stats' | 'api' | 'results' | 'plugins';
+export type ActiveFeature = 'home' | 'config' | 'stats' | 'api' | 'results' | 'plugins' | 'sms-rotate';

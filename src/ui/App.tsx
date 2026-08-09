@@ -8,6 +8,7 @@ import { ConfigBuilderView } from './features/config-builder/ConfigBuilderView';
 import { StatsViewer } from './features/stats/StatsViewer';
 import { ResultsViewer } from './features/results/ResultsViewer';
 import { PluginsView } from './features/plugins/PluginsView';
+import { SmsRotateView } from './features/sms-rotate/SmsRotateView';
 import { WhatsNewDialog } from './components/WhatsNewDialog';
 import type { WhatsNewContent } from '../shared/types/api';
 import type { ActiveFeature } from './types/ActiveFeature';
@@ -41,13 +42,20 @@ export const App = () => {
             case 'api':
                 return <ApiExplorerView />;
             case 'config':
-                return <ConfigBuilderView onOpenPluginsInstaller={() => setActiveFeature('plugins')} />;
+                return (
+                    <ConfigBuilderView
+                        onOpenPluginsInstaller={() => setActiveFeature('plugins')}
+                        onOpenSmsRotateConfig={() => setActiveFeature('sms-rotate')}
+                    />
+                );
             case 'stats':
                 return <StatsViewer />;
             case 'results':
                 return <ResultsViewer />;
             case 'plugins':
                 return <PluginsView onNavigateTo={setActiveFeature} />;
+            case 'sms-rotate':
+                return <SmsRotateView />;
             default:
                 return <Toolbox onFeatureSelect={setActiveFeature} />;
         }

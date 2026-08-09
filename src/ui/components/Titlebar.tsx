@@ -20,6 +20,7 @@ const FEATURE_LABELS: Record<ActiveFeature, string | null> = {
     stats: 'Stats Viewer',
     results: 'Results Viewer',
     plugins: 'Lua Plugins',
+    'sms-rotate': 'SMS Rotate',
 };
 
 export const Titlebar = ({

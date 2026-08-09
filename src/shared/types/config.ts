@@ -177,6 +177,20 @@ export interface SessionAttributes {
 }
 
 // ============================================
+// SMS Rotate plugin config (lua_config/sms_rotate_config.json)
+// ============================================
+export interface SmsRotateSetup extends SessionAttributes {
+  RemoveFlags?: number; // only meaningful on rotation entries, never on `default`
+}
+
+export interface SmsRotateConfig {
+  version: number;
+  persistIndex: boolean;
+  default: SmsRotateSetup;
+  rotation: SmsRotateSetup[];
+}
+
+// ============================================
 // Server Config (root level)
 // ============================================
 export interface ServerConfig {

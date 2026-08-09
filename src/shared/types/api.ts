@@ -195,6 +195,8 @@ export interface ElectronAPI {
     getConnections: () => Promise<ServerConnection[]>;
     // File operations
     importConfig: () => Promise<FileOperationResult>;
+    importSmsRotateConfig: () => Promise<FileOperationResult>;
+    exportSmsRotateConfig: (data: string) => Promise<FileOperationResult>;
     platform: Platform;
     saveConnection: (connection: ServerConnectionInput) => Promise<ServerConnection>;
     setActiveConnection: (id: string | null) => Promise<boolean>;

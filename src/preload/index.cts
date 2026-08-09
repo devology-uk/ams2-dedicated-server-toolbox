@@ -39,6 +39,8 @@ const IPC_CHANNELS = {
     // Files
     IMPORT_CONFIG: 'import-config',
     EXPORT_CONFIG: 'export-config',
+    IMPORT_SMS_ROTATE_CONFIG: 'import-sms-rotate-config',
+    EXPORT_SMS_ROTATE_CONFIG: 'export-sms-rotate-config',
     EXPORT_RESULTS: 'export-results',
 
     // Export presets (API Explorer)
@@ -193,6 +195,10 @@ electron.contextBridge.exposeInMainWorld('electron', {
         electron.ipcRenderer.invoke(IPC_CHANNELS.IMPORT_CONFIG),
     exportConfig: (data: string) =>
         electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_CONFIG, data),
+    importSmsRotateConfig: () =>
+        electron.ipcRenderer.invoke(IPC_CHANNELS.IMPORT_SMS_ROTATE_CONFIG),
+    exportSmsRotateConfig: (data: string) =>
+        electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_SMS_ROTATE_CONFIG, data),
     exportResults: (params: { filename: string; content: string; format: 'csv' | 'json' }) =>
         electron.ipcRenderer.invoke(IPC_CHANNELS.EXPORT_RESULTS, params),
 

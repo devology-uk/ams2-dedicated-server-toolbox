@@ -14,6 +14,12 @@ Allows you to open a file produced by the **sms_stats** plugin and analyse the c
 ## Results Viewer
 Allows you to import a file produced by the **sms_stats** plugin to update the application database with any new stage (Practice, Qualifying or Race) results.  It is intelligent enough to recognise results it has already imported and avoids creating duplicates.
 
+## Lua Plugins
+Installs bundled Lua plugins — including the **ams2_stats** plugin, an alternative to **sms_stats** that adds sector times and full DNF tracking — directly into your AMS2 Dedicated Server folder, and lets you know when an update is available.
+
+## SMS Rotate
+Configures the **sms_rotate** plugin's rotation file. Build a default session setup and a list of track/vehicle/weather overrides to rotate through between events, then export it straight to your server's `lua_config` folder.
+
 
 ## Documentation
 AMS2 Dedicated Server Toolbox is brought to you by the Sim Racer Tools team. Documentation for the application and the individual tools is available at [Sim Racer Tools -> AMS2 Dedicated Server Toolbox](https://www.simracertools.com/docs/ams2-dedi-getting-started/)

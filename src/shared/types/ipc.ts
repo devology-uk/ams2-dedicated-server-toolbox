@@ -34,6 +34,8 @@ export const IPC_CHANNELS = {
     // Files
     IMPORT_CONFIG: 'import-config',
     EXPORT_CONFIG: 'export-config',
+    IMPORT_SMS_ROTATE_CONFIG: 'import-sms-rotate-config',
+    EXPORT_SMS_ROTATE_CONFIG: 'export-sms-rotate-config',
     EXPORT_RESULTS: 'export-results',
 
     // Export presets (API Explorer)

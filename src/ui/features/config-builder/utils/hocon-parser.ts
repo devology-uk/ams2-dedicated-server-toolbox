@@ -13,41 +13,50 @@ import type { ServerConfig } from '../../../../shared/types/config';
  * - Trailing commas allowed
  */
 export function parseServerConfig(content: string): ServerConfig {
+  return parseHocon(content) as ServerConfig;
+}
+
+/**
+ * Parse HOCON-style content (see parseServerConfig for the supported syntax)
+ * into a plain JavaScript value. Generic entry point reused by any HOCON-ish
+ * config file this app reads — not just server.cfg.
+ */
+export function parseHocon(content: string): unknown {
   // Remove comments
   const lines = content.split('\n');
   const cleanedLines: string[] = [];
-  
+
   for (const line of lines) {
     // Remove single-line comments, but be careful not to remove // inside strings
     let inString = false;
     let commentStart = -1;
-    
+
     for (let i = 0; i < line.length; i++) {
       const char = line[i];
       const nextChar = line[i + 1];
-      
+
       if (char === '"' && (i === 0 || line[i - 1] !== '\\')) {
         inString = !inString;
       }
-      
+
       if (!inString && char === '/' && nextChar === '/') {
         commentStart = i;
         break;
       }
     }
-    
+
     if (commentStart >= 0) {
       cleanedLines.push(line.substring(0, commentStart));
     } else {
       cleanedLines.push(line);
     }
   }
-  
+
   const cleaned = cleanedLines.join('\n');
-  
+
   // Parse the content recursively
   const result = parseObject(cleaned.trim(), 0);
-  return result.value as ServerConfig;
+  return result.value;
 }
 
 interface ParseResult {
@@ -260,61 +269,63 @@ function parseUnquotedValue(content: string, startIndex: number): ParseResult {
 }
 
 /**
+ * Serialize a plain JavaScript value to HOCON-style text (see parseHocon for
+ * the supported syntax). Generic entry point reused by any HOCON-ish config
+ * file this app writes — not just server.cfg.
+ */
+export function serializeHoconValue(value: unknown, indent = 0): string {
+  const indentStr = '    '.repeat(indent);
+
+  if (value === null || value === undefined) {
+    return 'null';
+  }
+
+  if (typeof value === 'boolean') {
+    return value.toString();
+  }
+
+  if (typeof value === 'number') {
+    return value.toString();
+  }
+
+  if (typeof value === 'string') {
+    // Check if string needs quoting (contains special chars or spaces)
+    if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(value) && !['true', 'false', 'null'].includes(value)) {
+      return value; // Can be unquoted
+    }
+    return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+  }
+
+  if (Array.isArray(value)) {
+    if (value.length === 0) return '[]';
+    const items = value.map(item => `${indentStr}    ${serializeHoconValue(item, indent + 1)}`);
+    return `[\n${items.join(',\n')}\n${indentStr}]`;
+  }
+
+  if (typeof value === 'object') {
+    const entries = Object.entries(value as Record<string, unknown>);
+    if (entries.length === 0) return '{}';
+
+    const props = entries.map(([k, v]) => {
+      const serializedValue = serializeHoconValue(v, indent + 1);
+      const needsQuotes = /[^a-zA-Z0-9_*]/.test(k);
+      const quotedKey = needsQuotes ? `"${k}"` : k;
+      return `${indentStr}    ${quotedKey} : ${serializedValue}`;
+    });
+
+    return `{\n${props.join('\n')}\n${indentStr}}`;
+  }
+
+  return String(value);
+}
+
+/**
  * Serialize a ServerConfig object to HOCON-style server.cfg format
  */
 export function serializeServerConfig(config: ServerConfig): string {
   const lines: string[] = [];
-  
-  const serializeValue = (value: unknown, indent: number): string => {
-    const indentStr = '    '.repeat(indent);
-    
-    if (value === null || value === undefined) {
-      return 'null';
-    }
-    
-    if (typeof value === 'boolean') {
-      return value.toString();
-    }
-    
-    if (typeof value === 'number') {
-      return value.toString();
-    }
-    
-    if (typeof value === 'string') {
-      // Check if string needs quoting (contains special chars or spaces)
-      if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(value) && !['true', 'false', 'null'].includes(value)) {
-        return value; // Can be unquoted
-      }
-      return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
-    }
-    
-    if (Array.isArray(value)) {
-      if (value.length === 0) return '[]';
-      const items = value.map(item => `${indentStr}    ${serializeValue(item, indent + 1)}`);
-      return `[\n${items.join(',\n')}\n${indentStr}]`;
-    }
-    
-    if (typeof value === 'object') {
-      const entries = Object.entries(value as Record<string, unknown>);
-      if (entries.length === 0) return '{}';
-      
-      const props = entries.map(([k, v]) => {
-        const serializedValue = serializeValue(v, indent + 1);
-        const needsQuotes = /[^a-zA-Z0-9_*]/.test(k);
-        const quotedKey = needsQuotes ? `"${k}"` : k;
-        
-        if (typeof v === 'object' && v !== null) {
-          return `${indentStr}    ${quotedKey} : ${serializedValue}`;
-        }
-        return `${indentStr}    ${quotedKey} : ${serializedValue}`;
-      });
-      
-      return `{\n${props.join('\n')}\n${indentStr}}`;
-    }
-    
-    return String(value);
-  };
-  
+  const serializeValue = serializeHoconValue;
+
   // Skip HOCON dummy comment keys (e.g. "//" : "comment text")
   const SKIP_KEYS = new Set(['//', 'rem', '#']);
 
@@ -336,7 +347,7 @@ export function serializeServerConfig(config: ServerConfig): string {
   // Sort addon names: sms_base first, other sms_* next, then everything else, ams2_stats last
   const sortAddons = (addons: string[]): string[] => {
     const bucket = (name: string): number => {
-      if (name === 'sms_base') return 0;
+      if (name === 'sms_base' || name === 'lib_rotate') return 0;
       if (name.startsWith('sms_')) return 1;
       if (name === 'ams2_stats') return 3;
       return 2;
