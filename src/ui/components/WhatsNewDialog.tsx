@@ -6,12 +6,14 @@ import { Button } from 'primereact/button';
 import { ScrollPanel } from 'primereact/scrollpanel';
 import { Divider } from 'primereact/divider';
 import { Tag } from 'primereact/tag';
+import { Message } from 'primereact/message';
 
 interface WhatsNewDialogProps {
     visible: boolean;
     currentVersion: string;
     markdown: string;
     onDismiss: () => void;
+    onOpenApiExplorer: () => void;
 }
 
 /** Section heading colours matching the stage tag palette */
@@ -97,7 +99,7 @@ function renderMarkdown(markdown: string): ReactNode[] {
     return elements;
 }
 
-export function WhatsNewDialog({ visible, currentVersion, markdown, onDismiss }: WhatsNewDialogProps) {
+export function WhatsNewDialog({ visible, currentVersion, markdown, onDismiss, onOpenApiExplorer }: WhatsNewDialogProps) {
     const header = (
         <div className="flex align-items-center gap-3">
             <i className="pi pi-sparkles text-2xl text-primary" />
@@ -124,6 +126,25 @@ export function WhatsNewDialog({ visible, currentVersion, markdown, onDismiss }:
             breakpoints={{ '640px': '95vw' }}
             modal
         >
+            <Message
+                severity="warn"
+                className="w-full mb-3 justify-content-start"
+                content={
+                    <div className="flex align-items-center justify-content-between w-full gap-3">
+                        <span className="text-sm">
+                            AMS2 dedicated servers update independently of this app. If yours has updated too,
+                            open API Explorer and hit Sync to pick up any new vehicles, tracks, or options
+                            this app doesn't know about yet.
+                        </span>
+                        <Button
+                            label="Open API Explorer"
+                            icon="pi pi-sync"
+                            size="small"
+                            onClick={onOpenApiExplorer}
+                        />
+                    </div>
+                }
+            />
             <ScrollPanel style={{ width: '100%', height: '22rem' }}>
                 <div className="flex flex-column gap-1 pr-3">
                     {renderMarkdown(markdown)}

@@ -76,6 +76,10 @@ export const App = () => {
                     currentVersion={whatsNew.currentVersion}
                     markdown={whatsNew.markdown}
                     onDismiss={handleWhatsNewDismiss}
+                    onOpenApiExplorer={() => {
+                        handleWhatsNewDismiss();
+                        setActiveFeature('api');
+                    }}
                 />
             )}
         </div>

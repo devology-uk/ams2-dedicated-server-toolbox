@@ -1,5 +1,5 @@
 {
-  "bundledDataVersion": 2,
+  "bundledDataVersion": 3,
   "version": {
     "build_version": 1,
     "protocol_version": 90,
@@ -398,7 +398,7 @@
           "name": "QualifyPrivateSession",
           "type": "int8",
           "access": "ReadWrite",
-          "description": "Should qualifying session be private with cars running in isolation on track. (1) enabled, (0) disabled"
+          "description": "Whether the qualifying session runs as a private session with cars isolated on track, and if so whether other classes are visible. The enum values are available via HTTP API at /api/list/enums/privatesession or in Lua global tables lists.enums.privatesession, PrivateSession and value_to_privatesession."
         },
         {
           "name": "RaceLength",

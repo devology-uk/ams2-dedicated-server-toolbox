@@ -14,6 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.4.1] - 2026-09-16
+
+### Changed
+- **Qualifying private session is now a 3-way option** (Off / Solo / Same Class) in Config Builder, matching AMS2's new "Same Class" private qualifying mode — previously shown as a simple on/off toggle.
+- **What's New popup now reminds you to sync game data** — a banner with a shortcut to API Explorer, since AMS2 dedicated server updates (new cars, tracks, options) don't reach this app until you sync.
+
+
 ## [1.4.0] - 2026-08-09
 
 ### Added

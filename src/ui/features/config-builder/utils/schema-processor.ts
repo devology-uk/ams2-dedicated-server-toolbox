@@ -31,7 +31,6 @@ const KNOWN_BOOLEAN_FIELDS: Set<string> = new Set([
   'PitWhiteLinePenalty',
   'DriveThroughPenalty',
   'FullCourseYellows',
-  'QualifyPrivateSession',
   'RaceExtraLap',
   'RaceRollingStart',
   'RaceMandatoryPitStops',

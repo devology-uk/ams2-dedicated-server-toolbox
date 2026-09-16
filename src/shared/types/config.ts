@@ -57,7 +57,8 @@ export type EnumEndpointName =
   | 'pit_control'
   | 'online_rep'
   | 'livetrack_preset'
-  | 'scheduledfcy';
+  | 'scheduledfcy'
+  | 'privatesession';
 
 export type FlagEndpointName = 'session' | 'player';
 
