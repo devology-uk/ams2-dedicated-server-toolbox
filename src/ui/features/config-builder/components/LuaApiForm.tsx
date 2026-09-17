@@ -7,6 +7,7 @@ import { Panel } from 'primereact/panel';
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
 import type { ServerConfig } from '../../../../shared/types/config';
+import { KNOWN_PLUGINS, isKnownAddon, enableAddon, disableAddon, setCustomAddons as reorderCustomAddons } from '../utils/lua-addons';
 
 interface LuaApiFormProps {
     config: ServerConfig;
@@ -14,54 +15,6 @@ interface LuaApiFormProps {
     onOpenPluginsInstaller?: () => void;
     onOpenSmsRotateConfig?: () => void;
 }
-
-interface KnownPluginEntry {
-    addonName: string;
-    label: string;
-    description: string;
-    bundled: boolean;
-    dependsOn?: string[];  // other known addon names this plugin requires
-    loadLast?: boolean;    // always placed after all other addons in the list
-    configurable?: boolean; // has its own dedicated configuration page (see onOpenSmsRotateConfig)
-}
-
-// Order here defines load order. loadLast plugins are pinned to the end.
-const KNOWN_PLUGINS: KnownPluginEntry[] = [
-    {
-        addonName: 'sms_base',
-        label: 'SMS Base',
-        description: 'Base library required by the sms_stats plugin. Must be loaded first.',
-        bundled: false,
-    },
-    {
-        addonName: 'sms_stats',
-        label: 'SMS Stats',
-        description: 'Built-in race statistics plugin. Automatically enables sms_base.',
-        bundled: false,
-        dependsOn: ['sms_base'],
-    },
-    {
-        addonName: 'lib_rotate',
-        label: 'Lib Rotate',
-        description: 'Setup-merging helper library required by SMS Rotate. Must be loaded first.',
-        bundled: false,
-    },
-    {
-        addonName: 'sms_rotate',
-        label: 'SMS Rotate',
-        description: 'Rotates the server through a list of track/vehicle/session setups. Automatically enables lib_rotate.',
-        bundled: false,
-        dependsOn: ['lib_rotate'],
-        configurable: true,
-    },
-    {
-        addonName: 'ams2_stats',
-        label: 'AMS2 Stats',
-        description: 'Enhanced race statistics with sector times and complete results for all drivers.',
-        bundled: true,
-        loadLast: true,
-    },
-];
 
 export const LuaApiForm = ({
     config,
@@ -71,45 +24,16 @@ export const LuaApiForm = ({
 }: LuaApiFormProps) => {
     const addons = config.luaApiAddons ?? [];
 
-    const knownAddonNames = new Set(KNOWN_PLUGINS.map((p) => p.addonName));
     const isEnabled = (addonName: string) => addons.includes(addonName);
 
-    // Rebuild the addons list in canonical order:
-    // non-loadLast known plugins (in KNOWN_PLUGINS order) → custom addons → loadLast plugins
-    const buildOrdered = (enabledKnown: Set<string>, custom: string[]): string[] => {
-        const normal = KNOWN_PLUGINS
-            .filter((p) => !p.loadLast && enabledKnown.has(p.addonName))
-            .map((p) => p.addonName);
-        const last = KNOWN_PLUGINS
-            .filter((p) => p.loadLast && enabledKnown.has(p.addonName))
-            .map((p) => p.addonName);
-        return [...normal, ...custom, ...last];
-    };
-
     const toggleAddon = (addonName: string, enabled: boolean) => {
-        const enabledKnown = new Set(addons.filter((a) => knownAddonNames.has(a)));
-        if (enabled) {
-            enabledKnown.add(addonName);
-            // Auto-enable dependencies
-            for (const dep of KNOWN_PLUGINS.find((p) => p.addonName === addonName)?.dependsOn ?? []) {
-                enabledKnown.add(dep);
-            }
-        } else {
-            enabledKnown.delete(addonName);
-            // Auto-disable anything that depends on this addon
-            for (const p of KNOWN_PLUGINS) {
-                if (p.dependsOn?.includes(addonName)) enabledKnown.delete(p.addonName);
-            }
-        }
-        const custom = addons.filter((a) => !knownAddonNames.has(a));
-        onChange('luaApiAddons', buildOrdered(enabledKnown, custom));
+        onChange('luaApiAddons', enabled ? enableAddon(addons, addonName) : disableAddon(addons, addonName));
     };
 
-    const customAddons = addons.filter((a) => !knownAddonNames.has(a));
+    const customAddons = addons.filter((a) => !isKnownAddon(a));
 
     const setCustomAddons = (next: string[]) => {
-        const enabledKnown = new Set(addons.filter((a) => knownAddonNames.has(a)));
-        onChange('luaApiAddons', buildOrdered(enabledKnown, next));
+        onChange('luaApiAddons', reorderCustomAddons(addons, next));
     };
 
     return (

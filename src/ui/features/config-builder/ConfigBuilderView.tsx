@@ -1,6 +1,7 @@
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useEffect } from 'react';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Button } from 'primereact/button';
+import { InputSwitch } from 'primereact/inputswitch';
 import { Toast } from 'primereact/toast';
 import { AutoComplete, type AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 
@@ -62,7 +63,31 @@ export const ConfigBuilderView = ({ onOpenPluginsInstaller, onOpenSmsRotateConfi
     exportToString,
     markAsSaved,
     resetConfig,
+    setConfig,
   } = useConfigState();
+
+  // Load-last-config preference, and applying it on first mount
+  const [autoLoadLast, setAutoLoadLast] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    window.electron.configBuilder.getState().then((state) => {
+      if (cancelled) return;
+      setAutoLoadLast(state.autoLoadLast);
+      if (state.autoLoadLast && state.lastConfig) {
+        setConfig(state.lastConfig);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleAutoLoadToggle = (enabled: boolean) => {
+    setAutoLoadLast(enabled);
+    window.electron.configBuilder.setAutoLoad(enabled);
+  };
 
   // Handle import
   const handleImport = async () => {
@@ -97,13 +122,19 @@ export const ConfigBuilderView = ({ onOpenPluginsInstaller, onOpenSmsRotateConfi
       }
 
       const parseResult = importFromString(result.data);
-      
+
       if (parseResult.success) {
+        if (parseResult.config) {
+          window.electron.configBuilder.saveLast(parseResult.config);
+        }
+        const addedDependencies = parseResult.addedDependencies ?? [];
         toast.current?.show({
           severity: 'success',
           summary: 'Import Successful',
-          detail: `Loaded ${result.filename ?? 'config'}`,
-          life: 3000,
+          detail: addedDependencies.length > 0
+            ? `Loaded ${result.filename ?? 'config'} (auto-added required addon${addedDependencies.length > 1 ? 's' : ''}: ${addedDependencies.join(', ')})`
+            : `Loaded ${result.filename ?? 'config'}`,
+          life: addedDependencies.length > 0 ? 6000 : 3000,
         });
       } else {
         toast.current?.show({
@@ -145,6 +176,7 @@ export const ConfigBuilderView = ({ onOpenPluginsInstaller, onOpenSmsRotateConfi
 
       if (result.success) {
         markAsSaved();
+        window.electron.configBuilder.saveLast(config);
         toast.current?.show({
           severity: 'success',
           summary: 'Export Successful',
@@ -251,27 +283,39 @@ export const ConfigBuilderView = ({ onOpenPluginsInstaller, onOpenSmsRotateConfi
             </span>
           )}
         </div>
-        <div className="flex gap-2">
-          <Button
-            label="Import"
-            icon="pi pi-upload"
-            severity="secondary"
-            outlined
-            onClick={handleImport}
-          />
-          <Button
-            label="Export"
-            icon="pi pi-download"
-            severity="success"
-            onClick={handleExport}
-          />
-          <Button
-            label="Reset"
-            icon="pi pi-refresh"
-            severity="danger"
-            outlined
-            onClick={handleReset}
-          />
+        <div className="flex align-items-center gap-4">
+          <div className="flex align-items-center gap-2">
+            <InputSwitch
+              inputId="autoLoadLastConfig"
+              checked={autoLoadLast}
+              onChange={(e) => handleAutoLoadToggle(e.value)}
+            />
+            <label htmlFor="autoLoadLastConfig" className="text-sm">
+              Load last config on open
+            </label>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              label="Import"
+              icon="pi pi-upload"
+              severity="secondary"
+              outlined
+              onClick={handleImport}
+            />
+            <Button
+              label="Export"
+              icon="pi pi-download"
+              severity="success"
+              onClick={handleExport}
+            />
+            <Button
+              label="Reset"
+              icon="pi pi-refresh"
+              severity="danger"
+              outlined
+              onClick={handleReset}
+            />
+          </div>
         </div>
       </div>
 

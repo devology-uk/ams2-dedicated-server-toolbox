@@ -12,6 +12,8 @@ import type {
 
 import type { ExportPreset, ExportPresetInput } from './export.js';
 
+import type { ServerConfig } from './config.js';
+
 import type {
     ImportResult,
     LapRecord,
@@ -171,6 +173,12 @@ export interface ExportPresetsAPI {
     delete: (id: string) => Promise<boolean>;
 }
 
+export interface ConfigBuilderAPI {
+    getState: () => Promise<{ autoLoadLast: boolean; lastConfig: ServerConfig | null }>;
+    saveLast: (config: ServerConfig) => Promise<void>;
+    setAutoLoad: (enabled: boolean) => Promise<void>;
+}
+
 export interface GameDataAPI {
     get: () => Promise<ServerCache | null>;
     set: (data: { version: ServerVersion; lists: AllListsData }, version?: string) => Promise<void>;
@@ -188,6 +196,8 @@ export interface ElectronAPI {
     exportResults: (params: { filename: string; content: string; format: 'csv' | 'json' }) => Promise<FileOperationResult>;
     // Export presets (API Explorer)
     exportPresets: ExportPresetsAPI;
+    // Config Builder — last config persistence
+    configBuilder: ConfigBuilderAPI;
     // Game data (shared, connection-independent)
     gameData: GameDataAPI;
     getActiveConnection: () => Promise<ServerConnection | null>;

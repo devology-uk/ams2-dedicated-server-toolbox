@@ -11,6 +11,7 @@ import { registerAliasHandlers } from './aliasHandlers.js';
 import { registerWhatsNewHandler } from './whatsNewHandler.js';
 import { registerPluginHandlers } from './pluginHandlers.js';
 import { registerExportPresetHandlers } from './exportPresetHandlers.js';
+import { registerConfigBuilderHandlers } from './configBuilderHandlers.js';
 
 export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerConnectionHandlers();
@@ -23,4 +24,5 @@ export function registerAllHandlers(mainWindow: BrowserWindow): void {
     registerWhatsNewHandler();
     registerPluginHandlers();
     registerExportPresetHandlers();
+    registerConfigBuilderHandlers();
 }

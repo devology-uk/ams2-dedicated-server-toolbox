@@ -5,6 +5,7 @@
 import { useState, useCallback } from 'react';
 import type { ServerConfig, SessionAttributes } from '../../../../shared/types/config';
 import { parseServerConfig, serializeServerConfig } from '../utils/hocon-parser';
+import { normalizeAddonList } from '../utils/lua-addons';
 
 // ... rest of the file stays the same
 
@@ -21,7 +22,7 @@ export interface UseConfigStateResult {
   resetConfig: () => void;
   
   // Import/Export
-  importFromString: (content: string) => { success: boolean; error?: string };
+  importFromString: (content: string) => { success: boolean; error?: string; addedDependencies?: string[]; config?: ServerConfig };
   exportToString: () => string;
   
   // Track original for dirty checking
@@ -92,6 +93,7 @@ export function useConfigState(initialConfig?: ServerConfig): UseConfigStateResu
 
   const setConfig = useCallback((newConfig: ServerConfig) => {
     setConfigInternal(newConfig);
+    setOriginalConfig(JSON.stringify(newConfig));
   }, []);
 
   const resetConfig = useCallback(() => {
@@ -99,16 +101,24 @@ export function useConfigState(initialConfig?: ServerConfig): UseConfigStateResu
     setOriginalConfig(JSON.stringify(DEFAULT_CONFIG));
   }, []);
 
-  const importFromString = useCallback((content: string): { success: boolean; error?: string } => {
+  const importFromString = useCallback((content: string): { success: boolean; error?: string; addedDependencies?: string[]; config?: ServerConfig } => {
     try {
       const parsed = parseServerConfig(content);
+
+      let addedDependencies: string[] = [];
+      if (parsed.luaApiAddons?.length) {
+        const normalized = normalizeAddonList(parsed.luaApiAddons);
+        parsed.luaApiAddons = normalized.addons;
+        addedDependencies = normalized.addedDependencies;
+      }
+
       setConfigInternal(parsed);
       setOriginalConfig(JSON.stringify(parsed));
-      return { success: true };
+      return { success: true, addedDependencies, config: parsed };
     } catch (err) {
-      return { 
-        success: false, 
-        error: err instanceof Error ? err.message : 'Failed to parse config' 
+      return {
+        success: false,
+        error: err instanceof Error ? err.message : 'Failed to parse config'
       };
     }
   }, []);

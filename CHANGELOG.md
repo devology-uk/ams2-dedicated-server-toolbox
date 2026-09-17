@@ -14,6 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.4.2] - 2026-09-17
+
+### Added
+- **Config Builder can now load your last config on open** — off by default, toggle it on with the new switch in the Config Builder toolbar.
+
+### Fixed
+- **Config Builder now guarantees `sms_base` is enabled and ordered first** whenever `sms_stats` or `sms_rotate` is included, fixing a plugin load error some users hit when the base library was missing from the addon list.
+
+
 ## [1.4.1] - 2026-09-16
 
 ### Changed

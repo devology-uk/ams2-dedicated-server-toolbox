@@ -43,6 +43,11 @@ export const IPC_CHANNELS = {
     EXPORT_PRESETS_SAVE: 'export-presets-save',
     EXPORT_PRESETS_DELETE: 'export-presets-delete',
 
+    // Config Builder — last config persistence
+    CONFIG_BUILDER_GET_STATE: 'config-builder-get-state',
+    CONFIG_BUILDER_SAVE_LAST: 'config-builder-save-last',
+    CONFIG_BUILDER_SET_AUTO_LOAD: 'config-builder-set-auto-load',
+
     // Stats (existing - file-based)
     STATS_SELECT_FILE: 'stats-select-file',
     STATS_PARSE_FILE: 'stats-parse-file',

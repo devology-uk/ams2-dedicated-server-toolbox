@@ -24,11 +24,19 @@ const SECTION_SEVERITY: Record<string, 'success' | 'info' | 'warning' | 'danger'
     Removed: 'danger',
 };
 
+/** Splits on **bold** spans and renders them as <strong>, leaving everything else as plain text. */
+function renderInline(text: string): ReactNode[] {
+    const parts = text.split(/\*\*(.+?)\*\*/g);
+    return parts.map((part, i) =>
+        i % 2 === 1 ? <strong key={i}>{part}</strong> : part,
+    );
+}
+
 /**
  * Render the subset of Keep-a-Changelog markdown we actually use:
  *   ## [x.x.x] - date   → version heading
  *   ### Added / Changed / Fixed / Removed  → coloured tag + divider
- *   - bullet text        → list item
+ *   - bullet text        → list item (**bold** spans rendered)
  */
 function renderMarkdown(markdown: string): ReactNode[] {
     const lines = markdown.split('\n');
@@ -41,7 +49,7 @@ function renderMarkdown(markdown: string): ReactNode[] {
         elements.push(
             <ul key={key++} className="m-0 pl-4 flex flex-column gap-1">
                 {listItems.map((item, i) => (
-                    <li key={i} className="text-sm">{item}</li>
+                    <li key={i} className="text-sm">{renderInline(item)}</li>
                 ))}
             </ul>,
         );
@@ -89,7 +97,7 @@ function renderMarkdown(markdown: string): ReactNode[] {
         // Anything else: flush pending list, skip blank lines
         if (line.trim()) {
             flushList();
-            elements.push(<p key={key++} className="text-sm m-0">{line.trim()}</p>);
+            elements.push(<p key={key++} className="text-sm m-0">{renderInline(line.trim())}</p>);
         } else {
             flushList();
         }
@@ -130,7 +138,7 @@ export function WhatsNewDialog({ visible, currentVersion, markdown, onDismiss, o
                 severity="warn"
                 className="w-full mb-3 justify-content-start"
                 content={
-                    <div className="flex align-items-center justify-content-between w-full gap-3">
+                    <div className="flex flex-column align-items-start w-full gap-2">
                         <span className="text-sm">
                             AMS2 dedicated servers update independently of this app. If yours has updated too,
                             open API Explorer and hit Sync to pick up any new vehicles, tracks, or options

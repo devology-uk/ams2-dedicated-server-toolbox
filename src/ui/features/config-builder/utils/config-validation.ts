@@ -1,6 +1,7 @@
 // src/ui/features/config-builder/utils/config-validation.ts
 
 import type { ServerConfig } from '../../../../shared/types/config';
+import { findMissingDependencies } from './lua-addons';
 
 // Session flag bit values (stable AMS2 game constants)
 const FLAG_FORCE_IDENTICAL_VEHICLES  = 2;
@@ -137,6 +138,17 @@ const rules: ValidationRule[] = [
       };
     }
     return null;
+  },
+
+  // Known Lua addons must have their dependencies enabled (e.g. sms_base for sms_stats/sms_rotate)
+  (config) => {
+    const issues = findMissingDependencies(config.luaApiAddons ?? []);
+    if (issues.length === 0) return null;
+    const detail = issues.map((i) => `${i.addonName} requires ${i.missing.join(', ')}`).join('; ');
+    return {
+      severity: 'error',
+      message: `Missing required Lua addon dependencies: ${detail}.`,
+    };
   },
 
 ];

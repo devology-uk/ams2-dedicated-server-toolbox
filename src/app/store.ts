@@ -6,6 +6,7 @@ import type {
     ServerCache,
 } from '../shared/types/connections.js';
 import type { ExportPreset } from '../shared/types/export.js';
+import type { ServerConfig } from '../shared/types/config.js';
 
 export interface StoreSchema {
     connections: ServerConnection[];
@@ -24,6 +25,10 @@ export interface StoreSchema {
     lastSeenPluginVersion: string | null;
     // Saved export configurations for the API Explorer export feature
     exportPresets: ExportPreset[];
+    // Config Builder — last config the user imported or exported
+    configBuilderLastConfig: ServerConfig | null;
+    // Config Builder — whether to load configBuilderLastConfig automatically on open (default off)
+    configBuilderAutoLoadLast: boolean;
 }
 
 const store = new Store<StoreSchema>({
@@ -37,6 +42,8 @@ const store = new Store<StoreSchema>({
         lastSeenVersion: null,
         lastSeenPluginVersion: null,
         exportPresets: [],
+        configBuilderLastConfig: null,
+        configBuilderAutoLoadLast: false,
     },
 });
 
