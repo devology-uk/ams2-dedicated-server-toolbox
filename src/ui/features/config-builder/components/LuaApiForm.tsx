@@ -7,7 +7,16 @@ import { Panel } from 'primereact/panel';
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
 import type { ServerConfig } from '../../../../shared/types/config';
-import { KNOWN_PLUGINS, isKnownAddon, enableAddon, disableAddon, setCustomAddons as reorderCustomAddons } from '../utils/lua-addons';
+import {
+    KNOWN_PLUGINS,
+    isKnownAddon,
+    enableAddon,
+    disableAddon,
+    setCustomAddons as reorderCustomAddons,
+    DEFAULT_LUA_ADDON_ROOT,
+    DEFAULT_LUA_CONFIG_ROOT,
+    DEFAULT_LUA_OUTPUT_ROOT,
+} from '../utils/lua-addons';
 
 interface LuaApiFormProps {
     config: ServerConfig;
@@ -30,6 +39,17 @@ export const LuaApiForm = ({
         onChange('luaApiAddons', enabled ? enableAddon(addons, addonName) : disableAddon(addons, addonName));
     };
 
+    // Root fields show placeholder text when empty, which reads like a real value at a glance —
+    // fill them with the actual defaults on enable so an unedited config still exports correctly.
+    const toggleLuaApi = (enabled: boolean) => {
+        onChange('enableLuaApi', enabled);
+        if (enabled) {
+            if (!config.luaAddonRoot) onChange('luaAddonRoot', DEFAULT_LUA_ADDON_ROOT);
+            if (!config.luaConfigRoot) onChange('luaConfigRoot', DEFAULT_LUA_CONFIG_ROOT);
+            if (!config.luaOutputRoot) onChange('luaOutputRoot', DEFAULT_LUA_OUTPUT_ROOT);
+        }
+    };
+
     const customAddons = addons.filter((a) => !isKnownAddon(a));
 
     const setCustomAddons = (next: string[]) => {
@@ -45,7 +65,7 @@ export const LuaApiForm = ({
                             <InputSwitch
                                 id="enableLuaApi"
                                 checked={config.enableLuaApi ?? false}
-                                onChange={(e) => onChange('enableLuaApi', e.value)}
+                                onChange={(e) => toggleLuaApi(e.value)}
                             />
                             <label htmlFor="enableLuaApi">Enable Lua API</label>
                         </div>

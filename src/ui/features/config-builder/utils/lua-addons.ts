@@ -1,5 +1,26 @@
 // src/ui/features/config-builder/utils/lua-addons.ts
 
+import type { ServerConfig } from '../../../../shared/types/config';
+
+// Root paths the AMS2 dedicated server expects when Lua is enabled (see config_sample/*.cfg).
+export const DEFAULT_LUA_ADDON_ROOT = 'lua';
+export const DEFAULT_LUA_CONFIG_ROOT = 'lua_config';
+export const DEFAULT_LUA_OUTPUT_ROOT = 'lua_output';
+
+// Backfills the standard Lua root paths onto a config that has the Lua API enabled but is
+// missing one or more of them — e.g. a config saved before these defaults existed, or a
+// hand-edited/imported file. Leaves everything else untouched.
+export function withLuaRootDefaults(config: ServerConfig): ServerConfig {
+    if (!config.enableLuaApi) return config;
+    if (config.luaAddonRoot && config.luaConfigRoot && config.luaOutputRoot) return config;
+    return {
+        ...config,
+        luaAddonRoot: config.luaAddonRoot || DEFAULT_LUA_ADDON_ROOT,
+        luaConfigRoot: config.luaConfigRoot || DEFAULT_LUA_CONFIG_ROOT,
+        luaOutputRoot: config.luaOutputRoot || DEFAULT_LUA_OUTPUT_ROOT,
+    };
+}
+
 export interface KnownPluginEntry {
     addonName: string;
     label: string;

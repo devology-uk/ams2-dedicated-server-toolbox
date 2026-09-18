@@ -151,6 +151,22 @@ const rules: ValidationRule[] = [
     };
   },
 
+  // Lua API enabled but one or more root paths blank — the exported config would omit
+  // these keys entirely, which the server needs to load addons at all
+  (config) => {
+    if (!config.enableLuaApi) return null;
+    const missing = [
+      !config.luaAddonRoot && 'Addon Root',
+      !config.luaConfigRoot && 'Config Root',
+      !config.luaOutputRoot && 'Output Root',
+    ].filter((label): label is string => !!label);
+    if (missing.length === 0) return null;
+    return {
+      severity: 'error',
+      message: `Lua API is enabled but ${missing.join(', ')} ${missing.length > 1 ? 'are' : 'is'} not set.`,
+    };
+  },
+
 ];
 
 // ---------------------------------------------------------------------------

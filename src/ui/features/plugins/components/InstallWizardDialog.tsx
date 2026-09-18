@@ -6,6 +6,7 @@ import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Steps } from 'primereact/steps';
 import type { KnownPlugin, PluginInstallResult } from '../../../../shared/types/api';
+import { DEFAULT_LUA_ADDON_ROOT, DEFAULT_LUA_CONFIG_ROOT, DEFAULT_LUA_OUTPUT_ROOT } from '../../config-builder/utils/lua-addons';
 import './InstallWizardDialog.scss';
 
 interface InstallWizardDialogProps {
@@ -29,12 +30,11 @@ const INSTALLED_FILES = [
     'lua_config/ams2_stats_config.json',
 ];
 
-const SERVER_CFG_SNIPPET = `[LUA]
-enableLua = 1
-luaAddonRoot = lua
-luaConfigRoot = lua_config
-luaOutputRoot = lua_output
-addons = ams2_stats`;
+const SERVER_CFG_SNIPPET = `enableLuaApi : true
+luaAddonRoot : "${DEFAULT_LUA_ADDON_ROOT}"
+luaConfigRoot : "${DEFAULT_LUA_CONFIG_ROOT}"
+luaOutputRoot : "${DEFAULT_LUA_OUTPUT_ROOT}"
+luaApiAddons : ["ams2_stats"]`;
 
 export function InstallWizardDialog({ plugin, onHide, onOpenConfigBuilder }: InstallWizardDialogProps) {
     const [step, setStep] = useState(0);

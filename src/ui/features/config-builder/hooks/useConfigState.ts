@@ -5,7 +5,7 @@
 import { useState, useCallback } from 'react';
 import type { ServerConfig, SessionAttributes } from '../../../../shared/types/config';
 import { parseServerConfig, serializeServerConfig } from '../utils/hocon-parser';
-import { normalizeAddonList } from '../utils/lua-addons';
+import { normalizeAddonList, withLuaRootDefaults } from '../utils/lua-addons';
 
 // ... rest of the file stays the same
 
@@ -92,8 +92,9 @@ export function useConfigState(initialConfig?: ServerConfig): UseConfigStateResu
   }, []);
 
   const setConfig = useCallback((newConfig: ServerConfig) => {
-    setConfigInternal(newConfig);
-    setOriginalConfig(JSON.stringify(newConfig));
+    const normalized = withLuaRootDefaults(newConfig);
+    setConfigInternal(normalized);
+    setOriginalConfig(JSON.stringify(normalized));
   }, []);
 
   const resetConfig = useCallback(() => {
@@ -103,7 +104,7 @@ export function useConfigState(initialConfig?: ServerConfig): UseConfigStateResu
 
   const importFromString = useCallback((content: string): { success: boolean; error?: string; addedDependencies?: string[]; config?: ServerConfig } => {
     try {
-      const parsed = parseServerConfig(content);
+      const parsed = withLuaRootDefaults(parseServerConfig(content));
 
       let addedDependencies: string[] = [];
       if (parsed.luaApiAddons?.length) {

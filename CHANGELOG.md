@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.4.3] - 2026-09-17
+
+### Fixed
+- Enabling Lua API in the Config Builder now fills in the real addon/config/output root paths instead of leaving them as placeholder text, which previously exported a config missing those keys entirely.
+
+
 ## [1.4.2] - 2026-09-17
 
 ### Added
